@@ -1,3 +1,4 @@
+
 Dotfiles
 ========
 
@@ -7,9 +8,9 @@ multiple times.
 
 After install is completed, open vim and run `:PluginInstall`
 
-`YouCompleteMe` requires installation, see [instructions][https://github.com/Valloric/YouCompleteMe].
+`YouCompleteMe` requires installation, see [instructions](https://github.com/Valloric/YouCompleteMe).
 
-`vimrc` uses patched fonts, I recommend [Inconsolata-g][https://github.com/powerline/fonts/tree/master/Inconsolata-g].  
+`vimrc` uses patched fonts, I recommend [Inconsolata-g](https://github.com/powerline/fonts/tree/master/Inconsolata-g).  
 
 Dotfiles uses [Dotbot][dotbot] for installation.
 
@@ -31,3 +32,4 @@ Copyright (c) 2015 Kenny Kaye. Released under the MIT License. See
 
 [dotbot]: https://github.com/anishathalye/dotbot
 [license]: LICENSE.md
+
