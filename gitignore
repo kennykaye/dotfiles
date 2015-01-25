@@ -1,0 +1,32 @@
+# Some sensible files to ignore 
+
+# Compiled Source
+*.pyc
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Compass
+*.map
+*/**/.sass-cache/
+*/**/.sass-cache/*
+
+# Sublime
+**/*.sublime-workspace
+**/*.sublime-project
+
+# Composer
+composer.lock
+
+# VIM
+*.swp
+*.session

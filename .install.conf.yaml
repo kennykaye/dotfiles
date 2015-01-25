@@ -1,0 +1,26 @@
+---
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.gitconfig: gitconfig
+    ~/.gitignore: gitignore
+    ~/.tmux.conf: tmux.conf
+    ~/.tmux: tmux/
+    ~/.vim: vim/
+    ~/.vimrc: vimrc
+    ~/.zsh: zsh/
+    ~/.zshrc: zshrc
+    ~/.config: config
+    ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/base16_eighties.vim: vim/lightline/base16_eighties.vim
+
+- shell:
+    - 
+      - "git submodule update --init --recursive --remote"
+      - "Installing/updating submodules"
+    -
+      - "mkdir -p ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme"
+      - "Checking folder structure exists"
+    -
+      - "mkdir -p ~/.config/base16-shell"
+      - "Checking folder structure exists"

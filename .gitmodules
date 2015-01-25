@@ -1,0 +1,90 @@
+[submodule "config/base16-shell"]
+	path = config/base16-shell
+	url = https://github.com/chriskempson/base16-shell
+[submodule "vim/bundle/Vundle.vim"]
+	path = vim/bundle/Vundle.vim
+	url = http://github.com/gmarik/Vundle.vim.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+	ignore = untracked
+[submodule "vim/bundle/vim-obsession.vim"]
+	path = vim/bundle/vim-obsession.vim
+	url = https://github.com/tpope/vim-obsession.git
+  ignore = untracked
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+	ignore = untracked
+[submodule "vim/bundle/vim-easymotion.vim"]
+	path = vim/bundle/vim-easymotion.vim
+	url = https://github.com/Lokaltog/vim-easymotion.vim.git
+	ignore = untracked
+[submodule "vim/bundle/lightline.vim"]
+	path = vim/bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim.git
+	ignore = untracked
+[submodule "vim/bundle/promptline.vim"]
+	path = vim/bundle/promptline.vim
+	url = https://github.com/edkolev/promptline.vim.git
+	ignore = untracked
+[submodule "vim/bundle/tmuxline.vim"]
+	path = vim/bundle/tmuxline.vim
+	url = https://github.com/edkolev/tmuxline.vim.git
+	ignore = untracked
+[submodule "vim/bundle/syntastic.vim"]
+	path = vim/bundle/syntastic.vim
+	url = https://github.com/scrooloose/syntastic.vim.git
+	ignore = untracked
+[submodule "vim/bundle/vim-gitgutter.vim"]
+	path = vim/bundle/vim-gitgutter.vim
+	url = https://github.com/airblade/vim-gitgutter.vim.git
+	ignore = untracked
+[submodule "vim/bundle/YouCompleteMe.vim"]
+	path = vim/bundle/YouCompleteMe.vim
+	url = https://github.com/Valloric/YouCompleteMe.vim.git
+	ignore = untracked
+[submodule "vim/bundle/indentLine.vim"]
+	path = vim/bundle/indentLine.vim
+	url = https://github.com/Yggdroot/indentLine.vim.git
+	ignore = untracked
+[submodule "vim/bundle/javascript-libraries-syntax.vim"]
+	path = vim/bundle/javascript-libraries-syntax.vim
+	url = https://github.com/othree/javascript-libraries-syntax.vim.git
+	ignore = untracked
+[submodule "vim/bundle/vim-javascript-syntax.vim"]
+	path = vim/bundle/vim-javascript-syntax.vim
+	url = https://github.com/jelera/vim-javascript-syntax.vim.git
+	ignore = untracked
+[submodule "vim/bundle/base16-vim.vim"]
+	path = vim/bundle/base16-vim.vim
+	url = https://github.com/chriskempson/base16-vim.vim.git
+	ignore = untracked
+[submodule "vim/bundle/vim-multiple-cursors.vim"]
+  path = vim/bundle/vim-multiple-cursors.vim
+  url = https://github.com/terryma/vim-multiple-cursors.vim.git
+	ignore = untracked
+[submodule "vim/bundle/nerdcommenter.vim"]
+	path = vim/bundle/nerdcommenter.vim
+	url = https://github.com/scrooloose/nerdcommenter.vim.git
+	ignore = untracked
+[submodule "vim/bundle/auto-pairs.vim"]
+	path = vim/bundle/auto-pairs.vim
+	url = https://github.com/jiangmiao/auto-pairs.vim.git
+	ignore = untracked
+[submodule "vim/bundle/vim-jsdoc.vim"]
+	path = vim/bundle/vim-jsdoc.vim
+	url = https://github.com/heavenshell/vim-jsdoc.vim.git
+	ignore = untracked
+[submodule ".dotbot"]
+	path = .dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "vim/colors/base16"]
+	path = vim/colors/base16
+	url = https://github.com/chriskempson/base16-vim.git
+[submodule "zsh/oh-my-zsh"]
+	path = zsh/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "zsh/z"]
+	path = zsh/z
+	url = https://github.com/rupa/z.git
