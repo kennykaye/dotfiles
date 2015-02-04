@@ -1,6 +1,47 @@
 #
 # This shell prompt config file was created by promptline.vim
 #
+function __promptline_battery {
+  local percent_sign="%"
+  local battery_symbol=""
+  local threshold="25"
+
+  # escape percent "%" in zsh
+  [[ -n ${ZSH_VERSION-} ]] && percent_sign="${percent_sign//\%/%%}"
+
+  # osx
+  if hash ioreg 2>/dev/null; then
+    local ioreg_output
+    if ioreg_output=$(ioreg -rc AppleSmartBattery 2>/dev/null); then
+      local battery_capacity=${ioreg_output#*MaxCapacity\"\ \=}
+      battery_capacity=${battery_capacity%%\ \"*}
+
+      local current_capacity=${ioreg_output#*CurrentCapacity\"\ \=}
+      current_capacity=${current_capacity%%\ \"*}
+
+      local battery_level=$(($current_capacity * 100 / $battery_capacity))
+      [[ $battery_level -gt $threshold ]] && return 1
+
+      printf "%s" "${battery_symbol}${battery_level}${percent_sign}"
+      return
+    fi
+  fi
+
+  # linux
+  for possible_battery_dir in /sys/class/power_supply/BAT*; do
+    if [[ -d $possible_battery_dir && -f "$possible_battery_dir/energy_full" && -f "$possible_battery_dir/energy_now" ]]; then
+      current_capacity=$( <"$possible_battery_dir/energy_now" )
+      battery_capacity=$( <"$possible_battery_dir/energy_full" )
+      local battery_level=$(($current_capacity * 100 / $battery_capacity))
+      [[ $battery_level -gt $threshold ]] && return 1
+
+      printf "%s" "${battery_symbol}${battery_level}${percent_sign}"
+      return
+    fi
+  done
+
+return 1
+}
 function __promptline_ps1 {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
 
@@ -8,7 +49,7 @@ function __promptline_ps1 {
   slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
-  __promptline_wrapper "$(if [[ -n ${ZSH_VERSION-} ]]; then print %n; elif [[ -n ${FISH_VERSION-} ]]; then printf "%s" "$USER"; else printf "%s" \\u; fi )" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$USER" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
@@ -21,6 +62,12 @@ function __promptline_ps1 {
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "c" slices
   __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+
+  # section "warn" header
+  slice_prefix="${warn_bg}${sep}${warn_fg}${warn_bg}${space}" slice_suffix="$space${warn_sep_fg}" slice_joiner="${warn_fg}${warn_bg}${alt_sep}${space}" slice_empty_prefix="${warn_fg}${warn_bg}${space}"
+  [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
+  # section "warn" slices
+  __promptline_wrapper "$(__promptline_battery)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # close sections
   printf "%s" "${reset_bg}${sep}$reset$space"
@@ -72,11 +119,17 @@ function __promptline_cwd {
 function __promptline_left_prompt {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
 
+  # section "warn" header
+  slice_prefix="${warn_bg}${sep}${warn_fg}${warn_bg}${space}" slice_suffix="$space${warn_sep_fg}" slice_joiner="${warn_fg}${warn_bg}${alt_sep}${space}" slice_empty_prefix="${warn_fg}${warn_bg}${space}"
+  [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
+  # section "warn" slices
+  __promptline_wrapper "$(__promptline_battery)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+
   # section "a" header
   slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
-  __promptline_wrapper "$(if [[ -n ${ZSH_VERSION-} ]]; then print %n; elif [[ -n ${FISH_VERSION-} ]]; then printf "%s" "$USER"; else printf "%s" \\u; fi )" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$USER" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
@@ -131,6 +184,9 @@ function __promptline {
   local c_fg="${wrap}38;5;246${end_wrap}"
   local c_bg="${wrap}48;5;238${end_wrap}"
   local c_sep_fg="${wrap}38;5;238${end_wrap}"
+  local warn_fg="${wrap}38;5;236${end_wrap}"
+  local warn_bg="${wrap}48;5;221${end_wrap}"
+  local warn_sep_fg="${wrap}38;5;221${end_wrap}"
   if [[ -n ${ZSH_VERSION-} ]]; then
     PROMPT="$(__promptline_left_prompt)"
     RPROMPT="$(__promptline_right_prompt)"
