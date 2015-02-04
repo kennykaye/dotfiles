@@ -24,7 +24,8 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'chriskempson/base16-vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-commentary'
+Plugin 'scrooloose/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'tell-k/vim-browsereload-mac'
@@ -61,10 +62,12 @@ set clipboard=unnamed
 " Delete single line, or a range of lines and jump back to previous position
 :command! -range -nargs=0 D <line1>,<line2>d|norm ``
 
-:map <F6> :tabn<kEnter>
-:map <F5> :tabp<kEnter>
-:map <C-x> :NERDTreeToggle<CR>
-:map <C-l> :w <bar> :ChromeReload<CR>
+:map <silent> <C-b> :Gblame<CR>
+:map <silent> <F6> :tabn<kEnter>
+:map <silent> <F5> :tabp<kEnter>
+:map <silent> <End> :tabn<kEnter>
+:map <silent> <Home> :tabp<kEnter>
+:map <silent> <C-x> :NERDTreeToggle<CR>
 :map <C-j> :JsDoc<CR>
 
 nmap <space> zz
