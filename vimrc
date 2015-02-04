@@ -37,7 +37,10 @@ filetype plugin indent on    " required
 set number
 set ignorecase
 set smartcase
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=400 ttimeoutlen=0
+set lazyredraw          " redraw only when we need to.
+set wildmenu            " visual autocomplete for command menu"
+set cursorline          " highlight current line"
 
 let mapleader=","
 
@@ -69,6 +72,9 @@ set clipboard=unnamed
 :map <silent> <Home> :tabp<kEnter>
 :map <silent> <C-x> :NERDTreeToggle<CR>
 :map <C-j> :JsDoc<CR>
+:map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 nmap <space> zz
 nmap n nzz
@@ -81,6 +87,21 @@ omap / <Plug>(easymotion-tn)
 let g:EasyMotion_use_upper = 1
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
+
+hi link EasyMotionTarget Constant
+hi link EasyMotionShade  Comment
+
+hi link EasyMotionTarget2First String
+hi link EasyMotionTarget2Second String
+
+hi link EasyMotionIncSearch Type
+
+" Emmet
+let g:user_emmet_leader_key='<C-l>'
+
+" Multiple Cursors
+hi! link multiple_cursors_cursor LightLineLeft_visual_0
+hi! link multiple_cursors_visual LightLineLeft_visual_0
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -114,7 +135,6 @@ let g:syntastic_php_checkers=['phpcs']
 let g:syntastic_javascript_checkers=JavascriptCheckers()
 let g:syntastic_aggregate_errors = 1
 
-
 " JsDoc
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_default_mapping = 0
@@ -143,6 +163,7 @@ set background=dark
 
 " Indent Line
 let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*', '.*\.txt']
+let g:indentLine_noConcealCursor = 1
 let g:indentLine_color_term = 239
 let g:indentLine_char = '¦'
 set expandtab
