@@ -29,6 +29,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'tell-k/vim-browsereload-mac'
+Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -51,16 +52,22 @@ set clipboard=unnamed
 :command! NT NERDTree
 :command! Nt NERDTree
 :command! Q q
+:command! Qa qa
 :command! W w
+:command! Wa wa
 :command! WQ wq
 :command! Wq wq
+:command! Gb :Gblame
+:command! Gd :Gdiff
+:command! -nargs=+ Gs :Gsplit <args>
 :command! Vimrc :tabe ~/.vimrc
 :command! Source so ~/.vimrc
 :command! WR :w | :ChromeReload
 :command! Path :echo expand('%:p')
 
 " Create a new file in the same directory as the current file
-:command! -nargs=+ -complete=file -bar NF :tabe %:p:h/<args>
+:command! -nargs=+ -complete=file -bar OT :tabe %:p:h/<args>
+:command! -nargs=+ -complete=file -bar OV :vsplit %:p:h/<args>
 
 " Delete single line, or a range of lines and jump back to previous position
 :command! -range -nargs=0 D <line1>,<line2>d|norm ``
