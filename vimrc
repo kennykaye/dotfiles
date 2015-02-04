@@ -325,7 +325,8 @@ endfunction
 function! MyFilename()
   let fname = expand('%:t')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname =~ 'NERD\|fugitive' ? '' :
+        \ fname =~ 'NERD' ? '' :
+        \ fname =~ 'fugitive' ? matchstr(fname, '\(fugitive\)\@<=[A-Za-z]*') :
         \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
         \ ('' != fname ? fname : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
@@ -343,8 +344,7 @@ function! MyMode()
   let fname = expand('%:t')
   return  fname == 'ControlP' ? 'CtrlP' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ fname =~ 'fugitive' ? matchstr(fname, '\(fugitive\)\@<=[A-Za-z]*') :
-        \ winwidth(0) > 70 ? strpart(lightline#mode(), 0, 1): ''
+        \ strpart(lightline#mode(), 0, 1)
 endfunction
 
 function! CtrlPMark()
