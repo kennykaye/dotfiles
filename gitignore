@@ -29,4 +29,9 @@ composer.lock
 
 # VIM
 *.swp
+*.swk
+*.swl
+*.swn
+*.swo
+*.swm
 *.session
