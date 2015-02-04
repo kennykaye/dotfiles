@@ -155,19 +155,25 @@ augroup fileSettings
 augroup END
 
 " Promptline
+let g:promptline_theme = 'lightline'
 let g:promptline_preset = {
-        \'a' : [ promptline#slices#user() ],
+        \'a' : [ '$USER' ],
         \'b' : [ promptline#slices#cwd({ 'dir_limit': 2 }) ],
-        \'c' : [ promptline#slices#vcs_branch() ]}
+        \'c' : [ promptline#slices#vcs_branch() ],
+        \'warn': [ promptline#slices#battery({ 'threshold': 25  }) ],
+        \'options': {
+        \  'left_sections' : [ 'warn', 'a', 'b', 'c'],
+        \  'right_sections' : []}}
+
 
 " Tmuxline
 let g:tmuxline_preset = {
       \'a'    : '#S',
-      \'c'    : ['#(~/.tmux/uptime.sh)'],
+      \'b'    : '#W',
       \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'y'    : ['%l:%M %p', '%a %d'],
-      \'z'    : '#h'}
+      \'cwin' : ['#I', '#W'],
+      \'x'    : ['#(~/.tmux/uptime.sh)'],
+      \'y'    : ['%l:%M %p', '%a %d'],}
 
 " Lightline
 set laststatus=2
@@ -176,20 +182,24 @@ let g:lightline = {
       \ 'colorscheme': 'base16_eighties',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], 
-      \           [ 'fugitive', 'filename' ] ],
+      \           [ 'filename' ],
+      \           [ 'fugitive' ] ], 
       \   'right': [ [ 'syntasticError', 'syntasticWarning', 'lineinfo' ], 
       \            ['percent'], 
-      \            [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \            [ 'fileformat', 'fileencoding', 'filetype', 'filesize' ] ]
       \ },
       \ 'component_function': {
       \   'mode': 'MyMode',
       \   'fugitive': 'MyFugitive',
       \   'readonly': 'MyReadonly',
-      \   'modified': 'MyModified',
+		  \   'modified': 'MyModified',
       \   'filename': 'MyFilename',
       \   'fileformat': 'MyFileformat',
       \   'filetype': 'MyFiletype',
+      \   'filesize': 'MyFilesize',
       \   'fileencoding': 'MyFileencoding',      
+      \   'lineinfo': 'MyLineInfo',
+		  \   'percent': 'MyPercent',
       \   'ctrlpmark': 'CtrlPMark',
       \ },  
       \ 'component_expand': {
@@ -201,31 +211,79 @@ let g:lightline = {
       \   'syntasticWarning': 'warning',
       \ },     
       \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
+      \ 'subseparator': { 'left': '', 'right': '' },
+			\ 'tabline_separator': { 'left': " ", 'right': "" },
+			\ 'tabline_subseparator': { 'left': " ", 'right': "" }
       \ }
 
+" Change highlighting on tabline to add more space around tabs
+augroup TabHighlightGroup
+  :autocmd!
+  :autocmd VimEnter * hi! link LightLineLeft_tabline_tabsel_0 LightLineLeft_normal_tabsel_tabsel 
+  :autocmd VimEnter * hi! link LightlineLeft_tabline_tabsel_1 LightLineLeft_normal_tabsel_tabsel 
+augroup END
+
 function! MyModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
+  if &modified
     return "+"
   elseif &modifiable
     return ""
   else
-    return ""
+    return ""
   endif
 endfunction
 
+function! MyLineInfo()
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+    return ' '. line(".") .":". col(".")
+  endif
+    return ''
+endfunction
+
+function! MyFilesize()
+  let kb = 1024
+  let mb = 1048576
+  let gb = 1073741824
+  let bytes = getfsize(expand('%%:p'))
+  let fsize = bytes >= gb ? bytes / gb . " gb" :
+        \     bytes >= mb ? bytes / mb . " mb" :
+        \     bytes >= kb ? bytes / kb . " kb" :
+        \     bytes . ' bytes'
+  return winwidth(0) > 100 ? fsize : ''
+ 
+endfunction
+
+
 function! MyFileformat()
-  return winwidth(0) > 100 ? &fileformat : ''
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+    return winwidth(0) > 100 ? &fileformat : ''
+  endif
+    return ''
 endfunction
 
 function! MyFiletype()
-  return winwidth(0) > 100 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+    return winwidth(0) > 100 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+  endif
+    return ''
 endfunction
 
 function! MyFileencoding()
-  return winwidth(0) > 100 ? (strlen(&fenc) ? &fenc : &enc) : ''
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+    return winwidth(0) > 100 ? (strlen(&fenc) ? &fenc : &enc) : ''
+  endif
+    return ''
+endfunction
+
+function! MyPercent()
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+    let byte = line2byte( line( "." ) ) + col( "." ) - 1
+    let size = (line2byte( line( "$" ) + 1 ) - 1)
+    let percent = (byte * 100) / size
+    " return byte . " " . size . " " . (byte * 100) / size
+    return winwidth(0) > 100 ?  percent . '%' : ''
+  endif
+    return ''
 endfunction
 
 function! MyReadonly()
@@ -235,14 +293,14 @@ endfunction
 function! MyFilename()
   let fname = expand('%:t')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname =~ 'NERD_tree' ? '' :
+        \ fname =~ 'NERD\|fugitive' ? '' :
         \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
         \ ('' != fname ? fname : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
-  if exists("*fugitive#head")
+  if expand('%:t') !~? 'ControlP\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
     let _ = fugitive#head()
     return strlen(_) ? ' '._ : ''
   endif
@@ -253,7 +311,8 @@ function! MyMode()
   let fname = expand('%:t')
   return  fname == 'ControlP' ? 'CtrlP' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
+        \ fname =~ 'fugitive' ? matchstr(fname, '\(fugitive\)\@<=[A-Za-z]*') :
+        \ winwidth(0) > 70 ? strpart(lightline#mode(), 0, 1): ''
 endfunction
 
 function! CtrlPMark()
@@ -320,10 +379,10 @@ if executable('matcher')
 	  " Create a cache file if not yet exists
 	  let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
 	  if !( filereadable(cachefile) && a:items == readfile(cachefile) )
-		call writefile(a:items, cachefile)
+      call writefile(a:items, cachefile)
 	  endif
 	  if !filereadable(cachefile)
-		return []
+      return []
 	  endif
 
 	  " a:mmode is currently ignored. In the future, we should probably do
