@@ -113,38 +113,6 @@ let g:user_emmet_leader_key='<C-l>'
 hi! link multiple_cursors_cursor LightLineLeft_visual_0
 hi! link multiple_cursors_visual LightLineLeft_visual_0
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-hi! link SyntasticStyleErrorSign DiffDelete
-hi! link SyntasticErrorSign DiffDelete
-
-" jscs returns exit code when no config file is present.
-" only load it when appropriate
-function! JavascriptCheckers()
-  if filereadable(getcwd() . '/.jscsrc')
-    return ['jshint', 'jscs']
-  else
-    return ['jshint']
-  endif
-endfunction
-
-let g:syntastic_enable_signs = 1
-let g:syntastic_stl_format = '%E{E%e}%B{, }%W{W%w}'
-let g:syntastic_style_error_symbol = "››"
-let g:syntastic_error_symbol = "››"
-let g:syntastic_warning_symbol = "››"
-let g:syntastic_style_warning_symbol = "››"
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers=['phpcs']
-let g:syntastic_javascript_checkers=JavascriptCheckers()
-let g:syntastic_aggregate_errors = 1
-
 " JsDoc
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_default_mapping = 0
