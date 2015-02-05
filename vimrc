@@ -48,22 +48,6 @@ set noshowmode
 " tmux copy/paste
 set clipboard=unnamed
 
-" Easy Motion
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-
-let g:EasyMotion_use_upper = 1
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_use_smartsign_us = 1
-
-hi link EasyMotionTarget Constant
-hi link EasyMotionShade  Comment
-
-hi link EasyMotionTarget2First String
-hi link EasyMotionTarget2Second String
-
-hi link EasyMotionIncSearch Type
-
 " Emmet
 let g:user_emmet_leader_key='<C-l>'
 
