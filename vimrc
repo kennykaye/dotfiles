@@ -56,9 +56,6 @@ hi! link multiple_cursors_visual LightLineLeft_visual_0
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 
-" Syntax highlighting
-let g:used_javascript_libs = 'underscore,jquery,react,flux,chai'
-
 " ================ Custom Settings ========================
 " Settings are stored in seperate files and then sourced 
 for fpath in split(globpath('~/.vim/settings', '*.vim'), '\n')
