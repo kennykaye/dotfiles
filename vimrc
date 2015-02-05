@@ -45,9 +45,6 @@ set laststatus=2
 " tmux copy/paste
 set clipboard=unnamed
 
-" Emmet
-let g:user_emmet_leader_key='<C-l>'
-
 " Multiple Cursors
 hi! link multiple_cursors_cursor LightLineLeft_visual_0
 hi! link multiple_cursors_visual LightLineLeft_visual_0
