@@ -35,15 +35,12 @@ Plugin 'mattn/emmet-vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set number
 set ignorecase
 set smartcase
 set timeoutlen=400 ttimeoutlen=0
 set lazyredraw          " redraw only when we need to.
 set wildmenu            " visual autocomplete for command menu"
-set cursorline          " highlight current line"
 set laststatus=2
-set noshowmode
 
 " tmux copy/paste
 set clipboard=unnamed
@@ -60,11 +57,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 
 " Syntax highlighting
-syntax on
-let base16colorspace=256
 let g:used_javascript_libs = 'underscore,jquery,react,flux,chai'
-colorscheme base16-eighties 
-set background=dark
 
 set expandtab
 set shiftwidth=2
