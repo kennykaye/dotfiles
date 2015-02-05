@@ -45,10 +45,6 @@ set laststatus=2
 " tmux copy/paste
 set clipboard=unnamed
 
-" Multiple Cursors
-hi! link multiple_cursors_cursor LightLineLeft_visual_0
-hi! link multiple_cursors_visual LightLineLeft_visual_0
-
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
