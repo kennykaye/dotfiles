@@ -2,8 +2,6 @@
 " Custom commands are defined in this file
 
 " Custom Mappings
-:command! NT NERDTree
-:command! Nt NERDTree
 :command! Q q
 :command! Qa qa
 :command! W w

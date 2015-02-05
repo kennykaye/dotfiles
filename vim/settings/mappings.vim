@@ -9,7 +9,6 @@ let mapleader=","
 :map <silent> <F5> :tabp<kEnter>
 :map <silent> <End> :tabn<kEnter>
 :map <silent> <Home> :tabp<kEnter>
-:map <silent> <C-x> :NERDTreeToggle<CR>
 :map <C-j> :JsDoc<CR>
 
 " Show the hilighting information for group under cursor
