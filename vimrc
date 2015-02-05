@@ -90,15 +90,6 @@ augroup fileSettings
   autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
 augroup END
 
-" Tmuxline
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#W',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W'],
-      \'x'    : ['#(~/.tmux/uptime.sh)'],
-      \'y'    : ['%l:%M %p', '%a %d'],}
-
 
 " ================ Custom Settings ========================
 " Settings are stored in seperate files and then sourced 
