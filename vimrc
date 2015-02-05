@@ -59,11 +59,6 @@ hi! link multiple_cursors_visual LightLineLeft_visual_0
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_default_mapping = 0
 
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 'ra'
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
@@ -115,43 +110,6 @@ let g:tmuxline_preset = {
       \'cwin' : ['#I', '#W'],
       \'x'    : ['#(~/.tmux/uptime.sh)'],
       \'y'    : ['%l:%M %p', '%a %d'],}
-
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-
-if executable('matcher')
-	let g:ctrlp_match_func = { 'match': 'GoodMatch' }
-
-	function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
-
-	  " Create a cache file if not yet exists
-	  let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
-	  if !( filereadable(cachefile) && a:items == readfile(cachefile) )
-      call writefile(a:items, cachefile)
-	  endif
-	  if !filereadable(cachefile)
-      return []
-	  endif
-
-	  " a:mmode is currently ignored. In the future, we should probably do
-	  " something about that. the matcher behaves like "full-line".
-	  let cmd = 'matcher --limit '.a:limit.' --manifest '.cachefile.' '
-    if !( exists('g:ctrlp_show_hidden') && g:ctrlp_show_hidden == 0 )
-		  let cmd = cmd.'--no-dotfiles '
-	  endif
-	  let cmd = cmd.a:str
-
-	  return split(system(cmd), "\n")
-
-	endfunction
-end
 
 
 " ================ Custom Settings ========================
