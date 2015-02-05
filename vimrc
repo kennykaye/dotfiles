@@ -59,9 +59,6 @@ hi! link multiple_cursors_visual LightLineLeft_visual_0
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_default_mapping = 0
 
-" Browser reload
-let g:returnApp = "iTerm"
-
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'

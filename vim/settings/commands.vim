@@ -10,7 +10,6 @@
 :command! Wq wq
 :command! Vimrc :tabe ~/.vimrc
 :command! Source so ~/.vimrc
-:command! WR :w | :ChromeReload
 :command! Path :echo expand('%:p')
 
 " Create a new file in the same directory as the current file
