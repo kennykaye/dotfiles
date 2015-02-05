@@ -9,7 +9,6 @@ let mapleader=","
 :map <silent> <F5> :tabp<kEnter>
 :map <silent> <End> :tabn<kEnter>
 :map <silent> <Home> :tabp<kEnter>
-:map <C-j> :JsDoc<CR>
 
 " Show the hilighting information for group under cursor
 :map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'

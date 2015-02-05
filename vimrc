@@ -55,10 +55,6 @@ let g:user_emmet_leader_key='<C-l>'
 hi! link multiple_cursors_cursor LightLineLeft_visual_0
 hi! link multiple_cursors_visual LightLineLeft_visual_0
 
-" JsDoc
-let g:jsdoc_allow_input_prompt = 1
-let g:jsdoc_default_mapping = 0
-
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
