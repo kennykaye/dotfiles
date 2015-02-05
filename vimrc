@@ -70,11 +70,6 @@ let g:used_javascript_libs = 'underscore,jquery,react,flux,chai'
 colorscheme base16-eighties 
 set background=dark
 
-" Indent Line
-let g:indentLine_bufNameExclude = ['_.*', 'NERD_tree.*', '.*\.txt']
-let g:indentLine_noConcealCursor = 1
-let g:indentLine_color_term = 239
-let g:indentLine_char = '¦'
 set expandtab
 set shiftwidth=2
 set tabstop=2
