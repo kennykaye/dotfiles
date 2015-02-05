@@ -59,19 +59,6 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Syntax highlighting
 let g:used_javascript_libs = 'underscore,jquery,react,flux,chai'
 
-set expandtab
-set shiftwidth=2
-set tabstop=2
-
-augroup fileSettings
-  autocmd!
-  autocmd Filetype php setlocal ts=4 sw=4 expandtab 
-  autocmd Filetype html setlocal ts=4 sw=4 expandtab
-  autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
-  autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
-augroup END
-
-
 " ================ Custom Settings ========================
 " Settings are stored in seperate files and then sourced 
 for fpath in split(globpath('~/.vim/settings', '*.vim'), '\n')
