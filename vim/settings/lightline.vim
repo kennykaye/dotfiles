@@ -60,7 +60,7 @@ endfunction
 
 " Displays line and column 
 function! MyLineInfo()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
     return ' '. line(".") .":". col(".")
   endif
     return ''
@@ -82,38 +82,38 @@ endfunction
 
 " Displays file format
 function! MyFileformat()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
     return winwidth(0) > 100 ? &fileformat : ''
   endif
-    return ''
+  return ''
 endfunction
 
 " Displays file type
 function! MyFiletype()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
     return winwidth(0) > 100 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
   endif
-    return ''
+  return ''
 endfunction
 
 " Displays file encoding
 function! MyFileencoding()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
     return winwidth(0) > 100 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endif
-    return ''
+  return ''
 endfunction
 
 " Displays current position in percent  
 function! MyPercent()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive'
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
     let byte = line2byte( line( "." ) ) + col( "." ) - 1
     let size = (line2byte( line( "$" ) + 1 ) - 1)
     let percent = (byte * 100) / size
     " return byte . " " . size . " " . (byte * 100) / size
     return winwidth(0) > 100 ?  percent . '%' : ''
   endif
-    return ''
+  return ''
 endfunction
 
 
@@ -127,6 +127,7 @@ function! MyFilename()
   let fname = expand('%:t')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ fname =~ 'NERD' ? '' :
+        \ fname =~ 'Tagbar' ? 'Tagbar' :
         \ fname =~ 'fugitive' ? matchstr(fname, '\(fugitive\)\@<=[A-Za-z]*') :
         \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
         \ ('' != fname ? fname : '[No Name]') .
@@ -135,7 +136,7 @@ endfunction
 
 " Displays current git branch
 function! MyFugitive()
-  if expand('%:t') !~? 'ControlP\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+  if expand('%:t') !~? 'Tagbar\|ControlP\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
     let _ = fugitive#head()
     return strlen(_) ? ' '._ : ''
   endif
