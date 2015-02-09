@@ -38,6 +38,7 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_php_checkers=['phpcs']
+let g:syntastic_html_checkers=['']
 let g:syntastic_php_phpcs_args=PhpcsArgs()
 let g:syntastic_javascript_checkers=JavascriptCheckers()
 let g:syntastic_aggregate_errors = 1
