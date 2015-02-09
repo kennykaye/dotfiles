@@ -12,14 +12,15 @@
     ~/.zsh: zsh/
     ~/.zshrc: zshrc
     ~/.config: config
-    ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/base16_eighties.vim: vim/lightline/base16_eighties.vim
+    ~/.vim/autoload/plug.vim: vim/plugged/vim-plug/plug.vim
+    ~/.vim/plugged/lightline.vim/autoload/lightline/colorscheme/base16_eighties.vim: vim/lightline/base16_eighties.vim
 
 - shell:
     - 
       - "git submodule update --init --recursive --remote"
       - "Installing/updating submodules"
     -
-      - "mkdir -p ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme"
+      - "mkdir -p ~/.vim/autoload ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme"
       - "Checking folder structure exists"
     -
       - "mkdir -p ~/.config/base16-shell"

@@ -1,0 +1,1 @@
+/Users/Kenny/Development/dotfiles/vim/plugged/vim-plug/plug.vim

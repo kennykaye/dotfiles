@@ -88,3 +88,6 @@
 [submodule "zsh/z"]
 	path = zsh/z
 	url = https://github.com/rupa/z.git
+[submodule "vim/plugged/vim-plug"]
+	path = vim/plugged/vim-plug
+	url = https://github.com/junegunn/vim-plug.git
