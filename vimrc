@@ -12,14 +12,19 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-surround'
-Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
 Plugin 'airblade/vim-gitgutter'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'othree/html5.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'chriskempson/base16-vim'
@@ -30,6 +35,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'tell-k/vim-browsereload-mac'
 Plugin 'mattn/emmet-vim'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -37,8 +43,8 @@ filetype plugin indent on    " required
 
 set ignorecase
 set smartcase
-set timeoutlen=400 ttimeoutlen=0
-set lazyredraw          " redraw only when we need to.
+set timeoutlen=700 ttimeoutlen=0
+" set lazyredraw          " redraw only when we need to.
 set wildmenu            " visual autocomplete for command menu"
 set laststatus=2
 
