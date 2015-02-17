@@ -5,7 +5,6 @@ function! s:goyo_enter()
   if exists('$TMUX')
     silent !tmux set status off
   endif
-  set noshowmode
   set noshowcmd
   set scrolloff=999
   Limelight
@@ -15,7 +14,6 @@ function! s:goyo_leave()
   if exists('$TMUX')
     silent !tmux set status on
   endif
-  set showmode
   set showcmd
   set scrolloff=5
   Limelight!
