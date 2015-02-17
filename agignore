@@ -1,4 +1,4 @@
-# Some sensible files to ignore
+# Some sensible files to ignore 
 
 # Compiled Source
 *.pyc
@@ -6,9 +6,6 @@
 # Folder view configuration files
 .DS_Store
 Desktop.ini
-
-# Logs
-*.log
 
 # Thumbnail cache files
 ._*
@@ -20,8 +17,18 @@ Thumbs.db
 
 # Compass
 *.map
-*/**/.sass-cache/
-*/**/.sass-cache/*
+**/.sass-cache/
+**/.sass-cache/*
+
+# Git
+.git/
+**/.git/
+**/.git/**/*
+
+# Node
+node_modules/
+**/node_modules/
+**/node_modules/**/*
 
 # Sublime
 **/*.sublime-workspace
