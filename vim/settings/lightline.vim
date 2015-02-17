@@ -5,12 +5,12 @@
 let g:lightline = {
       \ 'colorscheme': 'base16_eighties',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], 
+      \   'left': [ [ 'mode', 'paste' ],
       \           [ 'filename' ],
-      \           [ 'fugitive' ] ], 
-      \   'right': [ [ 'syntasticError', 'syntasticWarning', 'lineinfo' ], 
-      \            ['percent'], 
-      \            [ 'fileformat', 'fileencoding', 'filetype', 'filesize' ] ]
+      \           [ 'fugitive' ] ],
+      \   'right': [ [ 'syntasticError', 'syntasticWarning', 'lineinfo' ],
+      \            ['percent'],
+      \            [ 'fileencoding', 'filetype', 'filesize' ] ]
       \ },
       \ 'component_function': {
       \   'mode': 'MyMode',
@@ -21,11 +21,11 @@ let g:lightline = {
       \   'fileformat': 'MyFileformat',
       \   'filetype': 'MyFiletype',
       \   'filesize': 'MyFilesize',
-      \   'fileencoding': 'MyFileencoding',      
+      \   'fileencoding': 'MyFileencoding',
       \   'lineinfo': 'MyLineInfo',
 		  \   'percent': 'MyPercent',
       \   'ctrlpmark': 'CtrlPMark',
-      \ },  
+      \ },
       \ 'component_expand': {
       \   'syntasticError': 'SyntasticErrorCount',
       \   'syntasticWarning': 'SyntasticWarningCount',
@@ -33,7 +33,7 @@ let g:lightline = {
       \ 'component_type': {
       \   'syntasticError': 'error',
       \   'syntasticWarning': 'warning',
-      \ },     
+      \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
 			\ 'tabline_separator': { 'left': " ", 'right': "" },
@@ -43,8 +43,8 @@ let g:lightline = {
 " Change highlighting on tabline to add more space around tabs
 augroup TabHighlightGroup
   :autocmd!
-  :autocmd VimEnter * hi! link LightLineLeft_tabline_tabsel_0 LightLineLeft_normal_tabsel_tabsel 
-  :autocmd VimEnter * hi! link LightlineLeft_tabline_tabsel_1 LightLineLeft_normal_tabsel_tabsel 
+  :autocmd VimEnter * hi! link LightLineLeft_tabline_tabsel_0 LightLineLeft_normal_tabsel_tabsel
+  :autocmd VimEnter * hi! link LightlineLeft_tabline_tabsel_1 LightLineLeft_normal_tabsel_tabsel
 augroup END
 
 " Displays modified flag
@@ -58,7 +58,7 @@ function! MyModified()
   endif
 endfunction
 
-" Displays line and column 
+" Displays line and column
 function! MyLineInfo()
   if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
     return ' '. line(".") .":". col(".")
@@ -75,9 +75,11 @@ function! MyFilesize()
   let fsize = bytes >= gb ? bytes / gb . " gb" :
         \     bytes >= mb ? bytes / mb . " mb" :
         \     bytes >= kb ? bytes / kb . " kb" :
-        \     bytes . ' bytes'
-  return winwidth(0) > 100 ? fsize : ''
- 
+        \     bytes > 1 ? bytes . ' bytes' : ''
+  if &filetype =~? 'javascript\|html\|scss\|css\|html.handlebars'
+    return winwidth(0) > 100 ? fsize : ''
+  endif
+  return ''
 endfunction
 
 " Displays file format
@@ -104,7 +106,7 @@ function! MyFileencoding()
   return ''
 endfunction
 
-" Displays current position in percent  
+" Displays current position in percent
 function! MyPercent()
   if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
     let byte = line2byte( line( "." ) ) + col( "." ) - 1
@@ -181,12 +183,18 @@ endfunction
 
 " Gets number of syntastic errors
 function! SyntasticErrorCount()
-  let flag = SyntasticStatuslineFlag()
-  return matchstr(flag, '\(E\)\@<=\d*')
+  if exists("*SyntasticStatuslineFlag")
+    let flag = SyntasticStatuslineFlag()
+    return matchstr(flag, '\(E\)\@<=\d*')
+  endif
+  return ''
 endfunction
 
 " Gets number of syntastic warnings
 function! SyntasticWarningCount()
-  let flag = SyntasticStatuslineFlag()
-  return matchstr(flag, '\(W\)\@<=\d*')
+  if exists("*SyntasticStatuslineFlag")
+    let flag = SyntasticStatuslineFlag()
+    return matchstr(flag, '\(W\)\@<=\d*')
+  endif
+  return ''
 endfunction
