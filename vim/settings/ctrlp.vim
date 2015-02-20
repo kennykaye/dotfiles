@@ -12,10 +12,9 @@ let g:ctrlp_max_files = 0
 
 " Custom Highlighting
 hi! link CtrlPNoEntries ErrorMsg
-hi! link CtrlPMatch     Type
-hi! link CtrlPPrtText   Type
-hi! link CtrlPPrtCursor Type
-
+hi! link CtrlPMatch     ErrorMsg
+hi! link CtrlPPrtText   ErrorMsg
+hi! link CtrlPPrtCursor Special
 
 " The Silver Searcher
 if executable('ag')
