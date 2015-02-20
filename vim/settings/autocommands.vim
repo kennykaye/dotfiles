@@ -20,9 +20,16 @@ augroup fileSettings
   autocmd Filetype vim-plug setlocal nonumber
 augroup END
 
+" Only highlight current cursor on active buffers
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * :setlocal cursorline
+    autocmd WinLeave * :setlocal nocursorline
+augroup END
+
 " trim all whitespace on save
 autocmd BufWritePre * call TrimWhitespace()
-function TrimWhitespace()
+function! TrimWhitespace()
   let line = line('.')
   let col = col('.')
   execute('%s/\s\+$//e')

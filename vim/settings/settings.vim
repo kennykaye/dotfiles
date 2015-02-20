@@ -19,7 +19,7 @@ set cursorline                 " highlight current line
 set noshowmode                 " lightline renders mode
 set visualbell                 " disable error bell
 set scrolloff=5                " set minimum number of lines above and below cursor
-
+set autoread                    " automatically re-read changed files
 
 " ================ Appearance ========================
 
@@ -28,6 +28,8 @@ set background=dark      " set dark background
 let base16colorspace=256 " Use 256 base16 colorscheme
 colorscheme base16-eighties
 
+hi! CursorLine ctermbg=237
+hi! CursorLineNr ctermfg=248
 
 " ================ Commands ========================
 
