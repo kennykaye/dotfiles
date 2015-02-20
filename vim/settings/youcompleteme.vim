@@ -7,6 +7,10 @@ augroup load_us_ycm
                      \| call youcompleteme#Enable() | autocmd! load_us_ycm
 augroup END
 
+" Highlighting
+hi! link Pmenu CursorLineNr
+hi! link PmenuSel Visual
+
 " Configuration
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
