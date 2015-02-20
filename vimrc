@@ -3,7 +3,6 @@ call plug#begin('~/.vim/bundle')
 
 " Immediately loaded
 Plug 'itchyny/lightline.vim'
-Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'

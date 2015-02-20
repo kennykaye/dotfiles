@@ -7,12 +7,13 @@
 [submodule "vim/colors/base16"]
 	path = vim/colors/base16
 	url = https://github.com/chriskempson/base16-vim.git
-[submodule "zsh/oh-my-zsh"]
-	path = zsh/oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "zsh/z"]
 	path = zsh/z
 	url = https://github.com/rupa/z.git
 [submodule "vim/autoload/vim-plug"]
 	path = vim/autoload/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+[submodule "zprezto"]
+	path = zprezto
+  url = https://github.com/sorin-ionescu/prezto.git
+  ignore = untracked
