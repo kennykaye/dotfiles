@@ -54,7 +54,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 #
 
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
-# zstyle ':prezto:module:git:status:ignore' submodules 'all'
+zstyle ':prezto:module:git:status:ignore' submodules 'untracked'
 
 #
 # History Substring Search
@@ -107,10 +107,10 @@ zstyle ':prezto:module:prompt' theme 'kaye'
 #   'root'
 #
 # Set syntax highlighting styles.
-# zstyle ':prezto:module:syntax-highlighting' styles \
-#  'builtin' 'bg=blue' \
-#  'command' 'bg=blue' \
-#  'function' 'bg=blue'
+ zstyle ':prezto:module:syntax-highlighting' styles \
+  'builtin' 'fg=cyan' \
+  'command' 'fg=cyan' \
+  'function' 'fg=cyan'
 
 #
 # Terminal

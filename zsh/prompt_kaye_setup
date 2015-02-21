@@ -2,7 +2,7 @@
 # A simple theme that displays relevant, contextual information.
 #
 # Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   kaye Ionescu <kaye.ionescu@gmail.com>
 #
 # Screenshots:
 #   http://i.imgur.com/nBEEZ.png
@@ -11,23 +11,103 @@
 # Load dependencies.
 pmodload 'helper'
 
-function prompt_sorin_pwd {
-  local pwd="${PWD/#$HOME/~}"
-
-  if [[ "$pwd" == (#m)[/~] ]]; then
-    _prompt_sorin_pwd="$MATCH"
-    unset MATCH
+function prompt_kaye_battery_color {
+  local result=$1
+  if [ $2 -ge 75 ]; then
+    eval "${result}='green'"
+  elif [ $2 -ge 20 ]; then
+    eval "${result}='yellow'"
   else
-    _prompt_sorin_pwd="${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+    eval "${result}='red'"
   fi
 }
 
-function prompt_sorin_precmd {
+function prompt_kaye_battery {
+  local percent_sign="%"
+  local battery_symbol=""
+  local battery_color=""
+  local threshold="80"
+
+  # escape percent "%" in zsh
+  [[ -n ${ZSH_VERSION-} ]] && percent_sign="${percent_sign//\%/%%}"
+
+  # osx
+  if hash ioreg 2>/dev/null; then
+    local ioreg_output
+    if ioreg_output=$(ioreg -rc AppleSmartBattery 2>/dev/null); then
+      local battery_capacity=${ioreg_output#*MaxCapacity\"\ \=}
+      battery_capacity=${battery_capacity%%\ \"*}
+
+      local current_capacity=${ioreg_output#*CurrentCapacity\"\ \=}
+      current_capacity=${current_capacity%%\ \"*}
+
+      local battery_level=$(($current_capacity * 100 / $battery_capacity))
+      [[ $battery_level -gt $threshold ]] && return 1
+
+      prompt_kaye_battery_color battery_color $battery_level
+
+      _prompt_kaye_battery="%s%F{${battery_color}}${battery_symbol}${battery_level}${percent_sign}%f"
+      return
+    fi
+  fi
+
+  # linux
+  for possible_battery_dir in /sys/class/power_supply/BAT*; do
+    if [[ -d $possible_battery_dir && -f "$possible_battery_dir/energy_full" && -f "$possible_battery_dir/energy_now" ]]; then
+      current_capacity=$( <"$possible_battery_dir/energy_now" )
+      battery_capacity=$( <"$possible_battery_dir/energy_full" )
+      local battery_level=$(($current_capacity * 100 / $battery_capacity))
+      [[ $battery_level -gt $threshold ]] && return 1
+
+      _prompt_kaye_battery="%s${battery_symbol}${battery_level}${percent_sign}"
+      return
+    fi
+  done
+
+return 1
+}
+
+function prompt_kaye_pwd {
+  local dir_limit="2"
+  local truncation="⋯ "
+  local first_char
+  local part_count=0
+  local formatted_cwd=""
+  local dir_sep="/"
+  local tilde="~"
+
+  local cwd="${PWD/#$HOME/$tilde}"
+
+  # get first char of the path, i.e. tilde or slash
+  [[ -n ${ZSH_VERSION-} ]] && first_char=$cwd[1,1] || first_char=${cwd::1}
+
+  # remove leading tilde
+  cwd="${cwd#\~}"
+
+  while [[ "$cwd" == */* && "$cwd" != "/" ]]; do
+    # pop off last part of cwd
+    local part="${cwd##*/}"
+    cwd="${cwd%/*}"
+
+    formatted_cwd="$dir_sep$part$formatted_cwd"
+    part_count=$((part_count+1))
+
+    [[ $part_count -eq $dir_limit ]] && first_char="$truncation" && break
+  done
+
+  _prompt_kaye_pwd="%s$first_char$formatted_cwd"
+}
+
+
+function prompt_kaye_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
   # Format PWD.
-  prompt_sorin_pwd
+  prompt_kaye_pwd
+
+  # Battery Info
+  prompt_kaye_battery
   # Get Git repository information.
   if (( $+functions[git-info] )); then
     git-info
@@ -49,7 +129,7 @@ function prompt_sorin_precmd {
   fi
 }
 
-function prompt_sorin_setup {
+function prompt_kaye_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
   prompt_opts=(cr percent subst)
@@ -58,13 +138,13 @@ function prompt_sorin_setup {
   autoload -Uz add-zsh-hook
 
   # Add hook for calling infos before each command.
-  add-zsh-hook precmd prompt_sorin_precmd
+  add-zsh-hook precmd prompt_kaye_precmd
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' %F{red}♺%f'
-  zstyle ':prezto:module:editor:info:keymap:primary' format '┗ %B%F{red}❯%F{yellow}❯%F{green}❯%f%b'
-  zstyle ':prezto:module:editor:info:keymap:alternate' format '┗ %B%F{green}❮%F{yellow}❮%F{red}❮%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{red}❯%F{yellow}❯%F{green}❯%f%b'
+  zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{green}❮%F{yellow}❮%F{red}❮%f%b'
 
   # Set git-info parameters.
   zstyle ':prezto:module:git:info' verbose 'yes'
@@ -72,11 +152,14 @@ function prompt_sorin_setup {
   zstyle ':prezto:module:git:info:added' format ' %%B%F{green}✚%f%%b'
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{yellow}⬆%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{yellow}⬇%f%%b'
-  zstyle ':prezto:module:git:info:branch' format '%%B%F{red}[%f%%b%%B%F{green}%b%f%%b'
-  zstyle ':prezto:module:git:info:clean' format "%B%F{red}]%f%b"
+  # zstyle ':prezto:module:git:info:branch' format '%%B%F{green}[%f%%b%%B%F{yellow}%b%f%%b'
+  zstyle ':prezto:module:git:info:branch' format '%%B%F{yellow}%b%f%%b'
+  zstyle ':prezto:module:git:info:clean' format " "
+  # zstyle ':prezto:module:git:info:clean' format "%B%F{green}]%f%b "
   zstyle ':prezto:module:git:info:commit' format ':%F{green}%.7c%f'
   zstyle ':prezto:module:git:info:deleted' format ' %%B%F{red}✖%f%%b'
-  zstyle ':prezto:module:git:info:dirty' format "%%B%F{red}]%f%%b %F{yellow}⚡%f "
+  zstyle ':prezto:module:git:info:dirty' format "%F{red}!%f%  "
+  # zstyle ':prezto:module:git:info:dirty' format "%%B%F{red}]%f%%b %F{yellow}⚡%f  "
   zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}✱%f%%b'
   zstyle ':prezto:module:git:info:position' format ':%F{red}%p%f'
   zstyle ':prezto:module:git:info:renamed' format ' %%B%F{magenta}➜%f%%b'
@@ -88,21 +171,21 @@ function prompt_sorin_setup {
     'rprompt' '%A%B%S%a%d%m%r%U%u'
 
   # Set ruby-info parameters.
-  zstyle ':prezto:module:ruby:info:version' format '%F{red}rb:%v%f'
+  zstyle ':prezto:module:ruby:info:version' format ' %F{red}rb:%v%f'
 
   # Set python-info parameters.
-  zstyle ':prezto:module:python:info:virtualenv' format '%F{220}py:%v%f'
+  zstyle ':prezto:module:python:info:virtualenv' format ' %F{220}py:%v%f'
 
   # Set node-info parameters
-  zstyle ':prezto:module:node:info:version' format '%F{green}node:%v%f'
+  zstyle ':prezto:module:node:info:version' format ' %F{green}node:%v%f'
 
-  # λ
+  # λ 🌵 %F{cyan}%n%f
   # Define prompts.
   PROMPT='
-┏ %F{yellow}%n%f at %F{red}${_prompt_sorin_pwd}%f on ${git_info:+${(e)git_info[prompt]}} ${ruby_info[version]} ${node_info[version]} ${python_info[virtualenv]}
-%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
-  RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
+%F{green}${_prompt_kaye_pwd}%f ${git_info:+${(e)git_info[prompt]}}${ruby_info[version]}${node_info[version]}${python_info[virtualenv]}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
+  # RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
+  RPROMPT='${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} ${_prompt_kaye_battery}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
-prompt_sorin_setup "$@"
+prompt_kaye_setup "$@"
