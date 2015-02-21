@@ -10,9 +10,6 @@ fi
 # Source Z jump-navigation
 source ~/.zsh/z/z.sh
 
-# custom prompt
-# source ~/.zsh/zsh_prompt.sh
-
 #
 # Paths
 #
@@ -26,7 +23,6 @@ eval "$(rbenv init -)"
 #
 # Language
 #
-
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
@@ -34,7 +30,6 @@ fi
 #
 # Editors
 #
-
 export EDITOR='vim'
 # export VISUAL='nano'
 export PAGER='less'
@@ -43,6 +38,7 @@ export PAGER='less'
 # Aliases
 #
 alias vim="mvim -v"
+alias vag="vagrant"
 alias chat="sh ~/.scripts/bin/chat.sh"
 alias commitary="sh ~/.scripts/bin/commitary.sh"
 alias mcms="sh ~/.scripts/bin/mcms.sh"
@@ -70,17 +66,20 @@ alias tkss='tmux kill-session -t'
 
 
 #
-# Vi-mode Improvements
+# Settings
 #
 # ctrl-w removed word backwards
 bindkey '^w' backward-kill-word
 
+# enable extended globbing
+setopt extended_glob
+
+# passes the bad match onto the command, so we can HEAD^
+setopt NO_NOMATCH
+
 # reduce character sequence timeout from 400ms to 10ms
 KEYTIMEOUT=1
 
-#
-# Aesthetics
-#
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
