@@ -8,4 +8,9 @@ if !exists('g:easy_align_delimiters')
   let g:easy_align_delimiters = {}
 endif
 let g:easy_align_delimiters['#'] = { 'pattern': '#', 'ignore_groups': ['String'] }
+let g:easy_align_delimiters['/'] = {
+\                                     'pattern': '//\+\|/\*\|\*/',
+\                                     'delimiter_align': 'l',
+\                                     'ignore_groups': ['!Comment'] }
+
 let g:easy_align_delimiters['"'] = { 'pattern': '"', 'ignore_groups': ['String'] }
