@@ -8,6 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
@@ -32,16 +33,15 @@ Plug 'Valloric/YouCompleteMe',  { 'do': './install.sh', 'on': [] }
 Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 
 " Language-specific plugins
-Plug 'scrooloose/syntastic',          { 'for': ['ruby', 'php', 'javascript'] }
-Plug 'heavenshell/vim-jsdoc',         { 'for': 'javascript' }
-Plug 'marijnh/tern_for_vim',          { 'for': 'javascript', 'do': 'npm install' }
-Plug 'jelera/vim-javascript-syntax',  { 'for': 'javascript' }
+Plug 'heavenshell/vim-jsdoc',                  { 'for': 'javascript' }
+Plug 'marijnh/tern_for_vim',                   { 'for': 'javascript', 'do': 'npm install' }
+Plug 'jelera/vim-javascript-syntax',           { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
-Plug 'othree/html5.vim',              { 'for': ['html', 'html.handlebars'] }
-Plug 'cakebaker/scss-syntax.vim',     { 'for': ['scss', 'sass'] }
+Plug 'othree/html5.vim',                       { 'for': ['html', 'html.handlebars'] }
+Plug 'cakebaker/scss-syntax.vim',              { 'for': ['scss', 'sass'] }
 Plug 'tell-k/vim-browsereload-mac'
-Plug 'mattn/emmet-vim',               { 'for': ['html', 'php', 'css', 'sass', 'scss', 'html.handlebars'] }
-Plug 'mustache/vim-mustache-handlebars', { 'for': 'html.handlebars' }
+Plug 'mattn/emmet-vim',                        { 'for': ['html', 'php', 'css', 'sass', 'scss', 'html.handlebars'] }
+Plug 'mustache/vim-mustache-handlebars',       { 'for': 'html.handlebars' }
 
 call plug#end()
 

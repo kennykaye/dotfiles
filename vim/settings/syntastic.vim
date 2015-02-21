@@ -21,7 +21,7 @@ function! JavascriptCheckers()
 endfunction
 
 function! PhpcsArgs()
-  let fpath = getcwd() . '/.phpcs.xml' 
+  let fpath = getcwd() . '/.phpcs.xml'
   if filereadable(fpath)
     return '-s --report=csv --standard=' . fpath
   endif
@@ -49,7 +49,7 @@ augroup AutoSyntastic
   autocmd BufWritePost *.js,*.php call s:syntastic()
 augroup END
 
-" Update lightline 
+" Update lightline
 function! s:syntastic()
   call SyntasticCheck()
   call lightline#update()
