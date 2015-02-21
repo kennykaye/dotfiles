@@ -1,6 +1,5 @@
 " ================ General Settings ========================
 
-filetype plugin indent on      " use auto-indentation
 set nocompatible               " be iMproved, required
 set ignorecase
 set smartcase
@@ -19,7 +18,7 @@ set cursorline                 " highlight current line
 set noshowmode                 " lightline renders mode
 set visualbell                 " disable error bell
 set scrolloff=5                " set minimum number of lines above and below cursor
-set autoread                    " automatically re-read changed files
+set autoread                   " automatically re-read changed files
 
 " ================ Appearance ========================
 
