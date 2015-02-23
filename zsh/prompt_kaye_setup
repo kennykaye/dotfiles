@@ -1,4 +1,3 @@
-#
 # A simple theme that displays relevant, contextual information.
 #
 # Authors:
@@ -11,22 +10,27 @@
 # Load dependencies.
 pmodload 'helper'
 
-function prompt_kaye_battery_color {
+function prompt_kaye_battery_symbol {
   local result=$1
-  if [ $2 -ge 75 ]; then
-    eval "${result}='green'"
-  elif [ $2 -ge 20 ]; then
-    eval "${result}='yellow'"
-  else
-    eval "${result}='red'"
-  fi
+  local battery_level=$2
+  colors=("green" "green" "yellow" "yellow" "16" "red" "160")
+  thresholds=(86 72 58 44 30 16 1)
+  symbols=("⣿" "⣾" "⠿" "⠾" "⠶" "⠴" "⠤")
+  # symbols=("☰" "☱" "☳" "⚌" "⚍" "⚊" "⚋")
+  # symbols=("▇" "▆" "▅" "▃" "▂" "▁" "▁")
+
+  for (( i = 1; i <= $#symbols; i++ )) do
+    if [ $battery_level -ge ${thresholds[$i]} ]; then
+      eval "${result}='%F{${colors[$i]}}${symbols[$i]}%f'"
+      break
+    fi
+  done
 }
 
 function prompt_kaye_battery {
   local percent_sign="%"
   local battery_symbol=""
-  local battery_color=""
-  local threshold="80"
+  local threshold="100"
 
   # escape percent "%" in zsh
   [[ -n ${ZSH_VERSION-} ]] && percent_sign="${percent_sign//\%/%%}"
@@ -44,9 +48,9 @@ function prompt_kaye_battery {
       local battery_level=$(($current_capacity * 100 / $battery_capacity))
       [[ $battery_level -gt $threshold ]] && return 1
 
-      prompt_kaye_battery_color battery_color $battery_level
+      prompt_kaye_battery_symbol battery_symbol $battery_level
 
-      _prompt_kaye_battery="%s%F{${battery_color}}${battery_symbol}${battery_level}${percent_sign}%f"
+      _prompt_kaye_battery="%s${battery_symbol}"
       return
     fi
   fi
@@ -108,6 +112,7 @@ function prompt_kaye_precmd {
 
   # Battery Info
   prompt_kaye_battery
+
   # Get Git repository information.
   if (( $+functions[git-info] )); then
     git-info
@@ -182,7 +187,7 @@ function prompt_kaye_setup {
   # λ 🌵 %F{cyan}%n%f
   # Define prompts.
   PROMPT='
-%F{green}${_prompt_kaye_pwd}%f ${git_info:+${(e)git_info[prompt]}}${ruby_info[version]}${node_info[version]}${python_info[virtualenv]}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
+%F{cyan}${_prompt_kaye_pwd}%f ${git_info:+${(e)git_info[prompt]}}${ruby_info[version]}${node_info[version]}${python_info[virtualenv]}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
   # RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
   RPROMPT='${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} ${_prompt_kaye_battery}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '

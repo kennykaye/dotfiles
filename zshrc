@@ -7,6 +7,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"  ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Source Base16
+if [[ -s "$HOME/.config/base16-shell/base16-eighties.dark.sh" ]]; then
+  source "$HOME/.config/base16-shell/base16-eighties.dark.sh"
+fi
+
 # Source Z jump-navigation
 source ~/.zsh/z/z.sh
 
@@ -79,7 +84,3 @@ setopt NO_NOMATCH
 
 # reduce character sequence timeout from 400ms to 10ms
 KEYTIMEOUT=1
-
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
