@@ -16,4 +16,8 @@
 [submodule "zprezto"]
 	path = zprezto
   url = https://github.com/sorin-ionescu/prezto.git
-  ignore = untracked
+  ignore = dirty
+
+[submodule "vim/bundle/vim-plug"]
+	path = vim/bundle/vim-plug
+	url = https://github.com/junegunn/vim-plug.git

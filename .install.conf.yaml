@@ -15,7 +15,7 @@
     ~/.zprezto: zprezto
     ~/.zpreztorc: zpreztorc
     ~/.config: config
-    ~/.vim/autoload/plug.vim: vim/autoload/vim-plug/plug.vim
+    ~/.vim/autoload/plug.vim: vim/bundle/vim-plug/plug.vim
     ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/base16_eighties.vim: vim/lightline/base16_eighties.vim
     ~/.zprezto/modules/prompt/functions/prompt_kaye_setup: zsh/prompt_kaye_setup
 

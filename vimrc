@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/bundle')
 
 " Immediately loaded
+Plug 'junegunn/vim-plug'
 Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
