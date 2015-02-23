@@ -1,16 +1,18 @@
-
 Dotfiles
 ========
+![Kaye Prompt Theme]
+(http://i.imgur.com/ClrVZbf.png)
+
+![Vim Configuration]
+(http://i.imgur.com/fFALzs2.png)
 
 After cloning this repo, run `./install` to automatically set up the development
 environment. Note that the install script is idempotent: it can safely be run
 multiple times.
 
-After install is completed, open vim and run `:PluginInstall`
+After install is completed, open vim and run `:PlugInstall`
 
-`YouCompleteMe` requires installation, see [instructions](https://github.com/Valloric/YouCompleteMe).
-
-`vimrc` uses patched fonts, I recommend [Inconsolata-g](https://github.com/powerline/fonts/tree/master/Inconsolata-g).  
+`vimrc` uses patched fonts, I recommend [Inconsolata-g](https://github.com/powerline/fonts/tree/master/Inconsolata-g).
 
 Dotfiles uses [Dotbot][dotbot] for installation.
 
