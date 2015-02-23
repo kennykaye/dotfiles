@@ -158,7 +158,7 @@ function prompt_kaye_setup {
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{yellow}⬆%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{yellow}⬇%f%%b'
   # zstyle ':prezto:module:git:info:branch' format '%%B%F{green}[%f%%b%%B%F{yellow}%b%f%%b'
-  zstyle ':prezto:module:git:info:branch' format '%%B%F{yellow}%b%f%%b'
+  zstyle ':prezto:module:git:info:branch' format 'on %%B%F{yellow}%b%f%%b'
   zstyle ':prezto:module:git:info:clean' format " "
   # zstyle ':prezto:module:git:info:clean' format "%B%F{green}]%f%b "
   zstyle ':prezto:module:git:info:commit' format ':%F{green}%.7c%f'
@@ -187,7 +187,7 @@ function prompt_kaye_setup {
   # λ 🌵 %F{cyan}%n%f
   # Define prompts.
   PROMPT='
-%F{cyan}${_prompt_kaye_pwd}%f ${git_info:+${(e)git_info[prompt]}}${ruby_info[version]}${node_info[version]}${python_info[virtualenv]}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
+%F{red}${_prompt_kaye_pwd}%f ${git_info:+${(e)git_info[prompt]}}${ruby_info[version]}${node_info[version]}${python_info[virtualenv]}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
   # RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
   RPROMPT='${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} ${_prompt_kaye_battery}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
