@@ -17,6 +17,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tell-k/vim-browsereload-mac'
 
 " Lazy-load plugins
 Plug 'majutsushi/tagbar',       { 'on': 'TagbarToggle' }
@@ -26,6 +27,8 @@ Plug 'tpope/vim-commentary',    { 'on': [
                                 \   '<Plug>Commentary',
                                 \   '<Plug>CommentaryLine'
                                 \   ] }
+
+Plug 'mattn/emmet-vim',         { 'on': 'EmmetInstall' }
 Plug 'junegunn/goyo.vim',       { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim',  { 'on': 'Limelight' }
 Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
@@ -39,8 +42,6 @@ Plug 'jelera/vim-javascript-syntax',           { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'othree/html5.vim',                       { 'for': ['html', 'html.handlebars'] }
 Plug 'cakebaker/scss-syntax.vim',              { 'for': ['scss', 'sass'] }
-Plug 'tell-k/vim-browsereload-mac'
-Plug 'mattn/emmet-vim',                        { 'for': ['html', 'php', 'css', 'sass', 'scss', 'html.handlebars'] }
 Plug 'mustache/vim-mustache-handlebars',       { 'for': 'html.handlebars' }
 
 call plug#end()
