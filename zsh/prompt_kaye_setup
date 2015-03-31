@@ -187,9 +187,9 @@ function prompt_kaye_setup {
   # λ 🌵 %F{cyan}%n%f
   # Define prompts.
   PROMPT='
-%F{red}${_prompt_kaye_pwd}%f ${git_info:+${(e)git_info[prompt]}}${ruby_info[version]}${node_info[version]}${python_info[virtualenv]}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
+%F{red}${_prompt_kaye_pwd}%f ${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
   # RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
-  RPROMPT='${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} ${_prompt_kaye_battery}'
+  RPROMPT='${ruby_info[version]}${node_info[version]}${python_info[virtualenv]}${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} ${_prompt_kaye_battery}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 

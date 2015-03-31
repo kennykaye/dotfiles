@@ -10,14 +10,10 @@
 [submodule "zsh/z"]
 	path = zsh/z
 	url = https://github.com/rupa/z.git
-[submodule "vim/autoload/vim-plug"]
-	path = vim/autoload/vim-plug
-	url = https://github.com/junegunn/vim-plug.git
 [submodule "zprezto"]
 	path = zprezto
   url = https://github.com/sorin-ionescu/prezto.git
   ignore = dirty
-
 [submodule "vim/bundle/vim-plug"]
 	path = vim/bundle/vim-plug
 	url = https://github.com/junegunn/vim-plug.git

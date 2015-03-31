@@ -1,5 +1,9 @@
 [alias]
-	# TBC
+  co = checkout
+  cob = checkout -b
+  cm = !git add -A && git commit -m
+  undo = reset HEAD~1 --mixed
+  amend = commit -a --amend
 [core]
 	# Use custom `.gitignore`
 	excludesfile = ~/.gitignore

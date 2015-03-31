@@ -43,11 +43,12 @@ export PAGER='less'
 # Aliases
 #
 alias vim="mvim -v"
+# alias vim="nvim"
 alias vag="vagrant"
+alias mamp-pro="sudo sh '/Applications/MAMP PRO/bin/start.sh'"
 alias chat="sh ~/.scripts/bin/chat.sh"
 alias commitary="sh ~/.scripts/bin/commitary.sh"
 alias mcms="sh ~/.scripts/bin/mcms.sh"
-alias mcms-vagrant="sh ~/.scripts/bin/mcms-vagrant.sh"
 alias pro-services="sh ~/.scripts/bin/pro-services.sh"
 
 # Bundle
@@ -69,6 +70,14 @@ alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
 
+# Postgres
+alias pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+
+# Redis
+alias redis-start='redis-server /usr/local/etc/redis.conf'
+
+# Pow
+alias pow='touch ~/.pow/restart.txt'
 
 #
 # Settings
@@ -83,4 +92,4 @@ setopt extended_glob
 setopt NO_NOMATCH
 
 # reduce character sequence timeout from 400ms to 10ms
-KEYTIMEOUT=1
+export KEYTIMEOUT=1

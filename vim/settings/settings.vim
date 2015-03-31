@@ -12,6 +12,7 @@ set wildmenu                   " visual autocomplete for command menu
 set laststatus=2
 set backspace=indent,eol,start " backspace through lines
 set clipboard=unnamed          " tmux and system copy/paste
+set lazyredraw                 " only redraw when necessary
 set ttyfast                    " smoother screen redraw
 set number                     " show line numbers
 set cursorline                 " highlight current line
@@ -19,6 +20,7 @@ set noshowmode                 " lightline renders mode
 set visualbell                 " disable error bell
 set scrolloff=5                " set minimum number of lines above and below cursor
 set autoread                   " automatically re-read changed files
+set mouse=a                    " enable mouse scrolling
 
 " ================ Appearance ========================
 
@@ -67,7 +69,25 @@ let mapleader=","
 :map <silent> <End> :tabn<kEnter>
 :map <silent> <Home> :tabp<kEnter>
 
-" Show the hilighting information for group under cursor
+" Provide easier split navigation
+nnoremap <silent> <S-Down> <C-W><C-J>
+nnoremap <silent> <S-Up> <C-W><C-K>
+nnoremap <silent> <S-Right> <C-W><C-L>
+nnoremap <silent> <S-Left> <C-W><C-H>
+
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
+
+
+" Show the hilighting informationennoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>for group under cursor
 :map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
