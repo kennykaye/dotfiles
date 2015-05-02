@@ -1,5 +1,5 @@
 " ================ Keyboard Layouts ========================
-" Methods to toggle between QWERTY and Workman 
+" Methods to toggle between QWERTY and Workman
 " keyboard layouts
 
 function! Keyboard(type)
@@ -24,6 +24,23 @@ function! Keyboard(type)
     noremap y h
     noremap H Y
     noremap Y H
+
+    " Provide easier split navigation
+    nnoremap <silent> <S-Down> <C-W><C-J>
+    nnoremap <silent> <S-Up> <C-W><C-K>
+    nnoremap <silent> <S-Right> <C-W><C-L>
+    nnoremap <silent> <S-Left> <C-W><C-H>
+
+    let g:ctrlp_prompt_mappings = {
+    \ 'PrtHistory(-1)':       [],
+    \ 'PrtCurEnd()':          [],
+    \ 'CreateNewFile()':      [],
+    \ 'OpenMulti()':          [],
+    \ 'PrtCurRight()':        ['<c-o>'],
+    \ 'PrtSelectMove("j")':   ['<c-n>'],
+    \ 'PrtSelectMove("k")':   ['<c-e>'],
+    \ 'PrtCurLeft()':         ['<c-y>'],
+    \ }
   else " qwerty
     call UnmapWorkman()
   endif
@@ -47,6 +64,23 @@ function! UnmapWorkman()
   silent! unmap N
   silent! unmap E
   silent! unmap O
+
+  " Better split navigation
+  nnoremap <silent> <C-J> <C-W><C-J>
+  nnoremap <silent> <C-K> <C-W><C-K>
+  nnoremap <silent> <C-L> <C-W><C-L>
+  nnoremap <silent> <C-H> <C-W><C-H>
+
+  let g:ctrlp_prompt_mappings = {
+    \ 'OpenMulti()':          ['<c-o>'],
+    \ 'CreateNewFile()':      ['<c-y>'],
+    \ 'PrtCurStart()':        ['<c-a>'],
+    \ 'PrtCurEnd()':          ['<c-e>'],
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+    \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+    \ }
 endfunction
 
 function! LoadKeyboard()
@@ -55,7 +89,7 @@ function! LoadKeyboard()
     call Keyboard("qwerty")
   else
     call Keyboard("workman")
-  endif  
+  endif
 endfunction
 
 augroup keyboardGroup

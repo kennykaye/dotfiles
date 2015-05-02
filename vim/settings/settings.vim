@@ -69,12 +69,6 @@ let mapleader=","
 :map <silent> <End> :tabn<kEnter>
 :map <silent> <Home> :tabp<kEnter>
 
-" Provide easier split navigation
-nnoremap <silent> <S-Down> <C-W><C-J>
-nnoremap <silent> <S-Up> <C-W><C-K>
-nnoremap <silent> <S-Right> <C-W><C-L>
-nnoremap <silent> <S-Left> <C-W><C-H>
-
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
