@@ -28,6 +28,7 @@ Thumbs.db
 **/*.sublime-project
 
 # Composer
+composer.phar
 composer.lock
 
 # VIM
