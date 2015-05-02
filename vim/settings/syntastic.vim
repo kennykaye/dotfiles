@@ -27,6 +27,14 @@ function! PhpcsArgs()
   endif
 endfunction
 
+" Only enable scss linter if there is a config in root
+function! ScssChecker()
+  if filereadable(getcwd() . '/.scss-lint.yml')
+    return ['scss_lint']
+  else
+    return []
+  endif
+endfunction
 let g:syntastic_enable_signs = 1
 let g:syntastic_stl_format = '%E{E%e}%B{, }%W{W%w}'  "Parsed by lightline
 let g:syntastic_style_error_symbol = "››"
@@ -37,10 +45,11 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers=['phpcs']
-let g:syntastic_html_checkers=['']
-let g:syntastic_php_phpcs_args=PhpcsArgs()
-let g:syntastic_javascript_checkers=JavascriptCheckers()
+let g:syntastic_php_checkers = ['phpcs']
+let g:syntastic_scss_checkers = ScssChecker()
+let g:syntastic_html_checkers = ['']
+let g:syntastic_php_phpcs_args = PhpcsArgs()
+let g:syntastic_javascript_checkers = JavascriptCheckers()
 let g:syntastic_aggregate_errors = 1
 
 
