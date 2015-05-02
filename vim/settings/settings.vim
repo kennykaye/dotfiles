@@ -22,6 +22,7 @@ set visualbell                 " disable error bell
 set scrolloff=5                " set minimum number of lines above and below cursor
 set autoread                   " automatically re-read changed files
 set mouse=a                    " enable mouse scrolling
+set completeopt-=preview       " disable preview scratch buffer
 
 " ================ Appearance ========================
 
