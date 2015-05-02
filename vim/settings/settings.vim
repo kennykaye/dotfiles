@@ -14,7 +14,8 @@ set backspace=indent,eol,start " backspace through lines
 set clipboard=unnamed          " tmux and system copy/paste
 set lazyredraw                 " only redraw when necessary
 set ttyfast                    " smoother screen redraw
-set number                     " show line numbers
+set relativenumber             " show line numbers relative to cursor
+set number                     " show current line numbers
 set cursorline                 " highlight current line
 set noshowmode                 " lightline renders mode
 set visualbell                 " disable error bell
