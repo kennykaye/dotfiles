@@ -35,7 +35,9 @@ Plug 'Raimondi/delimitMate',    { 'on': [] }
 Plug 'junegunn/goyo.vim',       { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim',  { 'on': 'Limelight' }
 Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
-Plug 'Valloric/YouCompleteMe',  { 'do': './install.sh', 'on': [] }
+Plug 'SirVer/ultisnips',        { 'on': [] }
+Plug 'honza/vim-snippets',      { 'on': [] }
+Plug 'Valloric/YouCompleteMe',  { 'do': './install.sh --clang-completer', 'on': [] }
 Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 
 " Language-specific plugins
