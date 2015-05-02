@@ -29,10 +29,7 @@ set completeopt-=preview       " disable preview scratch buffer
 syntax on                " enable syntax highlighting
 set background=dark      " set dark background
 let base16colorspace=256 " Use 256 base16 colorscheme
-colorscheme base16-eighties
-
-hi! CursorLine ctermbg=237
-hi! CursorLineNr ctermfg=248
+colorscheme base16-kaye
 
 " ================ Commands ========================
 

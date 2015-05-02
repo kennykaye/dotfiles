@@ -3,7 +3,7 @@
 
 " Lightline configuration
 let g:lightline = {
-      \ 'colorscheme': 'base16_eighties',
+      \ 'colorscheme': 'base16_kaye',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \           [ 'filename' ],
@@ -84,7 +84,7 @@ endfunction
 
 " Displays file format
 function! MyFileformat()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar\|ags'
     return winwidth(0) > 100 ? &fileformat : ''
   endif
   return ''
@@ -92,7 +92,7 @@ endfunction
 
 " Displays file type
 function! MyFiletype()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar\|ags'
     return winwidth(0) > 100 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
   endif
   return ''
@@ -100,7 +100,7 @@ endfunction
 
 " Displays file encoding
 function! MyFileencoding()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
+  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar\|ags'
     return winwidth(0) > 100 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endif
   return ''
@@ -129,6 +129,7 @@ function! MyFilename()
   let fname = expand('%:t')
   return fname == 'ControlP' ? g:lightline.ctrlp_item :
         \ fname =~ 'NERD' ? '' :
+        \ fname =~ 'ags' ? '' :
         \ fname =~ 'Tagbar' ? 'Tagbar' :
         \ fname =~ 'fugitive' ? matchstr(fname, '\(fugitive\)\@<=[A-Za-z]*') :
         \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
@@ -138,7 +139,7 @@ endfunction
 
 " Displays current git branch
 function! MyFugitive()
-  if expand('%:t') !~? 'Tagbar\|ControlP\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+  if expand('%:t') !~? 'Tagbar\|ControlP\|NERD\|ags' && &ft !~? 'vimfiler' && exists('*fugitive#head')
     let _ = fugitive#head()
     return strlen(_) ? ' '._ : ''
   endif
@@ -150,6 +151,8 @@ function! MyMode()
   let fname = expand('%:t')
   return  fname == 'ControlP' ? 'CtrlP' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ fname =~ 'agsv' ? 'Search' :
+        \ fname =~ 'agse' ? 'Replace' :
         \ strpart(lightline#mode(), 0, 1)
 endfunction
 
