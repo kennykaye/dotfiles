@@ -43,14 +43,15 @@ export PAGER='less'
 #
 # Aliases
 #
-alias vim="mvim -v"
-# alias vim="nvim"
+# OSX Specific aliases
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # alias vim="nvim"
+  alias vim="mvim -v"
+  alias mamp-pro="sudo sh '/Applications/MAMP PRO/bin/start.sh'"
+fi
+
+# Vagrant
 alias vag="vagrant"
-alias mamp-pro="sudo sh '/Applications/MAMP PRO/bin/start.sh'"
-alias chat="sh ~/.scripts/bin/chat.sh"
-alias commitary="sh ~/.scripts/bin/commitary.sh"
-alias mcms="sh ~/.scripts/bin/mcms.sh"
-alias pro-services="sh ~/.scripts/bin/pro-services.sh"
 
 # Bundle
 alias bi='bundle install'
