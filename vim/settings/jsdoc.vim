@@ -5,4 +5,7 @@ let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_default_mapping = 0
 
 " Mappings
-:map <C-j> :JsDoc<CR>
+" augroup jsdoc_mappings
+"   autocmd!
+"   autocmd Filetype javascript :map <C-j> :JsDoc<CR>
+" augroup END
