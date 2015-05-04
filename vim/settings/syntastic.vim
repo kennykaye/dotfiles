@@ -7,8 +7,10 @@
 " set statusline+=%*
 
 " Improve display of syntastic numberline flags
-hi! link SyntasticStyleErrorSign DiffDelete
-hi! link SyntasticErrorSign DiffDelete
+hi! link SyntasticStyleErrorSign ErrorMsg
+hi! link SyntasticErrorSign ErrorMsg
+hi! link SyntasticWarningSign Type
+hi! link SyntasticStyleWarningSign Type
 
 " jscs returns exit code when no config file is present.
 " only load it when appropriate
