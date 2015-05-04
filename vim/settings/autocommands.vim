@@ -32,7 +32,7 @@ augroup END
 " =======================================
 " Relative Line Numbers
 " =======================================
-let s:relativeNumberBlackList = 'ControlP\|NERD\|fugitive\|Tagbar\|ags'
+let s:relativeNumberBlackList = 'ControlP\|NERD\|fugitive\|Tagbar\|agsv'
 
 function! EnableRelativeNumber()
   if &ft =~ s:relativeNumberBlackList
