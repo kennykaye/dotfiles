@@ -150,7 +150,7 @@ function prompt_kaye_setup {
 
   # Set git-info parameters.
   zstyle ':prezto:module:git:info' verbose 'yes'
-  zstyle ':prezto:module:git:info:action' format ':%%B%F{yellow}%s%f%%b'
+  zstyle ':prezto:module:git:info:action' format '⚡ %%B%F{green}%s%f%%b '
   zstyle ':prezto:module:git:info:added' format ' %%B%F{green}✚%f%%b'
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{yellow}⬆%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{yellow}⬇%f%%b'
@@ -158,7 +158,7 @@ function prompt_kaye_setup {
   zstyle ':prezto:module:git:info:branch' format 'on %%B%F{yellow}%b%f%%b'
   zstyle ':prezto:module:git:info:clean' format " "
   # zstyle ':prezto:module:git:info:clean' format "%B%F{green}]%f%b "
-  zstyle ':prezto:module:git:info:commit' format ':%F{green}%.7c%f'
+  zstyle ':prezto:module:git:info:commit' format 'on %F{yellow}%.7c%f'
   zstyle ':prezto:module:git:info:deleted' format ' %%B%F{red}✖%f%%b'
   zstyle ':prezto:module:git:info:dirty' format "%F{red}!%f%  "
   # zstyle ':prezto:module:git:info:dirty' format "%%B%F{red}]%f%%b %F{yellow}⚡%f  "
