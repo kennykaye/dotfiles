@@ -54,7 +54,7 @@ function tmux_kaye_battery {
   done
 
   # Only output indicator if battery isn't full
-  if [[ $battery_level != 100 ]]; then
+  if (( $battery_level < 99 )); then
     tmux_kaye_battery_symbol battery_symbol $battery_level
     echo $battery_symbol
   fi
