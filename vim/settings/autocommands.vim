@@ -32,17 +32,26 @@ augroup END
 " =======================================
 " Relative Line Numbers
 " =======================================
-let s:relativeNumberBlackList = 'ControlP\|NERD\|fugitive\|Tagbar\|agsv'
+
+function! NumberBlackList()
+  let s:bufferBlackList = 'nofile'
+  let s:relativeNumberBlackList = 'ControlP\|NERD\|fugitive\|Tagbar\|agsv'
+  if &ft =~ s:relativeNumberBlackList || &buftype =~ s:bufferBlackList
+    return 1
+  else
+    return 0
+  endif
+endfunction
 
 function! EnableRelativeNumber()
-  if &ft =~ s:relativeNumberBlackList
+  if NumberBlackList()
     return
   endif
   :setlocal relativenumber
 endfunction
 
 function! DisableRelativeNumber()
-  if &ft =~ s:relativeNumberBlackList
+  if NumberBlackList()
     return
   endif
   :setlocal number norelativenumber
