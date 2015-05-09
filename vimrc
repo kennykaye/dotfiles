@@ -11,6 +11,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
+Plug 'SirVer/ultisnips'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 Plug 'gabesoft/vim-ags'
@@ -36,7 +37,6 @@ Plug 'Raimondi/delimitMate',    { 'on': [] }
 Plug 'junegunn/goyo.vim',       { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim',  { 'on': 'Limelight' }
 Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
-Plug 'SirVer/ultisnips',        { 'on': [] }
 Plug 'honza/vim-snippets',      { 'on': [] }
 Plug 'Valloric/YouCompleteMe',  { 'do': './install.sh --clang-completer', 'on': [] }
 Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }

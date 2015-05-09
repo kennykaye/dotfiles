@@ -3,8 +3,9 @@
 " Defer YouCompleteMe load until insert mode is entered
 augroup load_us_ycm
   autocmd!
-  autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
-                     \| call youcompleteme#Enable() | autocmd! load_us_ycm
+  autocmd InsertEnter * call plug#load('vim-snippets', 'YouCompleteMe')
+                     \| call youcompleteme#Enable()
+                     \| autocmd! load_us_ycm
 augroup END
 
 " Configuration
