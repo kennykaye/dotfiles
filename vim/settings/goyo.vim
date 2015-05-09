@@ -7,6 +7,8 @@ function! s:goyo_enter()
   endif
   set noshowcmd
   set scrolloff=999
+  set nonumber norelativenumber
+  Relativity!
   Limelight
 endfunction
 
@@ -16,6 +18,7 @@ function! s:goyo_leave()
   endif
   set showcmd
   set scrolloff=5
+  Relativity
   Limelight!
 endfunction
 

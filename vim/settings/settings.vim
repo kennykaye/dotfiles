@@ -14,7 +14,6 @@ set backspace=indent,eol,start " backspace through lines
 set clipboard=unnamed          " tmux and system copy/paste
 set lazyredraw                 " only redraw when necessary
 set ttyfast                    " smoother screen redraw
-set relativenumber             " show line numbers relative to cursor
 set number                     " show current line numbers
 set cursorline                 " highlight current line
 set noshowmode                 " lightline renders mode
@@ -23,6 +22,8 @@ set scrolloff=5                " set minimum number of lines above and below cur
 set autoread                   " automatically re-read changed files
 set mouse=a                    " enable mouse scrolling
 set completeopt-=preview       " disable preview scratch buffer
+set splitbelow                 " open new split below current split
+set splitright                 " open new split to the right
 
 " ================ Appearance ========================
 

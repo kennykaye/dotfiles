@@ -28,47 +28,6 @@ augroup BgHighlight
     autocmd WinLeave * :setlocal nocursorline
 augroup END
 
-
-" =======================================
-" Relative Line Numbers
-" =======================================
-
-function! NumberBlackList()
-  let s:bufferBlackList = 'nofile'
-  let s:relativeNumberBlackList = 'ControlP\|NERD\|fugitive\|Tagbar\|agsv'
-  if &ft =~ s:relativeNumberBlackList || &buftype =~ s:bufferBlackList
-    return 1
-  else
-    return 0
-  endif
-endfunction
-
-function! EnableRelativeNumber()
-  if NumberBlackList()
-    return
-  endif
-  :setlocal relativenumber
-endfunction
-
-function! DisableRelativeNumber()
-  if NumberBlackList()
-    return
-  endif
-  :setlocal number norelativenumber
-endfunction
-
-augroup LineNumbers
-autocmd!
-  autocmd BufEnter *    call EnableRelativeNumber()
-  autocmd BufLeave *    call DisableRelativeNumber()
-  autocmd WinEnter *    call EnableRelativeNumber()
-  autocmd WinLeave *    call DisableRelativeNumber()
-  autocmd InsertEnter * call DisableRelativeNumber()
-  autocmd InsertLeave * call EnableRelativeNumber()
-  autocmd FocusLost *   call DisableRelativeNumber()
-  autocmd FocusGained * call EnableRelativeNumber()
-augroup END
-
 " trim all whitespace on save
 autocmd BufWritePre * call TrimWhitespace()
 function! TrimWhitespace()

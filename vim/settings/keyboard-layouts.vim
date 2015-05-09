@@ -84,7 +84,8 @@ function! UnmapWorkman()
 endfunction
 
 function! LoadKeyboard()
-  let keys = $keyboard
+  " let keys = $keyboard
+  let keys = "qwerty"
   if (keys == "qwerty")
     call Keyboard("qwerty")
   else
