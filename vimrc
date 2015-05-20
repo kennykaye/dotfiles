@@ -16,7 +16,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 Plug 'gabesoft/vim-ags'
 Plug 'Yggdroot/indentLine'
-Plug 'kennykaye/vim-relativity'
+Plug 'kennykaye/vim-relativity', { 'branch': 'dev' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tell-k/vim-browsereload-mac'
