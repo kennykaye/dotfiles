@@ -28,6 +28,12 @@ augroup BgHighlight
     autocmd WinLeave * :setlocal nocursorline
 augroup END
 
+" Highlight text past 80 characters
+augroup vimrc_autocmds
+  autocmd!
+  autocmd BufEnter * match OverLength /\%80v.*/
+augroup END
+
 " trim all whitespace on save
 autocmd BufWritePre * call TrimWhitespace()
 function! TrimWhitespace()

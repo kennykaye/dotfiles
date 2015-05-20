@@ -180,6 +180,7 @@ call <sid>hi("PMenuSel",      "", s:gui02, 248, s:cterm02, "")
 call <sid>hi("TabLine",       s:gui03, "", s:cterm03, "", "none")
 call <sid>hi("TabLineFill",   s:gui03, "", s:cterm03, "", "none")
 call <sid>hi("TabLineSel",    s:gui0B, s:gui01, s:cterm0B, s:cterm01, "none")
+call <sid>hi("OverLength",    s:gui03, "", s:cterm03, "", "")
 
 " Standard syntax highlighting
 call <sid>hi("Boolean",      s:gui09, "", s:cterm09, "", "")
