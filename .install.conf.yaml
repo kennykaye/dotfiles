@@ -27,6 +27,9 @@
       - "git submodule update --init --recursive --remote"
       - "Installing/updating submodules"
     -
+    - "tic terminfo/xterm-256color-italic.terminfo; tic terminfo/screen-256color-italic.terminfo"
+      - "Install custom term info"
+    -
       - "mkdir -p ~/.config/base16-shell ~/.vim/autoload ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme"
       - "Checking folder structure exists"
     -
