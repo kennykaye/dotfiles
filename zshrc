@@ -82,6 +82,10 @@ alias colors='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do 
 # Override custom term definitions
 alias ssh="TERM=xterm-256color ssh"
 
+# Colorize grep output
+export GREP_OPTIONS='--color=always'
+export GREP_COLOR='1;33;40'
+
 
 #
 # Settings
