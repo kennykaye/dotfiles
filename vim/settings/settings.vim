@@ -46,7 +46,12 @@ colorscheme base16-kaye
 :command! Path :echo expand('%:p')
 
 " Create a new file in the same directory as the current file
+" new tab
 :command! -nargs=+ -complete=file -bar OT :tabe %:p:h/<args>
+" vertical split
+:command! -nargs=+ -complete=file -bar OV :vnew %:p:h/<args>
+" horizontal split
+:command! -nargs=+ -complete=file -bar OS :new %:p:h/<args>
 
 " Delete single line, or a range of lines and jump back to previous position
 :command! -range -nargs=0 D <line1>,<line2>d|norm ``
