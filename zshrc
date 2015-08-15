@@ -2,7 +2,6 @@
 # Applications
 #
 
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"  ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -25,10 +24,11 @@ source ~/.zsh/z/z.sh
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$HOME/.rbenv/bin:$PATH"
-export PATH=~/.chefdk:/opt/chefdk/bin:$PATH
 
-# Initialize rbenv
-eval "$(rbenv init -)"
+if [[ -s "/usr/local/bin/rbenv"  ]]; then
+  # Initialize rbenv
+  eval "$(rbenv init -)"
+fi
 
 #
 # Language
@@ -49,13 +49,12 @@ export PAGER='less'
 #
 # OSX Specific aliases
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  # alias vim="nvim"
-  alias vim="mvim -v"
-  alias mamp-pro="sudo sh '/Applications/MAMP PRO/bin/start.sh'"
-fi
 
-# Vagrant
-alias vag="vagrant"
+  # Prefer macvim over regular standard
+  if [[ -s "/usr/local/bin/mvim" ]]; then
+    alias vim="mvim -v"
+  fi
+fi
 
 # Bundle
 alias bi='bundle install'
@@ -75,15 +74,6 @@ alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
-
-# Postgres
-alias pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-
-# Redis
-alias redis-start='redis-server /usr/local/etc/redis.conf'
-
-# Pow
-alias pow='touch ~/.pow/restart.txt'
 
 # Misc
 # Output all the term colors and their respective codes
