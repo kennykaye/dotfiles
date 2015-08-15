@@ -20,8 +20,6 @@ Plug 'kennykaye/vim-relativity', { 'branch': 'dev' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tell-k/vim-browsereload-mac'
-" Plug 'chriskempson/base16-vim'
-" Plug 'christoomey/vim-tmux-navigator'
 
 " Lazy-load plugins
 Plug 'majutsushi/tagbar',       { 'on': 'TagbarToggle' }
