@@ -52,6 +52,21 @@ colorscheme base16-kaye
 :command! -range -nargs=0 D <line1>,<line2>d|norm ``
 
 
+" Format JSON Documents
+:command! FormatJSON %!python -m json.tool
+
+" Format XML Documents
+:command! FormatXML %!xmlling --format %
+
+
+" Replace the current buffer with a new buffer
+function! ReplaceBuffer(bang, newfile)
+  let curbuf = bufnr('%')
+  exec "e %:p:h/" . a:newfile
+  exec "bd" . a:bang . " " . curbuf
+endfunction
+:command! -nargs=1 -complete=file -bang -bar BDE call ReplaceBuffer('<bang>', <f-args>)
+
 " ================ Mappings ========================
 
 " disable Ex-only mapping
