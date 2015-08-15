@@ -11,7 +11,7 @@ let g:EasyMotion_use_smartsign_us = 1
 
 " Highlighting
 hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
+hi link EasyMotionShade  LineNr
 
 hi link EasyMotionTarget2First String
 hi link EasyMotionTarget2Second String

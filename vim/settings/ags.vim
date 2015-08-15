@@ -30,7 +30,7 @@ if executable('ag')
 
   " Syntax Highlighting
   hi! link agsvFilePath ErrorMsg
-  hi! link agsvLineNum Comment
+  hi! link agsvLineNum LineNr
   hi! link agsvLineNumMatch Type
   hi! link agsvResultPattern Type
 
