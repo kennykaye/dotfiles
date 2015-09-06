@@ -108,6 +108,25 @@ export KEYTIMEOUT=1
 # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
+## Change cursor based on vi mode
+echo -ne "\e[4 q" # initial underline
+zle-keymap-select() {
+  zle editor-info
+  if [[ ("$TERM" == "xterm-256color") ||
+        ("$TERM" == "screen-256color") ||
+        ("$TERM" == "xterm-256color-italic") ||
+        ("$TERM" == "screen-256color-italic") ]]; then
+
+    if [ $KEYMAP == vicmd ]; then
+      # the command mode for vi
+      echo -ne "\e[2 q" # Solid block
+    else
+      # the insert mode for vi
+      echo -ne "\e[4 q" # underline
+    fi
+  fi
+}
+
 #
 # Fuzzy commands
 #
