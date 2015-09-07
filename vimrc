@@ -37,7 +37,7 @@ Plug 'junegunn/goyo.vim',       { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim',  { 'on': 'Limelight' }
 Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
 Plug 'honza/vim-snippets',      { 'on': [] }
-Plug 'Valloric/YouCompleteMe',  { 'do': './install.sh --clang-completer', 'on': [] }
+Plug 'Valloric/YouCompleteMe',  { 'do': './install.py --clang-completer', 'on': [] }
 Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 
 " Language-specific plugins
