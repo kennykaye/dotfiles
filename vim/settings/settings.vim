@@ -27,10 +27,12 @@ set splitright                 " open new split to the right
 
 " ================ Appearance ========================
 
-syntax on                " enable syntax highlighting
-set background=dark      " set dark background
-let base16colorspace=256 " Use 256 base16 colorscheme
+syntax on                      " enable syntax highlighting
+set background=dark            " set dark background
+let base16colorspace=256       " Use 256 base16 colorscheme
 colorscheme base16-kaye
+set fillchars+=vert:│
+hi! link VertSplit Conceal
 
 " ================ Commands ========================
 
