@@ -33,7 +33,7 @@ augroup END
 " Highlight text past 80 characters
 augroup vimrc_autocmds
   autocmd!
-  autocmd BufEnter * match OverLength /\%80v.*/
+  autocmd BufEnter * match OverLength /\%81v.*/
 augroup END
 
 " trim all whitespace on save
@@ -45,5 +45,3 @@ function! TrimWhitespace()
   call cursor(line, col)
 endfunction
 
-" automatically redraw screen after save
-autocmd BufWritePost * :redraw!
