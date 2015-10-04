@@ -83,7 +83,8 @@ nnoremap Q <nop>
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Set , to be the leader
-let mapleader=","
+let mapleader = ","
+let maplocalleader = ","
 
 " Provide easier tab navigation
 :map <silent> <F6> :tabn<kEnter>
