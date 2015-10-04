@@ -20,11 +20,11 @@ Plug 'kennykaye/vim-relativity', { 'branch': 'dev' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tell-k/vim-browsereload-mac'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'sjl/gundo.vim'
 
 " Lazy-load plugins
 Plug 'majutsushi/tagbar',       { 'on': 'TagbarToggle' }
-Plug 'ctrlpvim/ctrlp.vim',      { 'on': 'CtrlP' }
-Plug 'FelikZ/ctrlp-py-matcher', { 'on': [] }
 Plug 'tpope/vim-commentary',    { 'on': [
                                 \   '<Plug>Commentary',
                                 \   '<Plug>CommentaryLine'
@@ -48,8 +48,11 @@ Plug 'marijnh/tern_for_vim',                   { 'for': 'javascript', 'do': 'npm
 Plug 'jelera/vim-javascript-syntax',           { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 Plug 'othree/html5.vim',                       { 'for': ['html', 'html.handlebars'] }
+Plug 'hail2u/vim-css3-syntax',                 { 'for': ['css', 'scss', 'sass'] }
 Plug 'cakebaker/scss-syntax.vim',              { 'for': ['scss', 'sass'] }
 Plug 'mustache/vim-mustache-handlebars',       { 'for': 'html.handlebars' }
+Plug 'octol/vim-cpp-enhanced-highlight',       { 'for': 'cpp' }
+Plug 'aldafu/vim-widl',                        { 'for': ['widl', 'webidl'] }
 
 call plug#end()
 
