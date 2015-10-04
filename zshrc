@@ -27,7 +27,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$HO
 
 if [[ -s "/usr/local/bin/rbenv"  ]]; then
   # Initialize rbenv
-  eval "$(rbenv init -)"
+  eval "$(rbenv init - zsh)"
 fi
 
 #
@@ -41,7 +41,6 @@ fi
 # Editors
 #
 export EDITOR='vim'
-# export VISUAL='nano'
 export PAGER='less'
 
 #
@@ -91,6 +90,8 @@ export GREP_COLOR='1;33;40'
 # Settings
 #
 # ctrl-w removed word backwards
+
+# Default to qwerty
 bindkey '^w' backward-kill-word
 
 # Paste fzf output to command line
@@ -108,6 +109,31 @@ export KEYTIMEOUT=1
 # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
+if [[ !$KEYBOARD_LAYOUT ]]; then
+  echo "KEYBOARD_LAYOUT=qwerty" >> ~/.profile
+fi
+
+if [[ $KEYBOARD_LAYOUT == 'workman' ]]; then
+  echo "KEYBOARD_LAYOUT=workman" >> ~/.profile
+  export FZF_DEFAULT_OPTS="--extended --cycle --bind=ctrl-n:down,ctrl-e:up "
+
+  # see http://www.cs.elte.hu/zsh-manual/zsh_14.html
+  bindkey -a 'g' vi-backward-char
+  bindkey -a 'n' down-line-or-history
+  bindkey -a 'g' vi-backward-char
+  bindkey -a 'e' up-line-or-history
+  bindkey -a 'o' vi-forward-char
+fi
+
+if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
+  echo "KEYBOARD_LAYOUT=qwerty" >> ~/.profile
+  export FZF_DEFAULT_OPTS="--extended --cycle"
+  bindkey -a 'h' vi-backward-char
+  bindkey -a 'j' down-line-or-history
+  bindkey -a 'k' up-line-or-history
+  bindkey -a 'l' vi-forward-char
+fi
+
 ## Change cursor based on vi mode
 echo -ne "\e[4 q" # initial underline
 zle-keymap-select() {
@@ -119,12 +145,26 @@ zle-keymap-select() {
 
     if [ $KEYMAP == vicmd ]; then
       # the command mode for vi
-      echo -ne "\e[2 q" # Solid block
+      # echo -ne "\e[2 q" # Solid block
     else
       # the insert mode for vi
-      echo -ne "\e[4 q" # underline
+      # echo -ne "\e[4 q" # underline
     fi
   fi
+}
+
+## Set  layout
+workman() {
+  export KEYBOARD_LAYOUT="workman"
+  source ~/.zshrc
+  echo "Keyboard layout switched to $KEYBOARD_LAYOUT"
+}
+
+## Set qwerty layout
+qwerty() {
+  export KEYBOARD_LAYOUT="qwerty";
+  source ~/.zshrc
+  echo "Keyboard layout switched to $KEYBOARD_LAYOUT"
 }
 
 #

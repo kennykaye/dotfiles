@@ -31,16 +31,11 @@ function! Keyboard(type)
     nnoremap <silent> <S-Right> <C-W><C-L>
     nnoremap <silent> <S-Left> <C-W><C-H>
 
-    let g:ctrlp_prompt_mappings = {
-    \ 'PrtHistory(-1)':       [],
-    \ 'PrtCurEnd()':          [],
-    \ 'CreateNewFile()':      [],
-    \ 'OpenMulti()':          [],
-    \ 'PrtCurRight()':        ['<c-o>'],
-    \ 'PrtSelectMove("j")':   ['<c-n>'],
-    \ 'PrtSelectMove("k")':   ['<c-e>'],
-    \ 'PrtCurLeft()':         ['<c-y>'],
-    \ }
+    " FZF
+    nnoremap <silent> <C-P> :<C-U>FZF --bind=ctrl-n:down,ctrl-e:up<CR>
+
+    let g:NERDTreeMapOpenExpl = "t"
+
   else " qwerty
     call UnmapWorkman()
   endif
@@ -71,21 +66,14 @@ function! UnmapWorkman()
   nnoremap <silent> <C-L> <C-W><C-L>
   nnoremap <silent> <C-H> <C-W><C-H>
 
-  let g:ctrlp_prompt_mappings = {
-    \ 'OpenMulti()':          ['<c-o>'],
-    \ 'CreateNewFile()':      ['<c-y>'],
-    \ 'PrtCurStart()':        ['<c-a>'],
-    \ 'PrtCurEnd()':          ['<c-e>'],
-    \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
-    \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
-    \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
-    \ 'PrtCurRight()':        ['<c-l>', '<right>'],
-    \ }
+  " FZF
+  nnoremap <silent> <C-P> :FZF<CR>
+
+  let g:NERDTreeMapOpenExpl = "e"
 endfunction
 
 function! LoadKeyboard()
-  " let keys = $keyboard
-  let keys = "qwerty"
+  let keys = $KEYBOARD_LAYOUT
   if (keys == "qwerty")
     call Keyboard("qwerty")
   else
@@ -98,5 +86,5 @@ augroup keyboardGroup
   autocmd VimEnter * call LoadKeyboard()
 augroup END
 
-:command! Qwerty call Keyboard("qwerty") | echom "Switched to Qwerty Keyboard Layout"
-:command! Workman call Keyboard("workman") | echom "Switched to Workman Keyboard Layout"
+:command! Qwerty call Keyboard("qwerty")
+:command! Workman call Keyboard("workman")
