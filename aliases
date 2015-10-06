@@ -1,0 +1,35 @@
+# OSX Specific aliases
+if [[ "$OSTYPE" == "darwin"* ]]; then
+
+  # Prefer macvim over stock vim
+  if [[ -s "/usr/local/bin/mvim" ]]; then
+    alias vim="mvim -v"
+  fi
+fi
+
+# Bundle
+alias bi='bundle install'
+alias be='bundle exec'
+
+# Git
+alias g='git'
+alias gs='git status'
+alias ga='git add .'
+alias gc='git commit -m' # requires you to type a commit message
+alias gp='git push'
+alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
+
+# Tmux
+alias ta='tmux attach -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+alias tksv='tmux kill-server'
+alias tkss='tmux kill-session -t'
+
+# Misc
+# Output all the term colors and their respective codes
+alias colors='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
+
+# Override custom term definitions
+alias ssh="TERM=xterm-256color ssh"
+

@@ -1,0 +1,160 @@
+# Create a new directory and enter it
+function md() {
+	mkdir -p "$@" && cd "$@"
+}
+
+
+# whois a domain or a URL
+function whois() {
+	local domain=$(echo "$1" | awk -F/ '{print $3}') # get domain from URL
+	if [ -z $domain ] ; then
+		domain=$1
+	fi
+	echo "Getting whois record for: $domain …"
+
+	# avoid recursion
+	/usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
+}
+
+
+# Style git diff tool
+function strip_diff_leading_symbols(){
+  color_code_regex=$'(\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])'
+
+  # simplify the unified patch diff header
+  sed -E "s/^($color_code_regex)diff --git .*$//g" | \
+  sed -E "s/^($color_code_regex)index .*$/\
+\1$(rule)/g" | \
+  sed -E "s/^($color_code_regex)\+\+\+(.*)$/\1\+\+\+\5\\
+\1$(rule)/g" | \
+
+  # actually strips the leading symbols
+  sed -E "s/^($color_code_regex)[\+\-]/\1 /g"
+}
+
+## Print a horizontal rule
+rule () {
+  printf "%$(tput cols)s\n"|tr " " "─"
+}
+
+
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+function fe() {
+  local file
+  file=$(fzf-tmux --query="$1" --select-1 --exit-0)
+  [ -n "$file" ] && ${EDITOR:-vim} "$file"
+}
+
+
+# fd - cd to selected directory
+function fd() {
+  local dir
+  dir=$(find ${1:-*} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf-tmux +m) &&
+  cd "$dir"
+}
+
+
+# fda - including hidden directories
+function fda() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux +m) && cd "$dir"
+}
+
+
+# cdf - cd into the directory of the selected file
+function cdf() {
+   local file
+   local dir
+   file=$(fzf-tmux +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
+
+# z - display z results within fzf-tmux pane
+unalias z 2> /dev/null
+function z() {
+  if [[ -z "$*" ]]; then
+    cd "$(_z -l 2>&1 | fzf-tmux +s --tac | sed 's/^[0-9,.]* *//')"
+  else
+    _z "$@"
+  fi
+}
+
+
+# fbr - checkout git branch (including remote branches)
+function fco() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+
+# fshow - git commit browser
+function fshow() {
+  local out sha q
+  while out=$(
+      git log --decorate=short --graph --oneline --color=always |
+      fzf-tmux --ansi --multi --no-sort --reverse --query="$q" --print-query); do
+    q=$(head -1 <<< "$out")
+    while read sha; do
+      [ -n "$sha" ] && git show --color=always $sha | less -R
+    done < <(sed '1d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
+  done
+}
+
+
+# fs [FUZZY PATTERN] - Select selected tmux session
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+function fs() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf-tmux --query="$1" --select-1 --exit-0) &&
+  tmux switch-client -t "$session"
+}
+
+
+# who is using the laptop's iSight camera?
+function camerausedby() {
+    echo "Checking to see who is using the iSight camera… 📷"
+    usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
+    echo -e "Recent camera uses:\n$usedby"
+}
+
+
+## Change cursor based on vi mode
+# TODO: This needs to be sync'd with cursor changes in vim, disable for now
+# echo -ne "\e[4 q" # initial underline
+zle-keymap-select() {
+  zle editor-info
+  if [[ ("$TERM" == "xterm-256color") ||
+        ("$TERM" == "screen-256color") ||
+        ("$TERM" == "xterm-256color-italic") ||
+        ("$TERM" == "screen-256color-italic") ]]; then
+
+    if [ $KEYMAP == vicmd ]; then
+      # the command mode for vi
+      # echo -ne "\e[2 q" # Solid block
+    else
+      # the insert mode for vi
+      # echo -ne "\e[4 q" # underline
+    fi
+  fi
+}
+
+## Set  layout
+workman() {
+  export KEYBOARD_LAYOUT="workman"
+  source ~/.zshrc
+  echo "Keyboard layout switched to $KEYBOARD_LAYOUT"
+}
+
+## Set qwerty layout
+qwerty() {
+  export KEYBOARD_LAYOUT="qwerty";
+  source ~/.zshrc
+  echo "Keyboard layout switched to $KEYBOARD_LAYOUT"
+}
+

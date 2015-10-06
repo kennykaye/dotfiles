@@ -9,10 +9,11 @@
 	excludesfile = ~/.gitignore
 	# Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error
 	whitespace = space-before-tab,indent-with-non-tab,trailing-space
+	pager = bash -lc 'diff-highlight | strip_diff_leading_symbols | less -r' -
 	editor = vim
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
-	ui = auto
+	ui = always
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -22,6 +23,11 @@
 	frag = magenta bold
 	old = red bold
 	new = green bold
+[color "diff-highlight"]
+	oldNormal = "red bold"
+	oldHighlight = "red bold 238"
+	newNormal = "green bold"
+	newHighlight = "green bold 238"
 [color "status"]
 	added = yellow
 	changed = green

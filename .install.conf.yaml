@@ -15,8 +15,12 @@
     ~/.zsh: zsh/
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
+    ~/.zprofile: zprofile
     ~/.zprezto: zprezto
     ~/.zpreztorc: zpreztorc
+    ~/.bash_profile: bash_profile
+    ~/.functions: functions
+    ~/.aliases: aliases
     ~/.config: config
     ~/.ycm_extra_conf.py: vim/settings/ycm_extra_conf.py
     ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/base16_kaye.vim: vim/lightline/base16_kaye.vim
@@ -24,10 +28,13 @@
 
 - shell:
     -
+      - "ln -sf $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight"
+      - "Installing improved diff highlighting"
+    -
       - "git submodule update --init --recursive --remote"
       - "Installing/updating submodules"
     -
-    - "tic terminfo/xterm-256color-italic.terminfo; tic terminfo/screen-256color-italic.terminfo"
+      - "tic terminfo/xterm-256color-italic.terminfo; tic terminfo/screen-256color-italic.terminfo"
       - "Install custom term info"
     -
       - "mkdir -p ~/.config/base16-shell ~/.vim/autoload ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme"
