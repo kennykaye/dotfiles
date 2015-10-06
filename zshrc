@@ -36,17 +36,6 @@ unset file
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
 export PATH="$PATH:$HOME/.rbenv/bin"
 
-# generic colouriser
-GRC=`which grc`
-if [ "$TERM" != dumb ] && [ -n "$GRC" ]
-    then
-        alias colourify="$GRC -es --colour=auto"
-        alias configure='colourify ./configure'
-        for app in {diff,make,gcc,g++,ping,traceroute}; do
-            alias "$app"='colourify '$app
-    done
-fi
-
 if [[ -s "/usr/local/bin/rbenv"  ]]; then
   # Initialize rbenv
   eval "$(rbenv init - zsh)"
@@ -84,7 +73,7 @@ export KEYTIMEOUT=1
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 # Default to qwerty layout
-if [[ !$KEYBOARD_LAYOUT ]]; then
+if [[ -z $KEYBOARD_LAYOUT ]]; then
   echo "KEYBOARD_LAYOUT=qwerty" >> ~/.profile
 fi
 

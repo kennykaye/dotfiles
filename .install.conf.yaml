@@ -15,7 +15,6 @@
     ~/.zsh: zsh/
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
-    ~/.zprofile: zprofile
     ~/.zprezto: zprezto
     ~/.zpreztorc: zpreztorc
     ~/.bash_profile: bash_profile
