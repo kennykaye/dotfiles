@@ -24,7 +24,6 @@ let g:lightline = {
       \   'fileencoding': 'MyFileencoding',
       \   'lineinfo': 'MyLineInfo',
 		  \   'percent': 'MyPercent',
-      \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ 'component_expand': {
       \   'syntasticError': 'SyntasticErrorCount',
@@ -60,7 +59,7 @@ endfunction
 
 " Displays line and column
 function! MyLineInfo()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|Gundo'
     return ' '. line(".") .":". col(".")
   endif
     return ''
@@ -84,7 +83,7 @@ endfunction
 
 " Displays file format
 function! MyFileformat()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar\|ags'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|ags'
     return winwidth(0) > 100 ? &fileformat : ''
   endif
   return ''
@@ -92,7 +91,7 @@ endfunction
 
 " Displays file type
 function! MyFiletype()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar\|ags'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|ags\|Gundo'
     return winwidth(0) > 100 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
   endif
   return ''
@@ -100,7 +99,7 @@ endfunction
 
 " Displays file encoding
 function! MyFileencoding()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar\|ags'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|ags'
     return winwidth(0) > 100 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endif
   return ''
@@ -108,7 +107,7 @@ endfunction
 
 " Displays current position in percent
 function! MyPercent()
-  if expand('%:t') !~? 'ControlP\|NERD\|fugitive\|Tagbar'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|Gundo'
     let byte = line2byte( line( "." ) ) + col( "." ) - 1
     let size = (line2byte( line( "$" ) + 1 ) - 1)
     let percent = (byte * 100) / size
@@ -127,8 +126,8 @@ endfunction
 " Displays file name
 function! MyFilename()
   let fname = expand('%:t')
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname =~ 'NERD' ? '' :
+  return fname =~ 'NERD' ? '' :
+        \ fname =~ 'Gundo' ? '' :
         \ fname =~ 'ags' ? '' :
         \ fname =~ 'Tagbar' ? 'Tagbar' :
         \ fname =~ 'fugitive' ? matchstr(fname, '\(fugitive\)\@<=[A-Za-z]*') :
@@ -139,7 +138,7 @@ endfunction
 
 " Displays current git branch
 function! MyFugitive()
-  if expand('%:t') !~? 'Tagbar\|ControlP\|NERD\|ags' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+  if expand('%:t') !~? 'Gundo\|Tagbar\|NERD\|ags' && &ft !~? 'vimfiler' && exists('*fugitive#head')
     let _ = fugitive#head()
     return strlen(_) ? ' '._ : ''
   endif
@@ -149,39 +148,11 @@ endfunction
 " Displays current vim mode
 function! MyMode()
   let fname = expand('%:t')
-  return  fname == 'ControlP' ? 'CtrlP' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+  return fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ fname =~ 'Gundo' ? 'Gundo' :
         \ fname =~ 'agsv' ? 'Search' :
         \ fname =~ 'agse' ? 'Replace' :
         \ strpart(lightline#mode(), 0, 1)
-endfunction
-
-" Displays title for CtrlP
-function! CtrlPMark()
-  if expand('%:t') =~ 'ControlP'
-    call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-          \ , g:lightline.ctrlp_next], 0)
-  else
-    return ''
-  endif
-endfunction
-
-let g:ctrlp_status_func = {
-  \ 'main': 'CtrlPStatusFunc_1',
-  \ 'prog': 'CtrlPStatusFunc_2',
-  \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
 endfunction
 
 " Gets number of syntastic errors
