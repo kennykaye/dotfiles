@@ -42,7 +42,7 @@ Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 
 " Language-specific plugins
 Plug 'tpope/vim-rails',                        { 'for': 'ruby' }
-Plug 'tpope/vim-endwise',                      { 'for': 'ruby' }
+Plug 'tpope/vim-endwise',                      { 'for': ['ruby', 'vim'] }
 Plug 'heavenshell/vim-jsdoc',                  { 'for': 'javascript' }
 Plug 'marijnh/tern_for_vim',                   { 'for': 'javascript', 'do': 'npm install' }
 Plug 'jelera/vim-javascript-syntax',           { 'for': 'javascript' }
