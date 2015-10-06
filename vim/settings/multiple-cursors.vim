@@ -1,8 +1,8 @@
 " ================ Multiple Cursors ========================
 
 " Highlighting
-hi! link multiple_cursors_cursor LightLineLeft_visual_0
-hi! link multiple_cursors_visual LightLineLeft_visual_0
+hi! link multiple_cursors_cursor Visual
+hi! link multiple_cursors_visual Visual
 
 " Disable YouCompleteMe when using vim-multiple-cursors
 function! Multiple_cursors_before()
