@@ -33,7 +33,8 @@ unset file
 #
 
 # User configuration
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
+export PATH="$PATH:$HOME/.rbenv/bin"
 
 # generic colouriser
 GRC=`which grc`
