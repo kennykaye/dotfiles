@@ -74,12 +74,12 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
 # Default to qwerty layout
 if [[ -z $KEYBOARD_LAYOUT ]]; then
-  echo "KEYBOARD_LAYOUT=qwerty" >> ~/.profile
+  export KEYBOARD_LAYOUT='qwerty'
 fi
 
 # Workman bindings
 if [[ $KEYBOARD_LAYOUT == 'workman' ]]; then
-  echo "KEYBOARD_LAYOUT=workman" >> ~/.profile
+  export KEYBOARD_LAYOUT='workman'
   export FZF_DEFAULT_OPTS="--extended --cycle --bind=ctrl-n:down,ctrl-e:up "
   bindkey -a 'y' vi-backward-char
   bindkey -a 'n' down-line-or-history
@@ -90,10 +90,13 @@ fi
 
 # Qwerty bindings
 if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
-  echo "KEYBOARD_LAYOUT=qwerty" >> ~/.profile
+  export KEYBOARD_LAYOUT='qwerty'
   export FZF_DEFAULT_OPTS="--extended --cycle"
   bindkey -a 'h' vi-backward-char
   bindkey -a 'j' down-line-or-history
   bindkey -a 'k' up-line-or-history
   bindkey -a 'l' vi-forward-char
 fi
+
+# Replace first line of ~/.profile with $KEYBOARD_LAYOUT
+sed -n "1s/.*/$KEYBOARD_LAYOUT/" ~/.profile
