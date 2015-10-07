@@ -63,6 +63,12 @@ function fda() {
 }
 
 
+# fkill - kill process
+function fkill() {
+  ps -ef | sed 1d | fzf-tmux -m | awk '{print $2}' | xargs kill -${1:-9}
+}
+
+
 # cdf - cd into the directory of the selected file
 function cdf() {
    local file
