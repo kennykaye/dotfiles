@@ -32,6 +32,7 @@ function strip_diff_leading_symbols(){
   sed -E "s/^($color_code_regex)[\+\-]/\1 /g"
 }
 
+
 ## Print a horizontal rule
 rule () {
   printf "%$(tput cols)s\n"|tr " " "─"
@@ -125,24 +126,29 @@ function camerausedby() {
 
 
 ## Change cursor based on vi mode
-# TODO: This needs to be sync'd with cursor changes in vim, disable for now
-# echo -ne "\e[4 q" # initial underline
-zle-keymap-select() {
+#   - Insert mode displays _ cursor
+#   - Command mode displays █ cursor
+zle-keymap-select () {
   zle editor-info
-  # if [[ ("$TERM" == "xterm-256color") ||
-  #       ("$TERM" == "screen-256color") ||
-  #       ("$TERM" == "xterm-256color-italic") ||
-  #       ("$TERM" == "screen-256color-italic") ]]; then
+  if [[ ("$TERM" == "xterm-256color") ||
+        ("$TERM" == "screen-256color") ||
+        ("$TERM" == "xterm-256color-italic") ||
+        ("$TERM" == "screen-256color-italic") ]]; then
 
-  #   if [ $KEYMAP == vicmd ]; then
-  #     # the command mode for vi
-  #     echo -ne "\e[2 q" # Solid block
-  #   else
-  #     # the insert mode for vi
-  #     echo -ne "\e[4 q" # underline
-  #   fi
-  # fi
+    if [ $KEYMAP == "vicmd" ]; then
+      echo -ne "\e[2 q"
+    else
+      echo -ne "\e[4 q"
+    fi
+  fi
 }
+
+
+## Default to insert mode
+zle-line-init () {
+  zle -K viins
+}
+
 
 ## Set  layout
 workman() {
@@ -150,6 +156,7 @@ workman() {
   source ~/.zshrc
   echo "Keyboard layout switched to $KEYBOARD_LAYOUT"
 }
+
 
 ## Set qwerty layout
 qwerty() {
