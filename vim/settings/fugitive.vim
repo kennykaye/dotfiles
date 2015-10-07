@@ -7,7 +7,7 @@
 
 " Mappings
 :noremap <silent><leader>b :Gblame<CR>
-:noremap <silent><leader>w :Gdiff<CR>
+:noremap <silent><leader>d :Gdiff<CR>
 
 " Every time you open a git object using fugitive it creates a new buffer.
 " This means that your buffer listing can quickly become swamped with
