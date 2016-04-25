@@ -18,6 +18,10 @@ alias be='bundle exec'
 # Git
 alias g='git'
 alias gs='git status'
+alias gsmu='git submodule update --recursive'
+alias gsmud='git submodule foreach git checkout develop && git submodule foreach git pull origin develop'
+alias gsmi='git submodule init'
+alias grpo='git remote prune origin'
 alias ga='git add .'
 alias gc='git commit -m' # requires you to type a commit message
 alias gp='git push'
