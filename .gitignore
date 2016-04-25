@@ -1,3 +1,4 @@
 vim/bundle/
 !vim/bundle/vim-plug
 config/configstore
+vim/init.vim

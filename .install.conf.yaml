@@ -10,6 +10,7 @@
     ~/.tmux: tmux/
     ~/.vim: vim/
     ~/.vimrc: vimrc
+    ~/.vim/init.vim: vimrc
     ~/.gvimrc: gvimrc
     ~/.fzf: fzf/
     ~/.zsh: zsh/
