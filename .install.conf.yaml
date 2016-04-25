@@ -10,7 +10,6 @@
     ~/.tmux: tmux/
     ~/.vim: vim/
     ~/.vimrc: vimrc
-    ~/.vim/init.vim: vimrc
     ~/.gvimrc: gvimrc
     ~/.fzf: fzf/
     ~/.zsh: zsh/
@@ -22,6 +21,8 @@
     ~/.functions: functions
     ~/.aliases: aliases
     ~/.config: config
+    ~/.config/nvim: vim/
+    ~/.config/nvim/init.vim: vimrc
     ~/.ycm_extra_conf.py: vim/settings/ycm_extra_conf.py
     ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/base16_kaye.vim: vim/lightline/base16_kaye.vim
     ~/.zprezto/modules/prompt/functions/prompt_kaye_setup: zsh/prompt_kaye_setup
