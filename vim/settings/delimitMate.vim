@@ -5,3 +5,4 @@ augroup load_delimitMate
 augroup END
 
 let delimitMate_expand_cr = 2
+let delimitMate_exclude_regions = "String"

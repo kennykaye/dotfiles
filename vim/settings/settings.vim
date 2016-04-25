@@ -26,12 +26,14 @@ set splitbelow                 " open new split below current split
 set splitright                 " open new split to the right
 set nrformats+=alpha           " Allow integers to be incremented/decremented
 set nohlsearch                 " Prevent search results from being highlighted
+set colorcolumn=81             " Highlight column
 
 " ================ Appearance ========================
 
 syntax on                       " enable syntax highlighting
 set fillchars+=vert:│
 hi! link VertSplit Conceal
+" hi! ColorColumn ctermbg=236 guibg=#393939
 
 " Vim background and colorscheme set based on terminal profile
 if filereadable(expand("~/.vimrc_background"))
@@ -78,7 +80,7 @@ endif
 :command! FormatJSON %!python -m json.tool
 
 " Format XML Documents
-:command! FormatXML %!xmlling --format %
+:command! FormatXML %!xmllint --format %
 
 
 " Replace the current buffer with a new buffer

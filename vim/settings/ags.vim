@@ -37,6 +37,7 @@ if executable('ag')
   " File type specific settings
   augroup ags_settings
     autocmd!
+    autocmd BufNewFile,BufRead,BufEnter *.agsv set filetype=agsv
     autocmd Filetype agsv setlocal nonumber norelativenumber
   augroup END
 
