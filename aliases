@@ -5,6 +5,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   if [[ -s "/usr/local/bin/mvim" ]]; then
     alias vim="mvim -v"
   fi
+
+  if [[ -s "/usr/local/bin/nvim" ]]; then
+    alias vim="nvim"
+  fi
 fi
 
 # Bundle
@@ -32,4 +36,3 @@ alias colors='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do 
 
 # Override custom term definitions
 alias ssh="TERM=xterm-256color ssh"
-

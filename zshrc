@@ -47,8 +47,9 @@ if [[ -z "$LANG" ]]; then
 fi
 
 # Editors
-export EDITOR='vim'
+export EDITOR='nvim'
 export PAGER='less'
+
 
 # Colorize grep output
 export GREP_OPTIONS='--color=always'
