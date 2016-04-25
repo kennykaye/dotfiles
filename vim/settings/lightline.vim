@@ -3,12 +3,12 @@
 
 " Lightline configuration
 let g:lightline = {
-      \ 'colorscheme': 'base16_kaye',
+      \ 'colorscheme': g:lightlineTheme,
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \           [ 'filename' ],
       \           [ 'fugitive' ] ],
-      \   'right': [ [ 'syntasticError', 'syntasticWarning', 'lineinfo' ],
+      \   'right': [ [ 'error', 'warning', 'lineinfo' ],
       \            ['percent'],
       \            [ 'fileencoding', 'filetype', 'filesize' ] ]
       \ },
@@ -26,12 +26,12 @@ let g:lightline = {
 		  \   'percent': 'MyPercent',
       \ },
       \ 'component_expand': {
-      \   'syntasticError': 'SyntasticErrorCount',
-      \   'syntasticWarning': 'SyntasticWarningCount',
+      \   'error': 'ErrorCount',
+      \   'warning': 'WarningCount',
       \ },
       \ 'component_type': {
-      \   'syntasticError': 'error',
-      \   'syntasticWarning': 'warning',
+      \   'error': 'error',
+      \   'warning': 'warning',
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
@@ -39,12 +39,14 @@ let g:lightline = {
 			\ 'tabline_subseparator': { 'left': " ", 'right': "" }
       \ }
 
+
 " Change highlighting on tabline to add more space around tabs
 augroup TabHighlightGroup
   :autocmd!
   :autocmd VimEnter * hi! link LightLineLeft_tabline_tabsel_0 LightLineLeft_normal_tabsel_tabsel
   :autocmd VimEnter * hi! link LightlineLeft_tabline_tabsel_1 LightLineLeft_normal_tabsel_tabsel
 augroup END
+
 
 " Displays modified flag
 function! MyModified()
@@ -57,13 +59,15 @@ function! MyModified()
   endif
 endfunction
 
+
 " Displays line and column
 function! MyLineInfo()
-  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|Gundo'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|Gundo' && &filetype !~? 'fzf'
     return ' '. line(".") .":". col(".")
   endif
     return ''
 endfunction
+
 
 " Displays filesize
 function! MyFilesize()
@@ -81,33 +85,37 @@ function! MyFilesize()
   return ''
 endfunction
 
+
 " Displays file format
 function! MyFileformat()
-  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|ags'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|ags' && &filetype !~? 'fzf'
     return winwidth(0) > 100 ? &fileformat : ''
   endif
   return ''
 endfunction
 
+
 " Displays file type
 function! MyFiletype()
-  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|ags\|Gundo'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|ags\|Gundo' && &filetype !~? 'fzf'
     return winwidth(0) > 100 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
   endif
   return ''
 endfunction
 
+
 " Displays file encoding
 function! MyFileencoding()
-  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|ags'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|ags' && &filetype !~? 'fzf'
     return winwidth(0) > 100 ? (strlen(&fenc) ? &fenc : &enc) : ''
   endif
   return ''
 endfunction
 
+
 " Displays current position in percent
 function! MyPercent()
-  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|Gundo'
+  if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|Gundo' && &filetype !~? 'fzf'
     let byte = line2byte( line( "." ) ) + col( "." ) - 1
     let size = (line2byte( line( "$" ) + 1 ) - 1)
     let percent = (byte * 100) / size
@@ -123,6 +131,7 @@ function! MyReadonly()
   return &ft !~? 'help' && &readonly ? '' : ''
 endfunction
 
+
 " Displays file name
 function! MyFilename()
   let fname = expand('%:t')
@@ -130,11 +139,14 @@ function! MyFilename()
         \ fname =~ 'Gundo' ? '' :
         \ fname =~ 'ags' ? '' :
         \ fname =~ 'Tagbar' ? 'Tagbar' :
+        \ fname =~ 'lldb' ? matchstr(fname, '\(\[lldb\]\)\@<=[A-Za-z]*') :
         \ fname =~ 'fugitive' ? matchstr(fname, '\(fugitive\)\@<=[A-Za-z]*') :
+        \ &ft =~ 'fzf' ? '' :
         \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
         \ ('' != fname ? fname : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
+
 
 " Displays current git branch
 function! MyFugitive()
@@ -145,6 +157,7 @@ function! MyFugitive()
   return ''
 endfunction
 
+
 " Displays current vim mode
 function! MyMode()
   let fname = expand('%:t')
@@ -152,23 +165,42 @@ function! MyMode()
         \ fname =~ 'Gundo' ? 'Gundo' :
         \ fname =~ 'agsv' ? 'Search' :
         \ fname =~ 'agse' ? 'Replace' :
+        \ &ft =~ 'fzf' ? 'FZF' :
         \ strpart(lightline#mode(), 0, 1)
 endfunction
 
-" Gets number of syntastic errors
-function! SyntasticErrorCount()
+
+" Gets number of errors
+function! ErrorCount()
+  let errors = ''
+
   if exists("*SyntasticStatuslineFlag")
     let flag = SyntasticStatuslineFlag()
-    return matchstr(flag, '\(E\)\@<=\d*')
+    let errors = matchstr(flag, '\(E\)\@<=\d*')
   endif
-  return ''
+
+  if exists("*youcompleteme#GetErrorCount")
+    let ycmErrors = youcompleteme#GetErrorCount()
+    let errors = ycmErrors ? errors + ycmErrors : errors
+  endif
+
+  return errors
 endfunction
 
-" Gets number of syntastic warnings
-function! SyntasticWarningCount()
+
+" Gets number of warnings
+function! WarningCount()
+  let warnings = ''
+
   if exists("*SyntasticStatuslineFlag")
     let flag = SyntasticStatuslineFlag()
-    return matchstr(flag, '\(W\)\@<=\d*')
+    let warnings = matchstr(flag, '\(W\)\@<=\d*')
   endif
-  return ''
+
+  if exists("*youcompleteme#GetWarningCount")
+    let ycmWarnings = youcompleteme#GetWarningCount()
+    let warnings = ycmWarnings ? warnings + ycmWarnings : warnings
+  endif
+
+  return warnings
 endfunction

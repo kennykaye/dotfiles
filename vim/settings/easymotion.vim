@@ -10,11 +10,20 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
 
 " Highlighting
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  LineNr
+if ($ITERM_PROFILE == "light")
+  hi link EasyMotionTarget SpecialChar
+  hi link EasyMotionShade  VertSplit
 
-hi link EasyMotionTarget2First String
-hi link EasyMotionTarget2Second String
+  hi link EasyMotionTarget2First String
+  hi link EasyMotionTarget2Second String
 
-hi link EasyMotionIncSearch Type
+  hi link EasyMotionIncSearch Directory
+else
+  hi link EasyMotionTarget ErrorMsg
+  hi link EasyMotionShade  LineNr
 
+  hi link EasyMotionTarget2First String
+  hi link EasyMotionTarget2Second String
+
+  hi link EasyMotionIncSearch Type
+endif

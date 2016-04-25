@@ -7,16 +7,22 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"  ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Source Base16
-if [[ -s "$HOME/.config/base16-shell/base16-eighties.dark.sh" ]]; then
-  source "$HOME/.config/base16-shell/base16-eighties.dark.sh"
-fi
-
 # Source Z jump-navigation
 source ~/.zsh/z/z.sh
 
 # Source fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Source Base16
+if [[ $ITERM_PROFILE == 'dark' ]]; then
+  if [[ -s "$HOME/.config/base16-shell/base16-eighties.dark.sh" ]]; then
+    source "$HOME/.config/base16-shell/base16-eighties.dark.sh"
+  fi
+else
+  if [[ -s "$HOME/.config/base16-shell/base16-solarized.light.sh" ]]; then
+    source "$HOME/.config/base16-shell/base16-solarized.light.sh"
+  fi
+fi
 
 # Load our dotfiles like ~/.functions, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
@@ -26,6 +32,8 @@ for file in ~/.{extra,aliases,functions}; do
 done
 unset file
 
+# Set correct iterm profile and vim colors
+setItermProfile; clear
 
 
 #
@@ -33,8 +41,11 @@ unset file
 #
 
 # User configuration
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
-export PATH="$PATH:$HOME/.rbenv/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+
+export MANPATH="/opt/local/man:/usr/local/man:/usr/bin/:$MANPATH"
 
 if [[ -s "/usr/local/bin/rbenv"  ]]; then
   # Initialize rbenv
@@ -72,6 +83,14 @@ export KEYTIMEOUT=1
 
 # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
+export FZF_TMUX_HEIGHT='33%'
+
+if [ $ITERM_PROFILE == 'light' ]; then
+  export FZF_COLOR="--color=light,bg+:-1,bg:-1,fg+:012,hl+:017,hl:017
+                    --color=info:002,prompt:012"
+else
+  export FZF_COLOR=""
+fi
 
 # Default to qwerty layout
 if [[ -z $KEYBOARD_LAYOUT ]]; then
@@ -80,24 +99,18 @@ fi
 
 # Workman bindings
 if [[ $KEYBOARD_LAYOUT == 'workman' ]]; then
-  export KEYBOARD_LAYOUT='workman'
-  export FZF_DEFAULT_OPTS="--extended --cycle --bind=ctrl-n:down,ctrl-e:up "
+  export FZF_DEFAULT_OPTS="--extended --cycle --bind=ctrl-n:down,ctrl-e:up $FZF_COLOR"
   bindkey -a 'y' vi-backward-char
   bindkey -a 'n' down-line-or-history
-  bindkey -a 'y' vi-backward-char
   bindkey -a 'e' up-line-or-history
   bindkey -a 'o' vi-forward-char
 fi
 
 # Qwerty bindings
 if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
-  export KEYBOARD_LAYOUT='qwerty'
-  export FZF_DEFAULT_OPTS="--extended --cycle"
+  export FZF_DEFAULT_OPTS="--extended --cycle $FZF_COLOR"
   bindkey -a 'h' vi-backward-char
   bindkey -a 'j' down-line-or-history
   bindkey -a 'k' up-line-or-history
   bindkey -a 'l' vi-forward-char
 fi
-
-# Replace first line of ~/.profile with $KEYBOARD_LAYOUT
-sed -n "1s/.*/$KEYBOARD_LAYOUT/" ~/.profile

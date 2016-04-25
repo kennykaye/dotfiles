@@ -1,6 +1,5 @@
 " ================ General Settings ========================
 
-set nocompatible               " be iMproved, required
 set ignorecase
 set smartcase
 set expandtab
@@ -9,11 +8,12 @@ set tabstop=2
 set timeoutlen=700
 set ttimeoutlen=0
 set wildmenu                   " visual autocomplete for command menu
+set exrc                       " load project-specific vimrc's
+set secure                     " limit the capability of those vimrc's
 set laststatus=2
 set backspace=indent,eol,start " backspace through lines
 set clipboard=unnamed          " tmux and system copy/paste
 set lazyredraw                 " only redraw when necessary
-set ttyfast                    " smoother screen redraw
 set number                     " show current line numbers
 set cursorline                 " highlight current line
 set noshowmode                 " lightline renders mode
@@ -24,15 +24,29 @@ set mouse=a                    " enable mouse scrolling
 set completeopt-=preview       " disable preview scratch buffer
 set splitbelow                 " open new split below current split
 set splitright                 " open new split to the right
+set nrformats+=alpha           " Allow integers to be incremented/decremented
+set nohlsearch                 " Prevent search results from being highlighted
 
 " ================ Appearance ========================
 
-syntax on                      " enable syntax highlighting
-set background=dark            " set dark background
-let base16colorspace=256       " Use 256 base16 colorscheme
-colorscheme base16-kaye
+syntax on                       " enable syntax highlighting
 set fillchars+=vert:│
 hi! link VertSplit Conceal
+
+" Vim background and colorscheme set based on terminal profile
+if filereadable(expand("~/.vimrc_background"))
+  source ~/.vimrc_background
+else
+  set background=dark            " set dark background
+  colorscheme base16-kaye
+  let g:lightlineTheme=base16-kaye
+endif
+
+if !has('nvim')
+  set nocompatible               " be iMproved, required
+  set ttyfast                    " smoother screen redraw
+  let base16colorspace=256       " Use 256 base16 colorscheme
+endif
 
 " ================ Commands ========================
 
@@ -43,6 +57,7 @@ hi! link VertSplit Conceal
 :command! Wa wa
 :command! WQ wq
 :command! Wq wq
+:command! Wqa wqa
 :command! Vimrc :tabe ~/.vimrc
 :command! Source so ~/.vimrc
 :command! Path :echo expand('%:p')
@@ -133,3 +148,10 @@ nmap <space> zz
 nmap n nzz
 nmap N Nzz
 
+" nvim specific config
+if has('nvim')
+  " let g:python3_host_prog = '/usr/local/bin/python3'
+  " let g:python_host_prog = '/usr/local/bin/python'
+  let g:python_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif

@@ -14,6 +14,7 @@ augroup indentationSettings
   autocmd BufRead * :IndentLinesEnable
   autocmd Filetype php setlocal ts=4 sw=4 expandtab
   autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+  autocmd Filetype python setlocal ts=2 sw=2 expandtab
   autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
   autocmd Filetype json setlocal ts=4 sw=4 expandtab
   autocmd Filetype html,html.handlebars setlocal ts=4 sw=4 expandtab
@@ -34,12 +35,16 @@ augroup END
 
 " Highlight text past 80 characters
 augroup vimrc_autocmds
-  autocmd!
-  autocmd BufEnter * match OverLength /\%81v.*/
+  " autocmd!
+  " autocmd BufEnter * match OverLength /\%81v.*/
 augroup END
 
 " trim all whitespace on save
-autocmd BufWritePre * call TrimWhitespace()
+augroup FileSave
+  autocmd!
+  autocmd BufWritePre * call TrimWhitespace()
+augroup END
+
 function! TrimWhitespace()
   let line = line('.')
   let col = col('.')
