@@ -102,43 +102,15 @@ let mapleader = ","
 let maplocalleader = ","
 
 " Provide easier tab navigation
-:map <silent> <F6> :tabn<kEnter>
-:map <silent> <F5> :tabp<kEnter>
-:map <silent> <End> :tabn<kEnter>
-:map <silent> <Home> :tabp<kEnter>
+map <silent> <F6> :tabn<kEnter>
+map <silent> <F5> :tabp<kEnter>
+map <silent> <End> :tabn<kEnter>
+map <silent> <Home> :tabp<kEnter>
 
-if &term =~ '^screen'
-    " tmux will send xterm-style keys when its xterm-keys option is on
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-endif
+" Increment / Decrement numbers
+nnoremap <silent> - <C-x>
+nnoremap <silent> + <C-a>
 
-" Changing cursor shape per mode
-" 1 or 0 -> blinking block
-" 2 -> solid block
-" 3 -> blinking underscore
-" 4 -> solid underscore
-if exists('$TMUX')
-    " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
-    let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
-    let &t_EI .= "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
-    silent !echo -ne "\033Ptmux;\033\033[2 q\033\\"
-    autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
-    autocmd VimEnter * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
-else
-    let &t_SI .= "\<Esc>[4 q"
-    let &t_EI .= "\<Esc>[2 q"
-    autocmd VimLeave * silent !echo -ne "\033[0 q"
-    autocmd VimEnter * silent !echo -ne "\033[0 q"
-endif
-
-
-" Show the hilighting informationennoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>for group under cursor
 :map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

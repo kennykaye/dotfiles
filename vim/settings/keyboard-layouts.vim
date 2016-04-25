@@ -64,7 +64,10 @@ function! UnmapWorkman()
   nnoremap <silent> <C-J> <C-W><C-J>
   nnoremap <silent> <C-K> <C-W><C-K>
   nnoremap <silent> <C-L> <C-W><C-L>
-  nnoremap <silent> <C-H> <C-W><C-H>
+  nnoremap <silent> <BS> <C-W><C-H> " Fixes a bug where H was being interpreted as backspace
+
+  nnoremap <silent> <S-L> 20l
+  nnoremap <silent> <S-H> 20h
 
   " FZF
   nnoremap <silent> <C-P> :FZF<CR>

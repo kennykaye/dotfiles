@@ -215,6 +215,7 @@ zle-line-init () {
 ## Set  layout
 workman() {
   export KEYBOARD_LAYOUT="workman"
+  sed -i "" "1s/.*/export KEYBOARD_LAYOUT='workman'/" ~/.profile
   source ~/.zshrc
   echo "Keyboard layout switched to $KEYBOARD_LAYOUT"
 }
@@ -223,7 +224,9 @@ workman() {
 ## Set qwerty layout
 qwerty() {
   export KEYBOARD_LAYOUT="qwerty";
+  sed -i "" "1s/.*/export KEYBOARD_LAYOUT='qwerty'/" ~/.profile
   source ~/.zshrc
   echo "Keyboard layout switched to $KEYBOARD_LAYOUT"
 }
+
 
