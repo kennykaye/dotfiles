@@ -89,6 +89,13 @@ truecolor() {
   }'
 }
 
+# Search history from previous line
+up-line-or-search-prefix () {
+  local CURSOR_before_search=$CURSOR
+  zle up-line-or-search "$LBUFFER"
+  CURSOR=$CURSOR_before_search
+}
+
 ## Print a horizontal rule
 rule () {
   printf "%$(tput cols)s\n"|tr " " "─"

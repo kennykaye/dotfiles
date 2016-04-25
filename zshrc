@@ -72,6 +72,9 @@ bindkey '^w' backward-kill-word
 # Paste fzf output to command line
 bindkey '^P' fzf-file-widget
 
+# Use prefixed search as widget
+zle -N up-line-or-search-prefix
+
 # enable extended globbing
 setopt extended_glob
 
@@ -102,7 +105,7 @@ if [[ $KEYBOARD_LAYOUT == 'workman' ]]; then
   export FZF_DEFAULT_OPTS="--extended --cycle --bind=ctrl-n:down,ctrl-e:up $FZF_COLOR"
   bindkey -a 'y' vi-backward-char
   bindkey -a 'n' down-line-or-history
-  bindkey -a 'e' up-line-or-history
+  bindkey -a 'e' up-line-or-search-prefix
   bindkey -a 'o' vi-forward-char
 fi
 
@@ -111,6 +114,6 @@ if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
   export FZF_DEFAULT_OPTS="--extended --cycle $FZF_COLOR"
   bindkey -a 'h' vi-backward-char
   bindkey -a 'j' down-line-or-history
-  bindkey -a 'k' up-line-or-history
+  bindkey -a 'k' up-line-or-search-prefix
   bindkey -a 'l' vi-forward-char
 fi
