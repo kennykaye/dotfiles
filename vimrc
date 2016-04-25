@@ -52,7 +52,16 @@ Plug 'hail2u/vim-css3-syntax',                 { 'for': ['css', 'scss', 'sass'] 
 Plug 'cakebaker/scss-syntax.vim',              { 'for': ['scss', 'sass'] }
 Plug 'mustache/vim-mustache-handlebars',       { 'for': 'html.handlebars' }
 Plug 'octol/vim-cpp-enhanced-highlight',       { 'for': 'cpp' }
+Plug 'tpope/vim-markdown',                     { 'for': 'markdown' }
 Plug 'aldafu/vim-widl',                        { 'for': ['widl', 'webidl'] }
+Plug 'guns/vim-clojure-static',                { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace',                    { 'for': 'clojure' }
+Plug 'luochen1990/rainbow',                    { 'for': 'clojure' }
+
+" Neovim specific plugins
+if has('nvim')
+  Plug 'critiqjo/lldb.nvim',      { 'for': ['c', 'cpp'] }
+endif
 
 call plug#end()
 

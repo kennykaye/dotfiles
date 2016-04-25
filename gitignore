@@ -34,6 +34,11 @@ Thumbs.db
 composer.phar
 composer.lock
 
+# clojure
+.lein-repl-history
+.nrepl-port
+pom.xml
+
 # VIM
 *.swp
 *.swk
