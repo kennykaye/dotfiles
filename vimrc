@@ -22,13 +22,15 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tell-k/vim-browsereload-mac'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'sjl/gundo.vim'
+Plug 'honza/vim-snippets'
+Plug 'Valloric/YouCompleteMe',  { 'do': './install.py --clang-completer' }
 
 " Lazy-load plugins
 Plug 'majutsushi/tagbar',       { 'on': 'TagbarToggle' }
 Plug 'tpope/vim-commentary',    { 'on': [
-                                \   '<Plug>Commentary',
-                                \   '<Plug>CommentaryLine'
-                                \   ] }
+                               \   '<Plug>Commentary',
+                               \   '<Plug>CommentaryLine'
+                               \   ] }
 
 Plug 'mattn/emmet-vim',         { 'on': 'EmmetInstall' }
 Plug 'rizzatti/dash.vim',       { 'on': 'Dash' }
@@ -36,8 +38,6 @@ Plug 'Raimondi/delimitMate',    { 'on': [] }
 Plug 'junegunn/goyo.vim',       { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim',  { 'on': 'Limelight' }
 Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
-Plug 'honza/vim-snippets',      { 'on': [] }
-Plug 'Valloric/YouCompleteMe',  { 'do': './install.py --clang-completer', 'on': [] }
 Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 
 " Language-specific plugins
@@ -69,7 +69,7 @@ call plug#end()
 " Settings are stored in seperate files and then sourced
 exe 'source' '~/.vim/settings/settings.vim'
 for fpath in split(globpath('~/.vim/settings', '*.vim'), '\n')
-  if (fpath != 'settings')
-    exe 'source' fpath
-  endif
+ if (fpath != 'settings')
+   exe 'source' fpath
+ endif
 endfor

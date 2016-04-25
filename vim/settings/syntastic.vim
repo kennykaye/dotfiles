@@ -53,7 +53,9 @@ let g:syntastic_html_checkers = ['']
 let g:syntastic_php_phpcs_args = PhpcsArgs()
 let g:syntastic_javascript_checkers = JavascriptCheckers()
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
+let g:syntastic_cpp_checkers = ['']
 
 augroup AutoSyntastic
   autocmd!
