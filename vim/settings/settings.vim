@@ -11,6 +11,7 @@ set wildmenu                   " visual autocomplete for command menu
 set exrc                       " load project-specific vimrc's
 set secure                     " limit the capability of those vimrc's
 set laststatus=2
+set noswapfile
 set backspace=indent,eol,start " backspace through lines
 set clipboard=unnamed          " tmux and system copy/paste
 set lazyredraw                 " only redraw when necessary

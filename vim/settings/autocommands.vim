@@ -13,6 +13,8 @@ augroup indentationSettings
   autocmd!
   autocmd BufRead * :IndentLinesEnable
   autocmd Filetype php setlocal ts=4 sw=4 expandtab
+  autocmd Filetype cpp setlocal ts=4 sw=4 expandtab
+  autocmd Filetype djinni setlocal ts=4 sw=4 expandtab
   autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
   autocmd Filetype python setlocal ts=2 sw=2 expandtab
   autocmd Filetype javascript setlocal ts=2 sw=2 expandtab

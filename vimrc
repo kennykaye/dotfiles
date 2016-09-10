@@ -1,3 +1,4 @@
+" ======================== Plugins ========================
 " Initialize vim-plug
 call plug#begin('~/.vim/bundle')
 
@@ -9,6 +10,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
 Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'SirVer/ultisnips'
@@ -23,7 +25,9 @@ Plug 'tell-k/vim-browsereload-mac'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'sjl/gundo.vim'
 Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe',  { 'do': './install.py --clang-completer' }
+Plug 'rdnetto/YCM-Generator'
+" Plug 'Valloric/YouCompleteMe',  { 'do': './install.py --clang-completer' }
+Plug 'oblitum/YouCompleteMe',  { 'do': './install.py --clang-completer' }
 
 " Lazy-load plugins
 Plug 'majutsushi/tagbar',       { 'on': 'TagbarToggle' }
@@ -52,6 +56,7 @@ Plug 'hail2u/vim-css3-syntax',                 { 'for': ['css', 'scss', 'sass'] 
 Plug 'cakebaker/scss-syntax.vim',              { 'for': ['scss', 'sass'] }
 Plug 'mustache/vim-mustache-handlebars',       { 'for': 'html.handlebars' }
 Plug 'octol/vim-cpp-enhanced-highlight',       { 'for': 'cpp' }
+Plug 'vim-scripts/a.vim',                      { 'for': ['cpp', 'hpp', 'c', 'h'] }
 Plug 'tpope/vim-markdown',                     { 'for': 'markdown' }
 Plug 'aldafu/vim-widl',                        { 'for': ['widl', 'webidl'] }
 Plug 'guns/vim-clojure-static',                { 'for': 'clojure' }
@@ -65,8 +70,9 @@ endif
 
 call plug#end()
 
-" ================ Plugin-Specific Settings ========================
+" ======================== Source Settings ========================
 " Settings are stored in seperate files and then sourced
+
 exe 'source' '~/.vim/settings/settings.vim'
 for fpath in split(globpath('~/.vim/settings', '*.vim'), '\n')
  if (fpath != 'settings')
