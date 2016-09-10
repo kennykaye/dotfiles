@@ -35,6 +35,10 @@ let g:lightline = {
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'tabline': {
+      \     'left': [ [ 'tabs' ] ],
+      \     'right': [ [ '' ] ]
+      \   },
 			\ 'tabline_separator': { 'left': " ", 'right': "" },
 			\ 'tabline_subseparator': { 'left': " ", 'right': "" }
       \ }

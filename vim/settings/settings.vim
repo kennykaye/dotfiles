@@ -27,13 +27,15 @@ set splitright                 " open new split to the right
 set nrformats+=alpha           " Allow integers to be incremented/decremented
 set nohlsearch                 " Prevent search results from being highlighted
 set colorcolumn=81             " Highlight column
+set listchars+=extends:>
+set listchars+=precedes:<
 
-" ================ Appearance ========================
+" ======================== Appearance ========================
 
 syntax on                       " enable syntax highlighting
+syntax sync minlines=200
 set fillchars+=vert:│
 hi! link VertSplit Conceal
-" hi! ColorColumn ctermbg=236 guibg=#393939
 
 " Vim background and colorscheme set based on terminal profile
 if filereadable(expand("~/.vimrc_background"))
@@ -127,5 +129,6 @@ if has('nvim')
   " let g:python3_host_prog = '/usr/local/bin/python3'
   " let g:python_host_prog = '/usr/local/bin/python'
   let g:python_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+  set termguicolors
 endif
