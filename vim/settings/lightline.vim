@@ -83,7 +83,7 @@ function! MyFilesize()
         \     bytes >= mb ? bytes / mb . " mb" :
         \     bytes >= kb ? bytes / kb . " kb" :
         \     bytes > 1 ? bytes . ' bytes' : ''
-  if &filetype =~? 'javascript\|html\|scss\|css\|html.handlebars'
+  if &filetype =~? 'html\|css\|html.handlebars'
     return winwidth(0) > 100 ? fsize : ''
   endif
   return ''

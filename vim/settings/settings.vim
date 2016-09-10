@@ -1,4 +1,4 @@
-" ================ General Settings ========================
+" ======================== General Settings ========================
 
 set ignorecase
 set smartcase
@@ -19,7 +19,10 @@ set number                     " show current line numbers
 set cursorline                 " highlight current line
 set noshowmode                 " lightline renders mode
 set visualbell                 " disable error bell
-set scrolloff=5                " set minimum number of lines above and below cursor
+set scrolloff=5                " set minimum number of lines above/below cursor
+set sidescroll=1               " enable horizontal scrolling
+set sidescrolloff=1            " horizontal scrolling is offset by '>'
+set nowrap                     " disable autowrapping
 set autoread                   " automatically re-read changed files
 set mouse=a                    " enable mouse scrolling
 set completeopt-=preview       " disable preview scratch buffer
@@ -53,7 +56,7 @@ if !has('nvim')
   let base16colorspace=256       " Use 256 base16 colorscheme
 endif
 
-" ================ Commands ========================
+" ======================== Commands ========================
 
 " General Commands
 :command! Q q

@@ -14,3 +14,8 @@ let g:easy_align_delimiters['/'] = {
 \                                     'ignore_groups': ['!Comment'] }
 
 let g:easy_align_delimiters['"'] = { 'pattern': '"', 'ignore_groups': ['String'] }
+
+augroup MarkdownTables
+  au!
+  au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
+augroup END
