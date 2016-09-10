@@ -2,6 +2,18 @@
 set rtp +=~/.fzf
 
 let g:fzf_tmux_height='33%'
+" let g:fzf_prefer_tmux = 1
+" Currently this breaks neovim
+
+" Select colorscheme
+nnoremap <silent> <Leader>C :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':    'colo',
+\   'options': '+m',
+\   'left':    30
+\ })<CR>
 
 function! s:ag_to_qf(line)
   let parts = split(a:lines, ':')
@@ -45,5 +57,5 @@ if executable('ag')
   " Actually maps to <C-/>, however Vim can only map printable characters.
   " This is a horrible hack and probably only works in specific terminal
   " environments.
-  nnoremap <silent> <C-_> :<C-U>Ag<CR>
+  " nnoremap <silent> <C-_>:Ag<CR>
 endif
