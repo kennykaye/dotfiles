@@ -1,11 +1,5 @@
 # OSX Specific aliases
 if [[ "$OSTYPE" == "darwin"* ]]; then
-
-  # Prefer macvim over stock vim
-  if [[ -s "/usr/local/bin/mvim" ]]; then
-    alias vim="mvim -v"
-  fi
-
   if [[ -s "/usr/local/bin/nvim" ]]; then
     alias vim="nvim"
   fi

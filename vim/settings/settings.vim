@@ -12,6 +12,7 @@ set exrc                       " load project-specific vimrc's
 set secure                     " limit the capability of those vimrc's
 set laststatus=2
 set noswapfile
+set termguicolors              " set gui colors for vim and nvim
 set backspace=indent,eol,start " backspace through lines
 set clipboard=unnamed          " tmux and system copy/paste
 set lazyredraw                 " only redraw when necessary
@@ -53,7 +54,6 @@ endif
 if !has('nvim')
   set nocompatible               " be iMproved, required
   set ttyfast                    " smoother screen redraw
-  let base16colorspace=256       " Use 256 base16 colorscheme
 endif
 
 " ======================== Commands ========================
@@ -134,5 +134,4 @@ if has('nvim')
   " let g:python_host_prog = '/usr/local/bin/python'
   let g:python_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-  set termguicolors
 endif
