@@ -37,7 +37,8 @@ zstyle ':prezto:load' pmodule \
   'tmux' \
   'homebrew' \
   'completion' \
-  'prompt'
+  'prompt' \
+  'autosuggestions' \
 
 #
 # Editor
