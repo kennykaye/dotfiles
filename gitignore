@@ -52,6 +52,7 @@ pom.xml
 vim/undodir
 
 # Configs
+config/htop
 config/Autodesk
 config/gocode
 config/yarn
