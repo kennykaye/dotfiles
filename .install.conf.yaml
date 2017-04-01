@@ -41,6 +41,9 @@
       - "mkdir -p ~/.config/base16-shell ~/.vim/autoload ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme"
       - "Checking folder structure exists"
     -
+      - "mkdir ~/.vim/undodir"
+      - "Checking folder structure exists"
+    -
       - "~/.fzf/install"
       - "Installing fzf"
     -

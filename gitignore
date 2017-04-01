@@ -47,3 +47,11 @@ pom.xml
 *.swo
 *.swm
 *.session
+
+# Caches
+vim/undodir
+
+# Configs
+config/Autodesk
+config/gocode
+config/yarn
