@@ -103,7 +103,7 @@ export FZF_TMUX_HEIGHT='33%'
 
 if [ $ITERM_PROFILE == 'light' ]; then
   # #d33682
-  export FZF_COLOR="--color=light,bg+:-1,bg:-1,fg+:012,hl+:000,hl:000
+  export FZF_COLOR="--color=light,bg+:-1,bg:-1,fg+:012,hl+:162,hl:162
                     --color=info:002,prompt:012"
 else
   export FZF_COLOR=""
