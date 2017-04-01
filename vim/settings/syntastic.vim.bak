@@ -18,7 +18,7 @@ function! JavascriptCheckers()
   if filereadable(getcwd() . '/.jscsrc')
     return ['jshint', 'jscs']
   else
-    return ['jshint']
+    return ['eslint']
   endif
 endfunction
 
@@ -37,6 +37,7 @@ function! ScssChecker()
     return []
   endif
 endfunction
+
 let g:syntastic_enable_signs = 1
 let g:syntastic_stl_format = '%E{E%e}%B{, }%W{W%w}'  "Parsed by lightline
 let g:syntastic_style_error_symbol = "››"
@@ -55,6 +56,8 @@ let g:syntastic_javascript_checkers = JavascriptCheckers()
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:syntastic_cpp_checkers = ['']
 
 augroup AutoSyntastic
@@ -64,6 +67,10 @@ augroup END
 
 " Update lightline
 function! s:syntastic()
-  call SyntasticCheck()
-  call lightline#update()
+  if exists("SyntasticCheck")
+    call SyntasticCheck()
+  endif
+  if exists("lightline#update")
+    call lightline#update()
+  endif
 endfunction

@@ -173,10 +173,25 @@ function! MyMode()
         \ strpart(lightline#mode(), 0, 1)
 endfunction
 
+" Get the ale error/warning count
+function! g:AleCount(index)
+  let l:count = ale#statusline#Count(bufnr('%'))
+  if type(l:count) ==# type(0)
+    let l:count = 0
+  else
+    let l:count = l:count[a:index]
+  endif
+  return l:count
+endfunction
 
 " Gets number of errors
 function! ErrorCount()
   let errors = ''
+
+  if exists('g:loaded_ale')
+    let l:count = g:AleCount(0)
+    let errors = l:count ? l:count : ''
+  endif
 
   if exists("*SyntasticStatuslineFlag")
     let flag = SyntasticStatuslineFlag()
@@ -195,6 +210,11 @@ endfunction
 " Gets number of warnings
 function! WarningCount()
   let warnings = ''
+
+  if exists('g:loaded_ale')
+    let l:count = g:AleCount(1)
+    let warnings = l:count ? l:count : ''
+  endif
 
   if exists("*SyntasticStatuslineFlag")
     let flag = SyntasticStatuslineFlag()
