@@ -10,17 +10,19 @@ fi
 # Source Z jump-navigation
 source ~/.zsh/z/z.sh
 
+# set vi mode for fzf
+set -o vi
+
 # Source fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Source Base16
 if [[ $ITERM_PROFILE == 'dark' ]]; then
-  if [[ -s "$HOME/.config/base16-shell/base16-eighties.dark.sh" ]]; then
-    source "$HOME/.config/base16-shell/base16-eighties.dark.sh"
+  if [[ -s "$HOME/.config/base16-shell/scripts/base16-eighties-dark.sh" ]]; then
+    source "$HOME/.config/base16-shell/scripts/base16-eighties-dark.sh"
   fi
 else
-  if [[ -s "$HOME/.config/base16-shell/base16-solarized.light.sh" ]]; then
-    source "$HOME/.config/base16-shell/base16-solarized.light.sh"
+  if [[ -s "$HOME/.config/base16-shell/scripts/base16-solarized-light.sh" ]]; then
+    source "$HOME/.config/base16-shell/scripts/base16-solarized-light.sh"
   fi
 fi
 
@@ -89,9 +91,11 @@ export KEYTIMEOUT=1
 # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export FZF_TMUX_HEIGHT='33%'
+# export FZF_TMUX=1
 
 if [ $ITERM_PROFILE == 'light' ]; then
-  export FZF_COLOR="--color=light,bg+:-1,bg:-1,fg+:012,hl+:017,hl:017
+  # #d33682
+  export FZF_COLOR="--color=light,bg+:-1,bg:-1,fg+:012,hl+:000,hl:000
                     --color=info:002,prompt:012"
 else
   export FZF_COLOR=""
