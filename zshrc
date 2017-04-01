@@ -46,10 +46,15 @@ setItermProfile; clear
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/bin/go_appengine_sdk:$PATH"
 
 export TERM=xterm-256color-italic
 
 export MANPATH="/opt/local/man:/usr/local/man:/usr/bin/:$MANPATH"
+export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+
+export GOPATH="$HOME/Development/go"
 
 if [[ -s "/usr/local/bin/rbenv"  ]]; then
   # Initialize rbenv
@@ -78,6 +83,9 @@ bindkey '^P' fzf-file-widget
 
 # Use prefixed search as widget
 zle -N up-line-or-search-prefix
+
+# Raise max file limit
+ulimit -n 2048
 
 # enable extended globbing
 setopt extended_glob
@@ -123,3 +131,5 @@ if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
   bindkey -a 'k' up-line-or-search-prefix
   bindkey -a 'l' vi-forward-char
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
