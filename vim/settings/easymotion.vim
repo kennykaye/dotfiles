@@ -1,8 +1,8 @@
 " ================ EasyMotion ========================
 
 " Mappings
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+map  <C-_> <Plug>(easymotion-sn)
+omap <C-_> <Plug>(easymotion-tn)
 
 " Configuration
 let g:EasyMotion_use_upper = 1

@@ -1,3 +1,3 @@
 let g:UltiSnipsEditSplit = "vertical"
-let g:UltiSnipsExpandTrigger = "<C-f>"
+let g:UltiSnipsExpandTrigger = "<C-j>"
 

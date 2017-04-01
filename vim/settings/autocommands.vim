@@ -14,12 +14,14 @@ augroup indentationSettings
   autocmd BufRead * :IndentLinesEnable
   autocmd Filetype php setlocal ts=4 sw=4 expandtab
   autocmd Filetype cpp setlocal ts=4 sw=4 expandtab
+  autocmd Filetype lua setlocal ts=4 sw=4 expandtab
   autocmd Filetype djinni setlocal ts=4 sw=4 expandtab
   autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
   autocmd Filetype python setlocal ts=2 sw=2 expandtab
   autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
   autocmd Filetype json setlocal ts=4 sw=4 expandtab
   autocmd Filetype html,html.handlebars setlocal ts=4 sw=4 expandtab
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 augroup END
 
 " File type specific settings
