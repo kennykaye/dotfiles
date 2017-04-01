@@ -4,7 +4,7 @@ let g:ale_sign_warning = '››'
 hi! link ALEError Error
 hi! link ALEWarning Todo
 hi! link ALEErrorSign ErrorMsg
-hi! link ALEWarningSign Type
+hi! link ALEWarningSign Label
 
 let g:ale_lint_on_insert_leave = 1
 
@@ -16,9 +16,7 @@ let g:ale_linters = {
 augroup AleLintUpdate
   autocmd!
     autocmd BufEnter * call ShowAleSignBar()
-    if exists('g:loaded_ale')
-      autocmd User ALELint call lightline#update()
-    endif
+    autocmd User ALELint call lightline#update()
 augroup END
 
 " Always show signbar when ale has a linter set
