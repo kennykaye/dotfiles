@@ -36,8 +36,9 @@ let b:deoplete_ignore_sources = ['buffer']
 " call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 
-augroup DeopleteFileMappings
-  autocmd!
-  autocmd FileType css,scss,sass inoremap <expr><tab> <Nop>
-  autocmd FileType * inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-augroup END
+" Tab completion conflicts with hyperstyle, disable for now
+" augroup DeopleteFileMappings
+"   autocmd!
+"   autocmd FileType javascript inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"   autocmd FileType css,scss,sass inoremap <expr><tab> <Nop>
+" augroup END
