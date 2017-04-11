@@ -2,6 +2,7 @@
 " Configurations for lightline and related components
 
 " Lightline configuration
+" \            [ 'fileencoding', 'filetype', 'filesize' ] ]
 let g:lightline = {
       \ 'colorscheme': g:lightlineTheme,
       \ 'active': {
@@ -10,7 +11,7 @@ let g:lightline = {
       \           [ 'fugitive' ] ],
       \   'right': [ [ 'error', 'warning', 'lineinfo' ],
       \            ['percent'],
-      \            [ 'fileencoding', 'filetype', 'filesize' ] ]
+      \            [ 'filetype' ] ]
       \ },
       \ 'component_function': {
       \   'mode': 'MyMode',
@@ -42,6 +43,14 @@ let g:lightline = {
 			\ 'tabline_separator': { 'left': " ", 'right': "" },
 			\ 'tabline_subseparator': { 'left': " ", 'right': "" }
       \ }
+      " \ 'separator': { 'left': '', 'right': '' },
+      " \ 'subseparator': { 'left': '|', 'right': '|' },
+
+      " \ 'separator': { 'left': '', 'right': '' },
+      " \ 'subseparator': { 'left': '', 'right': '' },
+
+      " \ 'separator': { 'left': '', 'right': '' },
+      " \ 'subseparator': { 'left': '', 'right': '' },
 
 
 " Change highlighting on tabline to add more space around tabs
@@ -67,6 +76,7 @@ endfunction
 " Displays line and column
 function! MyLineInfo()
   if expand('%:t') !~? 'NERD\|fugitive\|Tagbar\|Gundo' && &filetype !~? 'fzf'
+    " return ' '. line(".") .":". col(".")
     return ' '. line(".") .":". col(".")
   endif
     return ''

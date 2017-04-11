@@ -6,7 +6,7 @@
 function tmux_kaye_battery_symbol {
   local result=$1
   local battery_level=$2
-  colors=(2 2 11 11 16 1 160)
+  colors=(2 2 11 11 172 1 160)
   thresholds=(86 72 58 44 30 16 1)
   symbols=("⣿" "⣾" "⠿" "⠾" "⠶" "⠴" "⠤")
 
@@ -22,7 +22,7 @@ function tmux_kaye_battery_symbol {
 function tmux_kaye_battery {
   local percent_sign="%"
   local battery_symbol=""
-  local threshold="100"
+  local threshold="70"
 
   # escape percent "%" in zsh
   [[ -n ${ZSH_VERSION-} ]] && percent_sign="${percent_sign//\%/%%}"

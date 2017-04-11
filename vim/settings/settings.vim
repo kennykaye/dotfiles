@@ -33,8 +33,8 @@ set nrformats+=alpha           " Allow integers to be incremented/decremented
 set nohlsearch                 " Prevent search results from being highlighted
 set colorcolumn=101            " Highlight column
 set backupcopy=yes
-set listchars+=extends:>
-set listchars+=precedes:<
+set listchars+=extends:…
+set listchars+=precedes:…
 set undodir=~/.config/nvim/undodir
 set undofile
 

@@ -14,6 +14,7 @@ source ~/.zsh/z/z.sh
 set -o vi
 
 # Source fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Source Base16
 if [[ $ITERM_PROFILE == 'dark' ]]; then
@@ -97,9 +98,8 @@ setopt NO_NOMATCH
 export KEYTIMEOUT=1
 
 # Setting ag as the default source for fzf
-export FZF_DEFAULT_COMMAND='ag -l -g ""'
+export FZF_DEFAULT_COMMAND='pt -l -g ""'
 export FZF_TMUX_HEIGHT='33%'
-# export FZF_TMUX=1
 
 if [ $ITERM_PROFILE == 'light' ]; then
   # #d33682
@@ -131,5 +131,3 @@ if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
   bindkey -a 'k' up-line-or-search-prefix
   bindkey -a 'l' vi-forward-char
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

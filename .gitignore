@@ -1,5 +1,6 @@
 vim/bundle/
 !vim/bundle/vim-plug
 config/configstore
+config/nvim/undodir
 vim/init.vim
 vim/undodir
