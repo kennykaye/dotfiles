@@ -99,14 +99,15 @@ export KEYTIMEOUT=1
 
 # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='pt -l -g ""'
-export FZF_TMUX_HEIGHT='33%'
+export FZF_CUSTOM_OPTS='--cycle --height 40% --reverse --prompt="> "'
 
 if [ $ITERM_PROFILE == 'light' ]; then
   # #d33682
   export FZF_COLOR="--color=light,bg+:-1,bg:-1,fg+:012,hl+:162,hl:162
                     --color=info:002,prompt:012"
 else
-  export FZF_COLOR=""
+  export FZF_COLOR="--color=16,bg+:-1,bg:-1,fg:#a09f93,fg+:#f2f0ec,hl+:#ffcc66,hl:#ffcc66
+                    --color=info:#ffcc66,prompt:#f2777a,pointer:#f99157"
 fi
 
 # Default to qwerty layout
@@ -116,7 +117,7 @@ fi
 
 # Workman bindings
 if [[ $KEYBOARD_LAYOUT == 'workman' ]]; then
-  export FZF_DEFAULT_OPTS="--extended --cycle --bind=ctrl-n:down,ctrl-e:up $FZF_COLOR"
+  export FZF_DEFAULT_OPTS="$FZF_CUSTOM_OPTS --bind=ctrl-n:down,ctrl-e:up $FZF_COLOR"
   bindkey -a 'y' vi-backward-char
   bindkey -a 'n' down-line-or-history
   bindkey -a 'e' up-line-or-search-prefix
@@ -125,7 +126,7 @@ fi
 
 # Qwerty bindings
 if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
-  export FZF_DEFAULT_OPTS="--extended --cycle $FZF_COLOR"
+  export FZF_DEFAULT_OPTS="$FZF_CUSTOM_OPTS $FZF_COLOR"
   bindkey -a 'h' vi-backward-char
   bindkey -a 'j' down-line-or-history
   bindkey -a 'k' up-line-or-search-prefix

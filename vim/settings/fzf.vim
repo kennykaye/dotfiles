@@ -1,9 +1,7 @@
 " source fzf plugin
 set rtp +=~/.fzf
 
-let g:fzf_tmux_height='33%'
-" let g:fzf_prefer_tmux = 1
-" Currently this breaks neovim
+let g:fzf_layout={ 'down': '33%' }
 
 " Select colorscheme
 nnoremap <silent> <Leader>C :call fzf#run({

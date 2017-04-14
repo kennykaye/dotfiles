@@ -182,11 +182,11 @@ endfunction
 " Displays current vim mode
 function! MyMode()
   let fname = expand('%:t')
-  return fname =~ 'NERD_tree' ? 'NERDTree' :
+  return fname =~ 'NERD_tree' ? 'Files' :
         \ fname =~ 'Gundo' ? 'Gundo' :
         \ fname =~ 'agsv' ? 'Search' :
         \ fname =~ 'agse' ? 'Replace' :
-        \ &ft =~ 'fzf' ? 'FZF' :
+        \ &ft =~ 'fzf' ? '' :
         \ strpart(lightline#mode(), 0, 1)
 endfunction
 
