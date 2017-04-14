@@ -73,7 +73,7 @@ export PAGER='less'
 
 
 # Colorize grep output
-export GREP_OPTIONS='--color=always'
+export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33;40'
 
 # Default to qwerty
