@@ -1,35 +1,32 @@
 Dotfiles
 ========
-![Kaye Prompt Theme]
-(http://i.imgur.com/ClrVZbf.png)
 
-![Vim Configuration]
-(http://i.imgur.com/fFALzs2.png)
+> Obsessively curated dotfiles
 
-After cloning this repo, run `./install` to automatically set up the development
-environment. Note that the install script is idempotent: it can safely be run
-multiple times.
+![Neovim Configuration](https://github.com/kennykaye/dotfiles/blob/master/img/preview.png?raw=true)
+
+Font used above is [FiraCode](https://github.com/tonsky/FiraCode).
+
+
+Installation
+------------
+
+**NOTE:** Currently there is no management of global dependencies. This will
+make installing this difficult for you. Instead I recommend that you look
+through the configurations and cherry-pick what is appropriate to your setup.
+
+If you still would like to install this whole-sale, you will need to first
+resolve dependencies using `brew` or `apt-get`.
+
+Once that's done, run `./install` to automatically set up the configurations
 
 After install is completed, open vim and run `:PlugInstall`
 
-`vimrc` uses patched fonts, I recommend [Inconsolata-g](https://github.com/powerline/fonts/tree/master/Inconsolata-g).
-
-Dotfiles uses [Dotbot][dotbot] for installation.
-
-Making Customizations
----------------------------
-
-Below are the main config files and their corrosponding symlinks:
-
-* `vim` : `~/.vimrc`
-* `zsh` : `~/.zshrc`
-* `gitconfig` : `~/.gitconfig`
-* `tmux.conf` : `~/.tmux.conf`
 
 License
 -------
 
-Copyright (c) 2015 Kenny Kaye. Released under the MIT License. See
+Copyright (c) 2017 Kenny Kaye. Released under the MIT License. See
 [LICENSE.md][license] for details.
 
 [dotbot]: https://github.com/anishathalye/dotbot
