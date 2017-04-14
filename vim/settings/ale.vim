@@ -16,8 +16,14 @@ let g:ale_linters = {
 augroup AleLintUpdate
   autocmd!
     autocmd BufEnter * call ShowAleSignBar()
-    autocmd User ALELint call lightline#update()
+    autocmd User ALELint call UpdateLightLine()
 augroup END
+
+function! UpdateLightLine()
+  if (g:lightline_enabled != 0)
+    call lightline#update()
+  endif
+endfunction
 
 " Always show signbar when ale has a linter set
 function! ShowAleSignBar()

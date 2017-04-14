@@ -2,6 +2,7 @@
 " Distraction free writing
 
 function! s:goyo_enter()
+  let g:lightline_enabled = 0
   if exists('$TMUX')
     silent !tmux set status off
   endif
@@ -13,6 +14,7 @@ function! s:goyo_enter()
 endfunction
 
 function! s:goyo_leave()
+  let g:lightline_enabled = 1
   if exists('$TMUX')
     silent !tmux set status on
   endif

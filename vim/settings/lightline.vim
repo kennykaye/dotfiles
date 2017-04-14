@@ -3,6 +3,9 @@
 
 " Lightline configuration
 " \            [ 'fileencoding', 'filetype', 'filesize' ] ]
+
+" Used for Goyo and Ale
+let g:lightline_enabled = 1
 let g:lightline = {
       \ 'colorscheme': g:lightlineTheme,
       \ 'active': {
@@ -165,8 +168,12 @@ endfunction
 " Displays current git branch
 function! MyFugitive()
   if expand('%:t') !~? 'Gundo\|Tagbar\|NERD\|ags' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-    let _ = fugitive#head()
-    return strlen(_) ? ' '._ : ''
+    if winwidth(0) > 100
+      let _ = fugitive#head()
+      return strlen(_) ? ' '._ : ''
+    else
+      return ''
+    endif
   endif
   return ''
 endfunction
@@ -238,3 +245,5 @@ function! WarningCount()
 
   return warnings
 endfunction
+
+
