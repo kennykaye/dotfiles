@@ -29,6 +29,10 @@ alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
 
+# Searching
+alias ag='ag --color-path "1;32" --color-match "1;33" --color-line-number "1;31"'
+alias rg='rg --colors "match:fg:yellow" --colors "line:fg:red" --colors "path:fg:green"'
+
 # Misc
 # Output all the term colors and their respective codes
 alias colors='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
