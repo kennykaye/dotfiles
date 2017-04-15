@@ -97,9 +97,10 @@ setopt NO_NOMATCH
 # reduce character sequence timeout from 400ms to 10ms
 export KEYTIMEOUT=1
 
-# Setting ag as the default source for fzf
-export FZF_DEFAULT_COMMAND='pt -l -g ""'
+# Setting ripgrep as the default source for fzf
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_CUSTOM_OPTS='--cycle --height 40% --reverse --prompt="> "'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if [ $ITERM_PROFILE == 'light' ]; then
   # #d33682
