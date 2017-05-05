@@ -16,6 +16,7 @@ set -o vi
 # Source fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
 # Source Base16
 if [[ $ITERM_PROFILE == 'dark' ]]; then
   if [[ -s "$HOME/.config/base16-shell/scripts/base16-eighties-dark.sh" ]]; then
@@ -42,6 +43,8 @@ setItermProfile; clear
 #
 # Configurations
 #
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 
 # User configuration
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH"
