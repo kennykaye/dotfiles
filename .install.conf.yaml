@@ -6,6 +6,7 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
     ~/.agignore: agignore
+    ~/.grcat: grcat
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux/
     ~/.vim: vim/

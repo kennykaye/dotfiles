@@ -86,10 +86,10 @@ endif
 
 
 " Format JSON Documents
-:command! FormatJSON %!python -m json.tool
+:command! FormatJSON set ft=json | %!python -m json.tool
 
 " Format XML Documents
-:command! FormatXML %!xmllint --format %
+:command! FormatXML set ft=xml | %!xmllint --format %
 
 
 " Replace the current buffer with a new buffer

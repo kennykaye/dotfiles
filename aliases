@@ -21,6 +21,9 @@ alias gc='git commit -m' # requires you to type a commit message
 alias gp='git push'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
 
+# Yarn
+alias yr='yarn run'
+
 # Tmux
 alias mux='tmuxinator'
 alias ta='tmux attach -t'

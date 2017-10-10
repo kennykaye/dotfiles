@@ -52,6 +52,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/bin/go_appengine_sdk:$PATH"
+export PATH="$PATH:/usr/local/mysql/bin/"
 
 export TERM=xterm-256color-italic
 

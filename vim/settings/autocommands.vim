@@ -7,6 +7,7 @@ au BufRead,BufNewFile pryrc set filetype=ruby
 au BufRead,BufNewFile scratch-pad set filetype=ruby
 au BufRead,BufNewFile zprofile,functions,aliases set filetype=zsh
 au BufRead,BufNewFile bash_profile set filetype=sh
+au BufRead,BufNewFile *.js.flow set filetype=javascript.flow
 
 " File type specific indentation
 augroup indentationSettings
