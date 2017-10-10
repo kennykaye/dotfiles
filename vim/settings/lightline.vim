@@ -37,8 +37,8 @@ let g:lightline = {
       \   'error': 'error',
       \   'warning': 'warning',
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '|', 'right': '|' },
       \ 'tabline': {
       \     'left': [ [ 'tabs' ] ],
       \     'right': [ [ '' ] ]
@@ -52,9 +52,8 @@ let g:lightline = {
       " \ 'separator': { 'left': '', 'right': '' },
       " \ 'subseparator': { 'left': '', 'right': '' },
 
-      " \ 'separator': { 'left': '', 'right': '' },
-      " \ 'subseparator': { 'left': '', 'right': '' },
-
+      " \ 'separator': { 'left': '', 'right': '' },
+      " \ 'subseparator': { 'left': '|', 'right': '|' },
 
 " Change highlighting on tabline to add more space around tabs
 augroup TabHighlightGroup
