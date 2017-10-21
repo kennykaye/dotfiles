@@ -103,16 +103,19 @@ export KEYTIMEOUT=1
 
 # Setting ripgrep as the default source for fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-export FZF_CUSTOM_OPTS='--cycle --height 40% --reverse --prompt="> "'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CUSTOM_OPTS="--cycle
+  --height 40%
+  --reverse
+  --prompt='> '
+  --preview 'highlight -O ansi -l {} || cat {} 2> /dev/null | head -500'"
 
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 if [ $ITERM_PROFILE == 'light' ]; then
-  # #d33682
   export FZF_COLOR="--color=light,bg+:-1,bg:-1,fg+:012,hl+:162,hl:162
-                    --color=info:002,prompt:012"
+                    --color=info:002,prompt:012, border:#6c71c4"
 else
   export FZF_COLOR="--color=16,bg+:-1,bg:-1,fg:#a09f93,fg+:#f2f0ec,hl+:#ffcc66,hl:#ffcc66
-                    --color=info:#ffcc66,prompt:#f2777a,pointer:#f99157"
+                    --color=info:#ffcc66,prompt:#f2777a,pointer:#f99157,border:#515151"
 fi
 
 # Default to qwerty layout
@@ -137,3 +140,9 @@ if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
   bindkey -a 'k' up-line-or-search-prefix
   bindkey -a 'l' vi-forward-char
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/Kenny/.google-cloud-sdk/path.zsh.inc' ]; then source '/Users/Kenny/.google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/Kenny/.google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/Kenny/.google-cloud-sdk/completion.zsh.inc'; fi
