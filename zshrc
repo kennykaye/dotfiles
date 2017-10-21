@@ -107,7 +107,7 @@ export FZF_CUSTOM_OPTS="--cycle
   --height 40%
   --reverse
   --prompt='> '
-  --preview 'highlight -O ansi -l {} || cat {} 2> /dev/null | head -500'"
+  --preview 'highlight -O ansi -l --force {} || cat {} 2> /dev/null | head -500'"
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 if [ $ITERM_PROFILE == 'light' ]; then

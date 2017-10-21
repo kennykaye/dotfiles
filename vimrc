@@ -39,8 +39,8 @@ Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-rails',                        { 'for': 'ruby' }
-Plug 'ternjs/tern_for_vim',                    { 'for': 'javascript' }
-Plug 'heavenshell/vim-jsdoc',                  { 'for': 'javascript' }
+Plug 'heavenshell/vim-jsdoc',                  { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'ternjs/tern_for_vim',                    { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim',                        { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/html5.vim',                       { 'for': ['html', 'html.handlebars'] }
 Plug 'hail2u/vim-css3-syntax',                 { 'for': ['css', 'scss', 'sass'] }
