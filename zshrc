@@ -104,15 +104,17 @@ export KEYTIMEOUT=1
 # Setting ripgrep as the default source for fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_CUSTOM_OPTS="--cycle
-  --height 40%
+  --height 33%
   --reverse
-  --prompt='> '
-  --preview 'highlight -O ansi -l --force {} || cat {} 2> /dev/null | head -500'"
+  --prompt='> '"
+  # --preview-window right:60%
+  # --margin 0,2,0,2
+  # --preview 'highlight -O ansi -l --force {} || cat {} 2> /dev/null | head -500'"
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 if [ $ITERM_PROFILE == 'light' ]; then
   export FZF_COLOR="--color=light,bg+:-1,bg:-1,fg+:012,hl+:162,hl:162
-                    --color=info:002,prompt:012, border:#6c71c4"
+                    --color=info:002,prompt:012,border:#6c71c4"
 else
   export FZF_COLOR="--color=16,bg+:-1,bg:-1,fg:#a09f93,fg+:#f2f0ec,hl+:#ffcc66,hl:#ffcc66
                     --color=info:#ffcc66,prompt:#f2777a,pointer:#f99157,border:#515151"

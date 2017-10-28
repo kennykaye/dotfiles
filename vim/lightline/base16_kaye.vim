@@ -38,6 +38,6 @@ let s:p.tabline.tabsel = [ [ s:base3, s:base023 ] ]
 let s:p.tabline.middle = [ [ s:base02, s:base03 ] ]
 let s:p.tabline.right = copy(s:p.tabline.tabsel)
 let s:p.normal.error = [ [ s:base023, s:red ] ]
-let s:p.normal.warning = [ [ s:base023, s:yellow ] ]
+let s:p.normal.warning = [ [ s:base01, s:yellow ] ]
 
 let g:lightline#colorscheme#base16_kaye#palette = lightline#colorscheme#fill(s:p)

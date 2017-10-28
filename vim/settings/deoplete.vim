@@ -5,6 +5,8 @@ let g:deoplete#sources = {}
 let g:deoplete#sources['javascript.jsx'] = ['file', 'tern']
 let g:deoplete#sources['css'] = []
 let g:deoplete#max_abbr_width = 30
+let g:deoplete#max_menu_width = 40
+let g:deoplete#max_kind_width = 30
 
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
