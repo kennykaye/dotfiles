@@ -12,6 +12,7 @@
     ~/.vim: vim/
     ~/.vimrc: vimrc
     ~/.gvimrc: gvimrc
+    ~/.ideavimrc: ideavimrc
     ~/.fzf: fzf/
     ~/.zsh: zsh/
     ~/.zshrc: zshrc

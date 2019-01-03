@@ -135,7 +135,5 @@ nmap N Nzz
 if has('nvim')
   let g:python2_host_prog = '/usr/local/bin/python'
   let g:python3_host_prog = '/usr/local/bin/python3'
-  " let g:python_host_prog = '/usr/local/bin/python3'
-  " let g:python_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif

@@ -34,7 +34,7 @@ alias tkss='tmux kill-session -t'
 
 # Searching
 alias ag='ag --color-path "1;32" --color-match "1;33" --color-line-number "1;31"'
-alias rg='rg --colors "match:fg:yellow" --colors "line:fg:red" --colors "path:fg:green"'
+alias rg='rg --colors  "match:fg:yellow" --colors "line:fg:red" --colors "path:fg:green" --no-messages'
 
 # Misc
 # Output all the term colors and their respective codes

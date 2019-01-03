@@ -2,7 +2,9 @@
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#sources = {}
+let g:deoplete#sources['javascript'] = ['file', 'tern']
 let g:deoplete#sources['javascript.jsx'] = ['file', 'tern']
+" let g:deoplete#sources['javascript.jsx'] = ['buffer', 'file']
 let g:deoplete#sources['css'] = []
 let g:deoplete#max_abbr_width = 30
 let g:deoplete#max_menu_width = 40
@@ -34,6 +36,7 @@ let g:deoplete#sources#ternjs#filetypes = [
 
 let g:deoplete#sources#ternjs#docs = 1
 let g:deoplete#sources#ternjs#types = 1
+let g:deoplete#sources#ternjs#timeout = 1
 let g:deoplete#sources#ternjs#include_keywords = 1
 
 " Tab completion conflicts with hyperstyle, disable for now

@@ -1,0 +1,72 @@
+"========================================
+" Settings
+"========================================
+set multiple-cursors
+set surround
+set rnu
+set nu
+set incsearch
+set clipboard+=unnamed
+set visualbell
+set noerrorbells
+
+"========================================
+" IDE actions
+"========================================
+let mapleader = ","
+
+map <leader>a :action GotoRelated<CR>
+map <leader>b :action ToggleLineBreakpoint<CR>
+map <leader>d :action Debug<CR>
+map <leader>h :action HideAllWindows<CR>
+map <leader>m :action ImplementMethods<CR>
+map <leader>n :action ActivateProjectToolWindow<CR>
+map <leader>r :action Run<CR>
+map <leader>t :action TypeHierarchy<CR>
+map <leader>w :action SychronizeCurrentFile<CR>
+map <leader>, :action CommentByLineComment<CR>
+map <leader>d :action Debug<CR>
+
+" TODO: Comment by line or block
+
+"========================================
+" Multiple Cursors
+"========================================
+map <C-n> <A-n>
+map <C-n> <Plug>NextOccurrence
+map <C-l> <A-l>
+map <C-l> <Plug>AllOccurrences
+
+""========================================
+"" Workman Layout
+""========================================
+
+""(O)pen line -> (L)ine
+"noremap l o
+"noremap o l
+"noremap L O
+"noremap O L
+""Search (N)ext -> (J)ump
+"noremap j n
+"noremap n j
+"noremap J N
+"noremap N J
+""(E)nd of word -> brea(K) of word
+"noremap k e
+"noremap e k
+"noremap K E
+"noremap E <nop>
+"noremap h y
+""(Y)ank -> (H)aul
+"noremap y h
+"noremap H Y
+"noremap Y H
+
+
+""========================================
+"" Split navigation
+""========================================
+"nnoremap <silent> <S-Down> <C-W>j
+"nnoremap <silent> <S-Up> <C-W>k
+"nnoremap <silent> <S-Right> <C-W>l
+"nnoremap <silent> <S-Left> <C-W>h
