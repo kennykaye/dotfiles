@@ -29,6 +29,7 @@ augroup END
 augroup fileSettings
   autocmd!
   autocmd Filetype vim-plug setlocal nonumber
+  autocmd Filetype fzf setlocal nonumber norelativenumber
 augroup END
 
 " Only highlight current cursor on active buffers

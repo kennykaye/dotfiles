@@ -1,1 +1,1 @@
-let g:relativity_filetype_ignore = ['fzf']
+" let g:relativity_filetype_ignore = ['fzf']
