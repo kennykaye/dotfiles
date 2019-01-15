@@ -40,20 +40,3 @@ function! s:ag_handler(lines)
     wincmd p
   endif
 endfunction
-
-if executable('ag')
-  command! -nargs=* Ag call fzf#run({
-  \ 'source':  printf('ag --nogroup --column --color "%s" --word-regexp',
-  \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
-  \ 'sink*':    function('<sid>ag_handler'),
-  \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
-  \            '--multi --bind ctrl-a:select-all,ctrl-d:deselect-all '.
-  \            '--color hl:68,hl+:110',
-  \ 'down':    g:fzf_tmux_height
-  \ })
-
-  " Actually maps to <C-/>, however Vim can only map printable characters.
-  " This is a horrible hack and probably only works in specific terminal
-  " environments.
-  " nnoremap <silent> <C-_>:Ag<CR>
-endif

@@ -102,7 +102,9 @@ setopt NO_NOMATCH
 export KEYTIMEOUT=1
 
 # Setting ripgrep as the default source for fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!**/.git" --no-messages 2>/dev/null'
+
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!**/.git" --no-messages 2>/dev/null'
+export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CUSTOM_OPTS="--cycle
   --height 33%
   --reverse
