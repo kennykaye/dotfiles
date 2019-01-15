@@ -252,7 +252,7 @@ zle-keymap-select () {
         ("$TERM" == "xterm-256color-italic") ||
         ("$TERM" == "screen-256color-italic") ]]; then
 
-    if [ $KEYMAP == "vicmd" ]; then
+    if [ "$KEYMAP" = "vicmd" ]; then
       echo -ne "\e[2 q"
     else
       echo -ne "\e[4 q"
