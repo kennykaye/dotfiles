@@ -6,7 +6,7 @@
 
 function prompt_kaye_pwd {
   local dir_limit="2"
-  local truncation="⋯ "
+  local truncation="⋯"
   local first_char
   local part_count=0
   local formatted_cwd=""
