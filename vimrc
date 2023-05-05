@@ -36,7 +36,7 @@ Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
 Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 
 " Language-specific plugins
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-rails',                        { 'for': 'ruby' }
 Plug 'heavenshell/vim-jsdoc',                  { 'for': ['javascript', 'javascript.jsx'] }
@@ -57,12 +57,12 @@ Plug 'aldafu/vim-widl',                        { 'for': ['widl', 'webidl'] }
 Plug 'guns/vim-clojure-static',                { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace',                    { 'for': 'clojure' }
 Plug 'luochen1990/rainbow',                    { 'for': 'clojure' }
+Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
 
 " Neovim specific plugins
 if has('nvim')
   Plug 'Shougo/deoplete.nvim',     { 'do': ':UpdateRemotePlugins' }
-  Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'zchee/deoplete-go',        { 'do': 'make'}
+  " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
   Plug 'critiqjo/lldb.nvim',       { 'for': ['c', 'cpp'] }
 endif
 

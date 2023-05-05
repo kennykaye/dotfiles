@@ -88,6 +88,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
+highlight clear SignColumn
 let g:colors_name = "base16-kaye"
 
 " Highlighting function
@@ -111,6 +112,7 @@ fun <sid>hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
     exec "hi " . a:group . " guisp=#" . a:guisp
   endif
 endfun
+
 
 " Vim editor colors
 call <sid>hi("Bold",          "", "", "", "", "bold", "")
