@@ -61,7 +61,7 @@ export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
 
 export GOPATH="$HOME/Development/go"
 
-if [[ -s "/usr/local/bin/rbenv"  ]]; then
+if [[ -s "/opt/homebrew/bin/rbenv"  ]]; then
   # Initialize rbenv
   eval "$(rbenv init - zsh)"
 fi
@@ -122,9 +122,10 @@ else
                     --color=info:#ffcc66,prompt:#f2777a,pointer:#f99157,border:#515151"
 fi
 
-# Default to qwerty layout
+# Default to workman layout
 if [[ -z $KEYBOARD_LAYOUT ]]; then
-  export KEYBOARD_LAYOUT='qwerty'
+  export KEYBOARD_LAYOUT='workman'
+  # export KEYBOARD_LAYOUT='qwerty'
 fi
 
 # Workman bindings

@@ -44,3 +44,4 @@ alias vtop='vtop -t brew'
 
 # Override custom term definitions
 alias ssh="TERM=xterm-256color ssh"
+
