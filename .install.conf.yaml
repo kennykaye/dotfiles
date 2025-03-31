@@ -25,9 +25,12 @@
     ~/.config: config
     ~/.config/nvim: vim/
     ~/.config/nvim/init.vim: vimrc
+    ~/Library/Application Support/Cursor/user/settings.json: cursor/settings.json
+    ~/Library/Application Support/Cursor/user/keybindings.json: cursor/keybindings.json
     ~/.ycm_extra_conf.py: vim/settings/ycm_extra_conf.py
     ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/base16_kaye.vim: vim/lightline/base16_kaye.vim
     ~/.zprezto/modules/prompt/functions/prompt_kaye_setup: zsh/prompt_kaye_setup
+    ~/.local/state/crossnote/style.less: cursor/markdown-styles/style.less
 
 - shell:
     -
@@ -46,6 +49,9 @@
       - "mkdir ~/.vim/undodir"
       - "Checking folder structure exists"
     -
+      - "mkdir -p ~/.local/state/crossnote"
+      - "Creating markdown stylesheet directory"
+    -
       - "~/.fzf/install"
       - "Installing fzf"
     -
@@ -54,4 +60,7 @@
     -
       - "gem install tmuxinator"
       - "Installing tmuxinator"
+    -
+       - "bash cursor/install-extensions.sh" 
+       - "Installing Cursor extensions"
 

@@ -1,0 +1,71 @@
+{
+    "window.commandCenter": true,
+    "editor.fontLigatures": true,
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.occurrencesHighlight": "off",
+    "editor.fontSize": 13,
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "vim.easymotion": true,
+    "vim.enableNeovim": true,
+    "vim.vimrc.enable": true,
+    "vim.useSystemClipboard": true,
+    "vim.statusBarPosition": "left",
+    "vim.smartRelativeLine": true,
+    "vim.useCtrlKeys": true,
+    "vim.visualstar": true,
+    //"vim.highlightedyank.enable": true,
+    "editor.multiCursorModifier": "alt",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.insert": "underline",
+    "vim.cursorStylePerMode.replace": "underline",
+    "vim.cursorStylePerMode.visual": "underline",
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": ["#393939", "#747369"],
+    "vim.statusBarColors.insert": ["#99cc99", "#334433"],
+    "vim.statusBarColors.visual": ["#f99157", "#4c2c1c"],
+    "vim.statusBarColors.visualline": ["#f99157", "#4c2c1c"],
+    "vim.statusBarColors.visualblock": ["#f99157", "#4c2c1c"],
+    /*
+    "vim.statusBarColors.commandlineinprogress": ["#66cccc", "#ffffff"],
+    "vim.statusBarColors.searchinprogressmode": ["#66cccc", "#ffffff"],
+    "vim.statusBarColors.easymotionmode": ["#66cccc", "#ffffff"],
+    "vim.statusBarColors.easymotioninputmode": ["#66cccc", "#ffffff"],
+    "vim.statusBarColors.surroundinputmode": ["#66cccc", "#ffffff"],
+    */
+
+    "vim.statusBarColors.replace": ["#f2777a", "#793c3d"],
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#393939",
+        "statusBar.noFolderBackground": "#393939",
+        "statusBar.debuggingBackground": "#393939",
+        "statusBar.foreground": "#747369",
+        "statusBar.debuggingForeground": "#747369",
+        "breadcrumb.foreground": "#747369",
+        "editorIndentGuide.activeBackground1": "#505050",
+        "editorIndentGuide.background1": "#404040"
+    },
+    "editor.semanticHighlighting.enabled": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": ["variable", "variable.other"],
+                "settings": {
+                    "foreground": "#d3d0c8"
+                }
+            }
+        ]
+    },
+    "workbench.iconTheme": null,
+    "workbench.colorTheme": "Base16 Dark Eighties",
+    "markdown-preview-enhanced.previewTheme": "atom-dark.css",
+    "markdown-preview-enhanced.codeBlockTheme": "auto.css",
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.symbolPath": "off",
+    "problems.decorations.enabled": false,
+
+    // To improve performance,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "files.autoSave": "afterDelay"
+}

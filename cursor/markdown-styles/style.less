@@ -1,0 +1,166 @@
+
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+.markdown-preview.markdown-preview {
+  background-color: #2d2d2d;
+  color: #d3d0c8;
+  font-family: 'Fira Code', monospace;
+  font-size: 13px;
+
+  /* Base16 Dark Eighties Theme for Markdown Preview Enhanced */
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #d3d0c8;
+    border-bottom: 1px solid #404040;
+    padding-bottom: 0.3em;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  a {
+    color: #6699cc;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  code {
+    font-family: 'Fira Code', monospace;
+    color: #ffcc66;
+    background-color: #2d2d2d;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+
+  pre {
+    background-color: #2d2d2d;
+    border: 1px solid #404040;
+    border-radius: 3px;
+    padding: 16px;
+  }
+
+  pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  blockquote {
+    border-left: 4px solid #747369;
+    color: #747369;
+    padding-left: 16px;
+    margin-left: 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #404040;
+    margin: 1em 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+  }
+
+  table th, table td {
+    border: 1px solid #404040;
+    padding: 6px 13px;
+  }
+
+  table th {
+    font-weight: bold;
+  }
+
+  table tr {
+    background-color: #2d2d2d;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: #393939;
+  }
+
+  img {
+    max-width: 100%;
+    margin: 1em 0;
+  }
+
+  ul, ol {
+    padding-left: 2em;
+  }
+
+  .task-list-item {
+    list-style-type: none;
+  }
+
+  .task-list-item-checkbox {
+    margin-right: 0.6em;
+  }
+
+  /* Syntax highlighting adjustments */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #747369;
+  }
+
+  .token.punctuation {
+    color: #d3d0c8;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #f2777a;
+  }
+
+  .token.boolean,
+  .token.number {
+    color: #cc99cc;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #99cc99;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    color: #f99157;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: #6699cc;
+  }
+
+  .token.function {
+    color: #f99157;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: #f2777a;
+  }
+}

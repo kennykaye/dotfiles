@@ -1,0 +1,10 @@
+andrsdc.base16-themes
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+ms-azuretools.vscode-docker
+ms-python.debugpy
+ms-python.python
+ms-python.vscode-pylance
+orta.vscode-jest
+shd101wyy.markdown-preview-enhanced
+vscodevim.vim
