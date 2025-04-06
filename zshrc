@@ -29,7 +29,7 @@ else
 fi
 
 # Load our dotfiles like ~/.functions, etc…
-#   ~/.extra can be used for settings you don’t want to commit,
+#   ~/.extra can be used for settings you don't want to commit,
 #   Use it to configure your PATH, thus it being first in line.
 for file in ~/.{extra,aliases,functions}; do
   [ -f "$file" ] && source "$file"
@@ -148,6 +148,30 @@ fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/Kenny/.google-cloud-sdk/path.zsh.inc' ]; then source '/Users/Kenny/.google-cloud-sdk/path.zsh.inc'; fi
+
+# ----- FZF + Eza + Bat Improvements -----
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
+
+# ----- Bat (better cat) -----
+export BAT_THEME=base16
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/Kenny/.google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/Kenny/.google-cloud-sdk/completion.zsh.inc'; fi

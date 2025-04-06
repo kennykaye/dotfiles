@@ -43,6 +43,9 @@ alias colors='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do 
 # AeroSpace
 alias ff='aerospace list-windows --all | fzf --bind "enter:execute(bash -c \"aerospace focus --window-id {1}\")+abort"'
 
+# Eza
+alias ls="eza --color=always --long --git --group-directories-first --no-filesize --no-time --no-user --no-permissions"
+
 alias vtop='vtop -t brew'
 
 # Override custom term definitions
