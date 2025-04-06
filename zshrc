@@ -146,9 +146,6 @@ if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
   bindkey -a 'l' vi-forward-char
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/Kenny/.google-cloud-sdk/path.zsh.inc' ]; then source '/Users/Kenny/.google-cloud-sdk/path.zsh.inc'; fi
-
 # ----- FZF + Eza + Bat Improvements -----
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
@@ -172,6 +169,3 @@ _fzf_comprun() {
 
 # ----- Bat (better cat) -----
 export BAT_THEME=base16
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/Kenny/.google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/Kenny/.google-cloud-sdk/completion.zsh.inc'; fi
