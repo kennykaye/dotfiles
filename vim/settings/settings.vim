@@ -108,9 +108,15 @@ nnoremap Q <nop>
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" Set , to be the leader
-let mapleader = ","
-let maplocalleader = ","
+" Set 't' to be the leader
+let mapleader = "t"
+let maplocalleader = "t"
+
+" Easy enthium split navigation
+nnoremap <silent> <leader>i <C-W><C-J>
+nnoremap <silent> <leader>e <C-W><C-K>
+nnoremap <silent> <leader>c <C-W><C-L>
+nnoremap <silent> <leader>a <C-W><C-H>
 
 " Provide easier tab navigation
 map <silent> <F6> :tabn<kEnter>

@@ -13,13 +13,42 @@
     "vim.smartRelativeLine": true,
     "vim.useCtrlKeys": true,
     "vim.visualstar": true,
+    "vim.leader": "t",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "i"],
+            "after": ["<C-W>", "<C-J>"]
+        },
+        {
+            "before": ["<leader>", "e"],
+            "after": ["<C-W>", "<C-K>"]
+        },
+        {
+            "before": ["<leader>", "c"],
+            "after": ["<C-W>", "<C-L>"]
+        },
+        {
+            "before": ["<leader>", "a"],
+            "after": ["<C-W>", "<C-H>"]
+        },
+        {
+            "before": ["8", "8"],
+            "commands": ["editor.action.commentLine"]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["8", "8"],
+            "commands": ["editor.action.commentLine"]
+        }
+    ],
     //"vim.highlightedyank.enable": true,
     "editor.multiCursorModifier": "alt",
     "vim.cursorStylePerMode.normal": "block",
     "vim.cursorStylePerMode.insert": "underline",
     "vim.cursorStylePerMode.replace": "underline",
     "vim.cursorStylePerMode.visual": "underline",
-    "vim.statusBarColorControl": true,
+    "vim.statusBarColorControl": false,
     "vim.statusBarColors.normal": ["#393939", "#747369"],
     "vim.statusBarColors.insert": ["#99cc99", "#334433"],
     "vim.statusBarColors.visual": ["#f99157", "#4c2c1c"],
@@ -42,7 +71,9 @@
         "statusBar.debuggingForeground": "#747369",
         "breadcrumb.foreground": "#747369",
         "editorIndentGuide.activeBackground1": "#505050",
-        "editorIndentGuide.background1": "#404040"
+        "editorIndentGuide.background1": "#404040",
+        "tab.activeBorderTop": "#f99157",
+        "tab.activeForeground": "#ffffff"
     },
     "editor.semanticHighlighting.enabled": true,
     "editor.tokenColorCustomizations": {
@@ -62,10 +93,14 @@
     "breadcrumbs.enabled": true,
     "breadcrumbs.symbolPath": "off",
     "problems.decorations.enabled": false,
+    "workbench.editor.decorations.badges": false,
+    "workbench.editor.decorations.colors": false,
 
     // To improve performance,
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
     },
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "keyboard.dispatch": "keyCode",
+    "window.zoomLevel": 0.5
 }
