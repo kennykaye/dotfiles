@@ -23,6 +23,7 @@
     ~/.functions: functions
     ~/.aliases: aliases
     ~/.config: config
+    ~/.config/wezterm: wezterm/
     ~/.config/nvim: vim/
     ~/.config/sketchybar: sketchybar
     ~/.config/aerospace: aerospace

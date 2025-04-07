@@ -17,17 +17,6 @@ set -o vi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-# Source Base16
-if [[ $ITERM_PROFILE == 'dark' ]]; then
-  if [[ -s "$HOME/.config/base16-shell/scripts/base16-eighties-dark.sh" ]]; then
-    source "$HOME/.config/base16-shell/scripts/base16-eighties-dark.sh"
-  fi
-else
-  if [[ -s "$HOME/.config/base16-shell/scripts/base16-solarized-light.sh" ]]; then
-    source "$HOME/.config/base16-shell/scripts/base16-solarized-light.sh"
-  fi
-fi
-
 # Load our dotfiles like ~/.functions, etc…
 #   ~/.extra can be used for settings you don't want to commit,
 #   Use it to configure your PATH, thus it being first in line.
@@ -35,10 +24,6 @@ for file in ~/.{extra,aliases,functions}; do
   [ -f "$file" ] && source "$file"
 done
 unset file
-
-# Set correct iterm profile and vim colors
-setItermProfile; clear
-
 
 #
 # Configurations
@@ -53,6 +38,8 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/bin/go_appengine_sdk:$PATH"
 export PATH="$PATH:/usr/local/mysql/bin/"
+# Add WezTerm to path
+export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 
 export TERM=xterm-256color-italic
 
@@ -114,18 +101,13 @@ export FZF_CUSTOM_OPTS="--cycle
   # --preview 'highlight -O ansi -l --force {} || cat {} 2> /dev/null | head -500'"
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-if [ $ITERM_PROFILE == 'light' ]; then
-  export FZF_COLOR="--color=light,bg+:-1,bg:-1,fg+:012,hl+:162,hl:162
-                    --color=info:002,prompt:012,border:#6c71c4"
-else
-  export FZF_COLOR="--color=16,bg+:-1,bg:-1,fg:#a09f93,fg+:#f2f0ec,hl+:#ffcc66,hl:#ffcc66
-                    --color=info:#ffcc66,prompt:#f2777a,pointer:#f99157,border:#515151"
-fi
+export FZF_COLOR="--color=16,bg+:-1,bg:-1,fg:#a09f93,fg+:#f2f0ec,hl+:#ffcc66,hl:#ffcc66
+                  --color=info:#ffcc66,prompt:#f2777a,pointer:#f99157,border:#515151"
 
-# Default to workman layout
+# Default to qwerty layout
 if [[ -z $KEYBOARD_LAYOUT ]]; then
-  export KEYBOARD_LAYOUT='workman'
-  # export KEYBOARD_LAYOUT='qwerty'
+  # export KEYBOARD_LAYOUT='workman'
+  export KEYBOARD_LAYOUT='qwerty'
 fi
 
 # Workman bindings

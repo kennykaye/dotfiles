@@ -32,46 +32,6 @@ function strip_diff_leading_symbols(){
   sed -E "s/^($color_code_regex)[\+\-]/\1 /g"
 }
 
-# Change iterm2 profile. Usage it2prof ProfileName (case sensitive)
-profile() {
-  [ -f ~/.iterm_profile ] && rm -f ~/.iterm_profile
-  echo $1 > ~/.iterm_profile
-  setItermProfile
-}
-
-light() {
-  profile light
-  setVimColors 'light' 'base16-kaye-light'
-}
-
-dark() {
-  profile dark
-  setVimColors 'dark' 'base16-kaye'
-}
-
-setItermProfile() {
-  if [ -f ~/.iterm_profile ]; then
-    local profile
-    profile="`cat ~/.iterm_profile | tr -d '\040\011\012\015'`"
-    export ITERM_PROFILE="$profile"
-    if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-      echo -e "\033Ptmux;\033\033]50;SetProfile=$profile\a\033\\"
-    else
-      echo -e "\033]50;SetProfile=$profile\a"
-    fi
-  fi
-}
-
-setVimColors() {
-  [ -f ~/.vimrc_background ] && rm -f ~/.vimrc_background
-  local lightlineTheme
-  lightlineTheme=$(echo "$2" | sed -e 's/-/_/g')
-  echo "set background=$1
-        colorscheme $2
-        let g:lightlineTheme='$lightlineTheme'" > ~/.vimrc_background
-}
-
-
 # Display a truecolor gradient
 truecolor() {
   awk 'BEGIN{
