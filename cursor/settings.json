@@ -106,5 +106,6 @@
     },
     "files.autoSave": "afterDelay",
     "keyboard.dispatch": "keyCode",
-    "window.zoomLevel": 0.5
+    "window.zoomLevel": 0.5,
+    "workbench.editor.editorActionsLocation": "hidden"
 }

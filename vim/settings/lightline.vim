@@ -37,7 +37,7 @@ let g:lightline = {
       \   'error': 'error',
       \   'warning': 'warning',
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
+      \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '|', 'right': '|' },
       \ 'tabline': {
       \     'left': [ [ 'tabs' ] ],

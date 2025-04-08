@@ -5,7 +5,7 @@ sketchybar --remove time 2>/dev/null
 
 # Script to update the time
 TIME_SCRIPT='
-  date=$(date "+%I:%M %p")
+  date=$(date "+%-I:%M %p")
   sketchybar --set $NAME label="$date"
 '
 

@@ -6,8 +6,11 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- Font configuration - simplified for compatibility
-config.font = wezterm.font 'Fira Code'
+-- Font configuration with explicit fallback for special characters
+config.font = wezterm.font_with_fallback({
+  'Fira Code',
+  'Hack Nerd Font Mono',
+})
 
 config.font_size = 14.0
 
@@ -22,6 +25,7 @@ config.color_scheme = 'Eighties (base16)'
 
 -- Improve glyph rendering - make symbols like ❯ wider
 config.allow_square_glyphs_to_overflow_width = "Always"
+config.freetype_load_target = "Light"  -- Enhanced clarity on Retina
 
 -- Font rules - prevent bold and enable italics
 config.bold_brightens_ansi_colors = false
@@ -30,39 +34,37 @@ config.font_rules = {
   {
     intensity = "Normal",
     italic = false,
-    font = wezterm.font {
-      family = "Fira Code",
-      weight = "Regular",
-    },
+    font = wezterm.font_with_fallback({
+      { family = "Fira Code", weight = "Regular" },
+      "Hack Nerd Font Mono",
+    }),
   },
   -- Bold text (disable bold by using Regular weight)
   {
     intensity = "Bold",
     italic = false,
-    font = wezterm.font {
-      family = "Fira Code",
-      weight = "Regular",
-    },
+    font = wezterm.font_with_fallback({
+      { family = "Fira Code", weight = "Regular" },
+      "Hack Nerd Font Mono",
+    }),
   },
   -- Italic text (enable italics)
   {
     intensity = "Normal",
     italic = true,
-    font = wezterm.font {
-      family = "Fira Code",
-      weight = "Regular",
-      italic = true,
-    },
+    font = wezterm.font_with_fallback({
+      { family = "Fira Code", weight = "Regular", italic = true },
+      { family = "Hack Nerd Font Mono", italic = true },
+    }),
   },
   -- Bold+Italic text (Regular weight but with italic style)
   {
     intensity = "Bold",
     italic = true,
-    font = wezterm.font {
-      family = "Fira Code",
-      weight = "Regular",
-      italic = true,
-    },
+    font = wezterm.font_with_fallback({
+      { family = "Fira Code", weight = "Regular", italic = true },
+      { family = "Hack Nerd Font Mono", italic = true },
+    }),
   },
 }
 
@@ -73,10 +75,10 @@ config.term = "xterm-256color"
 config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
 config.show_tab_index_in_tab_bar = true
-config.tab_max_width = 100
+config.tab_max_width = 50
 config.use_fancy_tab_bar = true
 config.window_decorations = 'RESIZE'
-config.window_padding = { left = '0.5cell', right = '0.5cell', top = '0.5cell', bottom = '0cell' }
+config.window_padding = { left = '.75cell', right = '.5cell', top = '.5cell', bottom = '0cell' }
 
 
 -- Theme configuration
