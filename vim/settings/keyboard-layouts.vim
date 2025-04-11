@@ -71,17 +71,10 @@ endfunction
 
 function! LoadKeyboard()
   let keys = $KEYBOARD_LAYOUT
-<<<<<<< Updated upstream
-  if (keys == "qwerty")
-    call Keyboard("qwerty")
-  else
-    call Keyboard("workman")
-=======
   if (keys == "enthium")
     call Keyboard("enthium")
   else
     call Keyboard("qwerty")
->>>>>>> Stashed changes
   endif
 endfunction
 
