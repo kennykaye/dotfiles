@@ -1,8 +1,6 @@
-[submodule "config/base16-shell"]
-	path = config/base16-shell
-	url = https://github.com/chriskempson/base16-shell
 [submodule ".dotbot"]
 	path = .dotbot
+	ignore = dirty
 	url = https://github.com/anishathalye/dotbot
 [submodule "vim/colors/base16"]
 	path = vim/colors/base16
@@ -14,9 +12,3 @@
 	path = zprezto
   url = https://github.com/sorin-ionescu/prezto.git
   ignore = dirty
-[submodule "vim/bundle/vim-plug"]
-	path = vim/bundle/vim-plug
-	url = https://github.com/junegunn/vim-plug.git
-[submodule "fzf"]
-	path = fzf
-	url = https://github.com/junegunn/fzf.git

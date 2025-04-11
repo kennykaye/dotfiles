@@ -1,5 +1,5 @@
-Dotfiles
-========
+Dotfiles ✨
+===========
 
 > Obsessively curated dotfiles
 
@@ -11,14 +11,7 @@ Font used above is [FiraCode](https://github.com/tonsky/FiraCode).
 Installation
 ------------
 
-**NOTE:** Currently there is no management of global dependencies. This will
-make installing this difficult for you. Instead I recommend that you look
-through the configurations and cherry-pick what is appropriate to your setup.
-
-If you still would like to install this whole-sale, you will need to first
-resolve dependencies using `brew` or `apt-get`.
-
-Once that's done, run `./install` to automatically set up the configurations
+Run `./install` to automatically set up the configurations
 
 After install is completed, open vim and run `:PlugInstall`
 
@@ -26,7 +19,7 @@ After install is completed, open vim and run `:PlugInstall`
 License
 -------
 
-Copyright (c) 2017 Kenny Kaye. Released under the MIT License. See
+Copyright (c) 2025 Kenny Kaye. Released under the MIT License. See
 [LICENSE.md][license] for details.
 
 [dotbot]: https://github.com/anishathalye/dotbot

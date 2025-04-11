@@ -1,17 +1,22 @@
 ---
+- defaults:
+    link:
+      relink: true
+    shell: 
+      stdout: true
+      stderr: true
+
+
 - clean: ['~']
 
 - link:
     ~/.dotfiles: ''
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
-    ~/.agignore: agignore
-    ~/.grcat: grcat
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux/
     ~/.vim: vim/
     ~/.vimrc: vimrc
-    ~/.gvimrc: gvimrc
     ~/.ideavimrc: ideavimrc
     ~/.fzf: fzf/
     ~/.zsh: zsh/
@@ -38,16 +43,22 @@
 
 - shell:
     -
+      - "bash brew.sh"
+      - "Installing Homebrew packages and applications"
+    -
+      - "tempfile=$(mktemp) \
+        && curl -o $tempfile https://raw.githubusercontent.com/wezterm/wezterm/main/termwiz/data/wezterm.terminfo \
+        && tic -x -o ~/.terminfo $tempfile \
+        && rm $tempfile"
+      - "Installing WezTerm terminfo"
+    -
       - "ln -sf $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight"
       - "Installing improved diff highlighting"
     -
       - "git submodule update --init --recursive --remote"
       - "Installing/updating submodules"
     -
-      - "tic terminfo/xterm-256color-italic.terminfo; tic terminfo/screen-256color-italic.terminfo"
-      - "Install custom term info"
-    -
-      - "mkdir -p ~/.config/base16-shell ~/.vim/autoload ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme"
+      - "mkdir -p ~/.vim/autoload ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme"
       - "Checking folder structure exists"
     -
       - "mkdir ~/.vim/undodir"
@@ -56,15 +67,17 @@
       - "mkdir -p ~/.local/state/crossnote"
       - "Creating markdown stylesheet directory"
     -
-      - "~/.fzf/install"
-      - "Installing fzf"
-    -
-      - "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-      - "Installing vim-plug"
-    -
       - "gem install tmuxinator"
       - "Installing tmuxinator"
     -
-       - "bash cursor/install-extensions.sh" 
+       - "bash cursor/manage-extensions.sh install" 
        - "Installing Cursor extensions"
+    -
+       - "mkdir -p /tmp/aerospace-swipe-install && cd /tmp/aerospace-swipe-install && \
+          git clone https://github.com/acsandmann/aerospace-swipe.git && \
+          cd aerospace-swipe && \
+          make install && \
+          z dotfiles && \
+          rm -rf /tmp/aerospace-swipe-install"
+       - "Installing aerospace-swipe for trackpad gesture support"
 
