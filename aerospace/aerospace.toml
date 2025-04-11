@@ -1,9 +1,11 @@
-after-startup-command = ['exec-and-forget sketchybar']
+after-startup-command = [
+  'exec-and-forget sketchybar',
+  'exec-and-forget borders active_color=0xbfffffff inactive_color=0xff494d64 width=2.0 hidpi=on'
+]
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-  'exec-and-forget borders active_color=0xbfffffff inactive_color=0xff494d64 width=2.0 hidpi=on'
 ]
 
 # Start AeroSpace at login
@@ -52,10 +54,6 @@ if.app-name-regex-substring = 'finder'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'chrome'
-run = 'layout floating'
- 
-[[on-window-detected]]
 if.app-name-regex-substring = 'camera'
 run = 'layout floating'
 
@@ -66,6 +64,19 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-name-regex-substring = 'zoom'
 run = ['layout tiling', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'slack'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'safari'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'chrome'
+run = ['layout tiling', 'move-node-to-workspace 2']
+ 
 
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping

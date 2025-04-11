@@ -41,7 +41,14 @@ export PATH="$PATH:/usr/local/mysql/bin/"
 # Add WezTerm to path
 export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 
-export TERM=xterm-256color-italic
+# Set TERM for true color support
+if [[ -n "$TMUX" ]]; then
+  # In tmux session
+  export TERM="tmux-256color"
+else
+  # Direct terminal
+  export TERM="wezterm"
+fi
 
 export MANPATH="/opt/local/man:/usr/local/man:/usr/bin/:$MANPATH"
 export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
@@ -88,51 +95,52 @@ setopt NO_NOMATCH
 # reduce character sequence timeout from 400ms to 10ms
 export KEYTIMEOUT=1
 
-# Setting ripgrep as the default source for fzf
+# ---- FZF -----
 
-# export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!**/.git" --no-messages 2>/dev/null'
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CUSTOM_OPTS="--cycle
-  --height 33%
-  --reverse
-  --prompt='> '"
-  # --preview-window right:60%
-  # --margin 0,2,0,2
-  # --preview 'highlight -O ansi -l --force {} || cat {} 2> /dev/null | head -500'"
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
 
+# -- Use fd instead of fzf --
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_COLOR="--color=16,bg+:-1,bg:-1,fg:#a09f93,fg+:#f2f0ec,hl+:#ffcc66,hl:#ffcc66
-                  --color=info:#ffcc66,prompt:#f2777a,pointer:#f99157,border:#515151"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
-# Default to qwerty layout
-if [[ -z $KEYBOARD_LAYOUT ]]; then
-  # export KEYBOARD_LAYOUT='workman'
-  export KEYBOARD_LAYOUT='qwerty'
-fi
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
 
-# Workman bindings
-if [[ $KEYBOARD_LAYOUT == 'workman' ]]; then
-  export FZF_DEFAULT_OPTS="$FZF_CUSTOM_OPTS --bind=ctrl-n:down,ctrl-e:up $FZF_COLOR"
-  bindkey -a 'y' vi-backward-char
-  bindkey -a 'n' down-line-or-history
-  bindkey -a 'e' up-line-or-search-prefix
-  bindkey -a 'o' vi-forward-char
-fi
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
 
-# Qwerty bindings
-if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
-  export FZF_DEFAULT_OPTS="$FZF_CUSTOM_OPTS $FZF_COLOR"
-  bindkey -a 'h' vi-backward-char
-  bindkey -a 'j' down-line-or-history
-  bindkey -a 'k' up-line-or-search-prefix
-  bindkey -a 'l' vi-forward-char
-fi
-
-# ----- FZF + Eza + Bat Improvements -----
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+# --- setup fzf theme ---
+# Base16 Eighties colors
+fg="#d3d0c8"           # foreground
+bg="#2d2d2d"           # background
+bg_highlight="#393939" # selection background
+black="#2d2d2d"        # black
+red="#f2777a"          # red
+green="#99cc99"        # green
+yellow="#ffcc66"       # yellow
+blue="#6699cc"         # blue
+purple="#cc99cc"       # purple
+cyan="#66cccc"         # cyan
+white="#d3d0c8"        # white
+gray="#747369"         # bright black
+orange="#f99157"       # orange
+
+export FZF_COLOR="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${yellow},prompt:${red},pointer:${orange},marker:${cyan},spinner:${green},header:${cyan}"
 
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+export FZF_DEFAULT_OPTS="--style full --preview '$show_file_or_dir_preview' $FZF_COLOR"
 
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
@@ -148,6 +156,30 @@ _fzf_comprun() {
     *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
   esac
 }
+
+# # Default to qwerty layout
+# if [[ -z $KEYBOARD_LAYOUT ]]; then
+#   # export KEYBOARD_LAYOUT='workman'
+#   export KEYBOARD_LAYOUT='qwerty'
+# fi
+
+# # Workman bindings
+# if [[ $KEYBOARD_LAYOUT == 'workman' ]]; then
+#   export FZF_DEFAULT_OPTS="$FZF_CUSTOM_OPTS --bind=ctrl-n:down,ctrl-e:up $FZF_COLOR"
+#   bindkey -a 'y' vi-backward-char
+#   bindkey -a 'n' down-line-or-history
+#   bindkey -a 'e' up-line-or-search-prefix
+#   bindkey -a 'o' vi-forward-char
+# fi
+
+# # Qwerty bindings
+# if [[ $KEYBOARD_LAYOUT == 'qwerty' ]]; then
+#   export FZF_DEFAULT_OPTS="$FZF_CUSTOM_OPTS $FZF_COLOR"
+#   bindkey -a 'h' vi-backward-char
+#   bindkey -a 'j' down-line-or-history
+#   bindkey -a 'k' up-line-or-search-prefix
+#   bindkey -a 'l' vi-forward-char
+# fi
 
 # ----- Bat (better cat) -----
 export BAT_THEME=base16

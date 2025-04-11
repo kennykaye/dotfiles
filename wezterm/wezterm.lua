@@ -68,15 +68,23 @@ config.font_rules = {
   },
 }
 
--- Enable proper italic support with a standard terminal type
-config.term = "xterm-256color"
+-- Enable proper true color and italic support with proper terminal type
+config.term = "wezterm"
+
+-- Always use RGB color (24-bit color) even in tmux
+config.enable_kitty_graphics = true
+config.send_composed_key_when_left_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = false
+
+-- Ensure proper color handling
+config.use_fancy_tab_bar = false
+config.force_reverse_video_cursor = false
 
 -- Tab bar configuration - only show when multiple tabs are active
 config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
 config.show_tab_index_in_tab_bar = true
 config.tab_max_width = 50
-config.use_fancy_tab_bar = true
 config.window_decorations = 'RESIZE'
 config.window_padding = { left = '.75cell', right = '.5cell', top = '.5cell', bottom = '0cell' }
 

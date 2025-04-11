@@ -1,5 +1,4 @@
 {
-    "window.commandCenter": true,
     "editor.fontLigatures": true,
     "editor.copyWithSyntaxHighlighting": false,
     "editor.occurrencesHighlight": "off",
@@ -9,6 +8,9 @@
     "terminal.integrated.fontLigatures": true,
     "terminal.integrated.fontWeight": "normal",
     "terminal.integrated.fontWeightBold": "normal",
+    // "window.zoomLevel": 0.5,
+    "workbench.tree.indent": 16,
+    "workbench.tree.renderIndentGuides": "always",
     "vim.easymotion": true,
     "vim.enableNeovim": true,
     "vim.vimrc.enable": true,
@@ -66,6 +68,8 @@
     "vim.statusBarColors.surroundinputmode": ["#66cccc", "#ffffff"],
     */
 
+    "vim.easymotionIncSearchForegroundColor": "#ffcc66",
+
     "vim.statusBarColors.replace": ["#f2777a", "#793c3d"],
     "workbench.colorCustomizations": {
         "statusBar.background": "#393939",
@@ -76,7 +80,7 @@
         "breadcrumb.foreground": "#747369",
         "editorIndentGuide.activeBackground1": "#505050",
         "editorIndentGuide.background1": "#404040",
-        "tab.activeBorderTop": "#f99157",
+        // "tab.activeBorderTop": "#f99157",
         "tab.activeForeground": "#ffffff"
     },
     "editor.semanticHighlighting.enabled": true,
@@ -90,7 +94,6 @@
             }
         ]
     },
-    "workbench.iconTheme": null,
     "workbench.colorTheme": "Base16 Dark Eighties",
     "markdown-preview-enhanced.previewTheme": "atom-dark.css",
     "markdown-preview-enhanced.codeBlockTheme": "auto.css",
@@ -106,6 +109,18 @@
     },
     "files.autoSave": "afterDelay",
     "keyboard.dispatch": "keyCode",
-    "window.zoomLevel": 0.5,
-    "workbench.editor.editorActionsLocation": "hidden"
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.editor.showTabs": "multiple",
+    "workbench.layoutControl.enabled": false,
+    "workbench.iconTheme": null,
+    "workbench.sideBar.location": "right",
+    "window.customTitleBarVisibility": "never",
+    "search.exclude": {
+        "**/.git": true,
+        "**/.gradle": true
+    },
+    "terminal.external.osxExec": "WezTerm.app",
+    "terminal.integrated.gpuAcceleration": "on",
+    "editor.smoothScrolling": true,
+    "editor.accessibilitySupport": "off"
 }

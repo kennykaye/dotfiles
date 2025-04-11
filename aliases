@@ -39,6 +39,7 @@ alias rg='rg --colors  "match:fg:yellow" --colors "line:fg:red" --colors "path:f
 # Misc
 # Output all the term colors and their respective codes
 alias colors='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
+alias top=btop
 
 # AeroSpace
 alias ff='aerospace list-windows --all | fzf --bind "enter:execute(bash -c \"aerospace focus --window-id {1}\")+abort"'
