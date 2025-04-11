@@ -112,6 +112,10 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let mapleader = "t"
 let maplocalleader = "t"
 
+" FZF
+nnoremap <silent> <C-P> :FzfLua files<CR>
+nnoremap <silent> <C-F> :FzfLua live_grep<CR>
+
 " Easy enthium split navigation
 nnoremap <silent> <leader>i <C-W><C-J>
 nnoremap <silent> <leader>e <C-W><C-K>
@@ -140,7 +144,6 @@ nmap N Nzz
 " nvim specific config
 if has('nvim')
   let g:python2_host_prog = '/usr/local/bin/python'
-  " let g:python3_host_prog = '/usr/local/bin/python3'
   let g:python3_host_prog = '/usr/bin/python3'
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif

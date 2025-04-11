@@ -7,9 +7,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"  ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Source Z jump-navigation
-source ~/.zsh/z/z.sh
-
 # set vi mode for fzf
 set -o vi
 
@@ -100,11 +97,24 @@ export KEYTIMEOUT=1
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 
-# -- Use fd instead of fzf --
+# Initialize zoxide
+eval "$(zoxide init zsh)"
+
+# Interactize z
+bindkey "^Z" _zoxide_zi_with_accept
+
+#  fd instead of fzf --
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+
+# (G)o to a directory
+bindkey "^G" fzf-cd-widget
+
+# (F)ind text in a file, then open it
+bindkey "^F" ripgrep_fzf_vim
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
@@ -140,7 +150,37 @@ export FZF_COLOR="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_high
 
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-export FZF_DEFAULT_OPTS="--style full --preview '$show_file_or_dir_preview' $FZF_COLOR"
+export FZF_CTRL_R_OPTS="--preview-window=hidden --reverse"
+
+# Set base FZF options with better styling
+
+# Support for FZF_DEFAULT_COMMAND and other FZF environment variables
+# Keep static settings for compatibility with plugins
+if [[ "$TERM" == *"tmux"* ]]; then
+  export FZF_DEFAULT_OPTS="--style=full --border=rounded $FZF_COLOR --tmux=80% --margin=1,2"
+else
+  export FZF_DEFAULT_OPTS="--style=full --border=rounded $FZF_COLOR --margin=1,2"
+fi
+
+# Create a wrapper function for fzf to handle dynamic options on every invocation
+fzf() {
+  local width=$(tput cols)
+  local height=$(tput lines)
+  
+  # Set preview position based on terminal dimensions
+  local preview_pos
+  if (( width < height * 2 )); then
+    preview_pos="down:50%:border-top,rounded:wrap"
+   else
+    preview_pos="right:50%:border-left,rounded:wrap"
+  fi
+  
+  # Call original fzf with dynamic options
+  command fzf --preview="$show_file_or_dir_preview" \
+    --preview-window="$preview_pos" \
+    "$@"
+}
+
 
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
@@ -180,6 +220,3 @@ _fzf_comprun() {
 #   bindkey -a 'k' up-line-or-search-prefix
 #   bindkey -a 'l' vi-forward-char
 # fi
-
-# ----- Bat (better cat) -----
-export BAT_THEME=base16

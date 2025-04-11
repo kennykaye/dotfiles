@@ -20,13 +20,10 @@ Plug 'tpope/vim-sleuth'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'SirVer/ultisnips'
-Plug 'gabesoft/vim-ags'
 Plug 'Raimondi/delimitMate'
-Plug 'Yggdroot/indentLine'
 Plug 'kennykaye/vim-relativity', { 'branch': 'dev' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'honza/vim-snippets'
 
 " Lazy-load plugins
 Plug 'tpope/vim-commentary',    { 'on': [
@@ -36,15 +33,11 @@ Plug 'tpope/vim-commentary',    { 'on': [
 
 Plug 'mattn/emmet-vim',         { 'on': 'EmmetInstall' }
 Plug 'rizzatti/dash.vim',       { 'on': 'Dash' }
-Plug 'junegunn/goyo.vim',       { 'on': 'Goyo' }
-Plug 'junegunn/limelight.vim',  { 'on': 'Limelight' }
 Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
 Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 
 " Language-specific plugins
-" Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-rails',                        { 'for': 'ruby' }
 Plug 'heavenshell/vim-jsdoc',                  { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'ternjs/tern_for_vim',                    { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim',                        { 'for': ['javascript', 'javascript.jsx'] }
@@ -55,11 +48,8 @@ Plug 'ap/vim-css-color'
 Plug 'cakebaker/scss-syntax.vim',              { 'for': ['scss', 'sass'] }
 Plug 'mustache/vim-mustache-handlebars',       { 'for': 'html.handlebars' }
 Plug 'fatih/vim-go',                           { 'for': 'go' }
-Plug 'octol/vim-cpp-enhanced-highlight',       { 'for': 'cpp' }
-Plug 'vim-scripts/a.vim',                      { 'for': ['cpp', 'hpp', 'c', 'h'] }
 Plug 'dzeban/vim-log-syntax',                  { 'for' : 'log' }
 Plug 'tpope/vim-markdown',                     { 'for': 'markdown' }
-Plug 'aldafu/vim-widl',                        { 'for': ['widl', 'webidl'] }
 Plug 'guns/vim-clojure-static',                { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace',                    { 'for': 'clojure' }
 Plug 'luochen1990/rainbow',                    { 'for': 'clojure' }
@@ -67,9 +57,9 @@ Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
 
 " Neovim specific plugins
 if has('nvim')
+  Plug 'ibhagwan/fzf-lua'
   Plug 'Shougo/deoplete.nvim',     { 'do': ':UpdateRemotePlugins' }
   " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'critiqjo/lldb.nvim',       { 'for': ['c', 'cpp'] }
 endif
 
 call plug#end()

@@ -27,6 +27,7 @@
     ~/.bash_profile: bash_profile
     ~/.functions: functions
     ~/.aliases: aliases
+    ~/.bat.conf: bat.conf
     ~/.config: config
     ~/.config/wezterm: wezterm/
     ~/.config/nvim: vim/

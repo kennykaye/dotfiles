@@ -21,9 +21,6 @@ alias gc='git commit -m' # requires you to type a commit message
 alias gp='git push'
 alias gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
 
-# Yarn
-alias yr='yarn run'
-
 # Tmux
 alias mux='tmuxinator'
 alias ta='tmux attach -t'
@@ -33,12 +30,9 @@ alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
 
 # Searching
-alias ag='ag --color-path "1;32" --color-match "1;33" --color-line-number "1;31"'
 alias rg='rg --colors  "match:fg:yellow" --colors "line:fg:red" --colors "path:fg:green" --no-messages'
 
 # Misc
-# Output all the term colors and their respective codes
-alias colors='( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )'
 alias top=btop
 
 # AeroSpace

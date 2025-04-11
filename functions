@@ -1,36 +1,8 @@
 # Create a new directory and enter it
 function md() {
-	mkdir -p "$@" && cd "$@"
+  mkdir -p "$@" && cd "$@"
 }
 
-
-# whois a domain or a URL
-function whois() {
-	local domain=$(echo "$1" | awk -F/ '{print $3}') # get domain from URL
-	if [ -z $domain ] ; then
-		domain=$1
-	fi
-	echo "Getting whois record for: $domain …"
-
-	# avoid recursion
-	/usr/bin/whois -h whois.internic.net $domain | sed '/NOTICE:/q'
-}
-
-
-# Style git diff tool
-function strip_diff_leading_symbols(){
-  color_code_regex=$'(\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])'
-
-  # simplify the unified patch diff header
-  sed -E "s/^($color_code_regex)diff --git .*$//g" | \
-  sed -E "s/^($color_code_regex)index .*$/\
-\1$(rule)/g" | \
-  sed -E "s/^($color_code_regex)\+\+\+(.*)$/\1\+\+\+\5\\
-\1$(rule)/g" | \
-
-  # actually strips the leading symbols
-  sed -E "s/^($color_code_regex)[\+\-]/\1 /g"
-}
 
 # Display a truecolor gradient
 truecolor() {
@@ -109,18 +81,6 @@ function cdf() {
    file=$(fzf-tmux +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
-
-# z - display z results within fzf-tmux pane
-unalias z 2> /dev/null
-function z() {
-  if [[ -z "$*" ]]; then
-    cd "$(_z -l 2>&1 | fzf-tmux +s --tac | sed 's/^[0-9,.]* *//')"
-  else
-    _z "$@"
-  fi
-}
-
-
 # fbr - checkout git branch (including remote branches)
 function fco() {
   local branches branch
@@ -185,13 +145,6 @@ function fs() {
 }
 
 
-# who is using the laptop's iSight camera?
-function camerausedby() {
-    echo "Checking to see who is using the iSight camera… 📷"
-    usedby=$(lsof | grep -w "AppleCamera\|USBVDC\|iSight" | awk '{printf $2"\n"}' | xargs ps)
-    echo -e "Recent camera uses:\n$usedby"
-}
-
 
 ## Change cursor based on vi mode
 #   - Insert mode displays _ cursor
@@ -236,3 +189,34 @@ qwerty() {
 }
 
 
+# 1. Search for text in files using Ripgrep
+# 2. Interactively narrow down the list using fzf
+# 3. Open the file in Vim
+function ripgrep_fzf_vim() {
+rg --color=always --line-number --no-heading --smart-case "${*:-}" |
+  fzf --ansi \
+      --color "hl:-1:underline,hl+:-1:underline:reverse" \
+      --delimiter : \
+      --preview 'bat --color=always {1} --highlight-line {2}' \
+      --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
+      --bind 'enter:become(nvim {1} +{2})'
+}
+zle -N ripgrep_fzf_vim
+
+
+# Interactive zoxide navigation with automatic command line acceptance
+#
+# This function:
+# 1. Prompts for interactive directory selection using zoxide
+# 2. Changes to the selected directory if one is chosen
+# 3. Automatically accepts the command line to execute the directory change
+#
+# Used as a ZLE widget to provide smoother directory navigation workflow
+function _zoxide_zi_with_accept() {
+  local result="$(zoxide query -i)"
+  if [[ -n "$result" ]]; then
+    cd "$result"
+    zle accept-line
+  fi
+}
+zle -N _zoxide_zi_with_accept

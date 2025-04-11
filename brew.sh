@@ -4,7 +4,7 @@
 if ! command -v brew &> /dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    
+
     # Add Homebrew to PATH for the current session
     if [[ $(uname -m) == "arm64" ]]; then
         # For Apple Silicon Macs
@@ -34,13 +34,16 @@ packages=(
     "fzf"
     "gawk"
     "git"
+    "git-delta"
     "git-lfs"
     "jq"
     "ripgrep"
+    "tlrc"
     "tmux"
     "wget"
     "zsh"
-    
+    "zoxide"
+
     # Development tools
     "docker-compose"
     "go"

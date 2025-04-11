@@ -31,9 +31,6 @@ function! Keyboard(type)
     nnoremap <silent> <S-Right> <C-W><C-L>
     nnoremap <silent> <S-Left> <C-W><C-H>
 
-    " FZF
-    nnoremap <silent> <C-P> :<C-U>FZF --bind=ctrl-n:down,ctrl-e:up<CR>
-
     let g:NERDTreeMapOpenExpl = "t"
 
   else " qwerty
@@ -69,18 +66,22 @@ function! UnmapWorkman()
   nnoremap <silent> <S-L> 20l
   nnoremap <silent> <S-H> 20h
 
-  " FZF
-  nnoremap <silent> <C-P> :FZF<CR>
-
   let g:NERDTreeMapOpenExpl = "e"
 endfunction
 
 function! LoadKeyboard()
   let keys = $KEYBOARD_LAYOUT
+<<<<<<< Updated upstream
   if (keys == "qwerty")
     call Keyboard("qwerty")
   else
     call Keyboard("workman")
+=======
+  if (keys == "enthium")
+    call Keyboard("enthium")
+  else
+    call Keyboard("qwerty")
+>>>>>>> Stashed changes
   endif
 endfunction
 
