@@ -1,30 +1,85 @@
+###
+# Configures the starship schema
+###
+"$schema" = 'https://starship.rs/config-schema.json'
+
+
 add_newline = true
 
+#
+# Multi line
+#
+
+
+# format = """
+# [╭╴](bright-black)\
+# $directory\
+# $git_branch\
+# ${custom.git_status_dirty}\
+# ${custom.git_status_clean}\
+# $git_state\
+# $fill\
+# $cmd_duration\
+# $git_status\
+# $python\
+# $go\
+# $node\
+# $time\
+# $line_break\
+# [╰─]()\
+# $character"""
+
+
 format = """
+[╭╴](bright-black)\
 $directory\
 $git_branch\
-${custom.git_status_dirty}\
-${custom.git_status_clean}\
 $git_state\
-$character"""
-
-right_format = """
 $cmd_duration\
 $git_status\
 $python\
 $go\
 $node\
-$time"""
+$time\
+$line_break\
+[╰─](bright-black)\
+$character"""
+
+
+#
+# Single line
+#
+
+# format = """
+# $directory\
+# $git_branch\
+# ${custom.git_status_dirty}\
+# ${custom.git_status_clean}\
+# $git_state\
+# $character"""
+
+# right_format = """
+# $cmd_duration\
+# $git_status\
+# $python\
+# $go\
+# $node\
+# $time"""
 
 continuation_prompt = "[❯ ](dimmed white)"
 
 command_timeout = 1000
 
+# [fill]
+# style  = 'bright-black'
+# symbol = '─'
+
 [directory]
 style = "red"
-truncation_length = 2
+truncation_length = 1
+# truncation_length = 2
 truncate_to_repo = true
-truncation_symbol = "⋯/"
+# truncation_symbol = "⋯/"
 
 [character]
 success_symbol = "[❯](green)"
@@ -35,7 +90,7 @@ vimcmd_symbol = "[❮](green)"
 # vimcmd_symbol = "[❮](red)[❮](yellow)[❮](green)"
 
 [git_branch]
-format = "on [$branch]($style)"
+format = "on [$branch]($style) "
 style = "yellow"
 
 [git_status]

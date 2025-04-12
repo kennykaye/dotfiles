@@ -1,13 +1,15 @@
 # OSX Specific aliases
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  if [[ -s "/usr/local/bin/nvim" ]]; then
-    alias vim="nvim"
-  fi
+if [[ -s "/usr/local/bin/nvim" ]]; then
+  alias vim="nvim"
 fi
 
-# Bundle
-alias bi='bundle install'
-alias be='bundle exec'
+# Eza
+local eza_params="--color=always --long --git --group-directories-first --no-filesize --no-time --no-user --no-permissions"
+alias ls="eza $eza_params"
+alias lst="eza $eza_params --tree --level 2"
+alias lsta="eza $eza_params --tree"
+alias lst3="eza $eza_params --tree --level 3"
+alias lst4="eza $eza_params --tree --level 4"
 
 # Git
 alias g='git'
@@ -37,9 +39,6 @@ alias top=btop
 
 # AeroSpace
 alias ff='aerospace list-windows --all | fzf --bind "enter:execute(bash -c \"aerospace focus --window-id {1}\")+abort"'
-
-# Eza
-alias ls="eza --color=always --long --git --group-directories-first --no-filesize --no-time --no-user --no-permissions"
 
 alias vtop='vtop -t brew'
 

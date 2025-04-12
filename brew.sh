@@ -59,22 +59,23 @@ packages=(
 )
 
 #Applications
-casks=(
-    ["android-studio"]="homebrew/cask"      # Android IDE
-    ["cursor"]="homebrew/cask"              # AI-first code editor
-    ["homerow"]="homebrew/cask"             # Keyboard navigation tool
-    ["lunar"]="homebrew/cask"               # Display brightness manager
-    ["postman"]="homebrew/cask"             # API development platform
-    ["raycast"]="homebrew/cask"             # Productivity launcher
-    ["tidal"]="homebrew/cask"               # Music Streaming
-    ["vysor"]="homebrew/cask"               # Android screen mirroring
-    ["wezterm"]="homebrew/cask"             # GPU-accelerated terminal
-    ["yellowdot"]="homebrew/cask"           # Hide MacOS privacy notice
-    ["aerospace"]="nikitabobko/tap"         # Window manager for macOS
-    ["intellij-idea-ce"]="homebrew/cask"    # Java IDE
-    ["borders"]="FelixKratz/formulae"       # Window borders for macOS
-    ["sketchybar"]="FelixKratz/formulae"    # Custom macOS menubar
+declare -a cask_names=(
+    "android-studio"
+    "cursor"
+    "homerow"
+    "lunar"
+    "postman"
+    "raycast"
+    "tidal"
+    "vysor"
+    "wezterm"
+    "yellowdot"
+    "intellij-idea-ce"
 )
+
+# Special taps and their casks
+brew tap nikitabobko/tap
+brew tap FelixKratz/formulae
 
 # Install packages
 echo "Installing packages..."
@@ -83,14 +84,18 @@ for package in "${packages[@]}"; do
     brew install "$package"
 done
 
-# Install applications
+# Install standard casks
 echo "Installing applications..."
-for app in "${!casks[@]}"; do
-    tap="${casks[$app]}"
-    echo "Installing $app from $tap..."
-    brew tap "$tap" 2>/dev/null
+for app in "${cask_names[@]}"; do
+    echo "Installing $app..."
     brew install --cask "$app"
 done
+
+# Install casks from special taps
+echo "Installing special casks..."
+brew install --cask aerospace
+brew install borders
+brew install sketchybar
 
 # Remove outdated versions from the cellar
 brew cleanup
