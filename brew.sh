@@ -26,52 +26,54 @@ brew upgrade
 # Array of packages to install
 packages=(
     # Core utils
-    "btop"
-    "coreutils"
-    "curl"
-    "eza"
-    "fd"
-    "fzf"
-    "gawk"
-    "git"
-    "git-delta"
-    "git-lfs"
-    "jq"
-    "ripgrep"
-    "tlrc"
-    "tmux"
-    "wget"
-    "zsh"
-    "zoxide"
+    "antidote"         # Plugin manager for zsh
+    "btop"             # Resource monitor with graphs
+    "coreutils"        # GNU core utilities
+    "curl"             # HTTP client
+    "eza"              # Modern replacement for ls
+    "fd"               # Simple, fast alternative to find
+    "fzf"              # Fuzzy finder
+    "gawk"             # Fast awk replacement
+    "git"              # Version control system
+    "git-delta"        # Syntax highlighting pager for git
+    "git-lfs"          # Git extension for large files
+    "jq"               # JSON processor
+    "ripgrep"          # Fast grep alternative
+    "starship"         # Cross-shell prompt
+    "tlrc"             # Terminal session recorder
+    "tmux"             # Terminal multiplexer
+    "wget"             # Internet file retriever
+    "zsh"              # Z shell
+    "zoxide"           # Smarter cd command
 
     # Development tools
-    "docker-compose"
-    "go"
-    "gradle"
-    "jenv"
-    "nvim"
-    "nvm"
-    "openjdk"
-    "python"
-    "rbenv"
+    "docker-compose"   # Define multi-container applications
+    "go"               # Go programming language
+    "gradle"           # Build automation tool
+    "jenv"             # Java version manager
+    "nvim"             # Neovim text editor
+    "nvm"              # Node version manager
+    "openjdk"          # Java development kit
+    "python"           # Python programming language
+    "rbenv"            # Ruby version manager
 )
 
 #Applications
 casks=(
-    ["android-studio"]="homebrew/cask"
-    ["cursor"]="homebrew/cask"
-    ["homerow"]="homebrew/cask"
-    ["lunar"]="homebrew/cask"
-    ["postman"]="homebrew/cask"
-    ["raycast"]="homebrew/cask"
-    ["tidal"]="homebrew/cask"
-    ["vysor"]="homebrew/cask"
-    ["wezterm"]="homebrew/cask"
-    ["yellowdot"]="homebrew/cask"
-    ["aerospace"]="nikitabobko/tap"
-    ["intellij-idea-ce"]="homebrew/cask"
-    ["borders"]="FelixKratz/formulae"
-    ["sketchybar"]="FelixKratz/formulae"
+    ["android-studio"]="homebrew/cask"      # Android IDE
+    ["cursor"]="homebrew/cask"              # AI-first code editor
+    ["homerow"]="homebrew/cask"             # Keyboard navigation tool
+    ["lunar"]="homebrew/cask"               # Display brightness manager
+    ["postman"]="homebrew/cask"             # API development platform
+    ["raycast"]="homebrew/cask"             # Productivity launcher
+    ["tidal"]="homebrew/cask"               # Music Streaming
+    ["vysor"]="homebrew/cask"               # Android screen mirroring
+    ["wezterm"]="homebrew/cask"             # GPU-accelerated terminal
+    ["yellowdot"]="homebrew/cask"           # Hide MacOS privacy notice
+    ["aerospace"]="nikitabobko/tap"         # Window manager for macOS
+    ["intellij-idea-ce"]="homebrew/cask"    # Java IDE
+    ["borders"]="FelixKratz/formulae"       # Window borders for macOS
+    ["sketchybar"]="FelixKratz/formulae"    # Custom macOS menubar
 )
 
 # Install packages

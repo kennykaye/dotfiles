@@ -6,7 +6,6 @@
       stdout: true
       stderr: true
 
-
 - clean: ['~']
 
 - link:
@@ -18,16 +17,15 @@
     ~/.vim: vim/
     ~/.vimrc: vimrc
     ~/.ideavimrc: ideavimrc
-    ~/.fzf: fzf/
+    ~/.bat.conf: zsh/bat.conf
+    ~/.zsh_plugins.txt: zsh/zsh_plugins.txt
+    ~/.config/starship.toml: zsh/starship.toml
     ~/.zsh: zsh/
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
-    ~/.zprezto: zprezto
-    ~/.zpreztorc: zpreztorc
     ~/.bash_profile: bash_profile
     ~/.functions: functions
     ~/.aliases: aliases
-    ~/.bat.conf: bat.conf
     ~/.config: config
     ~/.config/wezterm: wezterm/
     ~/.config/nvim: vim/
@@ -39,7 +37,6 @@
     ~/Library/Application Support/Cursor/user/keybindings.json: cursor/keybindings.json
     ~/.ycm_extra_conf.py: vim/settings/ycm_extra_conf.py
     ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/base16_kaye.vim: vim/lightline/base16_kaye.vim
-    ~/.zprezto/modules/prompt/functions/prompt_kaye_setup: zsh/prompt_kaye_setup
     ~/.local/state/crossnote/style.less: cursor/markdown-styles/style.less
 
 - shell:

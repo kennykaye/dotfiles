@@ -1,0 +1,25 @@
+# Essential plugins
+
+# Fast syntax highlighting
+zdharma-continuum/fast-syntax-highlighting 
+
+# Autosuggestions (like fish shell)
+zsh-users/zsh-autosuggestions kind:defer
+
+# Completion enhancements
+zsh-users/zsh-completions kind:defer
+
+# History substring search
+zsh-users/zsh-history-substring-search kind:defer
+
+# Directory navigation
+ajeetdsouza/zoxide kind:defer
+
+# Lazy loading for commands
+qoomon/zsh-lazyload
+
+# Better Vi mode
+jeffreytse/zsh-vi-mode 
+
+# Dot Expansion .... -> ../..
+wazum/zsh-directory-dot-expansion kind:defer

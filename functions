@@ -1,9 +1,3 @@
-# Create a new directory and enter it
-function md() {
-  mkdir -p "$@" && cd "$@"
-}
-
-
 # Display a truecolor gradient
 truecolor() {
   awk 'BEGIN{
@@ -143,33 +137,6 @@ function fs() {
     fzf-tmux --query="$1" --select-1 --exit-0) &&
   tmux switch-client -t "$session"
 }
-
-
-
-## Change cursor based on vi mode
-#   - Insert mode displays _ cursor
-#   - Command mode displays █ cursor
-zle-keymap-select () {
-  zle editor-info
-  if [[ ("$TERM" == "xterm-256color") ||
-        ("$TERM" == "screen-256color") ||
-        ("$TERM" == "xterm-256color-italic") ||
-        ("$TERM" == "screen-256color-italic") ]]; then
-
-    if [ "$KEYMAP" = "vicmd" ]; then
-      echo -ne "\e[2 q"
-    else
-      echo -ne "\e[4 q"
-    fi
-  fi
-}
-
-
-## Default to insert mode
-zle-line-init () {
-  zle -K viins
-}
-
 
 ## Set  layout
 workman() {
