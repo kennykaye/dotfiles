@@ -65,6 +65,7 @@ declare -a cask_names=(
     "borders"
     "cursor"
     "font-fira-code-nerd-font"
+    "font-sketchybar-app-font"
     "homerow"
     "intellij-idea-ce"
     "lunar"

@@ -30,6 +30,7 @@ source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
 # Deferred Plugin loading
+lazyload brew -- 'eval "$(/opt/homebrew/bin/brew shellenv)"'
 lazyload zoxide -- 'eval "$(zoxide init zsh)"'
 lazyload nvm -- 'source ~/.nvm/nvm.sh'
 lazyload jenv -- 'eval "$(jenv init -)"; jenv enable-plugin export'
@@ -114,7 +115,7 @@ fi
 fzf() {
   local width=$(tput cols)
   local height=$(tput lines)
-  
+
   # Set preview position based on terminal dimensions
   local preview_pos
   if (( width < height * 2 )); then
@@ -122,7 +123,7 @@ fzf() {
    else
     preview_pos="right:50%:border-left,rounded:wrap"
   fi
-  
+
   # Call original fzf with dynamic options
   command fzf --preview="$show_file_or_dir_preview" \
     --preview-window="$preview_pos" \
