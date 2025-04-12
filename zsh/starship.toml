@@ -65,7 +65,7 @@ symbol = " "
 shell = ["sh"]
 
 [git_state]
-format = '\⚡ ([$state( $progress_current/$progress_total)]($style)\) '
+format = '[⚡ $state( $progress_current/$progress_total)]($style) '
 style = "green"
 
 [cmd_duration]
