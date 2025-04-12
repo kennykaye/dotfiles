@@ -6,11 +6,8 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- Font configuration with explicit fallback for special characters
-config.font = wezterm.font_with_fallback({
-  'Fira Code',
-  'Hack Nerd Font Mono',
-})
+-- Font configuration
+config.font = wezterm.font('FiraCode Nerd Font')
 
 config.font_size = 14.0
 
@@ -34,37 +31,25 @@ config.font_rules = {
   {
     intensity = "Normal",
     italic = false,
-    font = wezterm.font_with_fallback({
-      { family = "Fira Code", weight = "Regular" },
-      "Hack Nerd Font Mono",
-    }),
+    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular" }),
   },
   -- Bold text (disable bold by using Regular weight)
   {
     intensity = "Bold",
     italic = false,
-    font = wezterm.font_with_fallback({
-      { family = "Fira Code", weight = "Regular" },
-      "Hack Nerd Font Mono",
-    }),
+    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular" }),
   },
   -- Italic text (enable italics)
   {
     intensity = "Normal",
     italic = true,
-    font = wezterm.font_with_fallback({
-      { family = "Fira Code", weight = "Regular", italic = true },
-      { family = "Hack Nerd Font Mono", italic = true },
-    }),
+    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular", italic = true }),
   },
   -- Bold+Italic text (Regular weight but with italic style)
   {
     intensity = "Bold",
     italic = true,
-    font = wezterm.font_with_fallback({
-      { family = "Fira Code", weight = "Regular", italic = true },
-      { family = "Hack Nerd Font Mono", italic = true },
-    }),
+    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular", italic = true }),
   },
 }
 

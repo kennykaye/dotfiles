@@ -58,19 +58,23 @@ packages=(
     "rbenv"            # Ruby version manager
 )
 
-#Applications
+# Casks
 declare -a cask_names=(
     "android-studio"
+    "areospace"
+    "borders"
     "cursor"
+    "font-fira-code-nerd-font"
     "homerow"
+    "intellij-idea-ce"
     "lunar"
     "postman"
     "raycast"
+    "sketchybar"
     "tidal"
     "vysor"
     "wezterm"
     "yellowdot"
-    "intellij-idea-ce"
 )
 
 # Special taps and their casks
@@ -85,17 +89,11 @@ for package in "${packages[@]}"; do
 done
 
 # Install standard casks
-echo "Installing applications..."
-for app in "${cask_names[@]}"; do
-    echo "Installing $app..."
-    brew install --cask "$app"
+echo "Installing casks..."
+for cask in "${cask_names[@]}"; do
+    echo "Installing $cask..."
+    brew install --cask "$cask"
 done
-
-# Install casks from special taps
-echo "Installing special casks..."
-brew install --cask aerospace
-brew install borders
-brew install sketchybar
 
 # Remove outdated versions from the cellar
 brew cleanup
