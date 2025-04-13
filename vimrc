@@ -57,6 +57,7 @@ Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
 " Neovim specific plugins
 if has('nvim')
   Plug 'ibhagwan/fzf-lua'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'Shougo/deoplete.nvim',     { 'do': ':UpdateRemotePlugins' }
   " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
 endif

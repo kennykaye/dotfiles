@@ -24,6 +24,7 @@ zvm_config() {
   ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
   ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
   ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT  # Always start new prompt in insert mode
 }
 
 # zsh plugin management, see ~/.zsh_plugins.txt
