@@ -26,36 +26,38 @@ brew upgrade
 # Array of packages to install
 packages=(
     # Core utils
-    "antidote"         # Plugin manager for zsh
-    "btop"             # Resource monitor with graphs
-    "coreutils"        # GNU core utilities
-    "curl"             # HTTP client
-    "eza"              # Modern replacement for ls
-    "fd"               # Simple, fast alternative to find
-    "fzf"              # Fuzzy finder
-    "gawk"             # Fast awk replacement
-    "git"              # Version control system
-    "git-delta"        # Syntax highlighting pager for git
-    "git-lfs"          # Git extension for large files
-    "jq"               # JSON processor
-    "ripgrep"          # Fast grep alternative
-    "starship"         # Cross-shell prompt
-    "tlrc"             # Terminal session recorder
-    "tmux"             # Terminal multiplexer
-    "wget"             # Internet file retriever
-    "zsh"              # Z shell
-    "zoxide"           # Smarter cd command
+    "antidote"                       # Plugin manager for zsh
+    "bat"                            # Pager and preview
+    "btop"                           # Resource monitor with graphs
+    "coreutils"                      # GNU core utilities
+    "curl"                           # HTTP client
+    "eza"                            # Modern replacement for ls
+    "fd"                             # Simple, fast alternative to find
+    "fzf"                            # Fuzzy finder
+    "gawk"                           # Fast awk replacement
+    "git"                            # Version control system
+    "git-delta"                      # Syntax highlighting pager for git
+    "git-lfs"                        # Git extension for large files
+    "jq"                             # JSON processor
+    "reattach-to-user-namespace"     # Tmux clipboard utility
+    "ripgrep"                        # Fast grep alternative
+    "starship"                       # Cross-shell prompt
+    "tlrc"                           # Terminal session recorder
+    "tmux"                           # Terminal multiplexer
+    "wget"                           # Internet file retriever
+    "zsh"                            # Z shell
+    "zoxide"                         # Smarter cd command
 
     # Development tools
-    "docker-compose"   # Define multi-container applications
-    "go"               # Go programming language
-    "gradle"           # Build automation tool
-    "jenv"             # Java version manager
-    "nvim"             # Neovim text editor
-    "nvm"              # Node version manager
-    "openjdk"          # Java development kit
-    "python"           # Python programming language
-    "rbenv"            # Ruby version manager
+    "docker-compose"                 # Define multi-container applications
+    "go"                             # Go programming language
+    "gradle"                         # Build automation tool
+    "jenv"                           # Java version manager
+    "nvim"                           # Neovim text editor
+    "nvm"                            # Node version manager
+    "openjdk"                        # Java development kit
+    "python"                         # Python programming language
+    "rbenv"                          # Ruby version manager
 )
 
 # Casks
@@ -65,12 +67,12 @@ declare -a cask_names=(
     "borders"
     "cursor"
     "font-fira-code-nerd-font"
-    "font-sketchybar-app-font"
     "homerow"
     "intellij-idea-ce"
     "lunar"
     "postman"
     "raycast"
+    "sf-symbols"
     "sketchybar"
     "tidal"
     "vysor"

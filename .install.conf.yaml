@@ -2,7 +2,7 @@
 - defaults:
     link:
       relink: true
-    shell: 
+    shell:
       stdout: true
       stderr: true
 
@@ -68,7 +68,7 @@
       - "gem install tmuxinator"
       - "Installing tmuxinator"
     -
-       - "bash cursor/manage-extensions.sh install" 
+       - "bash cursor/manage-extensions.sh install"
        - "Installing Cursor extensions"
     -
        - "mkdir -p /tmp/aerospace-swipe-install && cd /tmp/aerospace-swipe-install && \

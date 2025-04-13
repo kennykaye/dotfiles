@@ -17,7 +17,7 @@ config.harfbuzz_features = {
   "liga",  -- Standard ligatures
   "dlig",  -- Discretionary ligatures
 }
- 
+
 config.color_scheme = 'Eighties (base16)'
 
 -- Improve glyph rendering - make symbols like ❯ wider
@@ -81,7 +81,7 @@ config.colors = {
 --   cursor_bg = "#f2777a",
 --   cursor_fg = "#000000", -- Black cursor text
 --   cursor_border = "#f2777a",
-  
+
   -- Selection colors
   selection_fg = "#000000",
   selection_bg = "#f2777a",
@@ -89,7 +89,7 @@ config.colors = {
   -- When the IME, a dead key or a leader key are being processed and are effectively
   -- holding input pending the result of input composition, change the cursor
   -- to this color to give a visual cue about the compose state.
-  compose_cursor = 'orange', 
+  compose_cursor = 'orange',
     -- Tab bar colors
   tab_bar = {
     background = "#2d2d2d",

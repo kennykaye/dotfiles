@@ -10,7 +10,8 @@ call plug#begin('~/.vim/bundle')
 
 " Immediately loaded
 Plug 'junegunn/vim-plug'
-Plug 'itchyny/lightline.vim'
+Plug 'RRethy/base16-nvim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -19,7 +20,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
-Plug 'SirVer/ultisnips'
 Plug 'Raimondi/delimitMate'
 Plug 'kennykaye/vim-relativity', { 'branch': 'dev' }
 Plug 'Lokaltog/vim-easymotion'
@@ -31,8 +31,6 @@ Plug 'tpope/vim-commentary',    { 'on': [
                                \   '<Plug>CommentaryLine'
                                \   ] }
 
-Plug 'mattn/emmet-vim',         { 'on': 'EmmetInstall' }
-Plug 'rizzatti/dash.vim',       { 'on': 'Dash' }
 Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
 Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
 
@@ -68,8 +66,12 @@ call plug#end()
 " Settings are stored in seperate files and then sourced
 
 exe 'source' '~/.vim/settings/settings.vim'
-for fpath in split(globpath('~/.vim/settings', '*.vim'), '\n')
- if (fpath != 'settings')
-   exe 'source' fpath
- endif
+for fpath in split(globpath('~/.vim/settings', '*.{vim,lua}'), '\n')
+  if (fpath != 'settings')
+    if fpath =~ '\.lua$'
+      exe 'luafile' fpath
+    else
+      exe 'source' fpath
+    endif
+  endif
 endfor

@@ -1,6 +1,8 @@
 # Some sensible files to ignore
 
 .session
+.session.vim
+
 
 # git credential file
 .gitconfig.local

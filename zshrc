@@ -1,6 +1,7 @@
 #
 # Source applications and runcom files
 #
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Base16 Eighties colors
 fg="#d3d0c8"           # foreground
@@ -30,7 +31,6 @@ source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
 # Deferred Plugin loading
-lazyload brew -- 'eval "$(/opt/homebrew/bin/brew shellenv)"'
 lazyload zoxide -- 'eval "$(zoxide init zsh)"'
 lazyload nvm -- 'source ~/.nvm/nvm.sh'
 lazyload jenv -- 'eval "$(jenv init -)"; jenv enable-plugin export'
@@ -42,6 +42,7 @@ lazyload rbenv -- '[[ -s "/opt/homebrew/bin/rbenv" ]] && eval "$(rbenv init - zs
 # zsh prompt
 eval "$(fzf --zsh)"
 eval "$(starship init zsh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Load our dotfiles like ~/.functions, etc…
 #   ~/.extra can be used for settings you don't want to commit,

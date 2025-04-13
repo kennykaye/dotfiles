@@ -18,7 +18,7 @@ set clipboard=unnamed          " tmux and system copy/paste
 set lazyredraw                 " only redraw when necessary
 set number                     " show current line numbers
 set cursorline                 " highlight current line
-set noshowmode                 " lightline renders mode
+set noshowmode                 " hide mode since we use lualine
 set visualbell                 " disable error bell
 set scrolloff=5                " set minimum number of lines above/below cursor
 set sidescroll=1               " enable horizontal scrolling
@@ -51,7 +51,6 @@ if filereadable(expand("~/.vimrc_background"))
 else
   set background=dark            " set dark background
   colorscheme base16-kaye
-  let g:lightlineTheme=base16-kaye
 endif
 
 if !has('nvim')
@@ -147,3 +146,7 @@ if has('nvim')
   let g:python3_host_prog = '/usr/bin/python3'
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
+
+lua << END
+require('lualine').setup()
+END

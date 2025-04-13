@@ -12,7 +12,7 @@ au BufRead,BufNewFile *.js.flow set filetype=javascript.flow
 " File type specific indentation
 augroup indentationSettings
   autocmd!
-  autocmd BufRead * :IndentLinesEnable
+  " autocmd BufRead * :IndentLinesEnable
   autocmd Filetype php setlocal ts=4 sw=4 expandtab
   autocmd Filetype cpp setlocal ts=4 sw=4 expandtab
   autocmd Filetype lua setlocal ts=4 sw=4 expandtab

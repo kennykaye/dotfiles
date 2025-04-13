@@ -35,8 +35,8 @@ format = """
 $directory\
 $git_branch\
 $git_state\
-$cmd_duration\
 $git_status\
+$cmd_duration\
 $python\
 $go\
 $node\
@@ -66,7 +66,7 @@ $character"""
 # $node\
 # $time"""
 
-continuation_prompt = "[❯ ](dimmed white)"
+continuation_prompt = "[  ❯ ](bright-black)"
 
 command_timeout = 1000
 
@@ -100,7 +100,7 @@ behind = "[⇣](yellow)${count} "
 diverged = "[⇕⇡${ahead_count}⇣${behind_count}](yellow) "
 conflicted = "​"
 untracked = "[](white) "
-modified = "[󰔷](purple) "
+modified = "[](purple) "
 staged = "[](yellow) "
 renamed = "[➜](blue) "
 deleted = "[](red) "
