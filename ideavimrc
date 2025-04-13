@@ -9,6 +9,7 @@ set incsearch
 set clipboard+=unnamed
 set visualbell
 set noerrorbells
+set easymotion
 
 "========================================
 " IDE actions
@@ -26,6 +27,15 @@ map <leader>t :action TypeHierarchy<CR>
 map <leader>w :action SychronizeCurrentFile<CR>
 map <leader>, :action CommentByLineComment<CR>
 map <leader>d :action Debug<CR>
+
+"========================================
+" EasyMotion
+"========================================
+map <C-/> <Plug>(easymotion-s)
+map <C-s> <Plug>(easymotion-s)
+map <C-_> <Plug>(easymotion-s)
+map <leader>/ <Plug>(easymotion-s)
+map <leader>s <Plug>(easymotion-s)
 
 " TODO: Comment by line or block
 

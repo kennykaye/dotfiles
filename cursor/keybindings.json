@@ -27,12 +27,12 @@
     {
         "key": "cmd+i",
         "command": "composerMode.agent"
-    }
-    // {
-    //     "key": "ctrl+d",
-    //     "command": "editor.action.addSelectionToNextFindMatch",
-    //     "when": "editorFocus && !editorReadonly"
-    // },
+    },
+    {
+        "key": "ctrl+n",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus && !editorReadonly"
+    },
     // {
     //     "key": "ctrl+d",
     //     "command": "-editor.action.scrollDownHalfPage",

@@ -344,10 +344,10 @@ call <sid>hi("LLSelectedPCLine",     "", s:gui01, "", s:cterm01, "", "")
 call <sid>hi("LLUnselectedPCLine",   "", s:gui01, "", s:cterm01, "", "")
 
 " EasyMotion highlighting
-call <sid>hi("EasyMotionTarget", s:gui0C, "", s:cterm0C, "", "bold", "")
-call <sid>hi("EasyMotionTarget2First", s:gui0C, "", s:cterm0C, "", "bold", "")
-call <sid>hi("EasyMotionTarget2Second", s:gui0C, "", s:cterm0C, "", "bold", "")
-call <sid>hi("EasyMotionIncSearch", s:gui0C, "", s:cterm0C, "", "", "")
+call <sid>hi("EasyMotionTarget", s:gui0A, "", s:cterm0A, "", "bold", "")
+call <sid>hi("EasyMotionTarget2First", s:gui0A, "", s:cterm0A, "", "bold", "")
+call <sid>hi("EasyMotionTarget2Second", s:gui0A, "", s:cterm0A, "", "bold", "")
+call <sid>hi("EasyMotionIncSearch", s:gui0A, "", s:cterm0A, "", "", "")
 
 " Remove functions
 delf <sid>hi

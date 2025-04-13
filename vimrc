@@ -24,7 +24,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'kennykaye/vim-relativity', { 'branch': 'dev' }
 Plug 'Lokaltog/vim-easymotion'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
 
 " Lazy-load plugins
 Plug 'tpope/vim-commentary',    { 'on': [

@@ -40,6 +40,14 @@
         {
             "before": ["8", "8"],
             "commands": ["editor.action.commentLine"]
+        },
+        {
+            "before": ["<leader>", "s"],
+            "after": ["<leader>", "<leader>", "/"]
+        },
+        {
+            "before": ["<C-s>"],
+            "after": ["<leader>", "<leader>", "/"]
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -48,6 +56,9 @@
             "commands": ["editor.action.commentLine"]
         }
     ],
+    "vim.handleKeys": {
+        "<C-s>": true
+    },
     //"vim.highlightedyank.enable": true,
     "editor.multiCursorModifier": "alt",
     "vim.cursorStylePerMode.normal": "block",
@@ -69,6 +80,10 @@
     */
 
     "vim.easymotionIncSearchForegroundColor": "#ffcc66",
+    "vim.easymotionMarkerForegroundColorOneChar": "#ffcc66",
+    "vim.easymotionMarkerForegroundColorTwoCharFirst": "#ffcc66",
+    "vim.easymotionMarkerForegroundColorTwoCharSecond": "#ffcc66",
+    "vim.easymotionMarkerFontWeight": "regular",
 
     "vim.statusBarColors.replace": ["#f2777a", "#793c3d"],
     "workbench.colorCustomizations": {
