@@ -107,9 +107,9 @@ nnoremap Q <nop>
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" Set 't' to be the leader
-let mapleader = "t"
-let maplocalleader = "t"
+" Set ' ' to be the leader
+let mapleader = " "
+let maplocalleader = " "
 
 " FZF
 nnoremap <silent> <C-P> :FzfLua files<CR>

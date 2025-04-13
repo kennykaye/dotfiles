@@ -13,7 +13,7 @@ set noerrorbells
 "========================================
 " IDE actions
 "========================================
-let mapleader = ","
+let mapleader = " "
 
 map <leader>a :action GotoRelated<CR>
 map <leader>b :action ToggleLineBreakpoint<CR>

@@ -19,7 +19,7 @@
     "vim.smartRelativeLine": true,
     "vim.useCtrlKeys": true,
     "vim.visualstar": true,
-    "vim.leader": "t",
+    "vim.leader": " ",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<leader>", "i"],

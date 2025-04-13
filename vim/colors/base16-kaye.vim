@@ -166,6 +166,11 @@ call <sid>hi("TabLineFill",   s:gui03, "", s:cterm03, "", "none", "")
 call <sid>hi("TabLineSel",    s:gui06, s:gui01, s:cterm06, s:cterm01, "none", "")
 call <sid>hi("OverLength",    s:gui03, "", s:cterm03, "", "", "")
 
+" Floats
+call <sid>hi("NormalFloat",   "", "282828", "", "", "", "")
+call <sid>hi("FloatTitle",     s:gui05, "", s:cterm05, "", "none", "")
+call <sid>hi("FloatBorder",     s:gui05, "", s:cterm05, "", "none", "")
+
 " Standard syntax highlighting
 call <sid>hi("Boolean",      s:gui09, "", s:cterm09, "", "", "")
 call <sid>hi("Character",    s:gui08, "", s:cterm08, "", "", "")
@@ -337,6 +342,12 @@ call <sid>hi("LLSelectedPCSign",     s:gui0A, "", s:cterm0A, "", "", "")
 call <sid>hi("LLUnselectedPCSign",   s:gui0C, "", s:cterm0C, "", "", "")
 call <sid>hi("LLSelectedPCLine",     "", s:gui01, "", s:cterm01, "", "")
 call <sid>hi("LLUnselectedPCLine",   "", s:gui01, "", s:cterm01, "", "")
+
+" EasyMotion highlighting
+call <sid>hi("EasyMotionTarget", s:gui0C, "", s:cterm0C, "", "bold", "")
+call <sid>hi("EasyMotionTarget2First", s:gui0C, "", s:cterm0C, "", "bold", "")
+call <sid>hi("EasyMotionTarget2Second", s:gui0C, "", s:cterm0C, "", "bold", "")
+call <sid>hi("EasyMotionIncSearch", s:gui0C, "", s:cterm0C, "", "", "")
 
 " Remove functions
 delf <sid>hi

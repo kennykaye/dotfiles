@@ -21,6 +21,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'Raimondi/delimitMate'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'kennykaye/vim-relativity', { 'branch': 'dev' }
 Plug 'Lokaltog/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
@@ -32,7 +33,7 @@ Plug 'tpope/vim-commentary',    { 'on': [
                                \   ] }
 
 Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
-Plug 'scrooloose/nerdtree',     { 'on': [ 'NERDTreeToggle', 'NERDTreeFind' ] }
+Plug 'nvim-tree/nvim-tree.lua', { 'on': [ 'NvimTreeToggle', 'NvimTreeFindFile' ] }
 
 " Language-specific plugins
 Plug 'pangloss/vim-javascript'
