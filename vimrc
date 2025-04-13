@@ -18,12 +18,12 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'Raimondi/delimitMate'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'kennykaye/vim-relativity', { 'branch': 'dev' }
-Plug 'Lokaltog/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
 
 " Lazy-load plugins
@@ -36,15 +36,11 @@ Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
 Plug 'nvim-tree/nvim-tree.lua', { 'on': [ 'NvimTreeToggle', 'NvimTreeFindFile' ] }
 
 " Language-specific plugins
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript',                  { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'heavenshell/vim-jsdoc',                  { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'ternjs/tern_for_vim',                    { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim',                        { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/html5.vim',                       { 'for': ['html', 'html.handlebars'] }
 Plug 'hail2u/vim-css3-syntax',                 { 'for': ['css', 'scss', 'sass'] }
-Plug 'rstacruz/vim-hyperstyle',                { 'for': ['css', 'scss', 'sass'] }
 Plug 'ap/vim-css-color'
-Plug 'cakebaker/scss-syntax.vim',              { 'for': ['scss', 'sass'] }
 Plug 'mustache/vim-mustache-handlebars',       { 'for': 'html.handlebars' }
 Plug 'fatih/vim-go',                           { 'for': 'go' }
 Plug 'dzeban/vim-log-syntax',                  { 'for' : 'log' }
@@ -58,8 +54,6 @@ Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
 if has('nvim')
   Plug 'ibhagwan/fzf-lua'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'Shougo/deoplete.nvim',     { 'do': ':UpdateRemotePlugins' }
-  " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
 endif
 
 call plug#end()
