@@ -54,6 +54,7 @@ Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
 if has('nvim')
   Plug 'ibhagwan/fzf-lua'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 endif
 
 call plug#end()

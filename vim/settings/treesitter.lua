@@ -7,7 +7,7 @@ treesitter.setup {
   ensure_installed = {
     "javascript", "typescript", "lua", "vim", "vimdoc", "query",
     "html", "css", "json", "yaml", "markdown", "go", "bash",
-    "python", "c", "cpp", "rust"
+    "python", "c", "cpp", "rust", "java", "kotlin"
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

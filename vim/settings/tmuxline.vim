@@ -6,5 +6,5 @@ let g:tmuxline_preset = {
       \'c'    : ['#(~/.tmux/uptime.sh)'],
       \'win'  : ['#I', '#W'],
       \'cwin' : ['#I', '#W'],
-      \'x'    : ['%l:%M %p#(~/.tmux/battery.sh)'],
+      " \'x'    : ['%l:%M %p#(~/.tmux/battery.sh)'],
       \'y'    : ['%a %d'],}

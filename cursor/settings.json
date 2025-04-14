@@ -165,7 +165,6 @@
     "terminal.integrated.rendererType": "canvas",
     "terminal.integrated.tabs.enabled": true,
     "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.enableBell": false,
     "terminal.integrated.shellIntegration.enabled": true,
     "terminal.integrated.persistentSessionReviveProcess": "never",
     "terminal.integrated.cursorBlinking": true,
@@ -183,5 +182,9 @@
     },
     "editor.smoothScrolling": true,
     "editor.accessibilitySupport": "off",
-    "workbench.panel.showLabels": false
+    "workbench.panel.showLabels": false,
+    "accessibility.signals.terminalBell": {
+        "sound": "off"
+    },
+    "terminal.integrated.enableVisualBell": false
 }
