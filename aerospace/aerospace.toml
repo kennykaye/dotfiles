@@ -62,21 +62,28 @@ if.app-name-regex-substring = 'quicktime'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'zoom'
-run = ['layout tiling', 'move-node-to-workspace 4']
+if.app-name-regex-substring = 'cursor'
+run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'slack'
-run = ['layout tiling', 'move-node-to-workspace 3']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'safari'
-run = ['layout tiling', 'move-node-to-workspace 3']
+if.app-name-regex-substring = 'wezterm'
+run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'chrome'
-run = ['layout tiling', 'move-node-to-workspace 2']
- 
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'slack'
+run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'safari'
+run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'zoom'
+run = ['move-node-to-workspace 4']
 
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping

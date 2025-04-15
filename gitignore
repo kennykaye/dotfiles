@@ -1,9 +1,3 @@
-# Some sensible files to ignore
-
-.session
-.session.vim
-
-
 # git credential file
 .gitconfig.local
 
@@ -51,6 +45,7 @@ pom.xml
 *.swo
 *.swm
 *.session
+.session.vim
 **/*.session
 
 # Caches
@@ -61,6 +56,7 @@ config/htop
 config/Autodesk
 config/gocode
 config/yarn
+config/nvim/bundle
 
 # nvim
 .tern-port

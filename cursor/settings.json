@@ -7,7 +7,6 @@
     "terminal.integrated.fontFamily": "FiraCode Nerd Font, Menlo, Monaco, 'Courier New', monospace",
     "terminal.integrated.fontLigatures": true,
     "terminal.integrated.fontWeight": "normal",
-    "terminal.integrated.fontWeightBold": "normal",
     // "window.zoomLevel": 0.5,
     "workbench.tree.indent": 16,
     "workbench.tree.renderIndentGuides": "always",
@@ -79,7 +78,7 @@
     "vim.statusBarColors.surroundinputmode": ["#66cccc", "#ffffff"],
     */
 
-    "vim.easymotionIncSearchForegroundColor": "#ffcc66",
+    "vim.true": "#ffcc66",
     "vim.easymotionMarkerForegroundColorOneChar": "#ffcc66",
     "vim.easymotionMarkerForegroundColorTwoCharFirst": "#ffcc66",
     "vim.easymotionMarkerForegroundColorTwoCharSecond": "#ffcc66",
@@ -96,7 +95,27 @@
         "editorIndentGuide.activeBackground1": "#505050",
         "editorIndentGuide.background1": "#404040",
         // "tab.activeBorderTop": "#f99157",
-        "tab.activeForeground": "#ffffff"
+        "tab.activeForeground": "#ffffff",
+        "terminal.background": "#2d2d2d",
+        "terminal.foreground": "#d3d0c8",
+        "terminalCursor.background": "#d3d0c8",
+        "terminalCursor.foreground": "#d3d0c8",
+        "terminal.ansiBlack": "#2d2d2d",
+        "terminal.ansiBlue": "#6699cc",
+        "terminal.ansiBrightBlack": "#747369",
+        "terminal.ansiBrightBlue": "#6699cc",
+        "terminal.ansiBrightCyan": "#66cccc",
+        "terminal.ansiBrightGreen": "#99cc99",
+        "terminal.ansiBrightMagenta": "#cc99cc",
+        "terminal.ansiBrightRed": "#f2777a",
+        "terminal.ansiBrightWhite": "#f2f0ec",
+        "terminal.ansiBrightYellow": "#ffcc66",
+        "terminal.ansiCyan": "#66cccc",
+        "terminal.ansiGreen": "#99cc99",
+        "terminal.ansiMagenta": "#cc99cc",
+        "terminal.ansiRed": "#f2777a",
+        "terminal.ansiWhite": "#d3d0c8",
+        "terminal.ansiYellow": "#ffcc66"
     },
     "editor.semanticHighlighting.enabled": true,
     "editor.tokenColorCustomizations": {
@@ -135,7 +154,37 @@
         "**/.gradle": true
     },
     "terminal.external.osxExec": "WezTerm.app",
-    "terminal.integrated.gpuAcceleration": "on",
+    "terminal.integrated.gpuAcceleration": "off",
+    "terminal.integrated.env.osx": {
+        "TERM": "xterm-256color",
+        "COLORTERM": "truecolor",
+        "FORCE_COLOR": "3"
+    },
+    "terminal.integrated.minimumContrastRatio": 1,
+    "terminal.integrated.drawBoldTextInBrightColors": false,
+    "terminal.integrated.rendererType": "canvas",
+    "terminal.integrated.tabs.enabled": true,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": ["-l"],
+            "env": {
+                "TERM": "xterm-256color",
+                "COLORTERM": "truecolor"
+            }
+        }
+    },
     "editor.smoothScrolling": true,
-    "editor.accessibilitySupport": "off"
+    "editor.accessibilitySupport": "off",
+    "workbench.panel.showLabels": false,
+    "accessibility.signals.terminalBell": {
+        "sound": "off"
+    },
+    "terminal.integrated.enableVisualBell": false
 }

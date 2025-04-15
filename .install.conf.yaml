@@ -14,12 +14,9 @@
     ~/.gitignore: gitignore
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux/
-    ~/.vim: vim/
-    ~/.vimrc: vimrc
     ~/.ideavimrc: ideavimrc
     ~/.bat.conf: zsh/bat.conf
     ~/.zsh_plugins.txt: zsh/zsh_plugins.txt
-    ~/.config/starship.toml: zsh/starship.toml
     ~/.zsh: zsh/
     ~/.zshrc: zshrc
     ~/.zshenv: zshenv
@@ -28,15 +25,12 @@
     ~/.aliases: aliases
     ~/.config: config
     ~/.config/wezterm: wezterm/
-    ~/.config/nvim: vim/
+    ~/.config/nvim: nvim/
     ~/.config/sketchybar: sketchybar
     ~/.config/aerospace: aerospace
-    ~/.config/aerospace-swipe: aerospace-swipe
-    ~/.config/nvim/init.vim: vimrc
+    ~/.config/starship.toml: zsh/starship.toml
     ~/Library/Application Support/Cursor/user/settings.json: cursor/settings.json
     ~/Library/Application Support/Cursor/user/keybindings.json: cursor/keybindings.json
-    ~/.ycm_extra_conf.py: vim/settings/ycm_extra_conf.py
-    ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/base16_kaye.vim: vim/lightline/base16_kaye.vim
     ~/.local/state/crossnote/style.less: cursor/markdown-styles/style.less
 
 - shell:

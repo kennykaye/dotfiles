@@ -1,7 +1,6 @@
-vim/bundle/
+nvim/bundle/
 config/*
 !config/base16-shell
 !config/htop
 !config/karabiner
-vim/init.vim
-vim/undodir
+nvim/undodir

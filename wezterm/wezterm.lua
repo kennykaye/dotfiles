@@ -10,6 +10,7 @@ end
 config.font = wezterm.font('FiraCode Nerd Font')
 
 config.font_size = 14.0
+config.line_height = 1.2
 
 -- Enable comprehensive ligature support
 config.harfbuzz_features = {

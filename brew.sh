@@ -50,6 +50,7 @@ packages=(
 
     # Development tools
     "docker-compose"                 # Define multi-container applications
+    "luarocks"                       # Lua package manager
     "go"                             # Go programming language
     "gradle"                         # Build automation tool
     "jenv"                           # Java version manager
