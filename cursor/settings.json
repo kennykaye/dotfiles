@@ -12,7 +12,6 @@
     "workbench.tree.renderIndentGuides": "always",
     "vim.easymotion": true,
     "vim.enableNeovim": true,
-    "vim.vimrc.enable": true,
     "vim.useSystemClipboard": true,
     "vim.statusBarPosition": "left",
     "vim.smartRelativeLine": true,
@@ -186,5 +185,8 @@
     "accessibility.signals.terminalBell": {
         "sound": "off"
     },
-    "terminal.integrated.enableVisualBell": false
+    "terminal.integrated.enableVisualBell": false,
+    "vim.neovimPath": "/opt/homebrew/bin/nvim",
+    "vim.neovimUseConfigFile": true,
+    "editor.fontWeight": "300"
 }

@@ -93,8 +93,8 @@ vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', 'K', ':grep! "\\b<C-R><C-W>\\b"<CR>:cw<CR>')
 
 -- FZF
-vim.keymap.set('n', '<C-P>', ':FzfLua files<CR>', { silent = true })
-vim.keymap.set('n', '<C-F>', ':FzfLua live_grep<CR>', { silent = true })
+-- vim.keymap.set('n', '<C-P>', ':FzfLua files<CR>', { silent = true })
+-- vim.keymap.set('n', '<C-F>', ':FzfLua live_grep<CR>', { silent = true })
 
 -- Easy enthium split navigation
 vim.keymap.set('n', '<leader>i', '<C-W><C-J>', { silent = true })

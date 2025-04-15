@@ -102,7 +102,7 @@ inner.horizontal = 20
 inner.vertical =   20
 outer.left =       20
 outer.bottom =     20
-outer.top =        30
+outer.top = [{ monitor."dell" = 59 }, 30]
 outer.right =      20
 
 # 'main' binding mode declaration
@@ -197,9 +197,6 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
-
-[mode.apps.binding]
-alt-w = ['exec-and-forget open -a /Applications/WezTerm.app', 'mode main']
 
 # [workspace-to-monitor-force-assignment]
 #     1 = '^dell$'

@@ -1,5 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
+  enabled = false,
   config = function()
     -- Link FzfLuaBackdrop highlight to NvimTreeBackdrop
     vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter"}, {

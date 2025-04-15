@@ -67,6 +67,7 @@ declare -a cask_names=(
     "areospace"
     "borders"
     "cursor"
+    "elgato-wave-link"
     "font-fira-code-nerd-font"
     "homerow"
     "intellij-idea-ce"
