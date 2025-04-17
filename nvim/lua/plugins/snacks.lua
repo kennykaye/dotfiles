@@ -1,3 +1,23 @@
+
+local list_layout = {
+  layout = {
+    preview = false,
+    layout = {
+      backdrop = true,
+      row = 1,
+      width = 0.4,
+      min_width = 80,
+      height = 0.4,
+      border = "none",
+      box = "vertical",
+      { win = "input", height = 1, border = "rounded", title = "{title} {live} {flags}", title_pos = "center" },
+      { win = "list", border = "hpad" },
+      { win = "preview", title = "{preview}", border = "rounded" },
+    },
+  },
+}
+
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -7,7 +27,22 @@ return {
     bigfile = { enabled = true },
     dashboard = { enabled = true },
     explorer = { enabled = true },
-    indent = { enabled = true },
+    indent = {
+      enabled = true,
+      scope = {
+          underline = false, -- underline the start of the scope
+      },
+      chunk = {
+        enabled = false,
+        char = {
+          corner_top = "┌",
+          corner_bottom = "└",
+          horizontal = "─",
+          vertical = "│",
+          arrow = "",
+        },
+      }
+    },
     input = { enabled = true },
     notifier = {
       enabled = true,
@@ -21,7 +56,23 @@ return {
           truncate = 100, -- truncate the file path to (roughly) this length
         },
       },
-      layout = {},
+      sources = {
+        files = {
+          hidden = false,
+        },
+        explorer = {
+          layout = { backdrop = false, }
+        }
+      },
+      win = {
+        input = {
+          keys = {
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
+            ["<a-.>"] = { "toggle_hidden", mode = { "i", "n" } },
+            ["<a-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+          },
+        },
+      },
       icons = {
         files = {
           enabled = true, -- show file icons
@@ -125,16 +176,16 @@ return {
       notification = {
         -- wo = { wrap = true } -- Wrap notifications
       }
-    }
+    },
   },
   keys = {
     -- Top Pickers & Explorer
-    { "<C-P>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+    { "<C-P>", function() Snacks.picker.files(list_layout) end, desc = "Find Files" },
     { "<C-F>", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
-    { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+    { "<leader>:", function() Snacks.picker.command_history(list_layout) end, desc = "Command History" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
     { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
     -- find
@@ -160,15 +211,15 @@ return {
     -- search
     { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
     { '<leader>s/', function() Snacks.picker.search_history() end, desc = "Search History" },
-    { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "Autocmds" },
+    { "<leader>sa", function() Snacks.picker.autocmds(list_layout) end, desc = "Autocmds" },
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
-    { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
+    { "<leader>sC", function() Snacks.picker.commands(list_layout) end, desc = "Commands" },
     { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
     { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
     { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
     { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
-    { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
+    { "<leader>si", function() Snacks.picker.icons(list_layout) end, desc = "Icons" },
     { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
     { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
     { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },

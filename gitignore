@@ -60,3 +60,7 @@ config/nvim/bundle
 
 # nvim
 .tern-port
+
+# Environments
+.venv
+**/.venv

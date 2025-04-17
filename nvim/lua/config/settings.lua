@@ -37,8 +37,7 @@ vim.opt.listchars:append({ extends = "…", precedes = "…" })
 -- Appearance settings
 vim.cmd("syntax on")               -- enable syntax highlighting
 vim.cmd("syntax sync minlines=200")
-vim.opt.fillchars:append({ vert = "│" })
-vim.cmd("hi! link VertSplit Conceal")
+vim.opt.fillchars:append({ vert = "│"})
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

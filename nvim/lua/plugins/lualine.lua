@@ -1,36 +1,22 @@
 return {
   "nvim-lualine/lualine.nvim",
   config = function()
-    local base16 = require 'lualine.themes.base16'
-
-    local colors = {
-      bg       = '#2d2d2d',
-      fg       = '#d3d0c8',
-      yellow   = '#ffcc66',
-      cyan     = '#66cccc',
-      darkgray = '#393939',
-      green    = '#99cc99',
-      orange   = '#f99157',
-      violet   = '#cc99cc',
-      magenta  = '#cc99cc',
-      blue     = '#6699cc',
-      red      = '#f2777a',
-      gray     = '#747369',
-    }
+    local base16 = require('lualine.themes.base16')
+    local colors = require('utils.colors')
 
     -- Change the background of lualine_c section for normal mode
-    base16.normal.a.bg = colors.cyan
+    base16.normal.a.bg = colors.teal
     base16.insert.a.bg = colors.green
     base16.visual.a.bg = colors.yellow
     base16.replace.a.bg = colors.red
-    base16.inactive.a.bg = colors.gray
+    base16.inactive.a.bg = colors.overlay1
 
     -- Initialize and set gray background for lualine_z section
-    base16.normal.z = { bg = colors.gray, fg = colors.fg }
-    base16.insert.z = { bg = colors.gray, fg = colors.fg }
-    base16.visual.z = { bg = colors.gray, fg = colors.fg }
-    base16.replace.z = { bg = colors.gray, fg = colors.fg }
-    base16.inactive.z = { bg = colors.gray, fg = colors.fg }
+    base16.normal.z = { bg = colors.overlay1, fg = colors.text }
+    base16.insert.z = { bg = colors.overlay1, fg = colors.text }
+    base16.visual.z = { bg = colors.overlay1, fg = colors.text }
+    base16.replace.z = { bg = colors.overlay1, fg = colors.text }
+    base16.inactive.z = { bg = colors.overlay1, fg = colors.text }
 
     local empty = require('lualine.component'):extend()
     function empty:draw(default_highlight)
@@ -90,13 +76,13 @@ return {
             'diagnostics',
             source = { 'nvim' },
             sections = { 'error' },
-            diagnostics_color = { error = { bg = colors.red, fg = colors.darkgray } },
+            diagnostics_color = { error = { bg = colors.red, fg = colors.surface0 } },
           },
           {
             'diagnostics',
             source = { 'nvim' },
             sections = { 'warn' },
-            diagnostics_color = { warn = { bg = colors.yellow, fg = colors.darkgray } },
+            diagnostics_color = { warn = { bg = colors.yellow, fg = colors.surface0 } },
           }
         }
       },

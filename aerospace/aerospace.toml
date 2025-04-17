@@ -62,6 +62,10 @@ if.app-name-regex-substring = 'quicktime'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'zoom'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'cursor'
 run = ['move-node-to-workspace 1']
 
