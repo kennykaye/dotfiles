@@ -37,6 +37,7 @@ return {
             section[id] = comp
           end
           comp.separator = left and { right = '' } or { left = '' }
+          -- comp.separator = left and { right = '' } or { left = '' }
         end
       end
       return sections
@@ -48,6 +49,7 @@ return {
         theme = base16,
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
+        -- section_separators = { left = '', right = ''},
         disabled_filetypes = {
           statusline = {},
           winbar = {},
@@ -68,10 +70,17 @@ return {
         },
         lualine_b = {'filename'},
         lualine_c = {},
-        lualine_x = {'filetype'},
+        lualine_x = {
+          -- {
+          --   require("noice").api.statusline.mode.get,
+          --   cond = require("noice").api.statusline.mode.has,
+          --   color = { fg = colors.peach },
+          -- },
+          {'filetype'},
+        },
         lualine_y = {'progress'},
         lualine_z = {
-          'location',
+          -- 'location',
           {
             'diagnostics',
             source = { 'nvim' },

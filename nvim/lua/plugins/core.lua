@@ -1,4 +1,6 @@
 return {
+  { "nvim-lua/plenary.nvim" },
+
   -- Core plugins
   { "folke/lazy.nvim" },
   { "edkolev/tmuxline.vim" },
@@ -19,4 +21,4 @@ return {
     "mg979/vim-visual-multi",
     branch = "master",
   },
-} 
+}

@@ -49,7 +49,7 @@ return {
       timeout = 3000,
       style = "compact" -- minimal, compact, or fancy
     },
-    picker = { 
+    picker = {
       enabled = true,
       formatters = {
         file = {
@@ -172,11 +172,11 @@ return {
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-    styles = {
-      notification = {
-        -- wo = { wrap = true } -- Wrap notifications
-      }
-    },
+    -- styles = {
+    --   notification = {
+    --     wo = { wrap = true } -- Wrap notifications
+    --   }
+    -- },
   },
   keys = {
     -- Top Pickers & Explorer
@@ -215,8 +215,8 @@ return {
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>sC", function() Snacks.picker.commands(list_layout) end, desc = "Commands" },
-    { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
-    { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+    { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+    { "<leader>sD", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
     { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
     { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
     { "<leader>si", function() Snacks.picker.icons(list_layout) end, desc = "Icons" },

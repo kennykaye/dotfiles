@@ -14,7 +14,6 @@ vim.opt.swapfile = false
 vim.opt.termguicolors = true       -- set gui colors for vim and nvim
 vim.opt.backspace = "indent,eol,start" -- backspace through lines
 vim.opt.clipboard = "unnamed"      -- tmux and system copy/paste
-vim.opt.lazyredraw = true          -- only redraw when necessary
 vim.opt.number = true              -- show current line numbers
 vim.opt.cursorline = true          -- highlight current line
 vim.opt.showmode = false           -- hide mode since we use lualine
@@ -128,10 +127,3 @@ if vim.fn.has('nvim') == 1 then
   vim.env.NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 end
 
--- Create undodir if it doesn't exist
-local undodir = vim.fn.expand("~/.config/nvim/undodir")
-if vim.fn.isdirectory(undodir) == 0 then
-  vim.fn.mkdir(undodir, "p")
-end
-vim.opt.undodir = undodir
-vim.opt.undofile = true 

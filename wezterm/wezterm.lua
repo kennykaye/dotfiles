@@ -38,7 +38,7 @@ config.font_rules = {
   {
     intensity = "Bold",
     italic = false,
-    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular" }),
+    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Bold" }),
   },
   -- Italic text (enable italics)
   {
@@ -50,7 +50,7 @@ config.font_rules = {
   {
     intensity = "Bold",
     italic = true,
-    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular", italic = true }),
+    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Bold", italic = true }),
   },
 }
 

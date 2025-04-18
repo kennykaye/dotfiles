@@ -33,7 +33,7 @@ antidote load
 
 # Deferred Plugin loading
 lazyload zoxide -- 'eval "$(zoxide init zsh)"'
-lazyload nvm -- 'source ~/.nvm/nvm.sh'
+lazyload nvm -- 'source /opt/homebrew/opt/nvm/nvm.sh && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"'
 lazyload jenv -- 'eval "$(jenv init -)"; jenv enable-plugin export'
 lazyload rbenv -- '[[ -s "/opt/homebrew/bin/rbenv" ]] && eval "$(rbenv init - zsh)"'
 
