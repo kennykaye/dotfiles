@@ -1,12 +1,12 @@
 return {
   "folke/noice.nvim",
-  enabled = false,
+  enabled = true,
   event = "VeryLazy",
   opts = {
     views = {
       cmdline_popup = {
         border = {
-          style = "none",
+          style = "rounded",
           padding = { 1, 2 },
         },
         filter_options = {},

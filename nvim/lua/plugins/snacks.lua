@@ -47,6 +47,7 @@ return {
     notifier = {
       enabled = true,
       timeout = 3000,
+      width = { min = 40, max = 60 },
       style = "compact" -- minimal, compact, or fancy
     },
     picker = {
@@ -172,11 +173,11 @@ return {
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-    -- styles = {
-    --   notification = {
-    --     wo = { wrap = true } -- Wrap notifications
-    --   }
-    -- },
+    styles = {
+      notification = {
+        wo = { wrap = true } -- Wrap notifications
+      }
+    },
   },
   keys = {
     -- Top Pickers & Explorer

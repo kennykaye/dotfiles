@@ -29,9 +29,22 @@ add_newline = true
 # [╰─]()\
 # $character"""
 
+# format = """
+# [╭╴](bright-black)\
+# $directory\
+# $git_branch\
+# $git_state\
+# $git_status\
+# $cmd_duration\
+# $python\
+# $go\
+# $node\
+# $time\
+# $line_break\
+# [╰─](bright-black)\
+# $character"""
 
 format = """
-[╭╴](bright-black)\
 $directory\
 $git_branch\
 $git_state\
@@ -42,7 +55,6 @@ $go\
 $node\
 $time\
 $line_break\
-[╰─](bright-black)\
 $character"""
 
 

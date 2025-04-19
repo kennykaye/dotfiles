@@ -1,3 +1,26 @@
+#
+# REST 
+#
+# Performs a GET request to the specified URL and formats the JSON response
+get() {
+  curl -s -X GET ${1} | jq "." | bat --language json
+}
+
+# Performs a POST request to the specified URL with JSON data and formats the response
+post() {
+  curl -s -X POST "${1}" -H "Content-Type: application/json" -d "${2}" | jq "." | bat --language json
+}
+
+# Performs a PUT request to the specified URL with JSON data and formats the response 
+put() {
+  curl -s -X PUT "${1}" -H "Content-Type: application/json" -d "${2}" | jq "." | bat --language json
+}
+
+# Performs a DELETE request to the specified URL and formats the JSON response
+delete() {
+  curl -s -X DELETE "${1}" | jq "." | bat --language json
+}
+
 # Display a truecolor gradient
 truecolor() {
   awk 'BEGIN{

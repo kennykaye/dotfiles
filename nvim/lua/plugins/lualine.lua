@@ -71,11 +71,11 @@ return {
         lualine_b = {'filename'},
         lualine_c = {},
         lualine_x = {
-          -- {
-          --   require("noice").api.statusline.mode.get,
-          --   cond = require("noice").api.statusline.mode.has,
-          --   color = { fg = colors.peach },
-          -- },
+          {
+            require("noice").api.statusline.mode.get,
+            cond = require("noice").api.statusline.mode.has,
+            color = { fg = colors.peach },
+          },
           {'filetype'},
         },
         lualine_y = {'progress'},

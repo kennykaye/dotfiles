@@ -44,6 +44,11 @@ return {
     vim.api.nvim_set_hl(0, 'SnacksPickerRow', { fg = C.overlay1 })
     vim.api.nvim_set_hl(0, 'SnacksPickerColumn', { fg = C.overlay1 })
     vim.api.nvim_set_hl(0, 'SnacksPickerDelim', { fg = C.overlay1 })
+    vim.api.nvim_set_hl(0, 'SnacksPickerBorder', { fg = C.overlay1 })
+    vim.api.nvim_set_hl(0, 'SnacksPickerBoxBorder', { fg = C.overlay1 })
+    vim.api.nvim_set_hl(0, 'SnacksPickerListBorder', { fg = C.overlay1 })
+    vim.api.nvim_set_hl(0, 'SnacksPickerInputBorder', { fg = C.overlay1 })
+    vim.api.nvim_set_hl(0, 'SnacksPickerPreviewBorder', { fg = C.overlay1 })
 
     -- Notfiy 
     vim.api.nvim_set_hl(0, 'SnacksNotifierIconInfo', { fg = C.sky })
@@ -61,9 +66,13 @@ return {
     vim.api.nvim_set_hl(0, 'NoicePopup', { bg = C.surface0 })
     vim.api.nvim_set_hl(0, 'NoiceSplit', { bg = C.surface0 })
     vim.api.nvim_set_hl(0, 'DapUIFloatNormal', { bg = C.surface0 })
-    vim.api.nvim_set_hl(0, 'NoiceCmdlinePopup', { bg = C.surface0 })
+    vim.api.nvim_set_hl(0, 'NoiceCmdlinePopup', { bg = C.base })
     vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon', { fg = C.teal })
-
+    vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupTitleCmdline', { fg = C.teal })
+    vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = C.overlay1 })
+    vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorderSearch', { fg = C.overlay1 })
+    vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupTitleSearch', { fg = C.yellow })
+ 
     -- Indent 
     vim.api.nvim_set_hl(0, 'SnacksIndent', { fg = C.surface1 })
     vim.api.nvim_set_hl(0, 'SnacksIndentScope', { fg = C.overlay1 })

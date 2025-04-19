@@ -72,7 +72,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.show_tab_index_in_tab_bar = true
 config.tab_max_width = 50
 config.window_decorations = 'RESIZE'
-config.window_padding = { left = '.75cell', right = '.5cell', top = '.5cell', bottom = '0cell' }
+config.window_padding = { left = '.75cell', right = '.5cell', top = '0.3cell', bottom = '0cell' }
 
 
 -- Theme configuration
