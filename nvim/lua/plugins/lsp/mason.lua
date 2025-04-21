@@ -1,25 +1,22 @@
 return {
-  "williamboman/mason.nvim",
+  'williamboman/mason.nvim',
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    'neovim/nvim-lspconfig',
+    'williamboman/mason-lspconfig.nvim',
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
   config = function()
-    -- import mason
-    local mason = require("mason")
-
-    -- import mason-lspconfig
-    local mason_lspconfig = require("mason-lspconfig")
-
-    local mason_tool_installer = require("mason-tool-installer")
+    local mason = require('mason')
+    local mason_lspconfig = require('mason-lspconfig')
+    local mason_tool_installer = require('mason-tool-installer')
 
     -- enable mason and configure icons
     mason.setup({
       ui = {
         icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
+          package_installed = '✓',
+          package_pending = '➜',
+          package_uninstalled = '✗',
         },
       },
     })
@@ -28,11 +25,11 @@ return {
       -- list of servers for mason to install
       automatic_installation = true,
       ensure_installed = {
-        "pyright",
-        "lua_ls",
-        "emmet_ls",
-        "gopls",
-        "kotlin_language_server",
+        'pyright',
+        'lua_ls',
+        'emmet_ls',
+        'gopls',
+        'kotlin_language_server',
       },
 
       -- Hack to bridge neovim 0.11.0+ apis with mason_lspconfig
@@ -43,41 +40,22 @@ return {
           -- Global LSP configuration
           vim.lsp.config( server_name, {
             capabilities = require('blink.cmp').get_lsp_capabilities(),
-            root_markers = { ".git" },
+            root_markers = { '.git' },
           })
           vim.lsp.enable(server_name)
-        end,
-
-        ['lua_ls'] = function()
-          vim.lsp.config('lua_ls', {
-            cmd = { 'lua-language-server' },
-            filetypes = { 'lua' },
-            root_markers = { '.luarc.json', '.luarc.jsonc' },
-            settings = {
-              Lua = {
-                runtime = {
-                  version = 'LuaJIT',
-                },
-                diagnostics = {
-                  globals = { "vim" },
-                },
-              }
-            },
-          })
-          vim.lsp.enable('lua_ls')
-        end,
+        end
       },
     })
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint",
-        "eslint_d",
-        "detekt",
+        'prettier', -- prettier formatter
+        'stylua', -- lua formatter
+        'isort', -- python formatter
+        'black', -- python formatter
+        'pylint',
+        'eslint_d',
+        'detekt',
       },
     })
   end,
