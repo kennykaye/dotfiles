@@ -9,7 +9,7 @@ return {
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
   { "tpope/vim-sleuth" },
-  { "dense-analysis/ale" },
+  -- { "dense-analysis/ale" },
   { "airblade/vim-gitgutter" },
   { "Raimondi/delimitMate" },
   {

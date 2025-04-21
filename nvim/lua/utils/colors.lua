@@ -15,6 +15,7 @@ return {
   text       = '#d3d0c8', -- [base16] foreground
   eggshell   = '#e8e6df',
   white      = '#f2f0ec', -- [base16] white
+
   -- Accent Colors
   red        = '#f2777a', -- [base16] red
   flamingo   = '#f58689',

@@ -4,4 +4,4 @@ require("config.tabs")
 require("config.cursor")
 
 -- Plugins
-require("config.lazy") 
+require("config.lazy")

@@ -7,6 +7,19 @@ return {
 
     local C = require('utils.colors')
 
+    -- Diagnostic configuration
+    vim.diagnostic.config({
+      virtual_text = true,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = ' ',
+          [vim.diagnostic.severity.WARN] = ' ',
+          [vim.diagnostic.severity.HINT] = '󰠠 ',
+          [vim.diagnostic.severity.INFO] = ' ',
+        },
+      }
+    })
+
     -- Window 
     vim.api.nvim_set_hl(0, 'VertSplit', { fg = C.crust, bg = 'NONE' })
     vim.api.nvim_set_hl(0, 'WinSeparator', { fg = C.crust, bg = 'NONE' })
@@ -72,13 +85,16 @@ return {
     vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = C.overlay1 })
     vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorderSearch', { fg = C.overlay1 })
     vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupTitleSearch', { fg = C.yellow })
- 
+
     -- Indent 
     vim.api.nvim_set_hl(0, 'SnacksIndent', { fg = C.surface1 })
     vim.api.nvim_set_hl(0, 'SnacksIndentScope', { fg = C.overlay1 })
 
     -- Diagnostics
     vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = C.yellow })
+    vim.api.nvim_set_hl(0, 'DiagnosticFloatingHint', { fg = C.subtext0 })
+    vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextHint', { fg = C.subtext0 })
+    vim.api.nvim_set_hl(0, 'DiagnosticSignHint', { fg = C.subtext0 })
 
     -- Treesitter
     vim.api.nvim_set_hl(0, 'TSVariable', { fg = C.text })
@@ -93,22 +109,35 @@ return {
     vim.api.nvim_set_hl(0, 'PmenuExtraSel', { fg = "NONE", bg = C.surface2 })
     vim.api.nvim_set_hl(0, 'PMenuThumb', { fg = C.base, bg = C.surface1 })
 
-    -- LSP
-    vim.api.nvim_set_hl(0, "CmpItemMenu", { bg= 'NONE', fg = C.text })
-    vim.api.nvim_set_hl(0, "CmpItemAbbr", { bg = 'NONE', fg = C.text })
-    vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough=true, fg=C.overlay2 })
-    vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg=C.yellow })
-    vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { bg = 'NONE', fg=C.yellow })
-    vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg=C.sky })
-    vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { bg = 'NONE', fg=C.sky })
-    vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg=C.sky })
-    vim.api.nvim_set_hl(0, 'CmpItemKindText', { bg = 'NONE', fg=C.sky })
-    vim.api.nvim_set_hl(0, 'CmpItemKindField', { bg = 'NONE', fg = C.green })
-    vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg=C.mauve })
-    vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { bg = 'NONE', fg=C.mauve })
-    vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg=C.eggshell })
-    vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { bg = 'NONE', fg=C.eggshell })
-    vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { bg = 'NONE', fg=C.eggshell })
-    vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { fg = C.yellow })
+    -- LSP and autocomplete
+    vim.api.nvim_set_hl(0, 'BlinkCmpDoc', { bg = C.surface0, fg = 'NONE' })
+    vim.api.nvim_set_hl(0, 'BlinkCmpDocBorder', { bg = C.surface0, fg = 'NONE' })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindEnum', { bg = 'NONE', fg = C.yellow })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindFile', { bg = 'NONE', fg = C.teal })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindText', { bg = 'NONE', fg = C.sky })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindUnit', { bg = 'NONE', fg = C.eggshell })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindClass', { bg = 'NONE', fg = C.yellow })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindColor', { bg = 'NONE', fg = C.teal })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindEvent', { bg = 'NONE', fg = C.teal })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindField', { bg = 'NONE', fg = C.green })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindValue', { bg = 'NONE', fg = C.teal })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindFolder', { bg = 'NONE', fg = C.teal })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindMethod', { bg = 'NONE', fg = C.mauve })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindModule', { bg = 'NONE', fg = C.teal })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindStruct', { bg = 'NONE', fg = C.yellow })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindKeyword', { bg = 'NONE', fg = C.eggshell })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindSnippet', { bg = 'NONE', fg = C.subtext0 })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindConstant', { bg = 'NONE', fg = C.flamingo })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindFunction', { bg = 'NONE', fg = C.mauve })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindOperator', { bg = 'NONE', fg = C.teal })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindProperty', { bg = 'NONE', fg = C.eggshell })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindVariable', { bg = 'NONE', fg = C.sky })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindInterface', { bg = 'NONE', fg = C.sky })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindReference', { bg = 'NONE', fg = C.teal })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindEnumMember', { bg = 'NONE', fg = C.green })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindConstructor', { bg = 'NONE', fg = C.yellow })
+    vim.api.nvim_set_hl(0, 'BlinkCmpKindTypeParameter', { bg = 'NONE', fg = C.teal })
+    vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpActiveParameter', { bg = 'NONE', fg = C.text })
+    vim.api.nvim_set_hl(0, 'BlinkCmpLabelDeprecated', { bg = 'NONE', strikethrough=true, fg=C.overlay2 })
   end
 }

@@ -81,44 +81,94 @@ vim.cmd([[
     exec "bd" . a:bang . " " . curbuf
   endfunction
   :command! -nargs=1 -complete=file -bang -bar BDE call ReplaceBuffer('<bang>', <f-args>)
+
+  " let g:gitgutter_sign_removed_first_line = "^_"
+  " let g:gitgutter_sign_added = '∙'
+  " let g:gitgutter_sign_modified = '∙'
+  " let g:gitgutter_sign_removed = '∙'
+  " let g:gitgutter_sign_modified_removed = '∙'
+  let g:gitgutter_sign_removed_first_line = "^_"
+  let g:gitgutter_sign_added = '▏'
+  let g:gitgutter_sign_modified = '▏'
+  let g:gitgutter_sign_removed = '▏'
+  let g:gitgutter_sign_modified_removed = '▏'
 ]])
 
+
+local keymap = vim.keymap -- for conciseness
 -- Mappings
 -- disable Ex-only mapping
-vim.keymap.set('n', 'Q', '<nop>')
+keymap.set('n', 'Q', '<nop>')
 
--- bind K to grep word under cursor
-vim.keymap.set('n', 'K', ':grep! "\\b<C-R><C-W>\\b"<CR>:cw<CR>')
+-- diagnostic
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(_)
+    keymap.set("n", "<leader>d", vim.diagnostic.open_float) -- show diagnostics for line
+    keymap.set("n", "K", vim.lsp.buf.hover) -- show documentation for what is under cursor
+    -- keymap.set("n", "gD", vim.lsp.buf.declaration) -- go to declaration
 
--- FZF
--- vim.keymap.set('n', '<C-P>', ':FzfLua files<CR>', { silent = true })
--- vim.keymap.set('n', '<C-F>', ':FzfLua live_grep<CR>', { silent = true })
+    -- opts.desc = "Show LSP references"
+    -- keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+
+    -- opts.desc = "Go to declaration"
+
+    -- opts.desc = "Show LSP definitions"
+    -- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+
+    -- opts.desc = "Show LSP implementations"
+    -- keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+
+    -- opts.desc = "Show LSP type definitions"
+    -- keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+
+    -- opts.desc = "See available code actions"
+    -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+
+    -- opts.desc = "Smart rename"
+    -- keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+
+    -- opts.desc = "Show line diagnostics"
+
+    -- opts.desc = "Go to previous diagnostic"
+    -- keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+
+    -- -- opts.desc = "Go to next diagnostic"
+    -- keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+
+    -- opts.desc = "Show documentation for what is under cursor"
+
+    -- opts.desc = "Restart LSP"
+    -- keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+  end,
+})
 
 -- Easy enthium split navigation
-vim.keymap.set('n', '<leader>i', '<C-W><C-J>', { silent = true })
-vim.keymap.set('n', '<leader>e', '<C-W><C-K>', { silent = true })
-vim.keymap.set('n', '<leader>c', '<C-W><C-L>', { silent = true })
-vim.keymap.set('n', '<leader>a', '<C-W><C-H>', { silent = true })
+keymap.set('n', '<leader>i', '<C-W><C-J>', { silent = true })
+keymap.set('n', '<leader>e', '<C-W><C-K>', { silent = true })
+keymap.set('n', '<leader>c', '<C-W><C-L>', { silent = true })
+keymap.set('n', '<leader>a', '<C-W><C-H>', { silent = true })
 
 -- Provide easier tab navigation
-vim.keymap.set('', '<F6>', ':tabn<kEnter>', { silent = true })
-vim.keymap.set('', '<F5>', ':tabp<kEnter>', { silent = true })
-vim.keymap.set('', '<End>', ':tabn<kEnter>', { silent = true })
-vim.keymap.set('', '<Home>', ':tabp<kEnter>', { silent = true })
+keymap.set('', '<F6>', ':tabn<kEnter>', { silent = true })
+keymap.set('', '<F5>', ':tabp<kEnter>', { silent = true })
+keymap.set('', '<End>', ':tabn<kEnter>', { silent = true })
+keymap.set('', '<Home>', ':tabp<kEnter>', { silent = true })
 
 -- Increment / Decrement numbers
-vim.keymap.set('n', '-', '<C-x>', { silent = true })
-vim.keymap.set('n', '+', '<C-a>', { silent = true })
+keymap.set('n', '-', '<C-x>', { silent = true })
+keymap.set('n', '+', '<C-a>', { silent = true })
 
 -- Show syntax information under cursor
-vim.keymap.set('', '<F10>', [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+keymap.set('', '<F10>', [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>]])
 
 -- Center text on screen
-vim.keymap.set('n', '<space>', 'zz')
-vim.keymap.set('n', 'n', 'nzz')
-vim.keymap.set('n', 'N', 'Nzz')
+keymap.set('n', '<space>', 'zz')
+keymap.set('n', 'n', 'nzz')
+keymap.set('n', 'N', 'Nzz')
 
 -- nvim specific config
 if vim.fn.has('nvim') == 1 then

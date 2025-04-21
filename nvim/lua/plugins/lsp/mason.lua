@@ -26,10 +26,46 @@ return {
 
     mason_lspconfig.setup({
       -- list of servers for mason to install
+      automatic_installation = true,
       ensure_installed = {
         "pyright",
         "lua_ls",
         "emmet_ls",
+        "gopls",
+        "kotlin_language_server",
+      },
+
+      -- Hack to bridge neovim 0.11.0+ apis with mason_lspconfig
+      -- @see https://github.com/williamboman/mason-lspconfig.nvim/issues/534
+      handlers = {
+        -- default setup for all LSP servers
+        function(server_name)
+          -- Global LSP configuration
+          vim.lsp.config( server_name, {
+            capabilities = require('blink.cmp').get_lsp_capabilities(),
+            root_markers = { ".git" },
+          })
+          vim.lsp.enable(server_name)
+        end,
+
+        ['lua_ls'] = function()
+          vim.lsp.config('lua_ls', {
+            cmd = { 'lua-language-server' },
+            filetypes = { 'lua' },
+            root_markers = { '.luarc.json', '.luarc.jsonc' },
+            settings = {
+              Lua = {
+                runtime = {
+                  version = 'LuaJIT',
+                },
+                diagnostics = {
+                  globals = { "vim" },
+                },
+              }
+            },
+          })
+          vim.lsp.enable('lua_ls')
+        end,
       },
     })
 
