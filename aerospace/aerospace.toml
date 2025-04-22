@@ -61,9 +61,9 @@ run = 'layout floating'
 if.app-name-regex-substring = 'quicktime'
 run = 'layout floating'
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'zoom'
-run = 'layout floating'
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'zoom'
+# run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'cursor'
@@ -85,9 +85,9 @@ run = ['move-node-to-workspace 3']
 if.app-name-regex-substring = 'safari'
 run = ['move-node-to-workspace 3']
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'zoom'
-run = ['move-node-to-workspace 4']
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'zoom'
+# run = ['move-node-to-workspace 4']
 
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -139,59 +139,59 @@ outer.right =      20
 # end tell'
 # '''
 
-alt-shift-f = 'fullscreen'
+alt-ctrl-shift-cmd-f = 'fullscreen'
 alt-ctrl-f = 'layout floating tiling'
 
-alt-shift-left = 'join-with left'
-alt-shift-down = 'join-with down'
-alt-shift-up = 'join-with up'
-alt-shift-right = 'join-with right'
+alt-ctrl-shift-cmd-left = 'join-with left'
+alt-ctrl-shift-cmd-down = 'join-with down'
+alt-ctrl-shift-cmd-up = 'join-with up'
+alt-ctrl-shift-cmd-right = 'join-with right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-a = 'focus left'
-alt-e = 'focus up'
-alt-i = 'focus down'
-alt-c = 'focus right'
+alt-ctrl-shift-a = 'focus left'
+alt-ctrl-shift-e = 'focus up'
+alt-ctrl-shift-i = 'focus down'
+alt-ctrl-shift-c = 'focus right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-alt-shift-a = 'move left'
-alt-shift-e = 'move up'
-alt-shift-i = 'move down'
-alt-shift-c = 'move right'
+alt-ctrl-shift-cmd-a = 'move left'
+alt-ctrl-shift-cmd-e = 'move up'
+alt-ctrl-shift-cmd-i = 'move down'
+alt-ctrl-shift-cmd-c = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-alt-shift-minus = 'resize smart -50'
-alt-shift-equal = 'resize smart +50'
+alt-ctrl-shift-cmd-minus = 'resize smart -50'
+alt-ctrl-shift-cmd-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
+alt-ctrl-shift-1 = 'workspace 1'
+alt-ctrl-shift-2 = 'workspace 2'
+alt-ctrl-shift-3 = 'workspace 3'
+alt-ctrl-shift-4 = 'workspace 4'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
-alt-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
-alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
-alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+alt-ctrl-shift-cmd-1 = 'move-node-to-workspace 1 --focus-follows-window'
+alt-ctrl-shift-cmd-2 = 'move-node-to-workspace 2 --focus-follows-window'
+alt-ctrl-shift-cmd-3 = 'move-node-to-workspace 3 --focus-follows-window'
+alt-ctrl-shift-cmd-4 = 'move-node-to-workspace 4 --focus-follows-window'
 
-alt-tab = 'workspace-back-and-forth'
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+# alt-tab = 'workspace-back-and-forth'
+# alt-ctrl-shift-cmd-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = 'mode service'
-alt-shift-enter = 'mode apps'
+alt-ctrl-shift-cmd-semicolon = 'mode service'
+alt-ctrl-shift-cmd-enter = 'mode apps'
 
-alt-z = 'exec-and-forget open -a /Applications/Zoom.app'
-alt-s = 'exec-and-forget open -a /Applications/Slack.app'
-alt-w = 'exec-and-forget open -a /Applications/Google\ Chrome.app'
-alt-t = 'exec-and-forget open -a /Applications/WezTerm.app'
-alt-n = 'exec-and-forget open -a /Applications/Cursor.app'
-alt-f = 'exec-and-forget open -a /Applications/Finder.app'
+alt-ctrl-shift-z = 'exec-and-forget open -a /Applications/Zoom.app'
+alt-ctrl-shift-s = 'exec-and-forget open -a /Applications/Slack.app'
+alt-ctrl-shift-w = 'exec-and-forget open -a /Applications/Google\ Chrome.app'
+alt-ctrl-shift-t = 'exec-and-forget open -a /Applications/WezTerm.app'
+alt-ctrl-shift-n = 'exec-and-forget open -a /Applications/Cursor.app'
+alt-ctrl-shift-f = 'exec-and-forget open -a /Applications/Finder.app'
 
 
 # 'service' binding mode declaration.

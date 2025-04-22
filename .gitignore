@@ -1,4 +1,5 @@
 nvim/bundle/
+tmux/plugins/
 config/*
 !config/base16-shell
 !config/htop

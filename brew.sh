@@ -44,6 +44,7 @@ packages=(
     "starship"                       # Cross-shell prompt
     "tlrc"                           # Terminal session recorder
     "tmux"                           # Terminal multiplexer
+    "tmp"                            # Tmux Plugin Manager
     "wget"                           # Internet file retriever
     "zsh"                            # Z shell
     "zoxide"                         # Smarter cd command

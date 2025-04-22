@@ -34,9 +34,9 @@ antidote load
 # Deferred Plugin loading
 
 lazyload zoxide -- 'eval "$(zoxide init zsh)"'
-lazyload node -- 'source /opt/homebrew/opt/nvm/nvm.sh && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"'
-lazyload java -- 'eval "$(jenv init -)"; jenv enable-plugin export'
-lazyload ruby -- '[[ -s "/opt/homebrew/bin/rbenv" ]] && eval "$(rbenv init - zsh)"'
+lazyload nvm -- 'source /opt/homebrew/opt/nvm/nvm.sh && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"'
+lazyload jenv -- 'eval "$(jenv init -)"; jenv enable-plugin export'
+lazyload rbenv -- '[[ -s "/opt/homebrew/bin/rbenv" ]] && eval "$(rbenv init - zsh)"'
 
 # Source fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
