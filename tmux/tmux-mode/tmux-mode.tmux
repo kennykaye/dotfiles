@@ -22,6 +22,14 @@ declare -r prefix_suffix_style_config='@mode_indicator_prefix_suffix_style'
 declare -r copy_suffix_style_config='@mode_indicator_copy_suffix_style'
 declare -r sync_suffix_style_config='@mode_indicator_sync_suffix_style'
 declare -r empty_suffix_style_config='@mode_indicator_empty_suffix_style'
+declare -r prefix_suffix_text_config='@mode_indicator_prefix_suffix_text'
+declare -r copy_suffix_text_config='@mode_indicator_copy_suffix_text'
+declare -r sync_suffix_text_config='@mode_indicator_sync_suffix_text'
+declare -r empty_suffix_text_config='@mode_indicator_empty_suffix_text'
+declare -r prefix_suffix_text_style_config='@mode_indicator_prefix_suffix_text_style'
+declare -r copy_suffix_text_style_config='@mode_indicator_copy_suffix_text_style'
+declare -r sync_suffix_text_style_config='@mode_indicator_sync_suffix_text_style'
+declare -r empty_suffix_text_style_config='@mode_indicator_empty_suffix_text_style'
 
 tmux_option() {
   local -r option=$(tmux show-option -gqv "$1")
@@ -52,6 +60,14 @@ init_tmux_mode_indicator() {
     copy_suffix_style=$(indicator_style "$copy_suffix_style_config" "bg=black,fg=yellow") \
     sync_suffix_style=$(indicator_style "$sync_suffix_style_config" "bg=black,fg=red") \
     empty_suffix_style=$(indicator_style "$empty_suffix_style_config" "bg=black,fg=cyan")
+    prefix_suffix_text=$(tmux_option "$prefix_suffix_text_config" "") \
+    copy_suffix_text=$(tmux_option "$copy_suffix_text_config" "") \
+    sync_suffix_text=$(tmux_option "$sync_suffix_text_config" "") \
+    empty_suffix_text=$(tmux_option "$empty_suffix_text_config" "") \
+    prefix_suffix_text_style=$(indicator_style "$prefix_suffix_text_style_config" "bg=black,fg=blue") \
+    copy_suffix_text_style=$(indicator_style "$copy_suffix_text_style_config" "bg=black,fg=yellow") \
+    sync_suffix_text_style=$(indicator_style "$sync_suffix_text_style_config" "bg=black,fg=red") \
+    empty_suffix_text_style=$(indicator_style "$empty_suffix_text_style_config" "bg=black,fg=cyan")
 
   local -r \
     custom_prompt="#(tmux show-option -qv $custom_prompt_config)" \
@@ -62,8 +78,10 @@ init_tmux_mode_indicator() {
     mode_style="#{?#{!=:$custom_style,},#[$custom_style],#{?client_prefix,$prefix_style,#{?pane_in_mode,$copy_style,#{?pane_synchronized,$sync_style,$empty_style}}}}" \
     mode_suffix="#{?client_prefix,$prefix_suffix,#{?pane_in_mode,$copy_suffix,#{?pane_synchronized,$sync_suffix,$empty_suffix}}}" \
     mode_suffix_style="#{?client_prefix,$prefix_suffix_style,#{?pane_in_mode,$copy_suffix_style,#{?pane_synchronized,$sync_suffix_style,$empty_suffix_style}}}"
+    mode_suffix_text="#{?client_prefix,$prefix_suffix_text,#{?pane_in_mode,$copy_suffix_text,#{?pane_synchronized,$sync_suffix_text,$empty_suffix_text}}}" \
+    mode_suffix_text_style="#{?client_prefix,$prefix_suffix_text_style,#{?pane_in_mode,$copy_suffix_text_style,#{?pane_synchronized,$sync_suffix_text_style,$empty_suffix_text_style}}}"
 
-  local -r mode_indicator="#[default]$mode_style$mode_prompt$mode_suffix_style$mode_suffix#[default]"
+  local -r mode_indicator="#[default]$mode_style$mode_prompt$mode_suffix_text_style$mode_suffix_text$mode_suffix_style$mode_suffix#[default]"
 
   local -r status_left_value="$(tmux_option "status-left")"
   tmux set-option -gq "status-left" "${status_left_value/$mode_indicator_placeholder/$mode_indicator}"
