@@ -185,10 +185,11 @@ qwerty() {
 function ripgrep_fzf_vim() {
 rg --color=always --line-number --no-heading --smart-case "${*:-}" |
   fzf --ansi \
-      --color "hl:-1:underline,hl+:-1:underline:reverse" \
+      --color "hl:yellow,hl+:yellow" \
       --delimiter : \
+      --border-label ' Grep 󰐰 ' \
+      --reverse \
       --preview 'bat --color=always {1} --highlight-line {2}' \
-      --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
       --bind 'enter:become(nvim {1} +{2})'
 }
 zle -N ripgrep_fzf_vim

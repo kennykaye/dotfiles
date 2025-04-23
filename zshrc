@@ -57,6 +57,7 @@ unset file
 # General configuration
 export EDITOR='nvim'
 export PAGER='less'
+export MANPAGER='nvim +Man!'
 export KEYTIMEOUT=1
 export BAT_CONFIG_PATH="$HOME/.bat.conf"
 [[ -z "$LANG" ]] && export LANG='en_US.UTF-8'
@@ -99,19 +100,21 @@ _fzf_compgen_dir() {
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
-export FZF_COLOR="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${yellow},prompt:${red},pointer:${orange},marker:${cyan},spinner:${green},header:${cyan}"
-export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview' --border-label=' Files '"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-export FZF_CTRL_R_OPTS="--preview-window=hidden --reverse"
+export FZF_CTRL_R_OPTS="--preview-window=hidden --reverse --border-label=' Command History '"
+local fzf_color="--color=fg:${fg},bg:${bg},hl:${yellow},fg+:${fg},bg+:${bg_highlight},hl+:${yellow},info:${gray},prompt:${red},pointer:${gray},marker:${cyan},spinner:${green},header:${cyan},gutter:${black}"
+local fzf_ops="--prompt='❯ ' --info=inline-right --margin=1,2  --color=label:yellow"
 
 # Set base FZF options with better styling
 
 # Support for FZF_DEFAULT_COMMAND and other FZF environment variables
 # Keep static settings for compatibility with plugins
 if [[ "$TERM" == *"tmux"* ]]; then
-  export FZF_DEFAULT_OPTS="--style=full --border=rounded $FZF_COLOR --tmux=80% --margin=1,2"
+  export FZF_DEFAULT_OPTS="$fzf_color $fzf_ops --tmux=60%"
+
 else
-  export FZF_DEFAULT_OPTS="--style=full --border=rounded $FZF_COLOR --margin=1,2"
+  export FZF_DEFAULT_OPTS="$fzf_color $fzf_ops"
 fi
 
 # Create a wrapper function for fzf to handle dynamic options on every invocation
@@ -124,7 +127,7 @@ fzf() {
   if (( width < height * 2 )); then
     preview_pos="down:50%:border-top,rounded:wrap"
    else
-    preview_pos="right:50%:border-left,rounded:wrap"
+    preview_pos="right:50%:border-left"
   fi
 
   # Call original fzf with dynamic options

@@ -68,13 +68,13 @@ return {
         lualine_a = {
           {'mode', fmt = function(res) return res:sub(1,1) end}
         },
-        lualine_b = {'filename'},
-        lualine_c = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
         lualine_x = {
           {
             require("noice").api.statusline.mode.get,
             cond = require("noice").api.statusline.mode.has,
-            color = { fg = colors.peach },
+            color = { fg = colors.flamingo },
           },
           {'filetype'},
         },
@@ -109,4 +109,4 @@ return {
       extensions = {}
     }
   end
-} 
+}

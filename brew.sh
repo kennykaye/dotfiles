@@ -38,6 +38,7 @@ packages=(
     "git"                            # Version control system
     "git-delta"                      # Syntax highlighting pager for git
     "git-lfs"                        # Git extension for large files
+    "gitmux"                         # Git tmux extension
     "jq"                             # JSON processor
     "reattach-to-user-namespace"     # Tmux clipboard utility
     "ripgrep"                        # Fast grep alternative
@@ -86,6 +87,7 @@ declare -a cask_names=(
 # Special taps and their casks
 brew tap nikitabobko/tap
 brew tap FelixKratz/formulae
+brew tap arl/arl
 
 # Install packages
 echo "Installing packages..."

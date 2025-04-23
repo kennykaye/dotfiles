@@ -44,12 +44,25 @@ add_newline = true
 # [╰─](bright-black)\
 # $character"""
 
+# format = """
+#  \
+# $directory\
+# $git_branch\
+# $git_state\
+# $git_status\
+# $cmd_duration\
+# $python\
+# $go\
+# $node\
+# $time\
+# $line_break\
+# $character"""
+
 format = """
 $directory\
 $git_branch\
 $git_state\
 $git_status\
-$cmd_duration\
 $python\
 $go\
 $node\
@@ -78,7 +91,7 @@ $character"""
 # $node\
 # $time"""
 
-continuation_prompt = "[  ❯ ](bright-black)"
+continuation_prompt = "[❯ ](bright-black)"
 
 command_timeout = 1000
 
@@ -112,9 +125,9 @@ behind = "[⇣](yellow)${count} "
 diverged = "[⇕⇡${ahead_count}⇣${behind_count}](yellow) "
 conflicted = "​"
 untracked = "[](white) "
-modified = "[](purple) "
-staged = "[](yellow) "
-renamed = "[➜](blue) "
+modified = "[](#purple) "
+staged = "[](green) "
+renamed = "[➜](yellow) "
 deleted = "[](red) "
 stashed = "[≡](cyan) "
 
@@ -140,10 +153,10 @@ format = "[$duration]($style) "
 style = "bright-black"
 
 [golang]
-format = '[ ](bold cyan)'
+format = "go "
 
 [nodejs]
-symbol = "nodejs "
+symbol = "node "
 
 [java]
 symbol = "java "
