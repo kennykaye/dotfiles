@@ -28,7 +28,6 @@ vim.opt.completeopt:remove("preview") -- disable preview scratch buffer
 vim.opt.splitbelow = true          -- open new split below current split
 vim.opt.splitright = true          -- open new split to the right
 vim.opt.nrformats:append("alpha")  -- Allow integers to be incremented/decremented
-vim.opt.hlsearch = false           -- Prevent search results from being highlighted
 vim.opt.colorcolumn = "101"        -- Highlight column
 vim.opt.backupcopy = "yes"
 vim.opt.listchars:append({ extends = "…", precedes = "…" })
@@ -167,8 +166,8 @@ keymap.set('', '<F10>', [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"n
 
 -- Center text on screen
 keymap.set('n', '<space>', 'zz')
-keymap.set('n', 'n', 'nzz')
-keymap.set('n', 'N', 'Nzz')
+-- keymap.set('n', 'n', 'nzz')
+-- keymap.set('n', 'N', 'Nzz')
 
 -- nvim specific config
 if vim.fn.has('nvim') == 1 then
@@ -177,3 +176,10 @@ if vim.fn.has('nvim') == 1 then
   vim.env.NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 end
 
+-- Better handling of hlsearch
+vim.on_key(function(char)
+  if vim.fn.mode() == "n" then
+    local new_hlsearch = vim.tbl_contains({ "<CR>", "n", "N", "*", "#", "?", "/" }, vim.fn.keytrans(char))
+    if vim.opt.hlsearch:get() ~= new_hlsearch then vim.opt.hlsearch = new_hlsearch end
+  end
+end, vim.api.nvim_create_namespace "auto_hlsearch")

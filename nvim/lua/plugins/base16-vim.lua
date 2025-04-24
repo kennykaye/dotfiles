@@ -97,6 +97,7 @@ return {
     vim.api.nvim_set_hl(0, 'NoicePopup', { bg = C.surface0 })
     vim.api.nvim_set_hl(0, 'NoiceSplit', { bg = C.surface0 })
     vim.api.nvim_set_hl(0, 'DapUIFloatNormal', { bg = C.surface0 })
+    vim.api.nvim_set_hl(0, 'NoiceVirtualText', { fg = C.yellow })
     vim.api.nvim_set_hl(0, 'NoiceCmdlinePopup', { bg = C.base })
     vim.api.nvim_set_hl(0, 'NoiceCmdlineIcon', { fg = C.teal })
     vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupTitleCmdline', { fg = C.teal })
@@ -157,5 +158,12 @@ return {
     vim.api.nvim_set_hl(0, 'BlinkCmpKindTypeParameter', { bg = 'NONE', fg = C.teal })
     vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpActiveParameter', { bg = 'NONE', fg = C.text })
     vim.api.nvim_set_hl(0, 'BlinkCmpLabelDeprecated', { bg = 'NONE', strikethrough=true, fg=C.overlay2 })
+
+    -- Easymotion
+    vim.api.nvim_set_hl(0, 'EasyMotionTarget', { bg = 'NONE', fg = C.yellow })
+    vim.api.nvim_set_hl(0, 'EasyMotionShade', { bg = 'NONE', fg = C.overlay0 })
+    vim.api.nvim_set_hl(0, 'EasyMotionIncSearch', { bg = 'NONE', fg = C.yellow })
+    vim.api.nvim_set_hl(0, 'EasyMotionTarget2First', { bg = 'NONE', fg = C.yellow })
+    vim.api.nvim_set_hl(0, 'EasyMotionTarget2Second', { bg = 'NONE', fg = C.teal })
   end
 }
