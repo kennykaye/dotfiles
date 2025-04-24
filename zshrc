@@ -43,8 +43,12 @@ lazyload rbenv -- '[[ -s "/opt/homebrew/bin/rbenv" ]] && eval "$(rbenv init - zs
 
 # zsh prompt
 eval "$(fzf --zsh)"
-eval "$(starship init zsh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+type starship_zle-keymap-select >/dev/null || \
+  {
+    eval "$(starship init zsh)"
+  }
 
 # Load our dotfiles like ~/.functions, etc…
 #   ~/.extra can be used for settings you don't want to commit,

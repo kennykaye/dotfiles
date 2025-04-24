@@ -61,9 +61,9 @@ run = 'layout floating'
 if.app-name-regex-substring = 'quicktime'
 run = 'layout floating'
 
-# [[on-window-detected]]
-# if.app-name-regex-substring = 'zoom'
-# run = 'layout floating'
+[[on-window-detected]]
+if.app-name-regex-substring = 'zoom'
+run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'cursor'
@@ -74,15 +74,15 @@ if.app-name-regex-substring = 'wezterm'
 run = ['move-node-to-workspace 1']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'chrome'
+if.app-name-regex-substring = 'slack'
 run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'slack'
-run = ['move-node-to-workspace 3']
+if.app-name-regex-substring = 'safari'
+run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'safari'
+if.app-name-regex-substring = 'chrome'
 run = ['move-node-to-workspace 3']
 
 # [[on-window-detected]]

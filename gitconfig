@@ -13,13 +13,40 @@
 	pager = delta
 
 [interactive]
-	diffFilter = delta --color-only
+	diffFilter = delta --color-only 
 
 [delta]
-	navigate = true  # use n and N to move between diff sections
-	dark = true      # or light = true, or omit for auto-detection
-	side-by-side = true
-	line-numbers = true
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
+  line-numbers = true
+  side-by-side = true
+  syntax-theme = ansi
+  true-color = always
+  commit-decoration-style = bold yellow box ul
+  file-decoration-style = underline overline "#747369"
+  file-style = "#ffcc66"
+  file-added-label = []
+  file-copied-label = [==]
+  file-modified-label = []
+  file-removed-label = []
+  file-renamed-label = [➜]
+  hunk-label = "   "
+  hunk-header-style = "#747369"
+  hunk-header-file-style = "#747369"
+  hunk-header-decoration-style = "#747369"
+  hunk-header-line-number-style = "#747369"
+  line-numbers-left-format = "{nm:^6}"
+  line-numbers-left-style= red
+  line-numbers-right-format = "{np:^6}"
+  line-numbers-right-style = green
+  line-numbers-minus-style = "#f2777a" "#322829"
+  line-numbers-plus-style = green "#2a3229"
+  line-numbers-zero-style= "#747369"
+  minus-emph-style = "#f9c6c6" "#612626"
+  minus-style = syntax "#3a3030"
+  plus-emph-style = "#cbfecb" "#266125"
+  plus-style = syntax "#303a30"
+  zero-style = syntax
 
 [merge]
 	conflictstyle = zdiff3
