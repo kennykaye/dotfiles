@@ -32,149 +32,80 @@ vim.opt.colorcolumn = "101"        -- Highlight column
 vim.opt.backupcopy = "yes"
 vim.opt.listchars:append({ extends = "…", precedes = "…" })
 
+vim.g.python2_host_prog = '/usr/local/bin/python'
+vim.g.python3_host_prog = '/usr/bin/python3'
+
 -- Appearance settings
 vim.cmd("syntax on")               -- enable syntax highlighting
 vim.cmd("syntax sync minlines=200")
 vim.opt.fillchars:append({ vert = "│"})
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
---   vim.opt.background = "dark"      -- set dark background
-
 -- Commands
-vim.cmd([[
-  " General Commands
-  :command! Q q
-  :command! Qa qa
-  :command! W w
-  :command! Wa wa
-  :command! WQ wq
-  :command! Wq wq
-  :command! Wqa wqa
-  :command! Vimrc :tabe ~/.vimrc
-  :command! Source so ~/.vimrc
-  :command! Path :echo expand('%:p')
-
-  " Create a new file in the same directory as the current file
-  " new tab
-  :command! -nargs=+ -complete=file -bar OT :tabe %:p:h/<args>
-  " vertical split
-  :command! -nargs=+ -complete=file -bar OV :vnew %:p:h/<args>
-  " horizontal split
-  :command! -nargs=+ -complete=file -bar OS :new %:p:h/<args>
-
-  " Delete single line, or a range of lines and jump back to previous position
-  :command! -range -nargs=0 D <line1>,<line2>d|norm ``
-
-  " Format JSON Documents
-  :command! FormatJSON set ft=json | %!python -m json.tool
-
-  " Format XML Documents
-  :command! FormatXML set ft=xml | %!xmllint --format %
-
-  " Replace the current buffer with a new buffer
-  function! ReplaceBuffer(bang, newfile)
-    let curbuf = bufnr('%')
-    exec "e %:p:h/" . a:newfile
-    exec "bd" . a:bang . " " . curbuf
-  endfunction
-  :command! -nargs=1 -complete=file -bang -bar BDE call ReplaceBuffer('<bang>', <f-args>)
-
-  " let g:gitgutter_sign_removed_first_line = "^_"
-  " let g:gitgutter_sign_added = '∙'
-  " let g:gitgutter_sign_modified = '∙'
-  " let g:gitgutter_sign_removed = '∙'
-  " let g:gitgutter_sign_modified_removed = '∙'
-  let g:gitgutter_sign_removed_first_line = "^_"
-  let g:gitgutter_sign_added = '▏'
-  let g:gitgutter_sign_modified = '▏'
-  let g:gitgutter_sign_removed = '▏'
-  let g:gitgutter_sign_modified_removed = '▏'
-]])
-
-
-local keymap = vim.keymap -- for conciseness
--- Mappings
--- disable Ex-only mapping
-keymap.set('n', 'Q', '<nop>')
-
--- diagnostic
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(_)
-    keymap.set("n", "<leader>d", vim.diagnostic.open_float) -- show diagnostics for line
-    keymap.set("n", "K", vim.lsp.buf.hover) -- show documentation for what is under cursor
-    -- keymap.set("n", "gD", vim.lsp.buf.declaration) -- go to declaration
-
-    -- opts.desc = "Show LSP references"
-    -- keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
-
-    -- opts.desc = "Go to declaration"
-
-    -- opts.desc = "Show LSP definitions"
-    -- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
-
-    -- opts.desc = "Show LSP implementations"
-    -- keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
-
-    -- opts.desc = "Show LSP type definitions"
-    -- keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
-
-    -- opts.desc = "See available code actions"
-    -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
-    -- opts.desc = "Smart rename"
-    -- keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
-
-    -- opts.desc = "Show line diagnostics"
-
-    -- opts.desc = "Go to previous diagnostic"
-    -- keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-
-    -- -- opts.desc = "Go to next diagnostic"
-    -- keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
-    -- opts.desc = "Show documentation for what is under cursor"
-
-    -- opts.desc = "Restart LSP"
-    -- keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-
-  end,
-})
-
--- Easy enthium split navigation
-keymap.set('n', '<leader>i', '<C-W><C-J>', { silent = true })
-keymap.set('n', '<leader>e', '<C-W><C-K>', { silent = true })
-keymap.set('n', '<leader>c', '<C-W><C-L>', { silent = true })
-keymap.set('n', '<leader>a', '<C-W><C-H>', { silent = true })
-
--- Provide easier tab navigation
-keymap.set('', '<F6>', ':tabn<kEnter>', { silent = true })
-keymap.set('', '<F5>', ':tabp<kEnter>', { silent = true })
-keymap.set('', '<End>', ':tabn<kEnter>', { silent = true })
-keymap.set('', '<Home>', ':tabp<kEnter>', { silent = true })
-
--- Increment / Decrement numbers
-keymap.set('n', '-', '<C-x>', { silent = true })
-keymap.set('n', '+', '<C-a>', { silent = true })
-
--- Show syntax information under cursor
-keymap.set('', '<F10>', [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>]])
-
--- Center text on screen
-keymap.set('n', '<space>', 'zz')
--- keymap.set('n', 'n', 'nzz')
--- keymap.set('n', 'N', 'Nzz')
-
--- nvim specific config
-if vim.fn.has('nvim') == 1 then
-  vim.g.python2_host_prog = '/usr/local/bin/python'
-  vim.g.python3_host_prog = '/usr/bin/python3'
-  vim.env.NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+local function create_cmd(name, cmd, opts)
+  opts = opts or {}
+  opts.force = true
+  vim.api.nvim_create_user_command(name, cmd, opts)
 end
+
+-- General Commands
+create_cmd('Q', 'q')
+create_cmd('Qa', 'qa')
+create_cmd('W', 'w')
+create_cmd('Wa', 'wa')
+create_cmd('WQ', 'wq')
+create_cmd('Wq', 'wq')
+create_cmd('Wqa', 'wqa')
+create_cmd('Vimrc', 'tabe ' .. vim.fn.expand('~/.vimrc'))
+create_cmd('Source', 'so ' .. vim.fn.expand('~/.vimrc'))
+create_cmd('Path', 'echo expand("%:p")')
+
+-- Create a new file in the same directory as the current file
+local function create_file_cmd(name, vim_cmd)
+  create_cmd(name, function(opts)
+    local dir = vim.fn.expand('%:p:h')
+    vim.cmd(vim_cmd .. ' ' .. vim.fn.fnameescape(dir .. '/' .. opts.args))
+  end, { nargs = '+', complete = 'file', bar = true })
+end
+
+create_file_cmd('OT', 'tabe') -- new tab
+create_file_cmd('OV', 'vnew') -- vertical split
+create_file_cmd('OS', 'new') -- horizontal split
+
+-- Delete single line, or a range of lines and jump back to previous position
+create_cmd('D', function(opts)
+  vim.cmd(opts.line1 .. ',' .. opts.line2 .. 'd')
+  vim.cmd('norm! ``')
+end, { range = true, nargs = 0 })
+
+-- Format JSON Documents
+create_cmd('FormatJSON', function()
+  vim.bo.filetype = 'json'
+  vim.cmd('%!python -m json.tool')
+end)
+
+-- Format XML Documents
+create_cmd('FormatXML', function()
+  vim.bo.filetype = 'xml'
+  vim.cmd('%!xmllint --format %')
+end)
+
+-- Replace the current buffer with a new buffer
+local function replace_buffer(opts)
+  local curbuf = vim.fn.bufnr('%')
+  local dir = vim.fn.expand('%:p:h')
+  local newfile = dir .. '/' .. opts.fargs[1]
+  vim.cmd('e ' .. vim.fn.fnameescape(newfile))
+  -- Use 'bdelete!' if bang is present, otherwise 'bdelete'
+  local bd_cmd = 'bd' .. (opts.bang and '!' or '')
+  vim.cmd(bd_cmd .. ' ' .. curbuf)
+end
+
+create_cmd('BDE', replace_buffer, {
+  nargs = 1,
+  complete = 'file',
+  bang = true,
+  bar = true,
+})
 
 -- Better handling of hlsearch
 vim.on_key(function(char)

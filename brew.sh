@@ -42,6 +42,7 @@ packages=(
     "jq"                             # JSON processor
     "reattach-to-user-namespace"     # Tmux clipboard utility
     "ripgrep"                        # Fast grep alternative
+    "sesh"                           # Tmux session management
     "starship"                       # Cross-shell prompt
     "tlrc"                           # Terminal session recorder
     "tmux"                           # Terminal multiplexer
@@ -61,6 +62,9 @@ packages=(
     "openjdk"                        # Java development kit
     "python"                         # Python programming language
     "rbenv"                          # Ruby version manager
+
+    # Just for fun
+    "cmatrix"
 )
 
 # Casks

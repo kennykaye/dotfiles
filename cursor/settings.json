@@ -2,12 +2,13 @@
     "editor.fontLigatures": true,
     "editor.copyWithSyntaxHighlighting": false,
     "editor.occurrencesHighlight": "off",
-    "editor.fontSize": 13,
-    "editor.fontFamily": "FiraCode Nerd Font, Menlo, Monaco, 'Courier New', monospace",
-    "terminal.integrated.fontFamily": "FiraCode Nerd Font, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 12,
+    "editor.fontWeight": 350,
+    "editor.fontFamily": "Berkeley Mono, FiraCode Nerd Font, Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.fontFamily": "Berkeley Mono, FiraCode Nerd Font, Menlo, Monaco, 'Courier New', monospace",
     "terminal.integrated.fontLigatures": true,
-    "terminal.integrated.fontWeight": "normal",
-    // "window.zoomLevel": 0.5,
+    "terminal.integrated.fontWeight": "Regular",
+    "window.zoomLevel": 1,
     "workbench.tree.indent": 16,
     "workbench.tree.renderIndentGuides": "always",
     "vim.easymotion": true,
@@ -70,11 +71,11 @@
     "vim.statusBarColors.visualline": ["#f99157", "#4c2c1c"],
     "vim.statusBarColors.visualblock": ["#f99157", "#4c2c1c"],
     /*
-    "vim.statusBarColors.commandlineinprogress": ["#66cccc", "#ffffff"],
-    "vim.statusBarColors.searchinprogressmode": ["#66cccc", "#ffffff"],
-    "vim.statusBarColors.easymotionmode": ["#66cccc", "#ffffff"],
-    "vim.statusBarColors.easymotioninputmode": ["#66cccc", "#ffffff"],
-    "vim.statusBarColors.surroundinputmode": ["#66cccc", "#ffffff"],
+    "vim.statusBarColors.commandlineinprogress": ["#66cccc", "#f2f0ec"],
+    "vim.statusBarColors.searchinprogressmode": ["#66cccc", "#f2f0ec"],
+    "vim.statusBarColors.easymotionmode": ["#66cccc", "#f2f0ec"],
+    "vim.statusBarColors.easymotioninputmode": ["#66cccc", "#f2f0ec"],
+    "vim.statusBarColors.surroundinputmode": ["#66cccc", "#f2f0ec"],
     */
 
     "vim.true": "#ffcc66",
@@ -85,6 +86,13 @@
 
     "vim.statusBarColors.replace": ["#f2777a", "#793c3d"],
     "workbench.colorCustomizations": {
+        "workbench.background": "#2d2d2d",
+        "editorGroup.background": "#2d2d2d",
+        "titleBar.activeBackground": "#2d2d2d",
+        "titleBar.inactiveBackground": "#2d2d2d",
+        //"activityBar.background": "#2d2d2d",
+        //"sideBar.background": "#2d2d2d",
+        "sideBarSectionHeader.background": "#393939",
         "statusBar.background": "#393939",
         "statusBar.noFolderBackground": "#393939",
         "statusBar.debuggingBackground": "#393939",
@@ -94,7 +102,9 @@
         "editorIndentGuide.activeBackground1": "#505050",
         "editorIndentGuide.background1": "#404040",
         // "tab.activeBorderTop": "#f99157",
-        "tab.activeForeground": "#ffffff",
+        "tab.activeForeground": "#f2f0ec",
+        //"tab.inactiveBackground": "#2d2d2d",
+        //"editorGroupHeader.tabsBackground": "#2d2d2d",
         "terminal.background": "#2d2d2d",
         "terminal.foreground": "#d3d0c8",
         "terminalCursor.background": "#d3d0c8",
@@ -115,6 +125,7 @@
         "terminal.ansiRed": "#f2777a",
         "terminal.ansiWhite": "#d3d0c8",
         "terminal.ansiYellow": "#ffcc66"
+        //"editor.foreground": "#d3d0c8"
     },
     "editor.semanticHighlighting.enabled": true,
     "editor.tokenColorCustomizations": {
@@ -187,6 +198,5 @@
     },
     "terminal.integrated.enableVisualBell": false,
     "vim.neovimPath": "/opt/homebrew/bin/nvim",
-    "vim.neovimUseConfigFile": true,
-    "editor.fontWeight": "300"
+    "vim.neovimUseConfigFile": true
 }

@@ -21,8 +21,8 @@ return {
     })
 
     -- Window 
-    vim.api.nvim_set_hl(0, 'VertSplit', { fg = C.crust, bg = 'NONE' })
-    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = C.crust, bg = 'NONE' })
+    vim.api.nvim_set_hl(0, 'VertSplit', { fg = C.mantle, bg = 'NONE' })
+    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = C.mantle, bg = 'NONE' })
     vim.api.nvim_set_hl(0, 'LineNr', { fg = C.overlay0, bg = 'NONE' })
     vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = C.text, bg = 'NONE' })
     vim.api.nvim_set_hl(0, 'ColorColumn', { fg = C.text, bg = C.base })
@@ -106,8 +106,8 @@ return {
     vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupTitleSearch', { fg = C.yellow })
 
     -- Indent 
-    vim.api.nvim_set_hl(0, 'SnacksIndent', { fg = C.surface1 })
-    vim.api.nvim_set_hl(0, 'SnacksIndentScope', { fg = C.overlay1 })
+    vim.api.nvim_set_hl(0, 'SnacksIndent', { fg = C.surface0 })
+    vim.api.nvim_set_hl(0, 'SnacksIndentScope', { fg = C.surface1 })
 
     -- Diagnostics
     vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = C.yellow })

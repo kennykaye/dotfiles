@@ -30,6 +30,7 @@
     ~/.config/sketchybar: sketchybar
     ~/.config/aerospace: aerospace
     ~/.config/starship.toml: zsh/starship.toml
+    ~/.config/sesh/sesh.toml: tmux/sesh.toml
     ~/Library/Application Support/Cursor/user/settings.json: cursor/settings.json
     ~/Library/Application Support/Cursor/user/keybindings.json: cursor/keybindings.json
     ~/.local/state/crossnote/style.less: cursor/markdown-styles/style.less
@@ -51,26 +52,12 @@
       - "git submodule update --init --recursive --remote"
       - "Installing/updating submodules"
     -
-      - "mkdir -p ~/.vim/autoload ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme"
-      - "Checking folder structure exists"
-    -
-      - "mkdir ~/.vim/undodir"
+      - "mkdir ~/.vim/undodir && mkdir ~/.config/sesh"
       - "Checking folder structure exists"
     -
       - "mkdir -p ~/.local/state/crossnote"
       - "Creating markdown stylesheet directory"
     -
-      - "gem install tmuxinator"
-      - "Installing tmuxinator"
-    -
        - "bash cursor/manage-extensions.sh install"
        - "Installing Cursor extensions"
-    -
-       - "mkdir -p /tmp/aerospace-swipe-install && cd /tmp/aerospace-swipe-install && \
-          git clone https://github.com/acsandmann/aerospace-swipe.git && \
-          cd aerospace-swipe && \
-          make install && \
-          z dotfiles && \
-          rm -rf /tmp/aerospace-swipe-install"
-       - "Installing aerospace-swipe for trackpad gesture support"
 

@@ -7,23 +7,28 @@ if wezterm.config_builder then
 end
 
 -- Font configuration
-config.font = wezterm.font('FiraCode Nerd Font')
+local font = { family = 'Berkeley Mono', weiget = 400, size = 14, line_height = 1.22 }
+-- local font = { family = 'CommitMono', weight = 'Regular', size = 14, line_height = 1.3 }
+-- local font = { family = 'MonoLisa Variable', weight = 350, size = 14, line_height = 1.3 }
+-- local font = { family = 'FiraCode Nerd Font', weight = 375, size = 14, line_height = 1.3 }
+local fallback_font = { family = 'FiraCode Nerd Font', weight = 'Light', size = 14, line_height = 1.3 }
 
-config.font_size = 14.0
-config.line_height = 1.2
+config.font = wezterm.font_with_fallback({ font.family, fallback_font.family })
+config.font_size = font.size
+config.line_height = font.line_height
 
 -- Enable comprehensive ligature support
-config.harfbuzz_features = {
-  "calt",  -- Contextual alternates
-  "liga",  -- Standard ligatures
-  "dlig",  -- Discretionary ligatures
-}
+-- config.harfbuzz_features = {
+ -- "calt",  -- Contextual alternates
+  -- "liga",  -- Standard ligatures
+  -- "dlig",  -- Discretionary ligatures
+-- }
 
 config.color_scheme = 'Eighties (base16)'
 
 -- Improve glyph rendering - make symbols like ❯ wider
-config.allow_square_glyphs_to_overflow_width = "Always"
-config.freetype_load_target = "Light"  -- Enhanced clarity on Retina
+-- config.allow_square_glyphs_to_overflow_width = "Always"
+-- config.freetype_load_target = "Light"  -- Enhanced clarity on Retina
 
 -- Font rules - prevent bold and enable italics
 config.bold_brightens_ansi_colors = false
@@ -32,25 +37,37 @@ config.font_rules = {
   {
     intensity = "Normal",
     italic = false,
-    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular" }),
+    font = wezterm.font_with_fallback({
+      { family = font.family, weight = font.weight },
+      { family = fallback_font.family, weight = fallback_font.weight },
+    }),
   },
   -- Bold text (disable bold by using Regular weight)
   {
     intensity = "Bold",
     italic = false,
-    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Bold" }),
+    font = wezterm.font_with_fallback({
+      { family = font.family, weight = "Bold" },
+      { family = fallback_font.family, weight = "Bold" },
+    }),
   },
   -- Italic text (enable italics)
   {
     intensity = "Normal",
     italic = true,
-    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Regular", italic = true }),
+    font = wezterm.font_with_fallback({
+      { family = font.family, weight = font.weight, italic = true },
+      { family = fallback_font.family, weight = font.weight, italic = true },
+    }),
   },
   -- Bold+Italic text (Regular weight but with italic style)
   {
     intensity = "Bold",
     italic = true,
-    font = wezterm.font({ family = "FiraCode Nerd Font", weight = "Bold", italic = true }),
+    font = wezterm.font_with_fallback({
+      { family = font.family, weight = "Bold", italic = true },
+      { family = fallback_font.family, weight = "Bold", italic = true },
+    }),
   },
 }
 

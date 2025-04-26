@@ -37,6 +37,7 @@ lazyload zoxide -- 'eval "$(zoxide init zsh)"'
 lazyload nvm -- 'source /opt/homebrew/opt/nvm/nvm.sh && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"'
 lazyload jenv -- 'eval "$(jenv init -)"; jenv enable-plugin export'
 lazyload rbenv -- '[[ -s "/opt/homebrew/bin/rbenv" ]] && eval "$(rbenv init - zsh)"'
+lazyload pyenv -- 'eval "$(pyenv init - zsh)"'
 
 # Source fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -76,6 +77,7 @@ ulimit -n 2048
 setopt autocd                # allow implicit cd. e.g: ../..
 setopt extended_glob         # enable extended globbing
 setopt NO_NOMATCH            # passes the bad match onto the command, so we can HEAD^
+# stty -ixon                   # disable flow control  (^S/^Q)
 
 # ---- Key Bindings -----
 bindkey '^w' backward-kill-word      # Delete prior word
@@ -107,7 +109,7 @@ show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview' --border-label=' Files '"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 export FZF_CTRL_R_OPTS="--preview-window=hidden --reverse --border-label=' Command History '"
-local fzf_color="--color=fg:${fg},bg:${bg},hl:${yellow},fg+:${fg},bg+:${bg_highlight},hl+:${yellow},info:${gray},prompt:${red},pointer:${gray},marker:${cyan},spinner:${green},header:${cyan},gutter:${black}"
+local fzf_color="--color=fg:${fg},bg:${bg},hl:${yellow},fg+:${fg},bg+:${bg_highlight},hl+:${yellow},info:${gray},prompt:${red},pointer:${gray},marker:${cyan},spinner:${green},header:${cyan},gutter:${black},border:${gray}"
 local fzf_ops="--prompt='❯ ' --info=inline-right --margin=1,2  --color=label:yellow"
 
 # Set base FZF options with better styling
@@ -156,6 +158,9 @@ _fzf_comprun() {
 }
 
 # Path configuration
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"

@@ -4,14 +4,16 @@ local list_layout = {
   layout = {
     preview = false,
     layout = {
-      backdrop = true,
+      backdrop = false,
       row = 1,
       width = 0.4,
       min_width = 80,
       height = 0.4,
-      border = "none",
+      border = "rounded",
       box = "vertical",
-      { win = "input", height = 1, border = "rounded", title = "{title} {live} {flags}", title_pos = "center" },
+      title = "{title} {live} {flags}",
+      title_pos = "center",
+      { win = "input", height = 1, border = "bottom" },
       { win = "list", border = "hpad" },
       { win = "preview", title = "{preview}", border = "rounded" },
     },
@@ -57,6 +59,11 @@ return {
         file = {
           truncate = 100, -- truncate the file path to (roughly) this length
         },
+      },
+      layout = {
+        layout = {
+          backdrop = false
+        }
       },
       sources = {
         files = {

@@ -211,3 +211,66 @@ function _zoxide_zi_with_accept() {
   fi
 }
 zle -N _zoxide_zi_with_accept
+
+
+# Connect to a session (tmux, config, zoxide, etc.) using sesh and fzf.
+#
+# This function provides an interactive way to select and connect to various
+# sessions managed by the 'sesh' tool (https://github.com/joshmedeski/sesh).
+# It uses fzf for the interactive selection interface.
+#
+# Keybindings within fzf:
+#   Tab / Shift-Tab: Navigate up/down
+#   Ctrl-a: Show all sessions (default view)
+#   Ctrl-t: Show only tmux sessions
+#   Ctrl-g: Show only config sessions (e.g., project directories)
+#   Ctrl-x: Show only zoxide results
+#   Ctrl-f: Show directories found by fd (depth 2)
+#   Ctrl-w: Kill the selected tmux session and reload the list
+#   Enter: Connect to the selected session
+#
+_fzf_sesh_connect() {
+  local session actual_session_name fzf_status cmd
+  session=$(sesh list --icons | fzf-tmux \
+      --reverse \
+      -p 40%,40% \
+      -y 4 \
+      --no-sort --ansi --border-label ' Tmux Sessions ' --prompt '❯ ' \
+      --bind 'tab:down,btab:up' \
+      --bind 'ctrl-a:change-prompt(❯ )+reload(sesh list --icons)' \
+      --bind 'ctrl-t:change-prompt( )+reload(sesh list --tmux --icons)' \
+      --bind 'ctrl-g:change-prompt( )+reload(sesh list --config --icons)' \
+      --bind 'ctrl-x:change-prompt(󰬡 )+reload(sesh list --zoxide --icons)' \
+      --bind 'ctrl-f:change-prompt( )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
+      --bind 'ctrl-w:execute(tmux kill-session -t {2..})+change-prompt(❯ )+reload(sesh list --icons)'
+  )
+  fzf_status=$?
+
+  # Check if fzf was cancelled (exit code 130)
+  if [[ $fzf_status -eq 130 ]]; then
+    [[ -n "$WIDGET" ]] && zle redisplay
+    return 0
+  fi
+
+  if [[ $fzf_status -eq 0 ]] && [[ -n "$session" ]]; then
+    actual_session_name=$(echo "$session" | awk '{print $2}')
+
+    if [[ -n "$WIDGET" ]]; then
+      cmd="sesh connect \"$actual_session_name\""
+      BUFFER=$cmd
+      zle accept-line
+    else
+      sesh connect "$actual_session_name"
+      return 0
+    fi
+  else
+    [[ -n "$WIDGET" ]] && zle redisplay
+    return $fzf_status
+  fi
+}
+
+# Register the function as a ZLE widget
+zle -N _fzf_sesh_connect
+
+# Bind Meta-S to the widget
+bindkey '\es' _fzf_sesh_connect

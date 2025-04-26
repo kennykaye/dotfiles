@@ -9,14 +9,8 @@ return {
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
   { "tpope/vim-sleuth" },
-  { "airblade/vim-gitgutter" },
   { "Raimondi/delimitMate" },
-  {
-    "kennykaye/vim-relativity",
-    branch = "dev",
-  },
-  {
-    "mg979/vim-visual-multi",
-    branch = "master",
-  },
+  { "junegunn/vim-easy-align" },
+  { "kennykaye/vim-relativity", branch = "dev" },
+  { "mg979/vim-visual-multi", branch = "master" },
 }
