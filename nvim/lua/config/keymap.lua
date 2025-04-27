@@ -15,14 +15,12 @@ map('n', '<M-&>', '7gt', { silent = true, desc = "Go to tab 7" })
 map('n', '<M-*>', '8gt', { silent = true, desc = "Go to tab 8" })
 map('n', '<M-(>', '9gt', { silent = true, desc = "Go to tab 9" })
 
+-- Search
+map("n", "n", "nzzzv", { desc = "Fwd  search '/' or '?'" })
+map("n", "N", "Nzzzv", { desc = "Back search '/' or '?'" })
+
 -- Undo
 map('n', '<leader>u', vim.cmd.UndotreeToggle)
-
--- hop
--- map('', '<C-/>', '<Plug>(HopPattern)')
--- map('o', '<C-/>', '<Plug>(HopPattern)')
--- map('', '<C-_>', '<Plug>(HopPattern)') -- Tmux <C-/>
--- map('o', '<C-_>', '<Plug>(HopPattern)') -- Tmux <C-/>
 
 -- easyalign
 map('x', 'ga', '<Plug>(EasyAlign)')

@@ -53,6 +53,7 @@ return {
     vim.api.nvim_set_hl(0, 'SnacksPickerPreview', { bg = C.base })
     vim.api.nvim_set_hl(0, 'SnacksPickerPrompt', { fg = C.red })
     vim.api.nvim_set_hl(0, 'SnacksPickerMatch', { fg = C.yellow })
+    vim.api.nvim_set_hl(0, 'SnacksPickerTree', { fg = C.surface1 })
     vim.api.nvim_set_hl(0, 'SnacksPickerRow', { fg = C.overlay1 })
     vim.api.nvim_set_hl(0, 'SnacksPickerColumn', { fg = C.overlay1 })
     vim.api.nvim_set_hl(0, 'SnacksPickerDelim', { fg = C.overlay1 })
