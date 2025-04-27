@@ -28,34 +28,15 @@ return {
     vim.api.nvim_set_hl(0, 'ColorColumn', { fg = C.text, bg = C.base })
     vim.api.nvim_set_hl(0, 'CursorLine', { bg = C.surface0 })
 
-    -- Tabs 
-    -- vim.api.nvim_set_hl(0, 'TabLine', { fg = C.overlay1, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineFill', { bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineIndex', { fg = C.surface2, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineSelected', { fg = C.text, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineSelectedIndex', { fg = C.overlay1, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineSeparator', { fg = C.base, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineSeparatorHidden', { fg = C.base, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineBreadcrumb', { fg = C.overlay0, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineBreadcrumbSeparator', { fg = C.surface2, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLine', { fg = C.overlay1, bg = C.surface0 })
-    -- vim.api.nvim_set_hl(0, 'TabLineFill', { bg = C.surface0 })
-    -- vim.api.nvim_set_hl(0, 'TabLineIndex', { fg = C.surface2, bg = C.surface0 })
-    -- vim.api.nvim_set_hl(0, 'TabLineSelected', { fg = C.text, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineSelectedIndex', { fg = C.overlay1, bg = C.base })
-    -- vim.api.nvim_set_hl(0, 'TabLineSeparator', { fg = C.base, bg = C.surface0 })
-    -- vim.api.nvim_set_hl(0, 'TabLineSeparatorHidden', { fg = C.surface0, bg = C.surface0 })
-    -- vim.api.nvim_set_hl(0, 'TabLineBreadcrumb', { fg = C.overlay0, bg = C.surface0 })
-    -- vim.api.nvim_set_hl(0, 'TabLineBreadcrumbSeparator', { fg = C.surface2, bg = C.surface0 })
-    vim.api.nvim_set_hl(0, 'TabLine', { fg = C.overlay1, bg = C.mantle })
-    vim.api.nvim_set_hl(0, 'TabLineFill', { bg = C.mantle })
-    vim.api.nvim_set_hl(0, 'TabLineIndex', { fg = C.surface2, bg = C.mantle })
-    vim.api.nvim_set_hl(0, 'TabLineSelected', { fg = C.text, bg = C.base })
+    -- -- Tabs 
+    vim.api.nvim_set_hl(0, 'TabLine', { fg = C.surface2, bg = C.base })
+    vim.api.nvim_set_hl(0, 'TabLineFill', { bg = C.base })
+    vim.api.nvim_set_hl(0, 'TabLineIndex', { fg = C.surface2, bg = C.base })
+    vim.api.nvim_set_hl(0, 'TabLineSelected', { fg = C.eggshell, bg = C.base, bold = true })
     vim.api.nvim_set_hl(0, 'TabLineSelectedIndex', { fg = C.overlay1, bg = C.base })
-    vim.api.nvim_set_hl(0, 'TabLineSeparator', { fg = C.base, bg = C.mantle })
-    vim.api.nvim_set_hl(0, 'TabLineSeparatorHidden', { fg = C.mantle, bg = C.mantle })
-    vim.api.nvim_set_hl(0, 'TabLineBreadcrumb', { fg = C.overlay0, bg = C.mantle })
-    vim.api.nvim_set_hl(0, 'TabLineBreadcrumbSeparator', { fg = C.surface2, bg = C.mantle })
+    vim.api.nvim_set_hl(0, 'TabLineSeparator', { fg = C.surface0, bg = C.base })
+    vim.api.nvim_set_hl(0, 'TabLineBreadcrumb', { fg = C.overlay0, bg = C.base })
+    vim.api.nvim_set_hl(0, 'TabLineBreadcrumbSeparator', { fg = C.surface2, bg = C.base })
 
     -- Float 
     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = C.surface0 })
@@ -159,11 +140,12 @@ return {
     vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpActiveParameter', { bg = 'NONE', fg = C.text })
     vim.api.nvim_set_hl(0, 'BlinkCmpLabelDeprecated', { bg = 'NONE', strikethrough=true, fg=C.overlay2 })
 
-    -- Easymotion
-    vim.api.nvim_set_hl(0, 'EasyMotionTarget', { bg = 'NONE', fg = C.yellow })
-    vim.api.nvim_set_hl(0, 'EasyMotionShade', { bg = 'NONE', fg = C.overlay0 })
-    vim.api.nvim_set_hl(0, 'EasyMotionIncSearch', { bg = 'NONE', fg = C.yellow })
-    vim.api.nvim_set_hl(0, 'EasyMotionTarget2First', { bg = 'NONE', fg = C.yellow })
-    vim.api.nvim_set_hl(0, 'EasyMotionTarget2Second', { bg = 'NONE', fg = C.teal })
+    -- Hop and search
+    vim.api.nvim_set_hl(0, 'IncSearch', { bg = C.yellow, fg = C.base })
+    vim.api.nvim_set_hl(0, 'HopUnmatched', { bg = 'NONE', fg = C.overlay0 })
+    vim.api.nvim_set_hl(0, 'HopNextKey', { bg = 'NONE', fg = C.yellow, bold=true })
+    vim.api.nvim_set_hl(0, 'HopNextKey1', { bg = 'NONE', fg = C.teal, bold=true })
+    vim.api.nvim_set_hl(0, 'HopNextKey2', { bg = 'NONE', fg = C.marine })
+    vim.api.nvim_set_hl(0, 'TSNodeKey', { bg = 'NONE', fg = C.yellow, bold=true })
   end
 }

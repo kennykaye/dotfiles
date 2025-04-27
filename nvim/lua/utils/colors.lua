@@ -24,6 +24,7 @@ return {
   yellow     = '#ffcc66', -- [base16] yellow
   green      = '#99cc99', -- [base16] green
   teal       = '#66cccc', -- [base16] cyan
+  marine     = '#3c8282',
   sky        = '#7ab3cc',
   sapphire   = '#6699cc', -- [base16] blue
   blue       = '#5c8dbd',

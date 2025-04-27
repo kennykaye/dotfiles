@@ -2,10 +2,7 @@ local map = vim.keymap.set
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
--- Increment / Decrement numbers
-map('n', '-', '<C-x>', { silent = true })
-map('n', '+', '<C-a>', { silent = true })
+vim.g.timeoutlen = 250
 
 -- Tab Navigation (M-S-#)
 map('n', '<M-!>', '1gt', { silent = true, desc = "Go to tab 1" })
@@ -21,17 +18,11 @@ map('n', '<M-(>', '9gt', { silent = true, desc = "Go to tab 9" })
 -- Undo
 map('n', '<leader>u', vim.cmd.UndotreeToggle)
 
--- easymotion
-map('', '<C-s>', '<Plug>(easymotion-sn)')
-map('o', '<C-s>', '<Plug>(easymotion-tn)')
-map('', '<C-/>', '<Plug>(easymotion-sn)')
-map('o', '<C-/>', '<Plug>(easymotion-tn)')
-map('', '<C-_>', '<Plug>(easymotion-sn)')
-map('o', '<C-_>', '<Plug>(easymotion-tn)')
-map('', '<leader>/', '<Plug>(easymotion-sn)')
-map('o', '<leader>/', '<Plug>(easymotion-tn)')
-map('', '<leader>s', '<Plug>(easymotion-sn)')
-map('o', '<leader>s', '<Plug>(easymotion-tn)')
+-- hop
+-- map('', '<C-/>', '<Plug>(HopPattern)')
+-- map('o', '<C-/>', '<Plug>(HopPattern)')
+-- map('', '<C-_>', '<Plug>(HopPattern)') -- Tmux <C-/>
+-- map('o', '<C-_>', '<Plug>(HopPattern)') -- Tmux <C-/>
 
 -- easyalign
 map('x', 'ga', '<Plug>(EasyAlign)')

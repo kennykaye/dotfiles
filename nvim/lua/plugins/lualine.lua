@@ -27,6 +27,22 @@ return {
       return self.status
     end
 
+    -- LSP clients attached to buffer
+    local lsp_or_filetype = function ()
+      local bufnr = vim.api.nvim_get_current_buf()
+
+      local clients = vim.lsp.get_clients({bufnr=bufnr})
+      if next(clients) == nil then
+        return vim.bo.filetype
+      end
+
+      local c = {}
+      for _, client in pairs(clients) do
+        table.insert(c, client.name)
+      end
+      return ' ' .. table.concat(c, ',')
+    end
+
     -- Put proper separators and gaps between components in sections
     local function process_sections(sections)
       for name, section in pairs(sections) do
@@ -76,7 +92,7 @@ return {
             cond = require("noice").api.statusline.mode.has,
             color = { fg = colors.flamingo },
           },
-          {'filetype'},
+          { lsp_or_filetype },
         },
         lualine_y = {'progress'},
         lualine_z = {

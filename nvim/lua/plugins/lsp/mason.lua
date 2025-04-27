@@ -43,7 +43,37 @@ return {
             root_markers = { '.git' },
           })
           vim.lsp.enable(server_name)
-        end
+        end,
+
+        ['lua_ls'] = function()
+          vim.lsp.config('lua_ls', {
+            cmd = { 'lua-language-server' },
+            filetypes = { 'lua' },
+            root_markers = {
+              '.luarc.json',
+              '.luarc.jsonc',
+              '.luacheckrc',
+              '.stylua.toml',
+              'stylua.toml',
+              'selene.toml',
+              'selene.yml',
+              '.git',
+            },
+            capabilities = require('blink.cmp').get_lsp_capabilities(),
+            settings = {
+              Lua = {
+                runtime = {
+                  version = 'LuaJIT'
+                },
+                diagnostics = {
+                  globals = { 'vim' },
+                  disable = { 'missing-fields' },
+                }
+              }
+            }
+          })
+          vim.lsp.enable('lua_ls')
+        end,
       },
     })
 

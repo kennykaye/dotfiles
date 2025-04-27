@@ -109,7 +109,7 @@ show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview' --border-label=' Files '"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 export FZF_CTRL_R_OPTS="--preview-window=hidden --reverse --border-label=' Command History '"
-local fzf_color="--color=fg:${fg},bg:${bg},hl:${yellow},fg+:${fg},bg+:${bg_highlight},hl+:${yellow},info:${gray},prompt:${red},pointer:${gray},marker:${cyan},spinner:${green},header:${cyan},gutter:${black},border:${gray}"
+local fzf_color="--color=fg:${fg},bg:${bg},hl:${yellow},fg+:${fg},bg+:${bg_highlight},hl+:${yellow},info:${gray},prompt:${red},pointer:${bg_highlight},marker:${cyan},spinner:${green},header:${cyan},gutter:${black},border:${gray}"
 local fzf_ops="--prompt='❯ ' --info=inline-right --margin=1,2  --color=label:yellow"
 
 # Set base FZF options with better styling

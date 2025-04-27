@@ -233,6 +233,7 @@ _fzf_sesh_connect() {
   local session actual_session_name fzf_status cmd
   session=$(sesh list --icons | fzf-tmux \
       --reverse \
+      --highlight-line \
       -p 40%,40% \
       -y 4 \
       --no-sort --ansi --border-label ' Tmux Sessions ' --prompt '❯ ' \
