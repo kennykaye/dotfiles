@@ -29,10 +29,10 @@ return {
     "dzeban/vim-log-syntax",
     ft = "log",
   },
-  {
-    "tpope/vim-markdown",
-    ft = "markdown",
-  },
+  -- {
+  --   "tpope/vim-markdown",
+  --   ft = "markdown",
+  -- },
   {
     "guns/vim-clojure-static",
     ft = "clojure",

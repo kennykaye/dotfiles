@@ -90,25 +90,24 @@ return {
           {
             require("noice").api.statusline.mode.get,
             cond = require("noice").api.statusline.mode.has,
-            color = { fg = colors.flamingo },
+            color = { fg = colors.red },
           },
           { lsp_or_filetype },
         },
         lualine_y = {'progress'},
         lualine_z = {
-          -- 'location',
+          {
+            'diagnostics',
+            source = { 'nvim' },
+            sections = { 'warn' },
+            diagnostics_color = { warn = { bg = colors.yellow, fg = colors.surface0 } },
+          },
           {
             'diagnostics',
             source = { 'nvim' },
             sections = { 'error' },
             diagnostics_color = { error = { bg = colors.red, fg = colors.surface0 } },
           },
-          {
-            'diagnostics',
-            source = { 'nvim' },
-            sections = { 'warn' },
-            diagnostics_color = { warn = { bg = colors.yellow, fg = colors.surface0 } },
-          }
         }
       },
       inactive_sections = {

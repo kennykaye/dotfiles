@@ -45,16 +45,13 @@
         && rm $tempfile"
       - "Installing WezTerm terminfo"
     -
-      - "ln -sf $(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight"
-      - "Installing improved diff highlighting"
-    -
       - "git submodule update --init --recursive --remote"
       - "Installing/updating submodules"
     -
-      - "mkdir ~/.vim/undodir"
+      - "[ -d ~/.vim/undodir ] || mkdir ~/.vim/undodir"
       - "Checking folder structure exists"
     -
-      - "mkdir -p ~/.local/state/crossnote"
+      - "[ -d ~/.local/state/crossnote ] || mkdir -p ~/.local/state/crossnote"
       - "Creating markdown stylesheet directory"
     -
        - "bash cursor/manage-extensions.sh install"

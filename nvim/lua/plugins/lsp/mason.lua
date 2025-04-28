@@ -29,6 +29,7 @@ return {
         'lua_ls',
         'emmet_ls',
         'gopls',
+        'buf_ls',
         'kotlin_language_server',
       },
 
@@ -67,7 +68,7 @@ return {
                 },
                 diagnostics = {
                   globals = { 'vim' },
-                  disable = { 'missing-fields' },
+                  disable = { 'missing-fields', 'undefined-field' },
                 }
               }
             }

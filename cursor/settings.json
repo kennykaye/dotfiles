@@ -198,5 +198,6 @@
     },
     "terminal.integrated.enableVisualBell": false,
     "vim.neovimPath": "/opt/homebrew/bin/nvim",
-    "vim.neovimUseConfigFile": true
+    "vim.neovimUseConfigFile": true,
+    "redhat.telemetry.enabled": true
 }

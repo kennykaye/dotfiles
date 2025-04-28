@@ -53,6 +53,15 @@ return {
       width = { min = 40, max = 60 },
       style = "compact" -- minimal, compact, or fancy
     },
+    zen = {
+      toggles = {
+        dim = false,
+        git_signs = false,
+        mini_diff_signs = false,
+        -- diagnostics = false,
+        -- inlay_hints = false,
+      },
+    },
     picker = {
       enabled = true,
       formatters = {

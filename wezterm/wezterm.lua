@@ -98,9 +98,9 @@ config.audible_bell = 'Disabled'
 
 config.colors = {
 --   -- Custom cursor colors
---   cursor_bg = "#f2777a",
---   cursor_fg = "#000000", -- Black cursor text
---   cursor_border = "#f2777a",
+  cursor_bg = "#e8e6df",
+  cursor_fg = "#1f1f1f",
+  cursor_border = "#e8e6df",
 
   -- Selection colors
   selection_fg = "#000000",

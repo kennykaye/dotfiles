@@ -106,4 +106,3 @@ create_cmd('BDE', replace_buffer, {
   bang = true,
   bar = true,
 })
-

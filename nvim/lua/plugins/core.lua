@@ -3,7 +3,6 @@ return {
 
   -- Core plugins
   { "folke/lazy.nvim" },
-  { "edkolev/tmuxline.vim" },
   { "tpope/vim-fugitive" },
   { "tpope/vim-obsession" },
   { "tpope/vim-surround" },
@@ -12,5 +11,4 @@ return {
   { "Raimondi/delimitMate" },
   { "junegunn/vim-easy-align" },
   { "kennykaye/vim-relativity", branch = "dev" },
-  { "mg979/vim-visual-multi", branch = "master" },
 }

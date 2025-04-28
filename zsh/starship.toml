@@ -66,6 +66,7 @@ $git_status\
 $python\
 $go\
 $node\
+$java\
 $time\
 $line_break\
 $character"""
@@ -100,7 +101,7 @@ command_timeout = 1000
 # symbol = '─'
 
 [directory]
-style = "red"
+style = "#f2777a"
 truncation_length = 1
 # truncation_length = 2
 truncate_to_repo = true
@@ -160,6 +161,7 @@ symbol = "node "
 
 [java]
 symbol = "java "
+style = "#f99157"
 
 [python]
 symbol = "py "

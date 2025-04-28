@@ -168,6 +168,7 @@ export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/bin/go_appengine_sdk:$PATH"
 export PATH="$PATH:/usr/local/mysql/bin/"
 export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+export PATH="$PATH:/Users/kenny.kaye/Library/Python/3.9/bin"
 
 export MANPATH="/opt/local/man:/usr/local/man:/usr/bin/:$MANPATH"
 export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
