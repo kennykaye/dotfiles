@@ -61,8 +61,9 @@ run = 'layout floating'
 if.app-name-regex-substring = 'quicktime'
 run = 'layout floating'
 
+
 [[on-window-detected]]
-if.app-name-regex-substring = 'zoom'
+if.app-name-regex-substring = 'font book'
 run = 'layout floating'
 
 [[on-window-detected]]
@@ -84,10 +85,6 @@ run = ['move-node-to-workspace 2']
 [[on-window-detected]]
 if.app-name-regex-substring = 'chrome'
 run = ['move-node-to-workspace 3']
-
-# [[on-window-detected]]
-# if.app-name-regex-substring = 'zoom'
-# run = ['move-node-to-workspace 4']
 
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
