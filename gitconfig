@@ -73,7 +73,8 @@
 	untracked = cyan
 [user]
 	name = Kenny Kaye
-	email = kenny@kaye.us
+[include]
+	path = ~/.gitconfig.local
 [push]
 	default = simple
 [merge]
