@@ -39,6 +39,17 @@ lazyload jenv -- 'eval "$(jenv init -)"; jenv enable-plugin export'
 lazyload rbenv -- '[[ -s "/opt/homebrew/bin/rbenv" ]] && eval "$(rbenv init - zsh)"'
 lazyload pyenv -- 'eval "$(pyenv init - zsh)"'
 
+# Auto-activate environment managers when version files are detected
+auto_activate_env_managers() {
+  [[ -f .python-version ]] && pyenv &>/dev/null
+  [[ -f .java-version ]] && jenv &>/dev/null
+  [[ -f .ruby-version ]] && rbenv &>/dev/null
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd auto_activate_env_managers
+auto_activate_env_managers
+
 # Source fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

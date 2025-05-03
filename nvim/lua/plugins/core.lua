@@ -8,7 +8,5 @@ return {
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
   { "tpope/vim-sleuth" },
-  { "Raimondi/delimitMate" },
   { "junegunn/vim-easy-align" },
-  { "kennykaye/vim-relativity", branch = "dev" },
 }

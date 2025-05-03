@@ -11,6 +11,7 @@ vim.opt.exrc = true                -- load project-specific vimrc's
 vim.opt.secure = true              -- limit the capability of those vimrc's
 vim.opt.laststatus = 2
 vim.opt.swapfile = false
+vim.opt.relativenumber = true
 vim.opt.termguicolors = true       -- set gui colors for vim and nvim
 vim.opt.backspace = "indent,eol,start" -- backspace through lines
 vim.opt.clipboard = "unnamed"      -- tmux and system copy/paste

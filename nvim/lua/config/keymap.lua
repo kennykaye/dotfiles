@@ -19,11 +19,10 @@ map('n', '<M-(>', '9gt', { silent = true, desc = "Go to tab 9" })
 map("n", "n", "nzzzv", { desc = "Fwd  search '/' or '?'" })
 map("n", "N", "Nzzzv", { desc = "Back search '/' or '?'" })
 
--- easyalign
+-- Other
 map('x', 'ga', '<Plug>(EasyAlign)', { desc = "EasyAlign" })
 map('n', 'ga', '<Plug>(EasyAlign)', { desc = "EasyAlign" })
-
-map('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Toggle Undo Tree' })
+map('n', '<leader>ut', vim.cmd.UndotreeToggle, { desc = 'Toggle Undo Tree' })
 map("n", "<Leader>cc", function() require("menu").open("default") end, { desc = "Show context Menu"})
 
 -- diagnostic

@@ -43,6 +43,16 @@ return {
       return ' ' .. table.concat(c, ',')
     end
 
+   -- Function to check if diagnostics are enabled
+    local diagnostics_enabled = function()
+      -- Check if snacks.nvim has disabled diagnostics
+      if package.loaded.snacks and Snacks.toggle and Snacks.toggle.diagnostics then
+        return Snacks.toggle.diagnostics():get()
+      end
+      -- Default to enabled if snacks isn't loaded yet or doesn't have the toggle
+      return true
+    end
+
     -- Put proper separators and gaps between components in sections
     local function process_sections(sections)
       for name, section in pairs(sections) do
@@ -101,12 +111,14 @@ return {
             source = { 'nvim' },
             sections = { 'warn' },
             diagnostics_color = { warn = { bg = colors.yellow, fg = colors.surface0 } },
+            cond = diagnostics_enabled
           },
           {
             'diagnostics',
             source = { 'nvim' },
             sections = { 'error' },
             diagnostics_color = { error = { bg = colors.red, fg = colors.surface0 } },
+            cond = diagnostics_enabled
           },
         }
       },

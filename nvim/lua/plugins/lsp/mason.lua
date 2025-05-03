@@ -25,7 +25,7 @@ return {
       -- list of servers for mason to install
       automatic_installation = true,
       ensure_installed = {
-        'pyright',
+        'basedpyright',
         'lua_ls',
         'emmet_ls',
         'gopls',
