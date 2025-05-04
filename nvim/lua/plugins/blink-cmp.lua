@@ -2,6 +2,7 @@ return {
   'saghen/blink.cmp',
   dependencies = {
     'rafamadriz/friendly-snippets',
+    'fang2hou/blink-copilot',
   },
   version = '1.*',
 
@@ -36,10 +37,10 @@ return {
       documentation = { auto_show = true, auto_show_delay_ms = 500 },
 
       -- Display a preview of the selected item on the current line
-      ghost_text = { enabled = false },
+      ghost_text = { enabled = true },
       menu = {
         draw = {
-         columns = {
+          columns = {
             { "label", "label_description", gap = 1 },
             { "kind_icon", "kind" }
           },
@@ -47,6 +48,7 @@ return {
             kind_icon = {
               text = function(ctx)
                 local cmp_kinds = {
+                  Copilot = '   ',
                   Text = '   ',
                   Method = '   ',
                   Function = '   ',
@@ -85,7 +87,7 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'cmdline' },
+      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'cmdline', 'copilot'  },
 
       providers = {
         lazydev = {
@@ -93,6 +95,21 @@ return {
           module = "lazydev.integrations.blink",
           -- make lazydev completions top priority (see `:h blink.cmp`)
           score_offset = 100,
+        },
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          score_offset = 100,
+          async = true,
+          transform_items = function(_, items)
+            local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+            local kind_idx = #CompletionItemKind + 1
+            CompletionItemKind[kind_idx] = "Copilot"
+            for _, item in ipairs(items) do
+              item.kind = kind_idx
+            end
+            return items
+          end,
         },
       },
     },

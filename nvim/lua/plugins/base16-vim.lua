@@ -132,6 +132,7 @@ return {
     hl('BlinkCmpKindStruct',                   { fg = C.yellow,   bg = 'NONE' })
     hl('BlinkCmpKindKeyword',                  { fg = C.eggshell, bg = 'NONE' })
     hl('BlinkCmpKindSnippet',                  { fg = C.subtext0, bg = 'NONE' })
+    hl('BlinkCmpKindCopilot',                  { fg = C.teal,      bg = 'NONE' })
     hl('BlinkCmpKindConstant',                 { fg = C.flamingo, bg = 'NONE' })
     hl('BlinkCmpKindFunction',                 { fg = C.mauve,    bg = 'NONE' })
     hl('BlinkCmpKindOperator',                 { fg = C.teal,     bg = 'NONE' })

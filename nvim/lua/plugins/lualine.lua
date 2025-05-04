@@ -38,7 +38,9 @@ return {
 
       local c = {}
       for _, client in pairs(clients) do
-        table.insert(c, client.name)
+        if client.name ~= 'copilot' then
+          table.insert(c, client.name)
+        end
       end
       return ' ' .. table.concat(c, ',')
     end
