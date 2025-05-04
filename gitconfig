@@ -1,3 +1,6 @@
+[include]
+	path = ~/.gitconfig.local
+
 [alias]
   co = checkout
   cob = checkout -b
@@ -13,7 +16,7 @@
 	pager = delta
 
 [interactive]
-	diffFilter = delta --color-only 
+	diffFilter = delta --color-only
 
 [delta]
   navigate = true  # use n and N to move between diff sections
@@ -73,8 +76,6 @@
 	untracked = cyan
 [user]
 	name = Kenny Kaye
-[include]
-	path = ~/.gitconfig.local
 [push]
 	default = simple
 [merge]

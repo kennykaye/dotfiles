@@ -52,7 +52,7 @@ return {
         title = "Harpoon",
         format = Snacks.picker.format.ui_select(nil, 0),
         layout = {
-          preview = false,
+          preview = "main",
           layout = {
             backdrop = false,
             row = 1,

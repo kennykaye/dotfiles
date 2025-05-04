@@ -20,8 +20,8 @@ return {
             ["al"] = "@loop.outer",
             ["ir"] = "@return.inner",
             ["ar"] = "@return.outer",
-            ["ipp"] = "@parameter.inner",
-            ["app"] = "@parameter.outer",
+            ["ia"] = "@parameter.inner",
+            ["aa"] = "@parameter.outer",
           },
           -- You can choose the select mode (default is charwise 'v')
           --

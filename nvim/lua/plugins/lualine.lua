@@ -46,6 +46,8 @@ return {
    -- Function to check if diagnostics are enabled
     local diagnostics_enabled = function()
       -- Check if snacks.nvim has disabled diagnostics
+
+      ---@module "snacks"
       if package.loaded.snacks and Snacks.toggle and Snacks.toggle.diagnostics then
         return Snacks.toggle.diagnostics():get()
       end
@@ -98,8 +100,8 @@ return {
         lualine_c = {'filename'},
         lualine_x = {
           {
-            require("noice").api.statusline.mode.get,
-            cond = require("noice").api.statusline.mode.has,
+            require("noice").api.status.mode.get,
+            cond = require("noice").api.status.mode.has,
             color = { fg = colors.red },
           },
           { lsp_or_filetype },
