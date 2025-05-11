@@ -1,5 +1,5 @@
 -- Color scheme based on base16-eighties
--- Primary color accents are 
+-- Primary color accents are
 return {
   -- Base colors
   crust      = '#1f1f1f',

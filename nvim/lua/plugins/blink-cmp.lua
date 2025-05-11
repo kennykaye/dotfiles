@@ -34,11 +34,16 @@ return {
       },
 
       -- Show documentation when selecting a completion item
-      documentation = { auto_show = true, auto_show_delay_ms = 500 },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 500,
+        window = { border = 'rounded' },
+      },
 
       -- Display a preview of the selected item on the current line
-      ghost_text = { enabled = true },
+      -- ghost_text = { enabled = true },
       menu = {
+        -- border = 'rounded',
         draw = {
           columns = {
             { "label", "label_description", gap = 1 },
@@ -50,6 +55,7 @@ return {
                 local cmp_kinds = {
                   Copilot = '   ',
                   Text = '   ',
+                  Dict = '   ',
                   Method = '   ',
                   Function = '   ',
                   Constructor = '   ',
@@ -87,7 +93,11 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'cmdline', 'copilot'  },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'cmdline', 'copilot' },
+
+      per_filetype = {
+        lua = { inherit_defaults = true, 'lazydev' }
+      },
 
       providers = {
         lazydev = {
@@ -116,7 +126,9 @@ return {
 
 
     -- Experimental signature help support
-    signature = { enabled = true },
+    signature = {
+      enabled = true,
+    },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
     -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,

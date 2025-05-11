@@ -16,14 +16,20 @@ map('n', '<M-*>', '8gt', { silent = true, desc = "Go to tab 8" })
 map('n', '<M-(>', '9gt', { silent = true, desc = "Go to tab 9" })
 
 -- Search
-map("n", "n", "nzzzv", { desc = "Fwd  search '/' or '?'" })
-map("n", "N", "Nzzzv", { desc = "Back search '/' or '?'" })
+map("n", "n", "nzzzv", { desc = "Fwd  search '/' or '?'" }) -- n + center cursor
+map("n", "N", "Nzzzv", { desc = "Back search '/' or '?'" }) -- N + center cursor
 
 -- Other
-map('x', 'ga', '<Plug>(EasyAlign)', { desc = "EasyAlign" })
-map('n', 'ga', '<Plug>(EasyAlign)', { desc = "EasyAlign" })
+map('x', 'ga',         '<Plug>(EasyAlign)',    { desc = "EasyAlign" })
+map('n', 'ga',         '<Plug>(EasyAlign)',    { desc = "EasyAlign" })
 map('n', '<leader>ut', vim.cmd.UndotreeToggle, { desc = 'Toggle Undo Tree' })
 map("n", "<Leader>cc", function() require("menu").open("default") end, { desc = "Show context Menu"})
+map("n", "-", function()
+  local minifiles = require("mini.files")
+  if not minifiles.close()
+  then minifiles.open()
+  end
+end, { desc = "Toggle mini.files" })
 
 -- diagnostic
 vim.api.nvim_create_autocmd("LspAttach", {

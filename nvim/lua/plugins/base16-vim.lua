@@ -1,5 +1,5 @@
 return {
-  "RRethy/base16-nvim",
+  'RRethy/base16-nvim',
   priority = 1000,
   lazy = false,
   config = function()
@@ -44,7 +44,7 @@ return {
     -- Float
     hl('NormalFloat',               { bg = C.surface0 })
     hl('FloatTitle',                { fg = C.yellow })
-    hl('FloatBorder',               { fg = C.gray, bg = C.base })
+    hl('FloatBorder',               { fg = C.overlay1, bg = C.base })
     --
     -- Picker
     hl('SnacksNormal',              { bg = C.base })
@@ -107,16 +107,18 @@ return {
     hl('TSURI',         { fg = C.blue, bg = 'NONE' })
 
     -- PMenu
-    hl('PMenu',         { fg = "NONE", bg = C.surface0 })
-    hl('PMenuSel',      { fg = "NONE", bg = C.surface2, bold = true })
-    hl('PmenuKind',     { fg = "NONE" })
-    hl('PmenuKindSel',  { fg = "NONE", bg = C.surface2 })
-    hl('PmenuExtraSel', { fg = "NONE", bg = C.surface2 })
+    hl('PMenu',         { fg = 'NONE', bg = C.surface0 })
+    hl('PMenuSel',      { fg = 'NONE', bg = C.surface1, bold = true })
+    hl('PmenuKind',     { fg = 'NONE' })
+    hl('PmenuKindSel',  { fg = 'NONE', bg = C.surface2 })
+    hl('PmenuExtraSel', { fg = 'NONE', bg = C.surface2 })
     hl('PMenuThumb',    { fg = C.base, bg = C.surface1 })
 
     -- LSP and autocomplete
-    hl('BlinkCmpDoc',                          { fg = 'NONE',     bg = C.surface0 })
-    hl('BlinkCmpDocBorder',                    { fg = 'NONE',     bg = C.surface0 })
+    hl('BlinkCmpDoc',                          { fg = 'NONE',     bg = C.base })
+    hl('BlinkCmpDocBorder',                    { fg = C.overlay1, bg = C.base })
+    hl('BlinkCmpDocSeparator',                 { fg = C.overlay1, bg = C.base })
+    hl('BlinkCmpMenuBorder',                   { fg = C.overlay1, bg = C.base })
     hl('BlinkCmpKindEnum',                     { fg = C.yellow,   bg = 'NONE' })
     hl('BlinkCmpKindFile',                     { fg = C.teal,     bg = 'NONE' })
     hl('BlinkCmpKindText',                     { fg = C.sky,      bg = 'NONE' })
@@ -132,7 +134,7 @@ return {
     hl('BlinkCmpKindStruct',                   { fg = C.yellow,   bg = 'NONE' })
     hl('BlinkCmpKindKeyword',                  { fg = C.eggshell, bg = 'NONE' })
     hl('BlinkCmpKindSnippet',                  { fg = C.subtext0, bg = 'NONE' })
-    hl('BlinkCmpKindCopilot',                  { fg = C.teal,      bg = 'NONE' })
+    hl('BlinkCmpKindCopilot',                  { fg = C.teal,     bg = 'NONE' })
     hl('BlinkCmpKindConstant',                 { fg = C.flamingo, bg = 'NONE' })
     hl('BlinkCmpKindFunction',                 { fg = C.mauve,    bg = 'NONE' })
     hl('BlinkCmpKindOperator',                 { fg = C.teal,     bg = 'NONE' })
@@ -144,7 +146,7 @@ return {
     hl('BlinkCmpKindConstructor',              { fg = C.yellow,   bg = 'NONE' })
     hl('BlinkCmpKindTypeParameter',            { fg = C.text,     bg = 'NONE' })
     hl('BlinkCmpSignatureHelpActiveParameter', { fg = C.text,     bg = 'NONE' })
-    hl('BlinkCmpLabelDeprecated',              { fg=C.overlay2,   bg = 'NONE', strikethrough=true })
+    hl('BlinkCmpLabelDeprecated',              { fg = C.overlay2, bg = 'NONE', strikethrough=true })
 
     -- Hop and search
     hl('IncSearch',    { bg = C.yellow, fg = C.base })
@@ -155,24 +157,28 @@ return {
     hl('HopUnmatched', { bg = 'NONE',   fg = C.overlay0 })
 
     -- Multi cursor
-    hl("MultiCursorCursor",         { link = "Visual" })
-    hl("MultiCursorVisual",         { link = "Visual" })
-    hl("MultiCursorSign",           { link = "SignColumn"})
-    hl("MultiCursorMatchPreview",   { link = "Search" })
-    hl("MultiCursorDisabledVisual", { link = "Visual" })
-    hl("MultiCursorDisabledSign",   { link = "SignColumn"})
-    hl("MultiCursorDisabledCursor", { reverse = true })
+    hl('MultiCursorCursor',         { link = 'Visual' })
+    hl('MultiCursorVisual',         { link = 'Visual' })
+    hl('MultiCursorSign',           { link = 'SignColumn'})
+    hl('MultiCursorMatchPreview',   { link = 'Search' })
+    hl('MultiCursorDisabledVisual', { link = 'Visual' })
+    hl('MultiCursorDisabledSign',   { link = 'SignColumn'})
+    hl('MultiCursorDisabledCursor', { reverse = true })
+
+    -- mini.files
+    hl('MiniFilesNormal', { link = 'SnacksPicker' })
+    hl('MiniFilesHidden', { link = 'Comment' })
 
     -- Markdown
-    hl("@markup.quote.markdown",             { bg = C.base,     fg = C.overlay1 })
-    hl("@markup.raw.block.markdown",         { bg = C.surface0, fg = C.text })
-    hl("@label.markdown",                    { bg = C.surface0, fg = C.subtext0 })
-    hl("@markup.link.label.markdown_inline", { bg = C.surface0, fg = C.blue, underline = true })
+    hl('@markup.quote.markdown',             { bg = C.base,     fg = C.overlay1 })
+    hl('@markup.raw.block.markdown',         { bg = C.surface0, fg = C.text })
+    hl('@label.markdown',                    { bg = C.surface0, fg = C.subtext0 })
+    hl('@markup.link.label.markdown_inline', { bg = C.surface0, fg = C.blue, underline = true })
 
     -- Which Key
-    hl("WhichKey", { bg = 'NONE', fg = C.yellow })
-    hl("WhichKeyDesc", { bg = 'NONE', fg = C.subtext0 })
-    hl("WhichKeyGroup", { bg = 'NONE', fg = C.overlay1 })
+    hl('WhichKey', { bg = 'NONE', fg = C.yellow })
+    hl('WhichKeyDesc', { bg = 'NONE', fg = C.subtext0 })
+    hl('WhichKeyGroup', { bg = 'NONE', fg = C.overlay1 })
 
   end
 }
