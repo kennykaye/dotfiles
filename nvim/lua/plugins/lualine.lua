@@ -45,7 +45,13 @@ return {
       return ' ' .. table.concat(c, ',')
     end
 
-   -- Function to check if diagnostics are enabled
+    -- Check if a buffer is on an allowlist to display lualine componentn
+    local should_show_component = function()
+      local ft = vim.bo.filetype
+      return not (ft:match("Avante") or ft:match("snacks"))
+    end
+
+    -- Function to check if diagnostics are enabled
     local diagnostics_enabled = function()
       -- Check if snacks.nvim has disabled diagnostics
 
@@ -65,6 +71,9 @@ return {
           if type(comp) ~= 'table' then
             comp = { comp }
             section[id] = comp
+          end
+          if not comp.cond then
+            comp.cond = should_show_component
           end
           comp.separator = left and { right = '' } or { left = '' }
           -- comp.separator = left and { right = '' } or { left = '' }
@@ -89,17 +98,15 @@ return {
         always_show_tabline = true,
         globalstatus = false,
         refresh = {
-          statusline = 100,
+          statusline = 1,
           tabline = 100,
           winbar = 100,
         }
       },
-      sections = process_sections{
-        lualine_a = {
-          {'mode', fmt = function(res) return res:sub(1,1) end}
-        },
+      sections = process_sections {
+        lualine_a = { { 'mode', fmt = function(res) return res:sub(1,1) end } },
         lualine_b = {},
-        lualine_c = {'filename'},
+        lualine_c = { 'filename' },
         lualine_x = {
           {
             require("noice").api.status.mode.get,
@@ -108,7 +115,7 @@ return {
           },
           { lsp_or_filetype },
         },
-        lualine_y = {'progress'},
+        lualine_y = { 'progress' },
         lualine_z = {
           {
             'diagnostics',
@@ -126,9 +133,9 @@ return {
           },
         }
       },
-      inactive_sections = {
+      inactive_sections = process_sections {
         lualine_a = {},
-        lualine_b = {'filename'},
+        lualine_b = { { 'filename' } },
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},

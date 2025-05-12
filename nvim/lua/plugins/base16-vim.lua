@@ -1,3 +1,4 @@
+
 return {
   'RRethy/base16-nvim',
   priority = 1000,
@@ -28,7 +29,7 @@ return {
     hl('WinSeparator', { fg = C.mantle,   bg = 'NONE' })
     hl('LineNr',       { fg = C.overlay0, bg = 'NONE' })
     hl('CursorLineNr', { fg = C.text,     bg = 'NONE' })
-    hl('ColorColumn',  { fg = C.text,     bg = C.base })
+    hl('ColorColumn',  { fg = 'NONE',     bg = 'NONE' })
     hl('CursorLine',   { bg = C.surface0 })
 
     -- Tabs
@@ -128,6 +129,7 @@ return {
     hl('BlinkCmpKindEvent',                    { fg = C.teal,     bg = 'NONE' })
     hl('BlinkCmpKindField',                    { fg = C.green,    bg = 'NONE' })
     hl('BlinkCmpKindValue',                    { fg = C.teal,     bg = 'NONE' })
+    hl('BlinkCmpKindAvante',                   { default = false, fg = C.teal })
     hl('BlinkCmpKindFolder',                   { fg = C.teal,     bg = 'NONE' })
     hl('BlinkCmpKindMethod',                   { fg = C.mauve,    bg = 'NONE' })
     hl('BlinkCmpKindModule',                   { fg = C.teal,     bg = 'NONE' })
@@ -170,8 +172,8 @@ return {
     hl('MiniFilesHidden', { link = 'Comment' })
 
     -- Markdown
+    hl('@markup.raw.block.markdown',         { bg = C.surface0 })
     hl('@markup.quote.markdown',             { bg = C.base,     fg = C.overlay1 })
-    hl('@markup.raw.block.markdown',         { bg = C.surface0, fg = C.text })
     hl('@label.markdown',                    { bg = C.surface0, fg = C.subtext0 })
     hl('@markup.link.label.markdown_inline', { bg = C.surface0, fg = C.blue, underline = true })
 
@@ -180,5 +182,20 @@ return {
     hl('WhichKeyDesc', { bg = 'NONE', fg = C.subtext0 })
     hl('WhichKeyGroup', { bg = 'NONE', fg = C.overlay1 })
 
+    -- Avante
+    -- todo: contribute additional highlight groups
+    -- https://github.com/yetone/avante.nvim/blob/adae032f5fbc611d59545792d3c5bb1c9ddc3fdb/lua/avante/sidebar.lua#L976
+    hl('AvanteTitle', { bg = C.surface0, fg = C.yellow })
+    hl('AvanteSubTitle', { bg = C.surface0, fg = C.green })
+    hl('AvanteThirdTitle', { bg = C.surface0, fg = C.subtext0 })
+    hl('AvanteReversedTitle', { bg = C.surface0, fg = C.surface0 })
+    hl('AvanteReversedSubTitle', { bg = C.surface0, fg = C.surface0 })
+    hl('AvanteReversedThirdTitle', { bg = C.surface0, fg = C.surface0 })
+    hl("AvanteInlineHint", { link = "LspDiagnosticsVirtualTextHint" })
+    hl("AvantePopupHint", { bg = 'NONE', fg = C.subtext0 })
+    hl("AvantePromptInput", { bg = C.base, fg = C.text })
+    hl("AvantePromptInputBorder", { bg = C.base, fg = C.overlay1 })
+    hl("AvanteSidebarNormal", { bg = C.surface0, fg = C.text })
+    hl("AvanteSidebarWinHorizontalSeparator", { bg = C.surface0, fg = C.overlay1 })
   end
 }

@@ -3,6 +3,7 @@ return {
   dependencies = {
     'rafamadriz/friendly-snippets',
     'fang2hou/blink-copilot',
+    'Kaiser-Yang/blink-cmp-avante',
   },
   version = '1.*',
 
@@ -53,7 +54,8 @@ return {
             kind_icon = {
               text = function(ctx)
                 local cmp_kinds = {
-                  Copilot = '   ',
+                  Copilot = ' 󱐌  ',
+                  Avante = ' 󱐌  ',
                   Text = '   ',
                   Dict = '   ',
                   Method = '   ',
@@ -93,7 +95,7 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'cmdline', 'copilot' },
+      default = { 'avante', 'lsp', 'path', 'snippets', 'buffer', 'cmdline', 'copilot' },
 
       per_filetype = {
         lua = { inherit_defaults = true, 'lazydev' }
@@ -121,6 +123,13 @@ return {
             return items
           end,
         },
+        avante = {
+          module = 'blink-cmp-avante',
+          name = 'Avante',
+          opts = {
+            -- options for blink-cmp-avante
+          }
+        }
       },
     },
 

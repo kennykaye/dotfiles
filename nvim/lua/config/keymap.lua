@@ -20,9 +20,11 @@ map("n", "n", "nzzzv", { desc = "Fwd  search '/' or '?'" }) -- n + center cursor
 map("n", "N", "Nzzzv", { desc = "Back search '/' or '?'" }) -- N + center cursor
 
 -- Other
-map('x', 'ga',         '<Plug>(EasyAlign)',    { desc = "EasyAlign" })
-map('n', 'ga',         '<Plug>(EasyAlign)',    { desc = "EasyAlign" })
-map('n', '<leader>ut', vim.cmd.UndotreeToggle, { desc = 'Toggle Undo Tree' })
+map('x', 'ga',         '<Plug>(EasyAlign)',              { desc = "EasyAlign" })
+map('n', 'ga',         '<Plug>(EasyAlign)',              { desc = "EasyAlign" })
+map('n', '<leader>ut', vim.cmd.UndotreeToggle,           { desc = 'Toggle Undo Tree' })
+map('n', '<leader>um', '<CMD>RenderMarkdown toggle<CR>', { desc = 'Toggle RenderMarkdown' })
+map('n', '<leader>ua', function() require("avante.api").toggle() end,  { desc = 'Toggle Avante' })
 map("n", "<Leader>cc", function() require("menu").open("default") end, { desc = "Show context Menu"})
 map("n", "-", function()
   local minifiles = require("mini.files")
