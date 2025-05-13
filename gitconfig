@@ -78,6 +78,7 @@
 	name = Kenny Kaye
 [push]
 	default = simple
+	autoSetupRemote = true
 [merge]
     tool = FileMerge
 [mergetool "FileMerge"]

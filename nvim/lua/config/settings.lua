@@ -60,6 +60,8 @@ create_cmd('Vimrc', 'tabe ' .. vim.fn.expand('~/.vimrc'))
 create_cmd('Source', 'so ' .. vim.fn.expand('~/.vimrc'))
 create_cmd('Path', 'echo expand("%:p")')
 
+create_cmd('BedrockKeys', function () require('utils.bedrock_keys').set_bedrock_keys() end)
+
 -- Create a new file in the same directory as the current file
 local function create_file_cmd(name, vim_cmd)
   create_cmd(name, function(opts)

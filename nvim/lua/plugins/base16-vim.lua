@@ -97,6 +97,7 @@ return {
 
     -- Diagnostics
     hl('DiagnosticWarn',            { fg = C.yellow })
+    hl('DiagnosticInfo',            { fg = C.subtext0 })
     hl('DiagnosticFloatinghlnt',    { fg = C.subtext0 })
     hl('DiagnosticVirtualTexthlnt', { fg = C.subtext0 })
     hl('DiagnosticSignhlnt',        { fg = C.subtext0 })
