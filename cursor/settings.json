@@ -138,7 +138,6 @@
             }
         ]
     },
-    "workbench.colorTheme": "Base16 Dark Eighties",
     "markdown-preview-enhanced.previewTheme": "atom-dark.css",
     "markdown-preview-enhanced.codeBlockTheme": "auto.css",
     "breadcrumbs.enabled": true,
@@ -157,7 +156,6 @@
     "workbench.editor.showTabs": "multiple",
     "workbench.layoutControl.enabled": false,
     "workbench.iconTheme": null,
-    "workbench.sideBar.location": "right",
     "window.customTitleBarVisibility": "never",
     "search.exclude": {
         "**/.git": true,
@@ -199,5 +197,10 @@
     "terminal.integrated.enableVisualBell": false,
     "vim.neovimPath": "/opt/homebrew/bin/nvim",
     "vim.neovimUseConfigFile": true,
-    "redhat.telemetry.enabled": true
+    "redhat.telemetry.enabled": true,
+    "base16.generator.activatedThemes": [
+        "base16-default-dark",
+        "base16-eighties-dark"
+    ],
+    "workbench.colorTheme": "Base16 Eighties Dark"
 }

@@ -33,7 +33,7 @@ return {
     indent = {
       enabled = true,
       scope = {
-          underline = false, -- underline the start of the scope
+        underline = false, -- underline the start of the scope
       },
       chunk = {
         enabled = false,
@@ -76,9 +76,12 @@ return {
       },
       sources = {
         files = {
-          hidden = false,
+          -- hidden = false,
+          -- ignored = false,
         },
         explorer = {
+          -- hidden = true,
+          -- ignored = true,
           layout = { backdrop = false, }
         }
       },
@@ -275,6 +278,7 @@ return {
       function()
         Snacks.win({
           file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+          relative = "editor",
           width = 0.6,
           height = 0.6,
           wo = {

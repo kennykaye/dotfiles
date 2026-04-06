@@ -37,18 +37,22 @@ return {
       end
 
       local c = {}
+      local size = 0
       for _, client in pairs(clients) do
         if client.name ~= 'copilot' then
           table.insert(c, client.name)
+          size = size + 1
         end
       end
-      return ' ' .. table.concat(c, ',')
+      if (size > 0) then
+          return ' ' .. table.concat(c, ',')
+      end
     end
 
     -- Check if a buffer is on an allowlist to display lualine componentn
     local should_show_component = function()
       local ft = vim.bo.filetype
-      return not (ft:match("Avante") or ft:match("snacks"))
+      return not (ft:match("Avante") or ft:match("snacks") or ft:match("undotree") or ft:match("diff"))
     end
 
     -- Function to check if diagnostics are enabled

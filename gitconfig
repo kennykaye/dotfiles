@@ -87,3 +87,6 @@
 	helper = osxkeychain
 [http]
 	postBuffer = 524288000
+[trace2]
+	eventTarget = /Users/kenny.kaye/.devbox/git-trace2.jsonl
+	eventBrief = true

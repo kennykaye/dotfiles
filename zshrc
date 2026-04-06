@@ -41,6 +41,8 @@ lazyload pyenv -- 'eval "$(pyenv init - zsh)"'
 
 # Auto-activate environment managers when version files are detected
 auto_activate_env_managers() {
+  nvm &>/dev/null
+  # [[ -f .node-version ]] && nvm &>/dev/null
   [[ -f .python-version ]] && pyenv &>/dev/null
   [[ -f .java-version ]] && jenv &>/dev/null
   [[ -f .ruby-version ]] && rbenv &>/dev/null
@@ -88,7 +90,6 @@ ulimit -n 2048
 setopt autocd                # allow implicit cd. e.g: ../..
 setopt extended_glob         # enable extended globbing
 setopt NO_NOMATCH            # passes the bad match onto the command, so we can HEAD^
-# stty -ixon                   # disable flow control  (^S/^Q)
 
 # ---- Key Bindings -----
 bindkey '^w' backward-kill-word      # Delete prior word
@@ -96,6 +97,7 @@ bindkey '^P' fzf-file-widget         # Search files and folders
 bindkey '^Z' _zoxide_zi_with_accept  # Interactize z
 bindkey '^G' fzf-cd-widget           # (G)o to a directory
 bindkey '^F' ripgrep_fzf_vim         # (F)ind text in a file, then open it
+bindkey '^Y' autosuggest-accept      # Accept zsh suggestion
 
 # ---- FZF -----
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -185,3 +187,19 @@ export MANPATH="/opt/local/man:/usr/local/man:/usr/bin/:$MANPATH"
 export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
 
 export GOPATH="$HOME/Development/go"
+
+
+# Rename tmux window to command name for select commands
+if [[ -n "$TMUX" ]]; then
+  _tmux_preexec_rename() {
+    local cmd="${1%% *}"
+    case "$cmd" in
+      claude) tmux rename-window "claude" ;;
+    esac
+  }
+  _tmux_precmd_rename() {
+    tmux set-window-option automatic-rename on &>/dev/null
+  }
+  add-zsh-hook preexec _tmux_preexec_rename
+  add-zsh-hook precmd _tmux_precmd_rename
+fi

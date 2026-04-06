@@ -1,6 +1,6 @@
 after-startup-command = [
   'exec-and-forget sketchybar',
-  'exec-and-forget borders active_color=0xbfffffff inactive_color=0xff494d64 width=2.0 hidpi=on'
+  'exec-and-forget borders active_color=0xbfffffff inactive_color=0xff494d64 width=2.0 hidpi=on blacklist="Camera Hub"'
 ]
 
 # Notify Sketchybar about workspace change
@@ -89,6 +89,18 @@ run = ['move-node-to-workspace 2']
 if.app-name-regex-substring = 'chrome'
 run = ['move-node-to-workspace 3']
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'camera hub'
+run = ['move-node-to-workspace 5']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'zoom'
+run = ['move-node-to-workspace 5']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'notion'
+run = ['move-node-to-workspace 5']
+
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
@@ -102,12 +114,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 20
-inner.vertical =   20
-outer.left =       20
-outer.bottom =     20
-outer.top = [{ monitor."dell" = 59 }, 30]
-outer.right =      20
+inner.horizontal = [{ monitor."elgato" = 0 }, 20]
+inner.vertical = [{ monitor."elgato" = 0 }, 20]
+outer.left = [{ monitor."elgato" = 0 }, 20]
+outer.bottom = [{ monitor."elgato" = 0 }, 20]
+outer.top = [{ monitor."dell" = 59 }, { monitor."elgato" = 0 }, 30]
+outer.right = [{ monitor."elgato" = 0 }, 20]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -172,12 +184,14 @@ alt-ctrl-shift-1 = 'workspace 1'
 alt-ctrl-shift-2 = 'workspace 2'
 alt-ctrl-shift-3 = 'workspace 3'
 alt-ctrl-shift-4 = 'workspace 4'
+alt-ctrl-shift-5 = 'workspace 5'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-ctrl-shift-cmd-1 = 'move-node-to-workspace 1 --focus-follows-window'
 alt-ctrl-shift-cmd-2 = 'move-node-to-workspace 2 --focus-follows-window'
 alt-ctrl-shift-cmd-3 = 'move-node-to-workspace 3 --focus-follows-window'
 alt-ctrl-shift-cmd-4 = 'move-node-to-workspace 4 --focus-follows-window'
+alt-ctrl-shift-cmd-5 = 'move-node-to-workspace 5 --focus-follows-window'
 
 # alt-tab = 'workspace-back-and-forth'
 # alt-ctrl-shift-cmd-tab = 'move-workspace-to-monitor --wrap-around next'
@@ -202,10 +216,10 @@ r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
-# [workspace-to-monitor-force-assignment]
+[workspace-to-monitor-force-assignment]
 #     1 = '^dell$'
 #     2 = '^dell$'
 #     3 = '^dell$'
 #     4 = '^dell$'
 #     5 = 'main'
-#     6 = '^elgato$'
+  5 = 'secondary'

@@ -21,7 +21,6 @@ function M.set_bedrock_keys(profile)
     )
     :wait()
 
-  vim.print(credentials)
   if credentials.code ~= 0 then
     vim.print(vim.trim(credentials.stderr), vim.log.levels.ERROR)
     return
@@ -35,8 +34,7 @@ function M.set_bedrock_keys(profile)
     :wait()
 
   if region.code ~= 0 then
-    vim.print(vim.trim(region.stderr), vim.log.levels.ERROR)
-    return
+    region.stdout = "us-west-2"
   end
   local region_text = vim.trim(region.stdout)
   local bedrock_keys = table.concat({

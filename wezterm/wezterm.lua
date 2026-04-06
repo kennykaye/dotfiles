@@ -6,38 +6,20 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- Determine font size based on display -- REMOVED THIS BLOCK TO PREVENT DEADLOCK
--- local base_font_size = 14
--- local macbook_font_size = 15
--- local current_font_size = base_font_size
---
--- -- wezterm.log_error(wezterm.inspect(wezterm.gui.screens())) -- Uncomment to debug screen names
--- local screens = wezterm.gui.screens()
--- -- Check if the active screen seems like the built-in MacBook display
--- -- Common names include "Color LCD", "Built-in Retina Display"
--- if screens.active and (screens.active.name:find("Color LCD") or screens.active.name:find("Built%-in")) then
---   current_font_size = macbook_font_size
---   wezterm.log_info("Using MacBook font size: " .. current_font_size)
--- else
---   wezterm.log_info("Using default font size: " .. current_font_size .. " for screen: " .. (screens.active and screens.active.name or "Unknown"))
--- end
-
-
 -- Font configuration
 local base_font_size = 15
 local font_family = 'Berkeley Mono'
 local fallback_font_family = 'FiraCode Nerd Font'
-local line_height = 1.22
+local line_height = 1.23
 
--- Use the dynamically determined font size -- NOW SETTING DEFAULT
-local font = { family = font_family, weight = 400, size = base_font_size, line_height = line_height }
+local font = { family = font_family, weight = 380, size = base_font_size, line_height = line_height }
 -- local font = { family = 'CommitMono', weight = 'Regular', size = base_font_size, line_height = 1.3 }
 -- local font = { family = 'MonoLisa Variable', weight = 350, size = base_font_size, line_height = 1.3 }
 -- local font = { family = 'FiraCode Nerd Font', weight = 375, size = base_font_size, line_height = 1.3 }
 local fallback_font = { family = fallback_font_family, weight = 'Light', size = base_font_size, line_height = line_height }
 
 config.font = wezterm.font_with_fallback({ font.family, fallback_font.family })
-config.font_size = font.size -- Make sure this uses the size from the font table
+config.font_size = font.size
 config.line_height = font.line_height
 
 -- Enable comprehensive ligature support
@@ -61,7 +43,7 @@ config.font_rules = {
     intensity = "Normal",
     italic = false,
     font = wezterm.font_with_fallback({
-      { family = font_family, weight = 400 }, -- Use defined font weight
+      { family = font_family, weight = font.weight }, -- Use defined font weight
       { family = fallback_font_family, weight = 'Light' },
     }),
   },
@@ -112,7 +94,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.show_tab_index_in_tab_bar = true
 config.tab_max_width = 50
 config.window_decorations = 'RESIZE'
-config.window_padding = { left = '.75cell', right = '.5cell', top = '0.5cell', bottom = '0cell' }
+config.window_padding = { left = '.75cell', right = '.5cell', top = '0.3cell', bottom = '0cell' }
 config.visual_bell = { fade_in_duration_ms = 0, fade_out_duration_ms = 0 }
 config.audible_bell = 'Disabled'
 

@@ -27,9 +27,9 @@ return {
       ensure_installed = {
         'basedpyright',
         'lua_ls',
-        'emmet_ls',
         'gopls',
         'buf_ls',
+        'ts_ls',
         'kotlin_language_server',
       },
 

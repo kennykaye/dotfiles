@@ -23,8 +23,8 @@ if pgrep -x \"Raycast\" >/dev/null && sketchybar --query default_menu_items | gr
   # If calendar doesn't exist, create it
   if ! sketchybar --query item calendar >/dev/null 2>&1; then
     # Create the alias with the correct position on the far right
-    sketchybar --add alias \"Raycast,raycastCalendarStatusItem\" right \\
-               --rename \"Raycast,raycastCalendarStatusItem\" calendar \\
+    sketchybar --add alias \"Control Center,raycastCalendarStatusItem\" right \\
+               --rename \"Contol Center,raycastCalendarStatusItem\" calendar \\
                --set calendar update_freq=1 \\
                           label.padding_left=5 \\
                           label.padding_right=0 \\
@@ -34,7 +34,7 @@ if pgrep -x \"Raycast\" >/dev/null && sketchybar --query default_menu_items | gr
                           drawing=off \\
                           position=right
 
-    # Handle placement with delay in background, 
+    # Handle placement with delay in background,
     # this is a bit of a hack but we don't get the alias screen recording callback
     (
       sleep 5s
@@ -60,9 +60,9 @@ sketchybar --add item calendar_watcher left \
 if pgrep -x "Raycast" >/dev/null; then
   # Check if the Raycast calendar item exists
   if sketchybar --query default_menu_items | grep "raycastCalendarStatusItem" >/dev/null; then
-    # Create the alias directly 
-    sketchybar --add alias "Raycast,raycastCalendarStatusItem" right \
-               --rename "Raycast,raycastCalendarStatusItem" calendar \
+    # Create the alias directly
+    sketchybar --add alias "Control Center,raycastCalendarStatusItem" right \
+               --rename "Control Center,raycastCalendarStatusItem" calendar \
                --set calendar "${CALENDAR_PARAMS[@]}"
   fi
 fi

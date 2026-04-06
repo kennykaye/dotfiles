@@ -64,15 +64,15 @@ packages=(
     "rbenv"                          # Ruby version manager
 
     # Just for fun
-    "cmatrix"
 )
 
 # Casks
 declare -a cask_names=(
     "android-studio"
-    "areospace"
+    "aerospace"
     "borders"
     "cursor"
+    "claude-code"
     "elgato-wave-link"
     "font-fira-code-nerd-font"
     "homerow"
