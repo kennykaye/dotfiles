@@ -1,22 +1,58 @@
 #!/usr/bin/env sh
 
-# Check if Raycast is running
-if pgrep -x "Raycast" >/dev/null; then
-  # Check if the Raycast calendar item exists
-  if sketchybar --query default_menu_items | grep "raycastCalendarStatusItem" >/dev/null; then
-    # Check if we need to create an alias
-    if ! sketchybar --query item calendar > /dev/null 2>&1; then
-      # Create the alias
-      sketchybar --add alias "Raycast,raycastCalendarStatusItem" right --rename "Raycast,raycastCalendarStatusItem" calendar
-      sketchybar --set calendar update_freq=1                         label.padding_left=5                         label.padding_right=0                         background.color=0x44ffffff                         background.height=26                         background.corner_radius=5
-    fi
-    # Make it visible
-    sketchybar --set calendar drawing=on
-  else
-    # Hide it if it exists
-    sketchybar --set calendar drawing=off 2>/dev/null
-  fi
+RESULT=$(swift - << 'EOF'
+import Foundation
+import EventKit
+
+func truncate(_ s: String, _ max: Int) -> String {
+  guard s.count > max else { return s }
+  return String(s.prefix(max)) + "…"
+}
+
+func isZoom(_ event: EKEvent) -> Bool {
+  let fields = [event.url?.absoluteString, event.notes, event.location, event.title]
+  return fields.compactMap { $0 }.contains { $0.lowercased().contains("zoom") }
+}
+
+let store = EKEventStore()
+let semaphore = DispatchSemaphore(value: 0)
+
+store.requestFullAccessToEvents { granted, _ in
+  guard granted else { semaphore.signal(); return }
+
+  let now = Date()
+  let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: now)!
+  let pred = store.predicateForEvents(withStart: now - 3600, end: tomorrow, calendars: nil)
+  let events = store.events(matching: pred)
+    .filter { isZoom($0) }
+    .sorted { $0.startDate < $1.startDate }
+
+  // Check for an active meeting first
+  if let active = events.first(where: { $0.startDate <= now && $0.endDate > now }) {
+    let mins = Int(active.endDate.timeIntervalSince(now) / 60)
+    let title = truncate(active.title ?? "Meeting", 25)
+    print("active|\(title) · \(mins)m left")
+    semaphore.signal()
+    return
+  }
+
+  // Otherwise show next upcoming Zoom meeting
+  if let next = events.first(where: { $0.startDate > now }) {
+    let mins = Int(next.startDate.timeIntervalSince(now) / 60)
+    let title = truncate(next.title ?? "Meeting", 25)
+    let timeStr = mins < 60 ? "in \(mins)m" : "in \(mins / 60)h \(mins % 60)m"
+    print("upcoming|\(title) · \(timeStr)")
+  }
+
+  semaphore.signal()
+}
+semaphore.wait()
+EOF
+)
+
+if [ -z "$RESULT" ]; then
+  sketchybar --set "$NAME" label="" background.drawing=off
 else
-  # Hide it if it exists
-  sketchybar --set calendar drawing=off 2>/dev/null
+  LABEL="${RESULT#*|}"
+  sketchybar --set "$NAME" label="$LABEL" background.drawing=on
 fi
