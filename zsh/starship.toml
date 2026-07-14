@@ -94,7 +94,7 @@ $character"""
 
 continuation_prompt = "[❯ ](bright-black)"
 
-command_timeout = 1000
+command_timeout = 200
 
 # [fill]
 # style  = 'bright-black'

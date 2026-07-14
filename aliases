@@ -29,6 +29,14 @@ alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
 
+# Claude
+alias c='claude'
+alias cc='claude --continue'
+alias cr='claude --resume'
+alias cp='claude -p'
+alias cw='claude --worktree'
+alias cyolo='claude --dangerously-skip-permissions'
+
 # Searching
 alias rg='rg --colors  "match:fg:yellow" --colors "line:fg:red" --colors "path:fg:green" --no-messages'
 

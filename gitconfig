@@ -14,6 +14,9 @@
 	whitespace = space-before-tab,indent-with-non-tab,trailing-space
 	editor = nvim
 	pager = delta
+	# Speed up status/diff on large repos (e.g. monorepos) by caching file state
+	fsmonitor = true
+	untrackedCache = true
 
 [interactive]
 	diffFilter = delta --color-only
@@ -83,10 +86,5 @@
     tool = FileMerge
 [mergetool "FileMerge"]
     cmd = opendiff-w \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-[credential]
-	helper = osxkeychain
 [http]
 	postBuffer = 524288000
-[trace2]
-	eventTarget = /Users/kenny.kaye/.devbox/git-trace2.jsonl
-	eventBrief = true

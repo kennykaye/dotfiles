@@ -9,9 +9,15 @@ func truncate(_ s: String, _ max: Int) -> String {
   return String(s.prefix(max)) + "…"
 }
 
-func isZoom(_ event: EKEvent) -> Bool {
+func isVideoCall(_ event: EKEvent) -> Bool {
   let fields = [event.url?.absoluteString, event.notes, event.location, event.title]
-  return fields.compactMap { $0 }.contains { $0.lowercased().contains("zoom") }
+  let text = fields.compactMap { $0 }.joined(separator: " ").lowercased()
+  return text.contains("zoom") || text.contains("meet.google")
+}
+
+func isAccepted(_ event: EKEvent) -> Bool {
+  guard let attendees = event.attendees, !attendees.isEmpty else { return true }
+  return attendees.first(where: { $0.isCurrentUser })?.participantStatus == .accepted
 }
 
 let store = EKEventStore()
@@ -24,7 +30,7 @@ store.requestFullAccessToEvents { granted, _ in
   let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: now)!
   let pred = store.predicateForEvents(withStart: now - 3600, end: tomorrow, calendars: nil)
   let events = store.events(matching: pred)
-    .filter { isZoom($0) }
+    .filter { isVideoCall($0) && isAccepted($0) }
     .sorted { $0.startDate < $1.startDate }
 
   // Check for an active meeting first
@@ -36,9 +42,10 @@ store.requestFullAccessToEvents { granted, _ in
     return
   }
 
-  // Otherwise show next upcoming Zoom meeting
+  // Otherwise show next upcoming Zoom meeting if within 2 hours
   if let next = events.first(where: { $0.startDate > now }) {
     let mins = Int(next.startDate.timeIntervalSince(now) / 60)
+    guard mins <= 120 else { semaphore.signal(); return }
     let title = truncate(next.title ?? "Meeting", 25)
     let timeStr = mins < 60 ? "in \(mins)m" : "in \(mins / 60)h \(mins % 60)m"
     print("upcoming|\(title) · \(timeStr)")

@@ -2,8 +2,8 @@ return {
   'saghen/blink.cmp',
   dependencies = {
     'rafamadriz/friendly-snippets',
-    'fang2hou/blink-copilot',
-    'Kaiser-Yang/blink-cmp-avante',
+    -- 'fang2hou/blink-copilot',
+    -- 'Kaiser-Yang/blink-cmp-avante',
   },
   version = '1.*',
 
@@ -95,7 +95,8 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'avante', 'lsp', 'path', 'snippets', 'buffer', 'cmdline', 'copilot' },
+      -- default = { 'avante', 'lsp', 'path', 'snippets', 'buffer', 'cmdline', 'copilot' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'cmdline' },
 
       per_filetype = {
         lua = { inherit_defaults = true, 'lazydev' }
@@ -107,29 +108,29 @@ return {
           module = "lazydev.integrations.blink",
           -- make lazydev completions top priority (see `:h blink.cmp`)
           score_offset = 100,
-        },
-        copilot = {
-          name = "copilot",
-          module = "blink-copilot",
-          score_offset = 100,
-          async = true,
-          transform_items = function(_, items)
-            local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-            local kind_idx = #CompletionItemKind + 1
-            CompletionItemKind[kind_idx] = "Copilot"
-            for _, item in ipairs(items) do
-              item.kind = kind_idx
-            end
-            return items
-          end,
-        },
-        avante = {
-          module = 'blink-cmp-avante',
-          name = 'Avante',
-          opts = {
-            -- options for blink-cmp-avante
-          }
         }
+        -- copilot = {
+        --   name = "copilot",
+        --   module = "blink-copilot",
+        --   score_offset = 100,
+        --   async = true,
+        --   transform_items = function(_, items)
+        --     local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+        --     local kind_idx = #CompletionItemKind + 1
+        --     CompletionItemKind[kind_idx] = "Copilot"
+        --     for _, item in ipairs(items) do
+        --       item.kind = kind_idx
+        --     end
+        --     return items
+        --   end,
+        -- },
+        -- avante = {
+        --   module = 'blink-cmp-avante',
+        --   name = 'Avante',
+        --   opts = {
+        --     -- options for blink-cmp-avante
+        --   }
+        -- }
       },
     },
 

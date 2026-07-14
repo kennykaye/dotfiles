@@ -46,7 +46,10 @@ return {
           vim.lsp.enable(server_name)
         end,
 
-        ['lua_ls'] = function()
+        -- stylua is a formatter, not an LSP server — prevent it from being started with --lsp
+      ['stylua'] = function() end,
+
+      ['lua_ls'] = function()
           vim.lsp.config('lua_ls', {
             cmd = { 'lua-language-server' },
             filetypes = { 'lua' },

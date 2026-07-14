@@ -6,7 +6,7 @@ sketchybar --remove calendar 2>/dev/null
 sketchybar --add item calendar right \
            --set calendar script="$PLUGIN_DIR/calendar_plugin.sh" \
                           update_freq=30 \
-                          updates=when_shown \
+                          updates=on \
                           label.padding_left=5 \
                           label.padding_right=13 \
                           background.color=$LIGHT_GREY \

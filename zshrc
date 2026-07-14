@@ -41,8 +41,7 @@ lazyload pyenv -- 'eval "$(pyenv init - zsh)"'
 
 # Auto-activate environment managers when version files are detected
 auto_activate_env_managers() {
-  nvm &>/dev/null
-  # [[ -f .node-version ]] && nvm &>/dev/null
+  { [[ -f .nvmrc ]] || [[ -f .node-version ]]; } && nvm &>/dev/null
   [[ -f .python-version ]] && pyenv &>/dev/null
   [[ -f .java-version ]] && jenv &>/dev/null
   [[ -f .ruby-version ]] && rbenv &>/dev/null
